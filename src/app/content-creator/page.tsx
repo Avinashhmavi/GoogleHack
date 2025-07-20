@@ -36,7 +36,7 @@ export default function ContentCreatorPage() {
   const [gradeLevel, setGradeLevel] = useState(5);
   const [selectedLanguages, setSelectedLanguages] = useState<MultiSelectOption[]>([
       { value: "en", label: "English" },
-      { value: "es", label: "Spanish" },
+      { value: "hi", label: "Hindi" },
   ]);
   const [generatedContent, setGeneratedContent] = useState<ContentMap | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -92,6 +92,10 @@ export default function ContentCreatorPage() {
     }
 
     setIsLoading(false);
+  };
+  
+  const handleContentChange = (lang: string, newText: string) => {
+    setGeneratedContent(prev => prev ? ({ ...prev, [lang]: newText }) : null);
   };
 
   return (
@@ -192,15 +196,15 @@ export default function ContentCreatorPage() {
               <Tabs defaultValue={Object.keys(generatedContent)[0]} className="w-full h-full flex flex-col">
                 <TabsList>
                   {Object.keys(generatedContent).map((lang) => (
-                    <TabsTrigger key={lang} value={lang}>{lang.toUpperCase()}</TabsTrigger>
+                    <TabsTrigger key={lang} value={lang}>{languageOptions.find(l => l.value === lang)?.label || lang.toUpperCase()}</TabsTrigger>
                   ))}
                 </TabsList>
                 {Object.entries(generatedContent).map(([lang, content]) => (
                   <TabsContent key={lang} value={lang} className="flex-grow mt-4">
                     <Textarea
-                      readOnly
                       value={content}
-                      className="w-full h-full min-h-[300px] resize-none bg-secondary/50"
+                      onChange={(e) => handleContentChange(lang, e.target.value)}
+                      className="w-full h-full min-h-[300px] resize-y bg-secondary/50"
                       aria-label={`Content in ${lang}`}
                     />
                   </TabsContent>
