@@ -28,6 +28,11 @@ import {
   textToSpeech,
   type TextToSpeechInput,
 } from "@/ai/flows/text-to-speech";
+import {
+  enhanceWriting,
+  type EnhanceWritingInput,
+} from "@/ai/flows/enhance-writing";
+
 
 export async function adaptContentAction(input: AdaptContentGradeLevelInput) {
   try {
@@ -64,7 +69,7 @@ export async function generateMultiLanguageAction(
   }
 }
 
-export async function photoToWorksheetAction(input: PhotoToWorksheetInput) {
+export async function photoToWorksheetAction(input: PhotoToWsomrksheetInput) {
   try {
     const result = await photoToWorksheet(input);
     return { success: true, data: result };
@@ -106,4 +111,15 @@ export async function textToSpeechAction(input: TextToSpeechInput) {
         const message = error instanceof Error ? error.message : "Failed to convert text to speech.";
         return { success: false, error: message };
     }
+}
+
+export async function enhanceWritingAction(input: EnhanceWritingInput) {
+  try {
+    const result = await enhanceWriting(input);
+    return { success: true, data: result };
+  } catch (error) {
+    console.error(error);
+    const message = error instanceof Error ? error.message : "Failed to enhance writing.";
+    return { success: false, error: message };
+  }
 }

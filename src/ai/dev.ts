@@ -8,3 +8,4 @@ import '@/ai/flows/generate-multi-language-content.ts';
 import '@/ai/flows/generate-quiz.ts';
 import '@/ai/flows/create-rubric.ts';
 import '@/ai/flows/text-to-speech.ts';
+import '@/ai/flows/enhance-writing.ts';

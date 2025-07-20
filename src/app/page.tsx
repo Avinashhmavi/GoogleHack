@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, BarChart3, GraduationCap, Languages, QrCode, ScanLine, FileQuestion, ClipboardCheck } from "lucide-react";
+import { ArrowRight, BarChart3, GraduationCap, Languages, QrCode, ScanLine, FileQuestion, ClipboardCheck, Edit } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
@@ -46,6 +46,12 @@ const features = [
     href: '/rubric-creator',
     icon: <ClipboardCheck className="w-8 h-8 text-primary" />,
   },
+  {
+    title: 'Writing Assistant',
+    description: 'Get feedback on grammar, spelling, and style.',
+    href: '/writing-assistant',
+    icon: <Edit className="w-8 h-8 text-primary" />,
+  }
 ];
 
 export default function Home() {
@@ -69,7 +75,7 @@ export default function Home() {
             </CardHeader>
             <CardContent className="flex flex-col flex-grow">
               <p className="flex-grow text-muted-foreground">{feature.description}</p>
-              <Link href={feature.href} className="mt-4">
+              <Link href={feature.href}>
                 <Button variant="outline" className="w-full">
                   Go to feature <ArrowRight className="ml-2" />
                 </Button>

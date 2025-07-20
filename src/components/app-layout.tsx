@@ -24,6 +24,7 @@ import {
   BookOpen,
   FileQuestion,
   ClipboardCheck,
+  Edit,
 } from 'lucide-react';
 
 const menuItems = [
@@ -35,6 +36,7 @@ const menuItems = [
   { href: '/grade-tracking', label: 'Grade Tracking', icon: BarChart3 },
   { href: '/quiz-generator', label: 'Quiz Generator', icon: FileQuestion },
   { href: '/rubric-creator', label: 'Rubric Creator', icon: ClipboardCheck },
+  { href: '/writing-assistant', label: 'Writing Assistant', icon: Edit },
 ];
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
@@ -56,7 +58,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
           <SidebarMenu>
             {menuItems.map((item) => (
               <SidebarMenuItem key={item.href}>
-                <Link href={item.href} passHref>
+                <Link href={item.href}>
                   <SidebarMenuButton
                     asChild
                     isActive={pathname === item.href}
