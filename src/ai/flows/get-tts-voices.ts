@@ -4,7 +4,7 @@
  */
 
 import { ai } from "@/ai/genkit";
-import { listVoices, z } from "genkit/experimental/ai";
+import { listVoices, z } from "genkit";
 import { googleAI } from '@genkit-ai/googleai';
 
 export const GetTtsVoicesOutputSchema = z.array(z.object({
