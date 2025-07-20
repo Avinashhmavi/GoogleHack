@@ -17,13 +17,13 @@ const QuestionSchema = z.object({
   correctAnswer: z.number().describe('The index of the correct answer in the options array.'),
 });
 
-export const GenerateQuizInputSchema = z.object({
+const GenerateQuizInputSchema = z.object({
   topic: z.string().describe('The topic for the quiz.'),
   numQuestions: z.number().min(1).max(20).describe('The number of questions to generate.'),
 });
 export type GenerateQuizInput = z.infer<typeof GenerateQuizInputSchema>;
 
-export const GenerateQuizOutputSchema = z.object({
+const GenerateQuizOutputSchema = z.object({
   title: z.string().describe('The title of the quiz.'),
   questions: z.array(QuestionSchema).describe('An array of quiz questions.'),
 });
