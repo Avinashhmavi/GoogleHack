@@ -185,6 +185,7 @@ function AIVideoSearch() {
   const [grade, setGrade] = useState("");
   const [subject, setSubject] = useState("");
   const [topic, setTopic] = useState("");
+  const [language, setLanguage] = useState("English");
   const [isLoading, setIsLoading] = useState(false);
   const [results, setResults] = useState<YouTubeVideo[]>([]);
   const { toast } = useToast();
@@ -202,7 +203,7 @@ function AIVideoSearch() {
     setIsLoading(true);
     setResults([]);
     
-    const actionResult = await searchYoutubeVideosAction({ grade, subject, topic });
+    const actionResult = await searchYoutubeVideosAction({ grade, subject, topic, language });
     if(actionResult.success) {
       setResults(actionResult.data.videos);
     } else {
@@ -218,7 +219,7 @@ function AIVideoSearch() {
   
   const subjects = ['Math', 'Science', 'English', 'History', 'Physics', 'Chemistry', 'Biology'];
   const grades = Array.from({ length: 12 }, (_, i) => (i + 1).toString());
-
+  const languages = ["English", "Hindi", "Spanish", "French", "Bengali"];
 
   return (
     <div className="space-y-8">
@@ -233,7 +234,7 @@ function AIVideoSearch() {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="ai-grade">Grade</Label>
                 <Select value={grade} onValueChange={setGrade}>
@@ -253,6 +254,17 @@ function AIVideoSearch() {
                   </SelectTrigger>
                   <SelectContent>
                     {subjects.map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}
+                  </SelectContent>
+                </Select>
+              </div>
+               <div className="space-y-2">
+                <Label htmlFor="ai-language">Language</Label>
+                <Select value={language} onValueChange={setLanguage}>
+                  <SelectTrigger id="ai-language">
+                    <SelectValue placeholder="Select Language" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {languages.map(l => <SelectItem key={l} value={l}>{l}</SelectItem>)}
                   </SelectContent>
                 </Select>
               </div>

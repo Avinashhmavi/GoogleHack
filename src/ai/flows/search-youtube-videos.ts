@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -61,7 +62,7 @@ const searchYoutubeVideosFlow = ai.defineFlow(
         outputSchema: SearchYoutubeVideosOutputSchema,
     },
     async (input) => {
-        const searchQuery = `educational video for grade ${input.grade} ${input.subject} about ${input.topic}`;
+        const searchQuery = `educational video in ${input.language} for grade ${input.grade} ${input.subject} about ${input.topic}`;
         
         const videos = await searchYouTubeTool({ query: searchQuery });
         

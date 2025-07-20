@@ -7,6 +7,7 @@ export const SearchYoutubeVideosInputSchema = z.object({
   grade: z.string().describe('The target grade level for the video content.'),
   subject: z.string().describe('The subject of the video.'),
   topic: z.string().describe('The specific topic to search for.'),
+  language: z.string().describe('The language of the video content (e.g., "English", "Hindi").'),
 });
 export type SearchYoutubeVideosInput = z.infer<typeof SearchYoutubeVideosInputSchema>;
 
