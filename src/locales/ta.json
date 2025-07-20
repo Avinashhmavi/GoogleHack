@@ -58,5 +58,7 @@
     "generatedWorksheet_title": "உருவாக்கப்பட்ட பணித்தாள்",
     "generatedWorksheet_description": "உருவாக்கப்பட்ட கேள்விகள் இங்கே தோன்றும்.",
     "worksheetPlaceholder": "உங்கள் பணித்தாள் உருவாக்கப்பட்டதும் இங்கே காட்டப்படும்.",
-    "error": "பிழை"
+    "error": "பிழை",
+    "presentationCreator": "விளக்கக்காட்சி உருவாக்குநர்",
+    "presentationCreator_desc": "எந்தவொரு தலைப்புக்கும் தானாக விளக்கக்காட்சி ஸ்லைடுகளை உருவாக்கவும்."
 }

@@ -58,5 +58,7 @@
     "generatedWorksheet_title": "তৈরি করা ওয়ার্কশিট",
     "generatedWorksheet_description": "তৈরি করা প্রশ্নগুলি এখানে উপস্থিত হবে।",
     "worksheetPlaceholder": "আপনার ওয়ার্কশিট তৈরি হয়ে গেলে এখানে প্রদর্শিত হবে।",
-    "error": "ত্রুটি"
+    "error": "ত্রুটি",
+    "presentationCreator": "উপস্থাপনা নির্মাতা",
+    "presentationCreator_desc": "যেকোনো বিষয়ের জন্য স্বয়ংক্রিয়ভাবে উপস্থাপনা স্লাইড তৈরি করুন।"
 }

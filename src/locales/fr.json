@@ -58,5 +58,7 @@
     "generatedWorksheet_title": "Fiche de Travail Générée",
     "generatedWorksheet_description": "Les questions générées apparaîtront ici.",
     "worksheetPlaceholder": "Votre fiche de travail sera affichée ici une fois générée.",
-    "error": "Erreur"
+    "error": "Erreur",
+    "presentationCreator": "Créateur de Présentations",
+    "presentationCreator_desc": "Générez automatiquement des diapositives de présentation pour n'importe quel sujet."
 }

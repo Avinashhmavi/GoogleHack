@@ -56,6 +56,10 @@ import type { AskSahayakInput } from "@/ai/flows/ask-sahayak";
 import {
   getTtsVoices
 } from "@/ai/flows/get-tts-voices";
+import {
+  createPresentation
+} from "@/ai/flows/create-presentation";
+import type { CreatePresentationInput } from "@/ai/flows/create-presentation.types";
 
 import { studentRoster } from "./student-roster";
 import type { Student } from "./student-roster";
@@ -136,6 +140,10 @@ export async function getTtsVoicesAction(languageCode: string) {
         const message = error instanceof Error ? error.message : "Failed to get TTS voices.";
         return { success: false, error: message };
     }
+}
+
+export async function createPresentationAction(input: CreatePresentationInput) {
+    return runAction(createPresentation, input, "Failed to generate presentation.");
 }
 
 

@@ -17,3 +17,4 @@ import '@/ai/flows/generate-discussion.ts';
 import '@/ai/flows/generate-visual-aid.ts';
 import '@/ai/flows/ask-sahayak.ts';
 import '@/ai/flows/get-tts-voices.ts';
+import '@/ai/flows/create-presentation.ts';

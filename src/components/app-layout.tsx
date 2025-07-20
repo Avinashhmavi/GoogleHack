@@ -36,6 +36,7 @@ import {
   Loader2,
   Brush,
   HelpCircle,
+  Presentation,
 } from 'lucide-react';
 import { useLanguage } from '@/context/language-context';
 import { LanguageSelector } from './language-selector';
@@ -53,6 +54,7 @@ const menuItems = [
   { href: '/content-creator', labelKey: 'contentCreator', icon: Languages },
   { href: '/content-adaptation', labelKey: 'contentAdaptation', icon: GraduationCap },
   { href: '/visual-aids-generator', labelKey: 'visualAidsGenerator', icon: Brush },
+  { href: '/presentation-creator', labelKey: 'presentationCreator', icon: Presentation },
   { href: '/qr-code-generator', labelKey: 'qrCodeGenerator', icon: QrCode },
   { href: '/grade-tracking', labelKey: 'gradeTracking', icon: BarChart3 },
   { href: '/quiz-generator', labelKey: 'quizGenerator', icon: FileQuestion },

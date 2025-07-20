@@ -58,5 +58,7 @@
     "generatedWorksheet_title": "రూపొందించిన వర్క్‌షీట్",
     "generatedWorksheet_description": "రూపొందించిన ప్రశ్నలు ఇక్కడ కనిపిస్తాయి.",
     "worksheetPlaceholder": "మీ వర్క్‌షీట్ రూపొందించబడిన తర్వాత ఇక్కడ ప్రదర్శించబడుతుంది.",
-    "error": "లోపం"
+    "error": "లోపం",
+    "presentationCreator": "ప్రెజెంటేషన్ సృష్టికర్త",
+    "presentationCreator_desc": "ఏదైనా అంశం కోసం స్వయంచాలకంగా ప్రెజెంటేషన్ స్లయిడ్‌లను రూపొందించండి."
 }

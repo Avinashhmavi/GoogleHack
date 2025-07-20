@@ -75,5 +75,7 @@
     "attendanceList_description": "The list of recognized students will appear here.",
     "studentsPresent_text": "students present",
     "noStudentsRecognized_text": "No known students were recognized in the photo.",
-    "attendanceResultsPlaceholder": "Attendance results will be shown here."
+    "attendanceResultsPlaceholder": "Attendance results will be shown here.",
+    "presentationCreator": "Presentation Creator",
+    "presentationCreator_desc": "Automatically generate presentation slides for any topic."
 }

@@ -2,7 +2,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, BarChart3, GraduationCap, Languages, QrCode, ScanLine, FileQuestion, ClipboardCheck, Edit, Users, UserCog, BookText, MessageSquare, Brush, HelpCircle } from "lucide-react";
+import { ArrowRight, BarChart3, GraduationCap, Languages, QrCode, ScanLine, FileQuestion, ClipboardCheck, Edit, Users, UserCog, BookText, MessageSquare, Brush, HelpCircle, Presentation } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/context/language-context";
@@ -37,6 +37,12 @@ const features = [
     descriptionKey: 'visualAidsGenerator_desc',
     href: '/visual-aids-generator',
     icon: <Brush className="w-8 h-8 text-primary" />,
+  },
+   {
+    titleKey: 'presentationCreator',
+    descriptionKey: 'presentationCreator_desc',
+    href: '/presentation-creator',
+    icon: <Presentation className="w-8 h-8 text-primary" />,
   },
   {
     titleKey: 'qrCodeGenerator',
