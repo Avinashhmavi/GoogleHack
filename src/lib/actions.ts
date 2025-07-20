@@ -30,6 +30,7 @@ import {
 import {
   enhanceWriting,
 } from "@/ai/flows/enhance-writing";
+import type { EnhanceWritingInput } from "@/ai/flows/enhance-writing.types";
 
 
 export async function adaptContentAction(input: AdaptContentGradeLevelInput) {
@@ -111,7 +112,7 @@ export async function textToSpeechAction(input: { text: string }) {
     }
 }
 
-export async function enhanceWritingAction(input: { text: string }) {
+export async function enhanceWritingAction(input: EnhanceWritingInput) {
   try {
     const result = await enhanceWriting(input);
     return { success: true, data: result };

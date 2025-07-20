@@ -3,30 +3,15 @@
  * @fileOverview An AI agent that enhances writing by checking grammar, spelling, and style.
  *
  * - enhanceWriting - A function that analyzes text and provides corrections and suggestions.
- * - EnhanceWritingInput - The input type for the enhanceWriting function.
- * - EnhanceWritingOutput - The return type for the enhanceWriting function.
  */
 
 import { ai } from '@/ai/genkit';
-import { z } from 'genkit';
-
-const EnhanceWritingInputSchema = z.object({
-  text: z.string().describe('The text to be analyzed and enhanced.'),
-});
-type EnhanceWritingInput = z.infer<typeof EnhanceWritingInputSchema>;
-
-const SuggestionSchema = z.object({
-    original: z.string().describe('The original phrase or sentence from the text.'),
-    suggestion: z.string().describe('The suggested improvement.'),
-    explanation: z.string().describe('An explanation of why the suggestion is better (e.g., "Improves clarity", "Corrects grammar").'),
-});
-
-const EnhanceWritingOutputSchema = z.object({
-  correctedText: z.string().describe('The full text with all direct spelling and grammar errors corrected.'),
-  suggestions: z.array(SuggestionSchema).describe('A list of suggestions for improving the style, clarity, or flow of the text.'),
-});
-type EnhanceWritingOutput = z.infer<typeof EnhanceWritingOutputSchema>;
-
+import {
+  EnhanceWritingInputSchema,
+  EnhanceWritingOutputSchema,
+  type EnhanceWritingInput,
+  type EnhanceWritingOutput
+} from './enhance-writing.types';
 
 export async function enhanceWriting(input: EnhanceWritingInput): Promise<EnhanceWritingOutput> {
   return enhanceWritingFlow(input);

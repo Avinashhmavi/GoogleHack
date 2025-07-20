@@ -8,16 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { enhanceWritingAction } from "@/lib/actions";
 import { Loader2, Wand2, Lightbulb } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
-
-// Re-defining the output type here as it's no longer exported from the flow
-type EnhanceWritingOutput = {
-  correctedText: string;
-  suggestions: {
-    original: string;
-    suggestion: string;
-    explanation: string;
-  }[];
-};
+import type { EnhanceWritingOutput } from "@/ai/flows/enhance-writing.types";
 
 
 export default function WritingAssistantPage() {
