@@ -33,6 +33,7 @@ import {
   MessageSquare,
   LogOut,
   Settings,
+  Loader2,
 } from 'lucide-react';
 import { useLanguage } from '@/context/language-context';
 import { LanguageSelector } from './language-selector';
@@ -68,17 +69,18 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
   const { t } = useLanguage();
 
   React.useEffect(() => {
+    // Wait until loading is false before checking for user
     if (loading) return;
 
     const isAuthPage = publicRoutes.includes(pathname);
 
     if (!user && !isAuthPage) {
-        router.push('/login');
-    }
-    if (user && isAuthPage) {
-        router.push('/');
+      router.push('/login');
+    } else if (user && isAuthPage) {
+      router.push('/');
     }
   }, [user, loading, pathname, router]);
+
 
   const handleLogout = async () => {
     try {
@@ -90,18 +92,21 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
   };
 
   const isAuthPage = publicRoutes.includes(pathname);
+
+  if (loading || (!user && !isAuthPage)) {
+    // Show a loading spinner while auth state is being determined,
+    // or if a non-authed user is being redirected.
+    return (
+       <div className="flex items-center justify-center h-screen">
+           <Loader2 className="w-16 h-16 animate-spin text-primary" />
+       </div>
+    );
+  }
   
   if (isAuthPage) {
     return <main>{children}</main>;
   }
 
-  if (loading || (!user && !isAuthPage)) {
-     return (
-        <div className="flex items-center justify-center h-screen">
-            <Loader2 className="w-16 h-16 animate-spin text-primary" />
-        </div>
-     );
-  }
 
   return (
     <SidebarProvider>
