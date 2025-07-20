@@ -70,12 +70,12 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
   React.useEffect(() => {
     if (loading) return;
 
-    const isProtectedRoute = !publicRoutes.includes(pathname);
+    const isAuthPage = publicRoutes.includes(pathname);
 
-    if (!user && isProtectedRoute) {
+    if (!user && !isAuthPage) {
         router.push('/login');
     }
-    if (user && publicRoutes.includes(pathname)) {
+    if (user && isAuthPage) {
         router.push('/');
     }
   }, [user, loading, pathname, router]);
@@ -90,14 +90,21 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
   };
 
   const isAuthPage = publicRoutes.includes(pathname);
+  
+  // While loading, or if on an auth page without a user, show children directly
+  // This handles showing the login/signup page correctly.
+  if (loading || (isAuthPage && !user) ) {
+    return <main>{children}</main>;
+  }
 
-  if (loading) {
-    // AuthProvider already shows a full-page loader, but this can be a fallback
-    return null; 
+  // If user is logged in, but on auth page, redirect happens, so we can return null briefly
+  if (isAuthPage && user) {
+    return null;
   }
   
-  if (isAuthPage) {
-    return <main>{children}</main>;
+  // If user is not logged in and not on auth page, redirect happens, can return null
+  if (!user && !isAuthPage) {
+    return null;
   }
 
   return (
