@@ -8,11 +8,13 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { generateLocalizedContentAction } from "@/lib/actions";
-import { Loader2, Languages, BookOpen, GraduationCap, Wand2 } from "lucide-react";
+import { Loader2, Languages, BookOpen, Wand2, Mic, MicOff } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
 import { MultiSelect, type MultiSelectOption } from "@/components/ui/multi-select";
+import { useLanguage } from "@/context/language-context";
+import { useSpeechRecognition } from "@/hooks/use-speech-recognition";
 
 
 type ContentMap = { [key: string]: string };
@@ -39,9 +41,29 @@ export default function ContentCreatorPage() {
   const [generatedContent, setGeneratedContent] = useState<ContentMap | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const { language } = useLanguage();
+
+  const speechRecognition = useSpeechRecognition({
+      lang: language,
+      onResult: setPrompt,
+      onError: (error) => {
+          toast({ title: "Speech Recognition Error", description: error, variant: "destructive" });
+      }
+  });
+
+  const toggleListening = () => {
+      if (speechRecognition.isListening) {
+          speechRecognition.stopListening();
+      } else {
+          speechRecognition.startListening();
+      }
+  };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    if (speechRecognition.isListening) {
+        speechRecognition.stopListening();
+    }
 
     const languages = selectedLanguages.map(lang => lang.value).join(',');
 
@@ -103,7 +125,15 @@ export default function ContentCreatorPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="prompt">Topic / Prompt</Label>
+                <div className="flex justify-between items-center">
+                    <Label htmlFor="prompt">Topic / Prompt</Label>
+                    {speechRecognition.hasPermission && (
+                        <Button type="button" size="icon" variant={speechRecognition.isListening ? "destructive" : "outline"} onClick={toggleListening}>
+                            {speechRecognition.isListening ? <MicOff /> : <Mic />}
+                            <span className="sr-only">{speechRecognition.isListening ? "Stop listening" : "Start listening"}</span>
+                        </Button>
+                    )}
+                </div>
                 <Textarea
                   id="prompt"
                   value={prompt}

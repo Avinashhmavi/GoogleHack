@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { createPresentationAction } from "@/lib/actions";
-import { Loader2, Presentation, Wand2, Mic, List, Image as ImageIcon } from "lucide-react";
+import { Loader2, Presentation, Wand2, Mic, List, Image as ImageIcon, MicOff } from "lucide-react";
 import type { CreatePresentationOutput } from "@/ai/flows/create-presentation.types";
 import Image from "next/image";
 import {
@@ -18,7 +18,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import { Separator } from "@/components/ui/separator";
+import { useLanguage } from "@/context/language-context";
+import { useSpeechRecognition } from "@/hooks/use-speech-recognition";
 
 export default function PresentationCreatorPage() {
   const [topic, setTopic] = useState("");
@@ -26,9 +27,27 @@ export default function PresentationCreatorPage() {
   const [presentation, setPresentation] = useState<CreatePresentationOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const { language } = useLanguage();
+
+  const speechRecognition = useSpeechRecognition({
+      lang: language,
+      onResult: setTopic,
+      onError: (error) => {
+          toast({ title: "Speech Recognition Error", description: error, variant: "destructive" });
+      }
+  });
+
+  const toggleListening = () => {
+      if (speechRecognition.isListening) {
+          speechRecognition.stopListening();
+      } else {
+          speechRecognition.startListening();
+      }
+  };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    if(speechRecognition.isListening) speechRecognition.stopListening();
     if (!topic.trim()) {
       toast({
         title: "Topic is missing",
@@ -72,7 +91,15 @@ export default function PresentationCreatorPage() {
             <form onSubmit={handleSubmit} className="space-y-6 md:flex md:items-end md:gap-4 md:space-y-0">
               <div className="flex-grow space-y-2">
                 <Label htmlFor="topic">Presentation Topic</Label>
-                <Input id="topic" value={topic} onChange={(e) => setTopic(e.target.value)} placeholder="e.g., The History of Ancient Rome" required />
+                <div className="flex items-center gap-2">
+                    <Input id="topic" value={topic} onChange={(e) => setTopic(e.target.value)} placeholder="e.g., The History of Ancient Rome" required className="flex-grow"/>
+                    {speechRecognition.hasPermission && (
+                        <Button type="button" size="icon" variant={speechRecognition.isListening ? "destructive" : "outline"} onClick={toggleListening}>
+                            {speechRecognition.isListening ? <MicOff /> : <Mic />}
+                            <span className="sr-only">{speechRecognition.isListening ? "Stop listening" : "Start listening"}</span>
+                        </Button>
+                    )}
+                </div>
               </div>
               <div className="space-y-2">
                 <Label htmlFor="numSlides">Number of Slides</Label>

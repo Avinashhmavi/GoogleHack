@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -7,10 +8,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { generateDiscussionAction } from "@/lib/actions";
-import { Loader2, MessageSquare, BookOpen, Lightbulb, Users, HelpCircle } from "lucide-react";
+import { Loader2, MessageSquare, BookOpen, Lightbulb, Users, HelpCircle, Mic, MicOff } from "lucide-react";
 import type { GenerateDiscussionOutput } from "@/ai/flows/generate-discussion.types";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Separator } from "@/components/ui/separator";
+import { useLanguage } from "@/context/language-context";
+import { useSpeechRecognition } from "@/hooks/use-speech-recognition";
 
 export default function DiscussionGeneratorPage() {
   const [topic, setTopic] = useState("");
@@ -18,9 +21,29 @@ export default function DiscussionGeneratorPage() {
   const [discussionMaterials, setDiscussionMaterials] = useState<GenerateDiscussionOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const { language } = useLanguage();
+
+  const speechRecognition = useSpeechRecognition({
+      lang: language,
+      onResult: setTopic,
+      onError: (error) => {
+          toast({ title: "Speech Recognition Error", description: error, variant: "destructive" });
+      }
+  });
+
+  const toggleListening = () => {
+      if (speechRecognition.isListening) {
+          speechRecognition.stopListening();
+      } else {
+          speechRecognition.startListening();
+      }
+  };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    if (speechRecognition.isListening) {
+        speechRecognition.stopListening();
+    }
     if (!topic.trim()) {
       toast({
         title: "Topic is missing",
@@ -65,7 +88,15 @@ export default function DiscussionGeneratorPage() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="topic">Discussion Topic</Label>
-                <Input id="topic" value={topic} onChange={(e) => setTopic(e.target.value)} placeholder="e.g., The ethics of AI" required />
+                 <div className="flex items-center gap-2">
+                    <Input id="topic" value={topic} onChange={(e) => setTopic(e.target.value)} placeholder="e.g., The ethics of AI" required className="flex-grow" />
+                    {speechRecognition.hasPermission && (
+                        <Button type="button" size="icon" variant={speechRecognition.isListening ? "destructive" : "outline"} onClick={toggleListening}>
+                            {speechRecognition.isListening ? <MicOff /> : <Mic />}
+                            <span className="sr-only">{speechRecognition.isListening ? "Stop listening" : "Start listening"}</span>
+                        </Button>
+                    )}
+                </div>
               </div>
               <div className="space-y-2">
                 <Label htmlFor="gradeLevel">Grade Level</Label>

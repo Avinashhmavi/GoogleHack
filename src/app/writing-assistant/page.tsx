@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -6,9 +7,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { enhanceWritingAction } from "@/lib/actions";
-import { Loader2, Wand2, Lightbulb } from "lucide-react";
+import { Loader2, Wand2, Lightbulb, Mic, MicOff } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import type { EnhanceWritingOutput } from "@/ai/flows/enhance-writing.types";
+import { useLanguage } from "@/context/language-context";
+import { useSpeechRecognition } from "@/hooks/use-speech-recognition";
 
 
 export default function WritingAssistantPage() {
@@ -16,9 +19,27 @@ export default function WritingAssistantPage() {
   const [result, setResult] = useState<EnhanceWritingOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const { language } = useLanguage();
+
+  const speechRecognition = useSpeechRecognition({
+      lang: language,
+      onResult: setInputText,
+      onError: (error) => {
+          toast({ title: "Speech Recognition Error", description: error, variant: "destructive" });
+      }
+  });
+
+  const toggleListening = () => {
+      if (speechRecognition.isListening) {
+          speechRecognition.stopListening();
+      } else {
+          speechRecognition.startListening();
+      }
+  };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    if(speechRecognition.isListening) speechRecognition.stopListening();
     if (!inputText.trim()) {
       toast({
         title: "Text is empty",
@@ -58,7 +79,15 @@ export default function WritingAssistantPage() {
             <Card>
                 <CardHeader>
                     <CardTitle className="font-headline">Your Text</CardTitle>
-                    <CardDescription>Enter the text you want to improve.</CardDescription>
+                    <CardDescription className="flex justify-between items-center">
+                        <span>Enter the text you want to improve.</span>
+                        {speechRecognition.hasPermission && (
+                            <Button type="button" size="icon" variant={speechRecognition.isListening ? "destructive" : "outline"} onClick={toggleListening}>
+                                {speechRecognition.isListening ? <MicOff /> : <Mic />}
+                                <span className="sr-only">{speechRecognition.isListening ? "Stop listening" : "Start listening"}</span>
+                            </Button>
+                        )}
+                    </CardDescription>
                 </CardHeader>
                 <CardContent>
                     <form onSubmit={handleSubmit} className="space-y-4">

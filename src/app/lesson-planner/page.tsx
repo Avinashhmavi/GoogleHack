@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -5,12 +6,13 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { createLessonPlanAction } from "@/lib/actions";
-import { Loader2, X, Plus, BookText, Clock, GraduationCap, Check, List, DraftingCompass, PencilRuler } from "lucide-react";
+import { Loader2, X, Plus, BookText, Clock, Check, List, DraftingCompass, PencilRuler, Mic, MicOff } from "lucide-react";
 import type { CreateLessonPlanOutput } from "@/ai/flows/create-lesson-plan.types";
 import { Separator } from "@/components/ui/separator";
+import { useLanguage } from "@/context/language-context";
+import { useSpeechRecognition } from "@/hooks/use-speech-recognition";
 
 export default function LessonPlannerPage() {
   const [topic, setTopic] = useState("");
@@ -22,8 +24,13 @@ export default function LessonPlannerPage() {
   const [lessonPlan, setLessonPlan] = useState<CreateLessonPlanOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const { language } = useLanguage();
+
+  const topicSpeech = useSpeechRecognition({ lang: language, onResult: setTopic, onError: (e) => toast({variant: "destructive", title: "Speech Error", description: e}) });
+  const objectiveSpeech = useSpeechRecognition({ lang: language, onResult: setNewObjective, onError: (e) => toast({variant: "destructive", title: "Speech Error", description: e}) });
 
   const handleAddObjective = () => {
+    if (objectiveSpeech.isListening) objectiveSpeech.stopListening();
     if (newObjective.trim()) {
       setLearningObjectives([...learningObjectives, newObjective.trim()]);
       setNewObjective("");
@@ -36,6 +43,9 @@ export default function LessonPlannerPage() {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    if (topicSpeech.isListening) topicSpeech.stopListening();
+    if (objectiveSpeech.isListening) objectiveSpeech.stopListening();
+
     if (!topic.trim() || learningObjectives.length === 0) {
       toast({
         title: "Missing Information",
@@ -79,7 +89,10 @@ export default function LessonPlannerPage() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="topic">Topic</Label>
-                <Input id="topic" value={topic} onChange={(e) => setTopic(e.target.value)} placeholder="e.g., The Water Cycle" required />
+                <div className="flex items-center gap-2">
+                    <Input id="topic" value={topic} onChange={(e) => setTopic(e.target.value)} placeholder="e.g., The Water Cycle" required />
+                    {topicSpeech.hasPermission && <Button type="button" size="icon" variant={topicSpeech.isListening ? "destructive" : "outline"} onClick={() => topicSpeech.isListening ? topicSpeech.stopListening() : topicSpeech.startListening()}><Mic/></Button>}
+                </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
@@ -106,6 +119,7 @@ export default function LessonPlannerPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Input value={newObjective} onChange={(e) => setNewObjective(e.target.value)} placeholder="Add a new learning objective..." onKeyDown={(e) => {if(e.key === 'Enter'){ e.preventDefault(); handleAddObjective();}}} />
+                  {objectiveSpeech.hasPermission && <Button type="button" size="icon" variant={objectiveSpeech.isListening ? "destructive" : "outline"} onClick={() => objectiveSpeech.isListening ? objectiveSpeech.stopListening() : objectiveSpeech.startListening()}><Mic/></Button>}
                   <Button type="button" onClick={handleAddObjective} size="icon">
                     <Plus />
                   </Button>

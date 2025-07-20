@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -8,9 +9,11 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { createRubricAction } from "@/lib/actions";
-import { Loader2, X, Plus, Table as TableIcon, Wand2 } from "lucide-react";
+import { Loader2, X, Plus, Table as TableIcon, Wand2, Mic, MicOff } from "lucide-react";
 import type { CreateRubricOutput } from "@/ai/flows/create-rubric";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { useLanguage } from "@/context/language-context";
+import { useSpeechRecognition } from "@/hooks/use-speech-recognition";
 
 export default function RubricCreatorPage() {
   const [assignmentDescription, setAssignmentDescription] = useState("");
@@ -19,8 +22,13 @@ export default function RubricCreatorPage() {
   const [rubric, setRubric] = useState<CreateRubricOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const { language } = useLanguage();
+  
+  const descSpeech = useSpeechRecognition({ lang: language, onResult: setAssignmentDescription, onError: (e) => toast({variant: "destructive", title:"Speech Error", description: e}) });
+  const critSpeech = useSpeechRecognition({ lang: language, onResult: setNewCriterion, onError: (e) => toast({variant: "destructive", title:"Speech Error", description: e}) });
 
   const handleAddCriterion = () => {
+    if (critSpeech.isListening) critSpeech.stopListening();
     if (newCriterion.trim()) {
       setCriteria([...criteria, newCriterion.trim()]);
       setNewCriterion("");
@@ -33,6 +41,9 @@ export default function RubricCreatorPage() {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    if (descSpeech.isListening) descSpeech.stopListening();
+    if (critSpeech.isListening) critSpeech.stopListening();
+
     if (!assignmentDescription.trim() || criteria.length === 0) {
       toast({
         title: "Missing Information",
@@ -76,7 +87,10 @@ export default function RubricCreatorPage() {
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="description">Assignment Description</Label>
+                <div className="flex justify-between items-center">
+                    <Label htmlFor="description">Assignment Description</Label>
+                    {descSpeech.hasPermission && <Button type="button" size="icon" variant={descSpeech.isListening ? 'destructive' : 'outline'} onClick={() => descSpeech.isListening ? descSpeech.stopListening() : descSpeech.startListening()}><Mic /></Button>}
+                </div>
                 <Textarea
                   id="description"
                   value={assignmentDescription}
@@ -108,6 +122,7 @@ export default function RubricCreatorPage() {
                     onChange={(e) => setNewCriterion(e.target.value)}
                     placeholder="Add new criterion..."
                   />
+                  {critSpeech.hasPermission && <Button type="button" size="icon" variant={critSpeech.isListening ? 'destructive' : 'outline'} onClick={() => critSpeech.isListening ? critSpeech.stopListening() : critSpeech.startListening()}><Mic /></Button>}
                   <Button type="button" onClick={handleAddCriterion} size="icon">
                     <Plus />
                   </Button>

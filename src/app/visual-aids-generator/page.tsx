@@ -8,17 +8,37 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { generateVisualAidAction } from "@/lib/actions";
-import { Loader2, Download, Wand2, Image as ImageIcon } from "lucide-react";
+import { Loader2, Download, Wand2, Image as ImageIcon, Mic, MicOff } from "lucide-react";
 import { Label } from "@/components/ui/label";
+import { useLanguage } from "@/context/language-context";
+import { useSpeechRecognition } from "@/hooks/use-speech-recognition";
 
 export default function VisualAidsGeneratorPage() {
   const [prompt, setPrompt] = useState("");
   const [imageDataUri, setImageDataUri] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const { language } = useLanguage();
+
+  const speechRecognition = useSpeechRecognition({
+      lang: language,
+      onResult: setPrompt,
+      onError: (error) => {
+          toast({ title: "Speech Recognition Error", description: error, variant: "destructive" });
+      }
+  });
+
+  const toggleListening = () => {
+      if (speechRecognition.isListening) {
+          speechRecognition.stopListening();
+      } else {
+          speechRecognition.startListening();
+      }
+  };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    if(speechRecognition.isListening) speechRecognition.stopListening();
     if (!prompt.trim()) {
       toast({
         title: "Prompt is empty",
@@ -75,7 +95,15 @@ export default function VisualAidsGeneratorPage() {
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="prompt">Prompt</Label>
+                <div className="flex justify-between items-center">
+                    <Label htmlFor="prompt">Prompt</Label>
+                    {speechRecognition.hasPermission && (
+                        <Button type="button" size="icon" variant={speechRecognition.isListening ? "destructive" : "outline"} onClick={toggleListening}>
+                            {speechRecognition.isListening ? <MicOff /> : <Mic />}
+                            <span className="sr-only">{speechRecognition.isListening ? "Stop listening" : "Start listening"}</span>
+                        </Button>
+                    )}
+                </div>
                 <Textarea
                   id="prompt"
                   value={prompt}
