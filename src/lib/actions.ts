@@ -12,7 +12,7 @@ import type { GenerateAnswerKeyQrCodeInput } from "@/ai/flows/generate-answer-ke
 import {
   generateLocalizedContent,
 } from "@/ai/flows/generate-localized-content";
-import type { GenerateLocalizedContentInput } from "@/ai/flows/generate-localized-content";
+import type { GenerateLocalizedContentInput } from "@/ai/flows/generate-localized-content.types";
 import {
   photoToWorksheet,
 } from "@/ai/flows/photo-to-worksheet";

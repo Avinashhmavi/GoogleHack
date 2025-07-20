@@ -1,39 +1,14 @@
-
 'use server';
 
 /**
  * @fileOverview A multi-language, grade-adaptive content generation AI agent.
  *
  * - generateLocalizedContent - A function that handles the content generation process.
- * - GenerateLocalizedContentInput - The input type for the generateLocalizedContent function.
- * - GenerateLocalizedContentOutput - The return type for the generateLocalizedContent function.
  */
 
 import {ai} from '@/ai/genkit';
-import {z} from 'genkit';
+import { GenerateLocalizedContentInputSchema, GenerateLocalizedContentOutputSchema, type GenerateLocalizedContentInput, type GenerateLocalizedContentOutput } from './generate-localized-content.types';
 
-export const GenerateLocalizedContentInputSchema = z.object({
-  prompt: z.string().describe('The topic or prompt to generate content from.'),
-  contentType: z.string().describe('The type of content to generate (e.g., story, poem, quiz, explanation).'),
-  gradeLevel: z.number().describe('The target grade level for the content.'),
-  languages: z
-    .string()
-    .describe(
-      'A comma separated list of ISO 639-1 language codes to generate the content in. Example: en,es,fr'
-    ),
-});
-export type GenerateLocalizedContentInput = z.infer<
-  typeof GenerateLocalizedContentInputSchema
->;
-
-const GenerateLocalizedContentOutputSchema = z.record(
-  z.string(),
-  z.string()
-).describe('A map of ISO 639-1 language codes to generated content.');
-
-export type GenerateLocalizedContentOutput = z.infer<
-  typeof GenerateLocalizedContentOutputSchema
->;
 
 export async function generateLocalizedContent(
   input: GenerateLocalizedContentInput
