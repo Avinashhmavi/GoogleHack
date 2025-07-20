@@ -37,6 +37,7 @@ import {
   Brush,
   HelpCircle,
   Presentation,
+  CalendarDays,
 } from 'lucide-react';
 import { useLanguage } from '@/context/language-context';
 import { LanguageSelector } from './language-selector';
@@ -55,6 +56,7 @@ const menuItems = [
   { href: '/content-adaptation', labelKey: 'contentAdaptation', icon: GraduationCap },
   { href: '/visual-aids-generator', labelKey: 'visualAidsGenerator', icon: Brush },
   { href: '/presentation-creator', labelKey: 'presentationCreator', icon: Presentation },
+  { href: '/calendar', labelKey: 'calendar', icon: CalendarDays },
   { href: '/qr-code-generator', labelKey: 'qrCodeGenerator', icon: QrCode },
   { href: '/grade-tracking', labelKey: 'gradeTracking', icon: BarChart3 },
   { href: '/quiz-generator', labelKey: 'quizGenerator', icon: FileQuestion },
@@ -87,18 +89,10 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
     }
   }, [user, loading, pathname, router]);
 
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      router.push('/login');
-    } catch (error) {
-      console.error("Error signing out: ", error);
-    }
-  };
 
   const isAuthPage = publicRoutes.includes(pathname);
 
-  if (loading || (!user && !isAuthPage)) {
+  if (loading) {
     return (
        <div className="flex items-center justify-center h-screen">
            <Loader2 className="w-16 h-16 animate-spin text-primary" />
@@ -173,7 +167,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
                           <Link href="/account"><Settings className="mr-2" />Account</Link>
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem onClick={handleLogout}>
+                        <DropdownMenuItem onClick={() => signOut(auth)}>
                             <LogOut className="mr-2" />
                             Log out
                         </DropdownMenuItem>

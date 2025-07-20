@@ -77,5 +77,7 @@
     "noStudentsRecognized_text": "No known students were recognized in the photo.",
     "attendanceResultsPlaceholder": "Attendance results will be shown here.",
     "presentationCreator": "Presentation Creator",
-    "presentationCreator_desc": "Automatically generate presentation slides for any topic."
+    "presentationCreator_desc": "Automatically generate presentation slides for any topic.",
+    "calendar": "Calendar",
+    "calendar_desc": "Schedule lessons, manage deadlines, and organize school events."
 }

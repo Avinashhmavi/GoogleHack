@@ -60,5 +60,7 @@
     "worksheetPlaceholder": "Su hoja de trabajo se mostrará aquí una vez generada.",
     "error": "Error",
     "presentationCreator": "Creador de Presentaciones",
-    "presentationCreator_desc": "Genere diapositivas de presentación automáticamente para cualquier tema."
+    "presentationCreator_desc": "Genere diapositivas de presentación automáticamente para cualquier tema.",
+    "calendar": "Calendario",
+    "calendar_desc": "Programe lecciones, gestione plazos y organice eventos escolares."
 }

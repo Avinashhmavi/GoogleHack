@@ -2,7 +2,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, BarChart3, GraduationCap, Languages, QrCode, ScanLine, FileQuestion, ClipboardCheck, Edit, Users, UserCog, BookText, MessageSquare, Brush, HelpCircle, Presentation } from "lucide-react";
+import { ArrowRight, BarChart3, GraduationCap, Languages, QrCode, ScanLine, FileQuestion, ClipboardCheck, Edit, Users, UserCog, BookText, MessageSquare, Brush, HelpCircle, Presentation, CalendarDays } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/context/language-context";
@@ -43,6 +43,12 @@ const features = [
     descriptionKey: 'presentationCreator_desc',
     href: '/presentation-creator',
     icon: <Presentation className="w-8 h-8 text-primary" />,
+  },
+  {
+    titleKey: 'calendar',
+    descriptionKey: 'calendar_desc',
+    href: '/calendar',
+    icon: <CalendarDays className="w-8 h-8 text-primary" />,
   },
   {
     titleKey: 'qrCodeGenerator',

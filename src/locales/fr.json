@@ -60,5 +60,7 @@
     "worksheetPlaceholder": "Votre fiche de travail sera affichée ici une fois générée.",
     "error": "Erreur",
     "presentationCreator": "Créateur de Présentations",
-    "presentationCreator_desc": "Générez automatiquement des diapositives de présentation pour n'importe quel sujet."
+    "presentationCreator_desc": "Générez automatiquement des diapositives de présentation pour n'importe quel sujet.",
+    "calendar": "Calendrier",
+    "calendar_desc": "Planifiez les cours, gérez les échéances et organisez les événements scolaires."
 }
