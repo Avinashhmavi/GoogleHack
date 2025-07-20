@@ -93,5 +93,10 @@
     "selectSubject_placeholder": "Select Subject",
     "allSubjects_option": "All Subjects",
     "subject_prefix": "Subject",
-    "noVideosFound_text": "No videos found for the selected filters."
+    "noVideosFound_text": "No videos found for the selected filters.",
+    "textbooks_title": "Textbooks",
+    "textbooks_description": "Browse and read digital textbooks for various subjects and grades.",
+    "filterTextbooks_title": "Filter Textbooks",
+    "filterTextbooks_description": "Select a grade and subject to find relevant textbooks.",
+    "noTextbooksFound_text": "No textbooks found for the selected filters."
 }

@@ -76,5 +76,10 @@
     "selectSubject_placeholder": "Sélectionner la Matière",
     "allSubjects_option": "Toutes les Matières",
     "subject_prefix": "Matière",
-    "noVideosFound_text": "Aucune vidéo trouvée pour les filtres sélectionnés."
+    "noVideosFound_text": "Aucune vidéo trouvée pour les filtres sélectionnés.",
+    "textbooks_title": "Manuels",
+    "textbooks_description": "Parcourez et lisez des manuels numériques pour diverses matières et niveaux.",
+    "filterTextbooks_title": "Filtrer les manuels",
+    "filterTextbooks_description": "Sélectionnez un niveau et une matière pour trouver des manuels pertinents.",
+    "noTextbooksFound_text": "Aucun manuel trouvé pour les filtres sélectionnés."
 }

@@ -76,5 +76,10 @@
     "selectSubject_placeholder": "বিষয় নির্বাচন করুন",
     "allSubjects_option": "সকল বিষয়",
     "subject_prefix": "বিষয়",
-    "noVideosFound_text": "নির্বাচিত ফিল্টারগুলির জন্য কোনো ভিডিও পাওয়া যায়নি।"
+    "noVideosFound_text": "নির্বাচিত ফিল্টারগুলির জন্য কোনো ভিডিও পাওয়া যায়নি。",
+    "textbooks_title": "পাঠ্যপুস্তক",
+    "textbooks_description": "বিভিন্ন বিষয় এবং গ্রেডের জন্য ডিজিটাল পাঠ্যপুস্তক ব্রাউজ করুন এবং পড়ুন।",
+    "filterTextbooks_title": "পাঠ্যপুস্তক ফিল্টার করুন",
+    "filterTextbooks_description": "প্রাসঙ্গিক পাঠ্যপুস্তক খুঁজে পেতে একটি গ্রেড এবং বিষয় নির্বাচন করুন।",
+    "noTextbooksFound_text": "নির্বাচিত ফিল্টারগুলির জন্য কোনো পাঠ্যপুস্তক পাওয়া যায়নি।"
 }

@@ -93,5 +93,10 @@
     "selectSubject_placeholder": "विषय चुनें",
     "allSubjects_option": "सभी विषय",
     "subject_prefix": "विषय",
-    "noVideosFound_text": "चयनित फ़िल्टर के लिए कोई वीडियो नहीं मिला।"
+    "noVideosFound_text": "चयनित फ़िल्टर के लिए कोई वीडियो नहीं मिला।",
+    "textbooks_title": "पाठ्यपुस्तकें",
+    "textbooks_description": "विभिन्न विषयों और ग्रेड के लिए डिजिटल पाठ्यपुस्तकें ब्राउज़ करें और पढ़ें।",
+    "filterTextbooks_title": "पाठ्यपुस्तकें फ़िल्टर करें",
+    "filterTextbooks_description": "प्रासंगिक पाठ्यपुस्तकें खोजने के लिए एक ग्रेड और विषय चुनें।",
+    "noTextbooksFound_text": "चयनित फ़िल्टर के लिए कोई पाठ्यपुस्तक नहीं मिली।"
 }

@@ -76,5 +76,10 @@
     "selectSubject_placeholder": "Seleccionar Materia",
     "allSubjects_option": "Todas las Materias",
     "subject_prefix": "Materia",
-    "noVideosFound_text": "No se encontraron videos para los filtros seleccionados."
+    "noVideosFound_text": "No se encontraron videos para los filtros seleccionados.",
+    "textbooks_title": "Libros de texto",
+    "textbooks_description": "Navegue y lea libros de texto digitales para diversas materias y grados.",
+    "filterTextbooks_title": "Filtrar libros de texto",
+    "filterTextbooks_description": "Seleccione un grado y una materia para encontrar libros de texto relevantes.",
+    "noTextbooksFound_text": "No se encontraron libros de texto para los filtros seleccionados."
 }

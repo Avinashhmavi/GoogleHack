@@ -38,6 +38,7 @@ import {
   Presentation,
   CalendarDays,
   School,
+  Library,
 } from 'lucide-react';
 import { useLanguage } from '@/context/language-context';
 import { LanguageSelector } from './language-selector';
@@ -52,6 +53,7 @@ const menuItems = [
   { href: '/', labelKey: 'dashboard', icon: LayoutDashboard },
   { href: '/ask-sahayak', labelKey: 'askSahayak_title', icon: HelpCircle },
   { href: '/smart-class', labelKey: 'smartClass_title', icon: School },
+  { href: '/textbooks', labelKey: 'textbooks_title', icon: Library },
   { href: '/photo-to-worksheet', labelKey: 'photoToWorksheet', icon: ScanLine },
   { href: '/content-creator', labelKey: 'contentCreator', icon: Languages },
   { href: '/content-adaptation', labelKey: 'contentAdaptation', icon: GraduationCap },
