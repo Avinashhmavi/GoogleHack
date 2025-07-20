@@ -2,35 +2,33 @@
 
 import {
   adaptContentGradeLevel,
-  type AdaptContentGradeLevelInput,
 } from "@/ai/flows/adapt-content-grade-level";
+import type { AdaptContentGradeLevelInput } from "@/ai/flows/adapt-content-grade-level";
 import {
   generateAnswerKeyQrCode,
-  type GenerateAnswerKeyQrCodeInput,
 } from "@/ai/flows/generate-answer-key-qr-code";
+import type { GenerateAnswerKeyQrCodeInput } from "@/ai/flows/generate-answer-key-qr-code";
 import {
   generateMultiLanguageContent,
-  type GenerateMultiLanguageContentInput,
 } from "@/ai/flows/generate-multi-language-content";
+import type { GenerateMultiLanguageContentInput } from "@/ai/flows/generate-multi-language-content";
 import {
   photoToWorksheet,
-  type PhotoToWorksheetInput,
 } from "@/ai/flows/photo-to-worksheet";
+import type { PhotoToWorksheetInput } from "@/ai/flows/photo-to-worksheet";
 import {
   generateQuiz,
-  type GenerateQuizInput,
 } from "@/ai/flows/generate-quiz";
+import type { GenerateQuizInput } from "@/ai/flows/generate-quiz";
 import {
   createRubric,
-  type CreateRubricInput,
 } from "@/ai/flows/create-rubric";
+import type { CreateRubricInput } from "@/ai/flows/create-rubric";
 import {
   textToSpeech,
-  type TextToSpeechInput,
 } from "@/ai/flows/text-to-speech";
 import {
   enhanceWriting,
-  type EnhanceWritingInput,
 } from "@/ai/flows/enhance-writing";
 
 
@@ -102,7 +100,7 @@ export async function createRubricAction(input: CreateRubricInput) {
     }
 }
 
-export async function textToSpeechAction(input: TextToSpeechInput) {
+export async function textToSpeechAction(input: { text: string }) {
     try {
         const result = await textToSpeech(input);
         return { success: true, data: result };
@@ -113,7 +111,7 @@ export async function textToSpeechAction(input: TextToSpeechInput) {
     }
 }
 
-export async function enhanceWritingAction(input: EnhanceWritingInput) {
+export async function enhanceWritingAction(input: { text: string }) {
   try {
     const result = await enhanceWriting(input);
     return { success: true, data: result };

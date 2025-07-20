@@ -13,7 +13,7 @@ import { z } from 'genkit';
 const EnhanceWritingInputSchema = z.object({
   text: z.string().describe('The text to be analyzed and enhanced.'),
 });
-export type EnhanceWritingInput = z.infer<typeof EnhanceWritingInputSchema>;
+type EnhanceWritingInput = z.infer<typeof EnhanceWritingInputSchema>;
 
 const SuggestionSchema = z.object({
     original: z.string().describe('The original phrase or sentence from the text.'),
@@ -25,7 +25,7 @@ const EnhanceWritingOutputSchema = z.object({
   correctedText: z.string().describe('The full text with all direct spelling and grammar errors corrected.'),
   suggestions: z.array(SuggestionSchema).describe('A list of suggestions for improving the style, clarity, or flow of the text.'),
 });
-export type EnhanceWritingOutput = z.infer<typeof EnhanceWritingOutputSchema>;
+type EnhanceWritingOutput = z.infer<typeof EnhanceWritingOutputSchema>;
 
 
 export async function enhanceWriting(input: EnhanceWritingInput): Promise<EnhanceWritingOutput> {

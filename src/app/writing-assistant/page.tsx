@@ -7,8 +7,18 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { enhanceWritingAction } from "@/lib/actions";
 import { Loader2, Wand2, Lightbulb } from "lucide-react";
-import type { EnhanceWritingOutput } from "@/ai/flows/enhance-writing";
 import { Separator } from "@/components/ui/separator";
+
+// Re-defining the output type here as it's no longer exported from the flow
+type EnhanceWritingOutput = {
+  correctedText: string;
+  suggestions: {
+    original: string;
+    suggestion: string;
+    explanation: string;
+  }[];
+};
+
 
 export default function WritingAssistantPage() {
   const [inputText, setInputText] = useState("");
@@ -33,7 +43,7 @@ export default function WritingAssistantPage() {
     const actionResult = await enhanceWritingAction({ text: inputText });
 
     if (actionResult.success && actionResult.data) {
-      setResult(actionResult.data);
+      setResult(actionResult.data as EnhanceWritingOutput);
     } else {
       toast({
         title: "Error",
