@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -5,18 +6,24 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { photoToWorksheetAction } from "@/lib/actions";
-import { Loader2, Upload, FileText } from "lucide-react";
+import { photoToWorksheetAction, textToSpeechAction } from "@/lib/actions";
+import { Loader2, Upload, FileText, Volume2 } from "lucide-react";
 import Image from "next/image";
 import { useLanguage } from "@/context/language-context";
+
+type Question = {
+  id: number;
+  text: string;
+};
 
 export default function PhotoToWorksheetPage() {
   const [photoDataUri, setPhotoDataUri] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string>("");
-  const [worksheet, setWorksheet] = useState<string | null>(null);
+  const [questions, setQuestions] = useState<Question[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isAudioLoading, setIsAudioLoading] = useState<number | null>(null);
+  const [audioSrc, setAudioSrc] = useState<string | null>(null);
   const { toast } = useToast();
   const { t } = useLanguage();
 
@@ -44,12 +51,17 @@ export default function PhotoToWorksheetPage() {
     }
     
     setIsLoading(true);
-    setWorksheet(null);
+    setQuestions([]);
 
     const result = await photoToWorksheetAction({ photoDataUri });
 
     if (result.success && result.data) {
-      setWorksheet(result.data.worksheet);
+      // Assuming the worksheet is a string with questions separated by newlines
+      const generatedQuestions = result.data.worksheet
+        .split('\n')
+        .filter(q => q.trim().length > 0)
+        .map((q, index) => ({ id: index, text: q }));
+      setQuestions(generatedQuestions);
     } else {
       toast({
         title: "Error",
@@ -59,6 +71,32 @@ export default function PhotoToWorksheetPage() {
     }
 
     setIsLoading(false);
+  };
+  
+  const handlePlayAudio = async (text: string, index: number) => {
+    setIsAudioLoading(index);
+    setAudioSrc(null);
+    try {
+      const result = await textToSpeechAction({ text });
+      if (result.success && result.data) {
+        setAudioSrc(result.data.audioDataUri);
+      } else {
+        toast({
+          title: 'Error Generating Audio',
+          description: result.error || 'Could not generate audio.',
+          variant: 'destructive',
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: 'Error',
+        description: 'An unexpected error occurred while generating audio.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsAudioLoading(null);
+    }
   };
 
   return (
@@ -115,15 +153,26 @@ export default function PhotoToWorksheetPage() {
                 <Loader2 className="w-8 h-8 animate-spin text-primary" />
               </div>
             )}
-            {worksheet && (
-              <Textarea
-                readOnly
-                value={worksheet}
-                className="w-full h-full min-h-[300px] resize-none bg-secondary/50"
-                aria-label="Generated Worksheet"
-              />
+            {questions.length > 0 && (
+              <div className="space-y-4">
+                {questions.map((q, index) => (
+                  <div key={q.id} className="p-3 border rounded-lg flex items-center justify-between">
+                    <p className="flex-grow">{q.text}</p>
+                    <Button
+                        size="icon"
+                        variant="ghost"
+                        onClick={() => handlePlayAudio(q.text, index)}
+                        disabled={isAudioLoading !== null}
+                        aria-label="Read question aloud"
+                      >
+                        {isAudioLoading === index ? <Loader2 className="animate-spin" /> : <Volume2 />}
+                      </Button>
+                  </div>
+                ))}
+                {audioSrc && <audio src={audioSrc} autoPlay onEnded={() => setAudioSrc(null)} />}
+              </div>
             )}
-            {!isLoading && !worksheet && (
+            {!isLoading && questions.length === 0 && (
               <div className="flex items-center justify-center h-full text-center text-muted-foreground p-8 border-2 border-dashed rounded-lg">
                 <p>{t('worksheetPlaceholder')}</p>
               </div>
