@@ -23,7 +23,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
-import { addCalendarEventAction, getCalendarEventsAction, deleteCalendarEventAction } from "@/lib/actions";
+import { useClientActions } from "@/lib/client-actions";
 import type { CalendarEvent } from "@/lib/firestore";
 
 const eventTypeConfig = {
@@ -38,6 +38,8 @@ export default function CalendarPage() {
   const [events, setEvents] = useState<CalendarEvent[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
+  const { addCalendarEventAction, getCalendarEventsAction, deleteCalendarEventAction } = useClientActions();
+
 
   useEffect(() => {
     async function fetchEvents() {
@@ -47,23 +49,23 @@ export default function CalendarPage() {
             // Firestore timestamps need to be converted to Date objects
             const formattedEvents = result.data.map(event => ({
                 ...event,
-                date: event.date.toDate(),
+                date: new Date((event.date as any)._seconds * 1000),
             }));
             setEvents(formattedEvents);
         } else {
-            toast({ title: "Error", description: "Could not fetch calendar events.", variant: "destructive" });
+            toast({ title: "Error", description: result.error || "Could not fetch calendar events.", variant: "destructive" });
         }
         setIsLoading(false);
     }
     fetchEvents();
-  }, [toast]);
+  }, [toast, getCalendarEventsAction]);
 
   const addEvent = async (event: Omit<CalendarEvent, 'id'>) => {
     const result = await addCalendarEventAction(event);
     if (result.success) {
         const formattedEvents = result.data.map(event => ({
             ...event,
-            date: event.date.toDate(),
+            date: new Date((event.date as any)._seconds * 1000),
         }));
         setEvents(formattedEvents);
         toast({ title: "Event Added", description: "The event has been added to your calendar." });
@@ -77,7 +79,7 @@ export default function CalendarPage() {
     if (result.success) {
         const formattedEvents = result.data.map(event => ({
             ...event,
-            date: event.date.toDate(),
+            date: new Date((event.date as any)._seconds * 1000),
         }));
         setEvents(formattedEvents);
         toast({ title: "Event Deleted" });

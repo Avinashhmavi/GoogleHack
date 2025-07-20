@@ -82,7 +82,7 @@ import { getAuthenticatedUser } from "./auth";
 
 
 // Wrapper function to handle Genkit flow execution and error handling
-async function runAction<I, O>(action: (input: I) => Promise<O>, input: I, errorMsg: string): Promise<{ success: true, data: O } | { success: false, error: string }> {
+export async function runAction<I, O>(action: (input: I) => Promise<O>, input: I, errorMsg: string): Promise<{ success: true, data: O } | { success: false, error: string }> {
     try {
         await getAuthenticatedUser();
         const result = await action(input);
