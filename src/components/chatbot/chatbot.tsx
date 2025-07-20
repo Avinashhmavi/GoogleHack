@@ -7,11 +7,13 @@ import { Input } from '@/components/ui/input';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { appChatbotAction } from '@/lib/actions';
-import { Bot, Send, Loader2, User } from 'lucide-react';
+import { Bot, Send, Loader2, User, Mic, MicOff } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback } from '../ui/avatar';
 import Link from 'next/link';
+import { useLanguage } from '@/context/language-context';
+import { useSpeechRecognition } from '@/hooks/use-speech-recognition';
 
 type Message = {
   role: 'user' | 'assistant';
@@ -57,6 +59,16 @@ export function Chatbot() {
   const [isLoading, setIsLoading] = useState(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
+  const { language } = useLanguage();
+
+  const speechRecognition = useSpeechRecognition({
+    lang: language,
+    onResult: setInput,
+    onError: (error) => {
+        toast({ title: "Speech Recognition Error", description: error, variant: "destructive" });
+    }
+  });
+
 
   useEffect(() => {
     // Scroll to the bottom when messages change
@@ -70,6 +82,7 @@ export function Chatbot() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if(speechRecognition.isListening) speechRecognition.stopListening();
     if (!input.trim() || isLoading) return;
 
     const userMessage: Message = { role: 'user', content: input };
@@ -94,6 +107,14 @@ export function Chatbot() {
        }
     }
     setIsLoading(false);
+  };
+  
+  const toggleListening = () => {
+    if (speechRecognition.isListening) {
+        speechRecognition.stopListening();
+    } else {
+        speechRecognition.startListening();
+    }
   };
 
   return (
@@ -167,6 +188,12 @@ export function Chatbot() {
             disabled={isLoading}
             autoComplete='off'
           />
+          {speechRecognition.hasPermission && (
+            <Button type="button" size="icon" variant={speechRecognition.isListening ? "destructive" : "outline"} onClick={toggleListening}>
+                {speechRecognition.isListening ? <MicOff className="h-4 w-4" /> : <Mic className="h-4 w-4" />}
+                <span className="sr-only">Toggle voice input</span>
+            </Button>
+          )}
           <Button type="submit" size="icon" disabled={isLoading || !input.trim()}>
             {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
             <span className="sr-only">Send</span>
