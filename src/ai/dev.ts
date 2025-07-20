@@ -14,3 +14,4 @@ import '@/ai/flows/recognize-students.ts';
 import '@/ai/flows/recognize-students.types.ts';
 import '@/ai/flows/create-lesson-plan.ts';
 import '@/ai/flows/generate-discussion.ts';
+import '@/ai/flows/generate-visual-aid.ts';

@@ -9,6 +9,8 @@
     "contentCreator_desc": "Genera historias, poemas y cuestionarios en múltiples idiomas.",
     "contentAdaptation": "Adaptación de Contenido",
     "contentAdaptation_desc": "Ajusta el texto para que sea adecuado para diferentes niveles de grado.",
+    "visualAidsGenerator": "Generador de Ayudas Visuales",
+    "visualAidsGenerator_desc": "Crea dibujos lineales e ilustraciones estilo pizarra.",
     "qrCodeGenerator": "Generador de Códigos QR",
     "qrCodeGenerator_desc": "Crea códigos QR para claves de respuestas y otros recursos.",
     "gradeTracking": "Seguimiento de Calificaciones",

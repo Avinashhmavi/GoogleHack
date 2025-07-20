@@ -44,6 +44,10 @@ import {
   generateDiscussion
 } from "@/ai/flows/generate-discussion";
 import type { GenerateDiscussionInput } from "@/ai/flows/generate-discussion.types";
+import {
+  generateVisualAid
+} from "@/ai/flows/generate-visual-aid";
+import type { GenerateVisualAidInput } from "@/ai/flows/generate-visual-aid";
 
 import { studentRoster } from "./student-roster";
 import type { Student } from "./student-roster";
@@ -170,6 +174,18 @@ export async function generateDiscussionAction(input: GenerateDiscussionInput) {
     return { success: false, error: message };
   }
 }
+
+export async function generateVisualAidAction(input: GenerateVisualAidInput) {
+    try {
+        const result = await generateVisualAid(input);
+        return { success: true, data: result };
+    } catch (error) {
+        console.error(error);
+        const message = error instanceof Error ? error.message : "Failed to generate visual aid.";
+        return { success: false, error: message };
+    }
+}
+
 
 // Student Roster Actions
 export async function getStudentsAction() {

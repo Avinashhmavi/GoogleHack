@@ -9,6 +9,8 @@
     "contentCreator_desc": "Generate stories, poems, and quizzes in multiple languages.",
     "contentAdaptation": "Content Adaptation",
     "contentAdaptation_desc": "Adjust text to be suitable for different grade levels.",
+    "visualAidsGenerator": "Visual Aids Generator",
+    "visualAidsGenerator_desc": "Create blackboard-style line drawings and illustrations.",
     "qrCodeGenerator": "QR Code Generator",
     "qrCodeGenerator_desc": "Create QR codes for answer keys and other resources.",
     "gradeTracking": "Grade Tracking",

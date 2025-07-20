@@ -34,6 +34,7 @@ import {
   LogOut,
   Settings,
   Loader2,
+  Brush,
 } from 'lucide-react';
 import { useLanguage } from '@/context/language-context';
 import { LanguageSelector } from './language-selector';
@@ -49,6 +50,7 @@ const menuItems = [
   { href: '/photo-to-worksheet', labelKey: 'photoToWorksheet', icon: ScanLine },
   { href: '/content-creator', labelKey: 'contentCreator', icon: Languages },
   { href: '/content-adaptation', labelKey: 'contentAdaptation', icon: GraduationCap },
+  { href: '/visual-aids-generator', labelKey: 'visualAidsGenerator', icon: Brush },
   { href: '/qr-code-generator', labelKey: 'qrCodeGenerator', icon: QrCode },
   { href: '/grade-tracking', labelKey: 'gradeTracking', icon: BarChart3 },
   { href: '/quiz-generator', labelKey: 'quizGenerator', icon: FileQuestion },
@@ -81,7 +83,6 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
     }
   }, [user, loading, pathname, router]);
 
-
   const handleLogout = async () => {
     try {
       await signOut(auth);
@@ -94,8 +95,6 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
   const isAuthPage = publicRoutes.includes(pathname);
 
   if (loading || (!user && !isAuthPage)) {
-    // Show a loading spinner while auth state is being determined,
-    // or if a non-authed user is being redirected.
     return (
        <div className="flex items-center justify-center h-screen">
            <Loader2 className="w-16 h-16 animate-spin text-primary" />
