@@ -32,6 +32,8 @@
     "lessonPlanner_desc": "Automatically generate detailed lesson plans for any subject.",
     "discussionGenerator": "Discussion Generator",
     "discussionGenerator_desc": "Create questions and materials for classroom discussions.",
+    "mentoring": "Mentoring",
+    "mentoring_desc": "Create personalized mentorship plans to support individual students.",
     "askSahayak_title": "Ask Sahayak",
     "askSahayak_dashboard_desc": "Get kid-friendly explanations for any complex topic.",
     "askSahayak_description": "Your friendly AI tutor for simplifying complex concepts.",

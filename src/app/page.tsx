@@ -2,7 +2,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, BarChart3, GraduationCap, Languages, QrCode, ScanLine, FileQuestion, ClipboardCheck, Edit, Users, UserCog, BookText, MessageSquare, Brush, HelpCircle, Presentation, CalendarDays, School, Library, Rocket, FileText as WorksheetIcon } from "lucide-react";
+import { ArrowRight, BarChart3, GraduationCap, Languages, QrCode, ScanLine, FileQuestion, ClipboardCheck, Edit, Users, UserCog, BookText, MessageSquare, Brush, HelpCircle, Presentation, CalendarDays, School, Library, Rocket, FileText as WorksheetIcon, HeartHandshake } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/context/language-context";
@@ -127,6 +127,12 @@ const features = [
     descriptionKey: 'discussionGenerator_desc',
     href: '/discussion-generator',
     icon: <MessageSquare className="w-8 h-8 text-primary" />,
+  },
+  {
+    titleKey: 'mentoring',
+    descriptionKey: 'mentoring_desc',
+    href: '/mentoring',
+    icon: <HeartHandshake className="w-8 h-8 text-primary" />,
   }
 ];
 

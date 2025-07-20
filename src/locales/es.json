@@ -32,6 +32,8 @@
     "lessonPlanner_desc": "Genera automáticamente planes de lecciones detallados para cualquier materia.",
     "discussionGenerator": "Generador de Discusiones",
     "discussionGenerator_desc": "Crea preguntas y materiales para los debates en el aula.",
+    "mentoring": "Tutoría",
+    "mentoring_desc": "Crear planes de tutoría personalizados para apoyar a los estudiantes individuales.",
     "askSahayak_title": "Pregúntale a Sahayak",
     "askSahayak_dashboard_desc": "Obtén explicaciones amigables para niños sobre cualquier tema complejo.",
     "askSahayak_description": "Tu tutor de IA amigable para simplificar conceptos complejos.",

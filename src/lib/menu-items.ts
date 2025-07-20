@@ -22,6 +22,7 @@ import {
   Library,
   Rocket,
   FileText as WorksheetIcon,
+  HeartHandshake,
 } from 'lucide-react';
 
 export const menuItems = [
@@ -46,4 +47,5 @@ export const menuItems = [
   { href: '/student-roster', labelKey: 'studentRoster', descriptionKey: 'studentRoster_desc', icon: UserCog },
   { href: '/lesson-planner', labelKey: 'lessonPlanner', descriptionKey: 'lessonPlanner_desc', icon: BookText },
   { href: '/discussion-generator', labelKey: 'discussionGenerator', descriptionKey: 'discussionGenerator_desc', icon: MessageSquare },
+  { href: '/mentoring', labelKey: 'mentoring', descriptionKey: 'mentoring_desc', icon: HeartHandshake },
 ];

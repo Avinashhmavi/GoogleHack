@@ -74,6 +74,8 @@ import {
 import type { CreateWorksheetInput } from "@/ai/flows/create-worksheet.types";
 import { searchYoutubeVideos } from "@/ai/flows/search-youtube-videos";
 import type { SearchYoutubeVideosInput } from "@/ai/flows/search-youtube-videos.types";
+import { createMentorshipPlan } from "@/ai/flows/create-mentorship-plan";
+import type { CreateMentorshipPlanInput } from "@/ai/flows/create-mentorship-plan.types";
 
 
 import { studentRoster } from "./student-roster";
@@ -175,6 +177,10 @@ export async function createWorksheetAction(input: CreateWorksheetInput) {
 
 export async function searchYoutubeVideosAction(input: SearchYoutubeVideosInput) {
   return runAction(searchYoutubeVideos, input, "Failed to search for YouTube videos.");
+}
+
+export async function createMentorshipPlanAction(input: CreateMentorshipPlanInput) {
+    return runAction(createMentorshipPlan, input, "Failed to create mentorship plan.");
 }
 
 
