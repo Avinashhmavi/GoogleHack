@@ -18,14 +18,32 @@ type Message = {
   content: string;
 };
 
-// Simple function to find URLs in text and convert them to anchor tags
+// Function to find URLs and internal paths and convert them to appropriate links
 const renderContentWithLinks = (content: string) => {
-    const urlRegex = /(https?:\/\/[^\s]+)/g;
-    const parts = content.split(urlRegex);
+    const urlRegex = /(https?:\/\/[^\s]+)/g; // Matches http/https URLs
+    const pathRegex = /(\s\/[a-z0-9-]+)/g; // Matches internal paths like /quiz-generator
+
+    // Combine regexes for splitting
+    const combinedRegex = new RegExp(`(${urlRegex.source}|${pathRegex.source})`, 'g');
+
+    const parts = content.split(combinedRegex);
+    
     return parts.map((part, index) => {
+        if (!part) return null;
+
         if (part.match(urlRegex)) {
             return <a key={index} href={part} target="_blank" rel="noopener noreferrer" className="underline text-blue-400 hover:text-blue-300">{part}</a>;
         }
+        
+        if (part.trim().match(/^\/[a-z0-9-]+$/)) {
+             const path = part.trim();
+             return (
+                 <Link key={index} href={path} className="underline text-blue-400 hover:text-blue-300">
+                    {path}
+                 </Link>
+             );
+        }
+        
         return part;
     });
 };
