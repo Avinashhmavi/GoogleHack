@@ -35,6 +35,10 @@ import {
   recognizeStudents,
 } from "@/ai/flows/recognize-students";
 import type { RecognizeStudentsInput } from "@/ai/flows/recognize-students.types";
+import {
+  createLessonPlan,
+} from "@/ai/flows/create-lesson-plan";
+import type { CreateLessonPlanInput } from "@/ai/flows/create-lesson-plan.types";
 import { studentRoster } from "./student-roster";
 import type { Student } from "./student-roster";
 
@@ -135,6 +139,17 @@ export async function recognizeStudentsAction(input: RecognizeStudentsInput) {
   } catch (error) {
     console.error(error);
     const message = error instanceof Error ? error.message : "Failed to recognize students.";
+    return { success: false, error: message };
+  }
+}
+
+export async function createLessonPlanAction(input: CreateLessonPlanInput) {
+  try {
+    const result = await createLessonPlan(input);
+    return { success: true, data: result };
+  } catch (error) {
+    console.error(error);
+    const message = error instanceof Error ? error.message : "Failed to generate lesson plan.";
     return { success: false, error: message };
   }
 }

@@ -11,3 +11,4 @@ import '@/ai/flows/text-to-speech.ts';
 import '@/ai/flows/enhance-writing.ts';
 import '@/ai/flows/recognize-students.ts';
 import '@/ai/flows/recognize-students.types.ts';
+import '@/ai/flows/create-lesson-plan.ts';

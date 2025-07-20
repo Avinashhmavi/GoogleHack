@@ -27,6 +27,7 @@ import {
   Edit,
   Users,
   UserCog,
+  BookText,
 } from 'lucide-react';
 import { useLanguage } from '@/context/language-context';
 import { LanguageSelector } from './language-selector';
@@ -43,6 +44,7 @@ const menuItems = [
   { href: '/writing-assistant', labelKey: 'writingAssistant', icon: Edit },
   { href: '/attendance', labelKey: 'attendance', icon: Users },
   { href: '/student-roster', labelKey: 'studentRoster', icon: UserCog },
+  { href: '/lesson-planner', labelKey: 'lessonPlanner', icon: BookText },
 ];
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
