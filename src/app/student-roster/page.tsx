@@ -11,12 +11,14 @@ import { useToast } from '@/hooks/use-toast';
 import { addStudentAction, getStudentsAction, deleteStudentAction } from '@/lib/actions';
 import { Loader2, Trash2, UserPlus, Upload, Users } from 'lucide-react';
 import type { Student } from '@/lib/firestore';
+import { useAuth } from '@/context/auth-context';
 
 export default function StudentRosterPage() {
   const [students, setStudents] = useState<Student[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const { authStatus } = useAuth();
 
   const [newStudentName, setNewStudentName] = useState('');
   const [newStudentPhoto, setNewStudentPhoto] = useState<string | null>(null);
@@ -34,8 +36,10 @@ export default function StudentRosterPage() {
       }
       setIsLoading(false);
     }
-    fetchStudents();
-  }, [toast]);
+    if (authStatus === 'authenticated') {
+        fetchStudents();
+    }
+  }, [authStatus, toast]);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];

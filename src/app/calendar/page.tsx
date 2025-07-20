@@ -25,6 +25,7 @@ import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { addCalendarEventAction, getCalendarEventsAction, deleteCalendarEventAction } from "@/lib/actions";
 import type { CalendarEvent } from "@/lib/firestore";
+import { useAuth } from "@/context/auth-context";
 
 const eventTypeConfig = {
     Lesson: { icon: BookOpen, color: "bg-blue-500" },
@@ -38,6 +39,7 @@ export default function CalendarPage() {
   const [events, setEvents] = useState<CalendarEvent[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
+  const { authStatus } = useAuth();
 
   useEffect(() => {
     async function fetchEvents() {
@@ -55,8 +57,10 @@ export default function CalendarPage() {
         }
         setIsLoading(false);
     }
-    fetchEvents();
-  }, [toast]);
+    if (authStatus === 'authenticated') {
+        fetchEvents();
+    }
+  }, [authStatus, toast]);
 
   const addEvent = async (event: Omit<CalendarEvent, 'id' | 'uid'>) => {
     const result = await addCalendarEventAction(event);

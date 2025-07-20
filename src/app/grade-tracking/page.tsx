@@ -28,12 +28,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { addGradeAction, getGradesAction, deleteGradeAction } from "@/lib/actions";
 import type { GradeEntry } from "@/lib/firestore";
+import { useAuth } from "@/context/auth-context";
 
 export default function GradeTrackingPage() {
   const [grades, setGrades] = useState<GradeEntry[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { toast } = useToast();
+  const { authStatus } = useAuth();
 
   useEffect(() => {
     async function fetchGrades() {
@@ -46,8 +48,10 @@ export default function GradeTrackingPage() {
         }
         setIsLoading(false);
     }
-    fetchGrades();
-  }, [toast]);
+    if (authStatus === 'authenticated') {
+        fetchGrades();
+    }
+  }, [authStatus, toast]);
 
 
   const classes = useMemo(() => {

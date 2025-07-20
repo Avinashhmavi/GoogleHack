@@ -15,6 +15,7 @@ import { useToast } from "@/hooks/use-toast";
 import { searchYoutubeVideosAction, addRecordingAction, getRecordingsAction, deleteRecordingAction } from "@/lib/actions";
 import type { YouTubeVideo } from "@/ai/flows/search-youtube-videos.types";
 import type { ClassRecording } from "@/lib/firestore";
+import { useAuth } from "@/context/auth-context";
 
 function YouTubeLibrary() {
   const [allVideos] = useState<Video[]>(videoData);
@@ -122,6 +123,7 @@ function ClassRecordings() {
   const [isLoading, setIsLoading] = useState(true);
   const [isUploading, setIsUploading] = useState(false);
   const { toast } = useToast();
+  const { authStatus } = useAuth();
 
   useEffect(() => {
     async function fetchRecordings() {
@@ -134,8 +136,10 @@ function ClassRecordings() {
       }
       setIsLoading(false);
     }
-    fetchRecordings();
-  }, [toast]);
+    if (authStatus === 'authenticated') {
+        fetchRecordings();
+    }
+  }, [authStatus, toast]);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {

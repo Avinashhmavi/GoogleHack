@@ -5,9 +5,11 @@ import React, { createContext, useContext, useEffect, useState, ReactNode } from
 import { User, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 
+type AuthStatus = "loading" | "authenticated" | "unauthenticated";
+
 interface AuthContextType {
   user: User | null;
-  loading: boolean;
+  authStatus: AuthStatus;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -22,11 +24,11 @@ const setupAuthInterceptor = (user: User | null) => {
     window.fetch = async (input: RequestInfo | URL, init?: RequestInit): Promise<Response> => {
         const token = user ? await user.getIdToken() : null;
 
+        const headers = new Headers(init?.headers);
         if (token) {
-            const headers = new Headers(init?.headers);
             headers.set('Authorization', `Bearer ${token}`);
-            init = { ...init, headers };
         }
+        init = { ...init, headers };
         
         return originalFetch(input, init);
     };
@@ -35,24 +37,24 @@ const setupAuthInterceptor = (user: User | null) => {
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [authStatus, setAuthStatus] = useState<AuthStatus>("loading");
 
   useEffect(() => {
     if (!auth) {
-        setLoading(false);
+        setAuthStatus("unauthenticated");
         return;
     }
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       setUser(user);
       setupAuthInterceptor(user);
-      setLoading(false);
+      setAuthStatus(user ? "authenticated" : "unauthenticated");
     });
 
     return () => unsubscribe();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, loading }}>
+    <AuthContext.Provider value={{ user, authStatus }}>
       {children}
     </AuthContext.Provider>
   );

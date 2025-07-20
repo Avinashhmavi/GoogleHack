@@ -131,22 +131,22 @@ function AuthenticatedLayout({ children }: { children: React.ReactNode }) {
 export function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
-  const { user, loading } = useAuth();
+  const { authStatus } = useAuth();
 
   React.useEffect(() => {
-    if (loading) return;
+    if (authStatus === 'loading') return;
 
     const isAuthPage = publicRoutes.includes(pathname);
 
-    if (!user && !isAuthPage) {
+    if (authStatus === 'unauthenticated' && !isAuthPage) {
       router.push('/login');
-    } else if (user && isAuthPage) {
+    } else if (authStatus === 'authenticated' && isAuthPage) {
       router.push('/');
     }
-  }, [user, loading, pathname, router]);
+  }, [authStatus, pathname, router]);
 
 
-  if (loading) {
+  if (authStatus === 'loading') {
     return (
        <div className="flex items-center justify-center h-screen">
            <Loader2 className="w-16 h-16 animate-spin text-primary" />
@@ -158,8 +158,12 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
     return <main>{children}</main>;
   }
   
-  if (!user) {
-    return null;
+  if (authStatus !== 'authenticated') {
+    return (
+        <div className="flex items-center justify-center h-screen">
+           <Loader2 className="w-16 h-16 animate-spin text-primary" />
+       </div>
+    );
   }
 
   return (

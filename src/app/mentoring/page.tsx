@@ -14,6 +14,7 @@ import { Separator } from "@/components/ui/separator";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import type { Student } from "@/lib/firestore";
 import { Textarea } from "@/components/ui/textarea";
+import { useAuth } from "@/context/auth-context";
 
 export default function MentoringPage() {
   const [students, setStudents] = useState<Student[]>([]);
@@ -26,6 +27,7 @@ export default function MentoringPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [isStudentListLoading, setIsStudentListLoading] = useState(true);
   const { toast } = useToast();
+  const { authStatus } = useAuth();
 
   useEffect(() => {
     async function fetchStudents() {
@@ -38,8 +40,10 @@ export default function MentoringPage() {
       }
       setIsStudentListLoading(false);
     }
-    fetchStudents();
-  }, [toast]);
+    if (authStatus === 'authenticated') {
+        fetchStudents();
+    }
+  }, [authStatus, toast]);
 
   const handleAddProblem = () => {
     if (newProblem.trim()) {
