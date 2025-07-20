@@ -64,6 +64,11 @@ import {
   getProfessionalDevelopmentPlan
 } from "@/ai/flows/teacher-pd";
 import type { ProfessionalDevelopmentInput } from "@/ai/flows/teacher-pd.types";
+import {
+  appChatbot
+} from "@/ai/flows/app-chatbot";
+import type { AppChatbotInput } from "@/ai/flows/app-chatbot.types";
+
 
 import { studentRoster } from "./student-roster";
 import type { Student } from "./student-roster";
@@ -154,6 +159,9 @@ export async function professionalDevelopmentAction(input: ProfessionalDevelopme
     return runAction(getProfessionalDevelopmentPlan, input, "Failed to generate professional development plan.");
 }
 
+export async function appChatbotAction(input: AppChatbotInput) {
+    return runAction(appChatbot, input, "Failed to get a response from the chatbot.");
+}
 
 // Student Roster Actions
 export async function getStudentsAction() {

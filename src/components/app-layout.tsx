@@ -15,32 +15,7 @@ import {
   SidebarInset,
   SidebarTrigger,
 } from '@/components/ui/sidebar';
-import {
-  GraduationCap,
-  Languages,
-  QrCode,
-  ScanLine,
-  LayoutDashboard,
-  BarChart3,
-  BookOpen,
-  FileQuestion,
-  ClipboardCheck,
-  Edit,
-  Users,
-  UserCog,
-  BookText,
-  MessageSquare,
-  LogOut,
-  Settings,
-  Loader2,
-  Brush,
-  HelpCircle,
-  Presentation,
-  CalendarDays,
-  School,
-  Library,
-  Rocket,
-} from 'lucide-react';
+import { LogOut, Settings, Loader2, BookOpen } from 'lucide-react';
 import { useLanguage } from '@/context/language-context';
 import { LanguageSelector } from './language-selector';
 import { useAuth } from '@/context/auth-context';
@@ -49,29 +24,9 @@ import { signOut } from 'firebase/auth';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from './ui/dropdown-menu';
 import { Button } from './ui/button';
+import { menuItems } from '@/lib/menu-items';
+import { Chatbot } from './chatbot/chatbot';
 
-const menuItems = [
-  { href: '/', labelKey: 'dashboard', icon: LayoutDashboard },
-  { href: '/ask-sahayak', labelKey: 'askSahayak_title', icon: HelpCircle },
-  { href: '/smart-class', labelKey: 'smartClass_title', icon: School },
-  { href: '/textbooks', labelKey: 'textbooks_title', icon: Library },
-  { href: '/teacher-professional-development', labelKey: 'teacherPD_title', icon: Rocket },
-  { href: '/photo-to-worksheet', labelKey: 'photoToWorksheet', icon: ScanLine },
-  { href: '/content-creator', labelKey: 'contentCreator', icon: Languages },
-  { href: '/content-adaptation', labelKey: 'contentAdaptation', icon: GraduationCap },
-  { href: '/visual-aids-generator', labelKey: 'visualAidsGenerator', icon: Brush },
-  { href: '/presentation-creator', labelKey: 'presentationCreator', icon: Presentation },
-  { href: '/calendar', labelKey: 'calendar', icon: CalendarDays },
-  { href: '/qr-code-generator', labelKey: 'qrCodeGenerator', icon: QrCode },
-  { href: '/grade-tracking', labelKey: 'gradeTracking', icon: BarChart3 },
-  { href: '/quiz-generator', labelKey: 'quizGenerator', icon: FileQuestion },
-  { href: '/rubric-creator', labelKey: 'rubricCreator', icon: ClipboardCheck },
-  { href: '/writing-assistant', labelKey: 'writingAssistant', icon: Edit },
-  { href: '/attendance', labelKey: 'attendance', icon: Users },
-  { href: '/student-roster', labelKey: 'studentRoster', icon: UserCog },
-  { href: '/lesson-planner', labelKey: 'lessonPlanner', icon: BookText },
-  { href: '/discussion-generator', labelKey: 'discussionGenerator', icon: MessageSquare },
-];
 
 const publicRoutes = ['/login', '/signup'];
 
@@ -167,6 +122,7 @@ function AuthenticatedLayout({ children }: { children: React.ReactNode }) {
                 <main className="p-4 md:p-6 lg:p-8">
                     {children}
                 </main>
+                <Chatbot />
             </SidebarInset>
         </SidebarProvider>
     )
