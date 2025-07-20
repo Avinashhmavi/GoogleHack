@@ -62,5 +62,19 @@
     "presentationCreator": "Creador de Presentaciones",
     "presentationCreator_desc": "Genere diapositivas de presentación automáticamente para cualquier tema.",
     "calendar": "Calendario",
-    "calendar_desc": "Programe lecciones, gestione plazos y organice eventos escolares."
+    "calendar_desc": "Programe lecciones, gestione plazos y organice eventos escolares.",
+    "smartClass_title": "Clase Inteligente",
+    "smartClass_dashboard_desc": "Acceda a una biblioteca curada de videos educativos de YouTube.",
+    "smartClass_description": "Navegue y vea videos educativos filtrados por grado y materia.",
+    "filterVideos_title": "Filtrar Videos",
+    "filterVideos_description": "Seleccione un grado y una materia para encontrar videos relevantes.",
+    "grade_label": "Grado",
+    "subject_label": "Materia",
+    "selectGrade_placeholder": "Seleccionar Grado",
+    "allGrades_option": "Todos los Grados",
+    "grade_prefix": "Grado",
+    "selectSubject_placeholder": "Seleccionar Materia",
+    "allSubjects_option": "Todas las Materias",
+    "subject_prefix": "Materia",
+    "noVideosFound_text": "No se encontraron videos para los filtros seleccionados."
 }

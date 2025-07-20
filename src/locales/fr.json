@@ -62,5 +62,19 @@
     "presentationCreator": "Créateur de Présentations",
     "presentationCreator_desc": "Générez automatiquement des diapositives de présentation pour n'importe quel sujet.",
     "calendar": "Calendrier",
-    "calendar_desc": "Planifiez les cours, gérez les échéances et organisez les événements scolaires."
+    "calendar_desc": "Planifiez les cours, gérez les échéances et organisez les événements scolaires.",
+    "smartClass_title": "Classe Intelligente",
+    "smartClass_dashboard_desc": "Accédez à une bibliothèque organisée de vidéos éducatives YouTube.",
+    "smartClass_description": "Parcourez et regardez des vidéos éducatives filtrées par niveau et par matière.",
+    "filterVideos_title": "Filtrer les Vidéos",
+    "filterVideos_description": "Sélectionnez un niveau et une matière pour trouver des vidéos pertinentes.",
+    "grade_label": "Niveau",
+    "subject_label": "Matière",
+    "selectGrade_placeholder": "Sélectionner le Niveau",
+    "allGrades_option": "Tous les Niveaux",
+    "grade_prefix": "Niveau",
+    "selectSubject_placeholder": "Sélectionner la Matière",
+    "allSubjects_option": "Toutes les Matières",
+    "subject_prefix": "Matière",
+    "noVideosFound_text": "Aucune vidéo trouvée pour les filtres sélectionnés."
 }

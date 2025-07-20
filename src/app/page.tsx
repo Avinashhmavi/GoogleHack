@@ -2,7 +2,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, BarChart3, GraduationCap, Languages, QrCode, ScanLine, FileQuestion, ClipboardCheck, Edit, Users, UserCog, BookText, MessageSquare, Brush, HelpCircle, Presentation, CalendarDays } from "lucide-react";
+import { ArrowRight, BarChart3, GraduationCap, Languages, QrCode, ScanLine, FileQuestion, ClipboardCheck, Edit, Users, UserCog, BookText, MessageSquare, Brush, HelpCircle, Presentation, CalendarDays, School } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/context/language-context";
@@ -13,6 +13,12 @@ const features = [
     descriptionKey: 'askSahayak_dashboard_desc',
     href: '/ask-sahayak',
     icon: <HelpCircle className="w-8 h-8 text-primary" />,
+  },
+  {
+    titleKey: 'smartClass_title',
+    descriptionKey: 'smartClass_dashboard_desc',
+    href: '/smart-class',
+    icon: <School className="w-8 h-8 text-primary" />,
   },
   {
     titleKey: 'photoToWorksheet',
@@ -121,7 +127,7 @@ export default function Home() {
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {features.map((feature) => (
+        {features.sort((a, b) => a.titleKey.localeCompare(b.titleKey)).map((feature) => (
           <Card key={feature.href} className="flex flex-col transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1">
             <CardHeader className="flex flex-row items-center gap-4">
                 {feature.icon}

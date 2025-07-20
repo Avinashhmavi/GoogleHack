@@ -62,5 +62,19 @@
     "presentationCreator": "উপস্থাপনা নির্মাতা",
     "presentationCreator_desc": "যেকোনো বিষয়ের জন্য স্বয়ংক্রিয়ভাবে উপস্থাপনা স্লাইড তৈরি করুন।",
     "calendar": "ক্যালেন্ডার",
-    "calendar_desc": "পাঠের সময়সূচী করুন, সময়সীমা পরিচালনা করুন এবং স্কুলের অনুষ্ঠানগুলি সংগঠিত করুন।"
+    "calendar_desc": "পাঠের সময়সূচী করুন, সময়সীমা পরিচালনা করুন এবং স্কুলের অনুষ্ঠানগুলি সংগঠিত করুন।",
+    "smartClass_title": "স্মার্ট ক্লাস",
+    "smartClass_dashboard_desc": "শিক্ষামূলক ইউটিউব ভিডিওগুলির একটি কিউরেটেড লাইব্রেরি অ্যাক্সেস করুন।",
+    "smartClass_description": "গ্রেড এবং বিষয় অনুসারে ফিল্টার করা শিক্ষামূলক ভিডিও ব্রাউজ করুন এবং দেখুন।",
+    "filterVideos_title": "ভিডিও ফিল্টার করুন",
+    "filterVideos_description": "প্রাসঙ্গিক ভিডিও খুঁজে পেতে একটি গ্রেড এবং বিষয় নির্বাচন করুন।",
+    "grade_label": "শ্রেণী",
+    "subject_label": "বিষয়",
+    "selectGrade_placeholder": "শ্রেণী নির্বাচন করুন",
+    "allGrades_option": "সকল শ্রেণী",
+    "grade_prefix": "শ্রেণী",
+    "selectSubject_placeholder": "বিষয় নির্বাচন করুন",
+    "allSubjects_option": "সকল বিষয়",
+    "subject_prefix": "বিষয়",
+    "noVideosFound_text": "নির্বাচিত ফিল্টারগুলির জন্য কোনো ভিডিও পাওয়া যায়নি।"
 }
