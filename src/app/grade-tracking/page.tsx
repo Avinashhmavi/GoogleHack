@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import {
   Table,
   TableBody,
@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Printer, UserPlus, Trash2 } from "lucide-react";
+import { Printer, UserPlus, Trash2, Loader2 } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -25,45 +25,63 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
-type GradeEntry = {
-  id: number;
-  studentName: string;
-  subject: string;
-  grade: number;
-  className: string;
-};
-
-const initialGrades: GradeEntry[] = [
-  { id: 1, studentName: "Alice Johnson", subject: "Mathematics", grade: 92, className: "Grade 5" },
-  { id: 2, studentName: "Bob Williams", subject: "Mathematics", grade: 85, className: "Grade 5" },
-  { id: 3, studentName: "Alice Johnson", subject: "History", grade: 88, className: "Grade 5" },
-  { id: 4, studentName: "Charlie Brown", subject: "Science", grade: 78, className: "Grade 6" },
-  { id: 5, studentName: "Bob Williams", subject: "Science", grade: 95, className: "Grade 5" },
-  { id: 6, studentName: "David Lee", subject: "Mathematics", grade: 90, className: "Grade 6" },
-  { id: 7, studentName: "Eve Davis", subject: "History", grade: 81, className: "Grade 6" },
-];
+import { useToast } from "@/hooks/use-toast";
+import { addGradeAction, getGradesAction, deleteGradeAction } from "@/lib/actions";
+import type { GradeEntry } from "@/lib/firestore";
 
 export default function GradeTrackingPage() {
-  const [grades, setGrades] = useState<GradeEntry[]>(initialGrades);
+  const [grades, setGrades] = useState<GradeEntry[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const { toast } = useToast();
+
+  useEffect(() => {
+    async function fetchGrades() {
+        setIsLoading(true);
+        const result = await getGradesAction();
+        if(result.success) {
+            setGrades(result.data);
+        } else {
+            toast({ title: "Error", description: "Could not fetch grades.", variant: "destructive" });
+        }
+        setIsLoading(false);
+    }
+    fetchGrades();
+  }, [toast]);
+
 
   const classes = useMemo(() => {
     const classSet = new Set(grades.map(grade => grade.className));
-    return Array.from(classSet);
+    return Array.from(classSet).sort();
   }, [grades]);
 
   const handlePrint = () => {
     window.print();
   };
   
-  const addGrade = (entry: Omit<GradeEntry, 'id'>) => {
-    setGrades(prev => [...prev, { ...entry, id: Date.now() }].sort((a, b) => a.className.localeCompare(b.className)));
-    setIsDialogOpen(false);
+  const addGrade = async (entry: Omit<GradeEntry, 'id' | 'uid'>) => {
+    const result = await addGradeAction(entry);
+    if(result.success) {
+        setGrades(result.data);
+        setIsDialogOpen(false);
+        toast({title: "Success", description: "Grade has been added."})
+    } else {
+        toast({title: "Error", description: result.error, variant: "destructive" });
+    }
   };
 
-  const deleteGrade = (id: number) => {
+  const deleteGrade = async (id: string) => {
+    const originalGrades = [...grades];
     setGrades(prev => prev.filter(grade => grade.id !== id));
+    
+    const result = await deleteGradeAction(id);
+    if(result.success) {
+        setGrades(result.data);
+        toast({ title: "Success", description: "Grade has been removed." });
+    } else {
+        setGrades(originalGrades);
+        toast({ title: "Error", description: result.error, variant: "destructive" });
+    }
   }
 
   return (
@@ -89,7 +107,9 @@ export default function GradeTrackingPage() {
                 <CardDescription>A summary of all recorded student grades, organized by class.</CardDescription>
             </CardHeader>
             <CardContent>
-             {classes.length > 0 ? (
+             {isLoading ? (
+                <div className="flex justify-center items-center h-48"><Loader2 className="animate-spin text-primary" /></div>
+             ) : classes.length > 0 ? (
               <Tabs defaultValue={classes[0]} className="w-full">
                 <TabsList className="no-print">
                   {classes.map(className => (
@@ -142,20 +162,23 @@ export default function GradeTrackingPage() {
 }
 
 
-function AddGradeDialog({ onAddGrade, open, onOpenChange }: { onAddGrade: (entry: Omit<GradeEntry, 'id'>) => void; open: boolean; onOpenChange: (open: boolean) => void; }) {
+function AddGradeDialog({ onAddGrade, open, onOpenChange }: { onAddGrade: (entry: Omit<GradeEntry, 'id' | 'uid'>) => void; open: boolean; onOpenChange: (open: boolean) => void; }) {
     const [studentName, setStudentName] = useState("");
     const [subject, setSubject] = useState("");
     const [grade, setGrade] = useState("");
     const [className, setClassName] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if(studentName && subject && grade && className) {
-            onAddGrade({ studentName, subject, grade: Number(grade), className });
+            setIsSubmitting(true);
+            await onAddGrade({ studentName, subject, grade: Number(grade), className });
             setStudentName("");
             setSubject("");
             setGrade("");
             setClassName("");
+            setIsSubmitting(false);
         }
     }
 
@@ -194,7 +217,10 @@ function AddGradeDialog({ onAddGrade, open, onOpenChange }: { onAddGrade: (entry
                         <DialogClose asChild>
                             <Button type="button" variant="secondary">Cancel</Button>
                         </DialogClose>
-                        <Button type="submit">Add Grade</Button>
+                        <Button type="submit" disabled={isSubmitting}>
+                            {isSubmitting && <Loader2 className="mr-2 animate-spin" />}
+                            Add Grade
+                        </Button>
                     </DialogFooter>
                 </form>
             </DialogContent>

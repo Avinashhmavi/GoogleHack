@@ -77,7 +77,7 @@ import type { SearchYoutubeVideosInput } from "@/ai/flows/search-youtube-videos.
 import { createMentorshipPlan } from "@/ai/flows/create-mentorship-plan";
 import type { CreateMentorshipPlanInput } from "@/ai/flows/create-mentorship-plan.types";
 
-import { studentRoster as studentRosterDb, type Student } from "@/lib/firestore";
+import { studentRosterDb, type Student, gradesDb, type GradeEntry, calendarDb, type CalendarEvent, recordingsDb, type ClassRecording } from "@/lib/firestore";
 import { getAuthenticatedUser } from "./auth";
 
 
@@ -175,7 +175,7 @@ export async function professionalDevelopmentAction(input: ProfessionalDevelopme
     return runAction(getProfessionalDevelopmentPlan, input, "Failed to generate professional development plan.");
 }
 
-export async function appChatbotAction(input: AppChatbotInput) {
+export async function appChatbotAction(input: Omit<AppChatbotInput, 'studentRoster'>) {
     const user = await getAuthenticatedUser();
     let studentRoster: Student[] = [];
     if (user) {
@@ -233,6 +233,124 @@ export async function deleteStudentAction(id: string) {
         return { success: true, data: students };
     } catch (error) {
         const message = error instanceof Error ? error.message : "Failed to delete student.";
+        return { success: false, error: message };
+    }
+}
+
+
+// Grade Tracking Actions
+export async function getGradesAction() {
+    const user = await getAuthenticatedUser();
+    if (!user) return { success: false, error: "User not authenticated." };
+    try {
+        const grades = await gradesDb.getGrades(user.uid);
+        return { success: true, data: grades };
+    } catch (error) {
+        const message = error instanceof Error ? error.message : "Failed to get grades.";
+        return { success: false, error: message };
+    }
+}
+
+export async function addGradeAction(grade: Omit<GradeEntry, 'id' | 'uid'>) {
+    const user = await getAuthenticatedUser();
+    if (!user) return { success: false, error: "User not authenticated." };
+    try {
+        await gradesDb.addGrade(user.uid, grade);
+        const grades = await gradesDb.getGrades(user.uid);
+        return { success: true, data: grades };
+    } catch (error) {
+        const message = error instanceof Error ? error.message : "Failed to add grade.";
+        return { success: false, error: message };
+    }
+}
+
+export async function deleteGradeAction(id: string) {
+    const user = await getAuthenticatedUser();
+    if (!user) return { success: false, error: "User not authenticated." };
+    try {
+        await gradesDb.deleteGrade(user.uid, id);
+        const grades = await gradesDb.getGrades(user.uid);
+        return { success: true, data: grades };
+    } catch (error) {
+        const message = error instanceof Error ? error.message : "Failed to delete grade.";
+        return { success: false, error: message };
+    }
+}
+
+// Calendar Event Actions
+export async function getCalendarEventsAction() {
+    const user = await getAuthenticatedUser();
+    if (!user) return { success: false, error: "User not authenticated." };
+    try {
+        const events = await calendarDb.getEvents(user.uid);
+        return { success: true, data: events };
+    } catch (error) {
+        const message = error instanceof Error ? error.message : "Failed to get events.";
+        return { success: false, error: message };
+    }
+}
+
+export async function addCalendarEventAction(event: Omit<CalendarEvent, 'id' | 'uid'>) {
+    const user = await getAuthenticatedUser();
+    if (!user) return { success: false, error: "User not authenticated." };
+    try {
+        await calendarDb.addEvent(user.uid, event);
+        const events = await calendarDb.getEvents(user.uid);
+        return { success: true, data: events };
+    } catch (error) {
+        const message = error instanceof Error ? error.message : "Failed to add event.";
+        return { success: false, error: message };
+    }
+}
+
+export async function deleteCalendarEventAction(id: string) {
+    const user = await getAuthenticatedUser();
+    if (!user) return { success: false, error: "User not authenticated." };
+    try {
+        await calendarDb.deleteEvent(user.uid, id);
+        const events = await calendarDb.getEvents(user.uid);
+        return { success: true, data: events };
+    } catch (error) {
+        const message = error instanceof Error ? error.message : "Failed to delete event.";
+        return { success: false, error: message };
+    }
+}
+
+// Class Recordings Actions
+export async function getRecordingsAction() {
+    const user = await getAuthenticatedUser();
+    if (!user) return { success: false, error: "User not authenticated." };
+    try {
+        const recordings = await recordingsDb.getRecordings(user.uid);
+        return { success: true, data: recordings };
+    } catch (error) {
+        const message = error instanceof Error ? error.message : "Failed to get recordings.";
+        return { success: false, error: message };
+    }
+}
+
+export async function addRecordingAction(recording: Omit<ClassRecording, 'id' | 'uid'>) {
+    const user = await getAuthenticatedUser();
+    if (!user) return { success: false, error: "User not authenticated." };
+    try {
+        await recordingsDb.addRecording(user.uid, recording);
+        const recordings = await recordingsDb.getRecordings(user.uid);
+        return { success: true, data: recordings };
+    } catch (error) {
+        const message = error instanceof Error ? error.message : "Failed to add recording.";
+        return { success: false, error: message };
+    }
+}
+
+export async function deleteRecordingAction(id: string) {
+    const user = await getAuthenticatedUser();
+    if (!user) return { success: false, error: "User not authenticated." };
+    try {
+        await recordingsDb.deleteRecording(user.uid, id);
+        const recordings = await recordingsDb.getRecordings(user.uid);
+        return { success: true, data: recordings };
+    } catch (error) {
+        const message = error instanceof Error ? error.message : "Failed to delete recording.";
         return { success: false, error: message };
     }
 }

@@ -1,11 +1,11 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar } from "@/components/ui/calendar";
-import { PlusCircle, Trash2, Calendar as CalendarIcon, BookOpen, AlertTriangle, PartyPopper } from "lucide-react";
+import { PlusCircle, Trash2, Calendar as CalendarIcon, BookOpen, AlertTriangle, PartyPopper, Loader2 } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -23,13 +23,8 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
-
-type CalendarEvent = {
-  id: number;
-  date: Date;
-  title: string;
-  type: "Lesson" | "Deadline" | "Event" | "Holiday";
-};
+import { addCalendarEventAction, getCalendarEventsAction, deleteCalendarEventAction } from "@/lib/actions";
+import type { CalendarEvent } from "@/lib/firestore";
 
 const eventTypeConfig = {
     Lesson: { icon: BookOpen, color: "bg-blue-500" },
@@ -40,17 +35,55 @@ const eventTypeConfig = {
 
 export default function CalendarPage() {
   const [date, setDate] = useState<Date | undefined>(new Date());
-  const [events, setEvents] = useState<CalendarEvent[]>([
-    { id: 1, date: new Date(), title: "Maths Chapter 4", type: "Lesson" },
-    { id: 2, date: new Date(new Date().setDate(new Date().getDate() + 2)), title: "History Essay Due", type: "Deadline" },
-  ]);
+  const [events, setEvents] = useState<CalendarEvent[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const { toast } = useToast();
 
-  const addEvent = (event: Omit<CalendarEvent, 'id'>) => {
-    setEvents(prev => [...prev, { ...event, id: Date.now() }].sort((a,b) => a.date.getTime() - b.date.getTime()));
+  useEffect(() => {
+    async function fetchEvents() {
+        setIsLoading(true);
+        const result = await getCalendarEventsAction();
+        if(result.success) {
+            // Firestore timestamps need to be converted to Date objects
+            const formattedEvents = result.data.map(event => ({
+                ...event,
+                date: event.date.toDate(),
+            }));
+            setEvents(formattedEvents);
+        } else {
+            toast({ title: "Error", description: "Could not fetch calendar events.", variant: "destructive" });
+        }
+        setIsLoading(false);
+    }
+    fetchEvents();
+  }, [toast]);
+
+  const addEvent = async (event: Omit<CalendarEvent, 'id'>) => {
+    const result = await addCalendarEventAction(event);
+    if (result.success) {
+        const formattedEvents = result.data.map(event => ({
+            ...event,
+            date: event.date.toDate(),
+        }));
+        setEvents(formattedEvents);
+        toast({ title: "Event Added", description: "The event has been added to your calendar." });
+    } else {
+        toast({ title: "Error", description: result.error, variant: "destructive" });
+    }
   };
   
-  const deleteEvent = (id: number) => {
-    setEvents(prev => prev.filter(event => event.id !== id));
+  const deleteEvent = async (id: string) => {
+    const result = await deleteCalendarEventAction(id);
+    if (result.success) {
+        const formattedEvents = result.data.map(event => ({
+            ...event,
+            date: event.date.toDate(),
+        }));
+        setEvents(formattedEvents);
+        toast({ title: "Event Deleted" });
+    } else {
+        toast({ title: "Error", description: result.error, variant: "destructive" });
+    }
   };
   
   const eventsForSelectedDate = date ? events.filter(e => format(e.date, 'yyyy-MM-dd') === format(date, 'yyyy-MM-dd')) : [];
@@ -107,31 +140,37 @@ export default function CalendarPage() {
                 <CardDescription>Events for the selected date.</CardDescription>
             </CardHeader>
             <CardContent>
-                <div className="space-y-4">
-                {eventsForSelectedDate.length > 0 ? (
-                    eventsForSelectedDate.map(event => {
-                        const config = eventTypeConfig[event.type];
-                        const Icon = config.icon;
-                        return(
-                            <div key={event.id} className="flex items-center justify-between p-3 bg-secondary/50 rounded-lg">
-                                <div className="flex items-center gap-3">
-                                    <Icon className="w-5 h-5 text-muted-foreground" />
-                                    <div>
-                                        <p className="font-semibold">{event.title}</p>
-                                        <Badge variant="outline" className={cn(config.color, "text-white border-0")}>{event.type}</Badge>
-                                    </div>
-                                </div>
-                                <Button variant="ghost" size="icon" onClick={() => deleteEvent(event.id)}>
-                                    <Trash2 className="w-4 h-4 text-destructive" />
-                                    <span className="sr-only">Delete event</span>
-                                </Button>
-                            </div>
-                        )
-                    })
+                {isLoading ? (
+                    <div className="flex justify-center items-center h-48">
+                        <Loader2 className="animate-spin text-primary" />
+                    </div>
                 ) : (
-                    <p className="text-muted-foreground text-center py-8">No events for this day.</p>
+                    <div className="space-y-4">
+                    {eventsForSelectedDate.length > 0 ? (
+                        eventsForSelectedDate.map(event => {
+                            const config = eventTypeConfig[event.type];
+                            const Icon = config.icon;
+                            return(
+                                <div key={event.id} className="flex items-center justify-between p-3 bg-secondary/50 rounded-lg">
+                                    <div className="flex items-center gap-3">
+                                        <Icon className="w-5 h-5 text-muted-foreground" />
+                                        <div>
+                                            <p className="font-semibold">{event.title}</p>
+                                            <Badge variant="outline" className={cn(config.color, "text-white border-0")}>{event.type}</Badge>
+                                        </div>
+                                    </div>
+                                    <Button variant="ghost" size="icon" onClick={() => deleteEvent(event.id)}>
+                                        <Trash2 className="w-4 h-4 text-destructive" />
+                                        <span className="sr-only">Delete event</span>
+                                    </Button>
+                                </div>
+                            )
+                        })
+                    ) : (
+                        <p className="text-muted-foreground text-center py-8">No events for this day.</p>
+                    )}
+                    </div>
                 )}
-                </div>
             </CardContent>
         </Card>
       </div>
@@ -140,7 +179,7 @@ export default function CalendarPage() {
 }
 
 
-function AddEventDialog({ onAddEvent }: { onAddEvent: (event: Omit<CalendarEvent, 'id'>) => void }) {
+function AddEventDialog({ onAddEvent }: { onAddEvent: (event: Omit<CalendarEvent, 'id' | 'uid'>) => void }) {
     const [title, setTitle] = useState("");
     const [date, setDate] = useState<Date | undefined>(new Date());
     const [type, setType] = useState<CalendarEvent['type']>('Lesson');
@@ -158,7 +197,6 @@ function AddEventDialog({ onAddEvent }: { onAddEvent: (event: Omit<CalendarEvent
         setDate(new Date());
         setType("Lesson");
         setIsOpen(false);
-        toast({ title: "Event Added", description: "The event has been added to your calendar." });
     };
 
     return (
@@ -225,4 +263,3 @@ function AddEventDialog({ onAddEvent }: { onAddEvent: (event: Omit<CalendarEvent
         </Dialog>
     );
 }
-

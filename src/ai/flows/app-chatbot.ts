@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -126,12 +127,14 @@ User question: "${input.query}"`,
     let text = llmResponse.text;
     
     // Post-processing to ensure youtube links are correctly formatted
-    if (text) {
-        const toolOutputs = llmResponse.toolRequest?.tool.outputs;
-        if (toolOutputs) {
-             const youtubeResults = toolOutputs.filter((out: any) => out.toolName === 'searchYouTube');
+    if (llmResponse.hasToolRequest()) {
+        const toolRequests = llmResponse.toolRequests();
+        const youtubeRequest = toolRequests.find(req => req.name === 'searchYouTube');
+        
+        if (youtubeRequest && youtubeRequest.outputs) {
+             const youtubeResults = youtubeRequest.outputs as any[];
              if (youtubeResults.length > 0) {
-                const videoLinks = youtubeResults.flatMap((res: any) => res.output.map((video: any) => `* ${video.title}: https://www.youtube.com/watch?v=${video.id}`)).join('\n');
+                const videoLinks = youtubeResults.map((video: any) => `* ${video.title}: https://www.youtube.com/watch?v=${video.id}`).join('\n');
                 text = `I found a few videos that might help:\n${videoLinks}`;
              }
         }
@@ -139,7 +142,7 @@ User question: "${input.query}"`,
 
 
     if (!text) {
-        throw new Error('The model did not return a text response.');
+        text = "I'm sorry, I couldn't find an answer for that. Could you please rephrase?";
     }
 
     return { response: text };

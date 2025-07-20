@@ -1,24 +1,20 @@
 
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { videoData, type Video } from "@/lib/smart-class-data";
-import { School, Filter, Book, BarChart2, UploadCloud, Video as VideoIcon, Wand2, Loader2 } from "lucide-react";
+import { School, Filter, Book, BarChart2, UploadCloud, Video as VideoIcon, Wand2, Loader2, Trash2 } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { useLanguage } from "@/context/language-context";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { searchYoutubeVideosAction } from "@/lib/actions";
+import { searchYoutubeVideosAction, addRecordingAction, getRecordingsAction, deleteRecordingAction } from "@/lib/actions";
 import type { YouTubeVideo } from "@/ai/flows/search-youtube-videos.types";
-
-type UploadedVideo = {
-  name: string;
-  url: string;
-};
+import type { ClassRecording } from "@/lib/firestore";
 
 function YouTubeLibrary() {
   const [allVideos] = useState<Video[]>(videoData);
@@ -121,8 +117,25 @@ function YouTubeLibrary() {
 }
 
 function ClassRecordings() {
-  const [uploadedVideos, setUploadedVideos] = useState<UploadedVideo[]>([]);
+  const [recordings, setRecordings] = useState<ClassRecording[]>([]);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isUploading, setIsUploading] = useState(false);
+  const { toast } = useToast();
+
+  useEffect(() => {
+    async function fetchRecordings() {
+      setIsLoading(true);
+      const result = await getRecordingsAction();
+      if (result.success) {
+        setRecordings(result.data);
+      } else {
+        toast({ title: "Error", description: "Could not fetch recordings.", variant: "destructive" });
+      }
+      setIsLoading(false);
+    }
+    fetchRecordings();
+  }, [toast]);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
@@ -130,16 +143,42 @@ function ClassRecordings() {
     }
   };
 
-  const handleUpload = () => {
-    if (selectedFile) {
-      const newVideo: UploadedVideo = {
-        name: selectedFile.name,
-        url: URL.createObjectURL(selectedFile),
-      };
-      setUploadedVideos(prev => [...prev, newVideo]);
-      setSelectedFile(null); // Reset file input
+  const handleUpload = async () => {
+    if (!selectedFile) return;
+
+    setIsUploading(true);
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedFile);
+    reader.onloadend = async () => {
+        const dataUrl = reader.result as string;
+        const result = await addRecordingAction({
+            name: selectedFile.name,
+            dataUrl: dataUrl,
+        });
+        if (result.success) {
+            setRecordings(result.data);
+            setSelectedFile(null);
+            toast({ title: "Success", description: "Recording uploaded." });
+        } else {
+            toast({ title: "Error", description: result.error, variant: "destructive" });
+        }
+        setIsUploading(false);
     }
   };
+  
+  const handleDelete = async (id: string) => {
+    const originalRecordings = [...recordings];
+    setRecordings(prev => prev.filter(r => r.id !== id));
+
+    const result = await deleteRecordingAction(id);
+    if (result.success) {
+      setRecordings(result.data);
+      toast({ title: "Success", description: "Recording deleted." });
+    } else {
+      setRecordings(originalRecordings);
+      toast({ title: "Error", description: result.error, variant: "destructive" });
+    }
+  }
 
   return (
     <div className="space-y-8">
@@ -151,32 +190,40 @@ function ClassRecordings() {
           <CardDescription>Upload a video of your class session for students to review.</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col sm:flex-row items-center gap-4">
-            <Input type="file" accept="video/*" onChange={handleFileChange} className="flex-grow"/>
-            <Button onClick={handleUpload} disabled={!selectedFile}>
+            <Input type="file" accept="video/*" onChange={handleFileChange} className="flex-grow" key={selectedFile ? selectedFile.name : 'file-input'} />
+            <Button onClick={handleUpload} disabled={!selectedFile || isUploading}>
+                {isUploading ? <Loader2 className="mr-2 animate-spin" /> : <UploadCloud className="mr-2" />}
                 Upload Video
             </Button>
         </CardContent>
       </Card>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {uploadedVideos.map((video, index) => (
-          <Card key={index} className="overflow-hidden flex flex-col">
-            <div className="relative w-full aspect-video bg-black">
-                <video controls src={video.url} className="w-full h-full" />
-            </div>
-            <CardHeader>
-                <CardTitle className="font-headline text-lg flex items-center gap-2">
-                    <VideoIcon /> {video.name}
-                </CardTitle>
-            </CardHeader>
-          </Card>
-        ))}
-        {uploadedVideos.length === 0 && (
-            <div className="md:col-span-2 lg:col-span-3 text-center text-muted-foreground py-16">
-                <p>No class recordings uploaded yet. Use the form above to add your first video.</p>
-            </div>
-        )}
-      </div>
+      {isLoading ? (
+        <div className="flex justify-center py-16"><Loader2 className="animate-spin text-primary w-8 h-8"/></div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {recordings.map((video) => (
+            <Card key={video.id} className="overflow-hidden flex flex-col group">
+              <div className="relative w-full aspect-video bg-black">
+                  <video controls src={video.dataUrl} className="w-full h-full" />
+              </div>
+              <CardHeader className="flex flex-row items-center justify-between">
+                  <CardTitle className="font-headline text-lg flex items-center gap-2">
+                      <VideoIcon /> {video.name}
+                  </CardTitle>
+                  <Button variant="ghost" size="icon" className="opacity-0 group-hover:opacity-100" onClick={() => handleDelete(video.id)}>
+                      <Trash2 className="w-4 h-4 text-destructive" />
+                  </Button>
+              </CardHeader>
+            </Card>
+          ))}
+          {recordings.length === 0 && (
+              <div className="md:col-span-2 lg:col-span-3 text-center text-muted-foreground py-16">
+                  <p>No class recordings uploaded yet. Use the form above to add your first video.</p>
+              </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
