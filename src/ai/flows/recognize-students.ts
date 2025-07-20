@@ -11,7 +11,7 @@
 import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
 
-export const RecognizeStudentsInputSchema = z.object({
+const RecognizeStudentsInputSchema = z.object({
   photoDataUri: z
     .string()
     .describe(
@@ -20,7 +20,7 @@ export const RecognizeStudentsInputSchema = z.object({
 });
 export type RecognizeStudentsInput = z.infer<typeof RecognizeStudentsInputSchema>;
 
-export const RecognizeStudentsOutputSchema = z.object({
+const RecognizeStudentsOutputSchema = z.object({
   presentStudents: z.array(z.string()).describe('A list of names of the students identified in the photo.'),
 });
 export type RecognizeStudentsOutput = z.infer<typeof RecognizeStudentsOutputSchema>;
