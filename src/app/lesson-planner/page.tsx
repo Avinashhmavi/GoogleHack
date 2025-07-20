@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { createLessonPlanAction } from "@/lib/actions";
-import { Loader2, X, Plus, BookText, Clock, Check, List, DraftingCompass, PencilRuler, Mic, MicOff } from "lucide-react";
+import { Loader2, X, Plus, BookText, Clock, Check, List, DraftingCompass, PencilRuler, Mic, MicOff, Share2 } from "lucide-react";
 import type { CreateLessonPlanOutput } from "@/ai/flows/create-lesson-plan.types";
 import { Separator } from "@/components/ui/separator";
 import { useLanguage } from "@/context/language-context";
@@ -72,6 +72,16 @@ export default function LessonPlannerPage() {
     setIsLoading(false);
   };
 
+  const handleShare = () => {
+    if (!lessonPlan) return;
+    const shareableLink = `${window.location.origin}/shared/lesson/${Date.now()}`;
+    navigator.clipboard.writeText(shareableLink);
+    toast({
+      title: "Link Copied!",
+      description: "A shareable link has been copied to your clipboard.",
+    });
+  };
+
   return (
     <div className="space-y-8">
       <div>
@@ -119,7 +129,7 @@ export default function LessonPlannerPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Input value={newObjective} onChange={(e) => setNewObjective(e.target.value)} placeholder="Add a new learning objective..." onKeyDown={(e) => {if(e.key === 'Enter'){ e.preventDefault(); handleAddObjective();}}} />
-                  {objectiveSpeech.hasPermission && <Button type="button" size="icon" variant={objectiveSpeech.isListening ? "destructive" : "outline"} onClick={() => objectiveSpeech.isListening ? objectiveSpeech.stopListening() : objectiveSpeech.startListening()}><Mic/></Button>}
+                  {objectiveSpeech.hasPermission && <Button type="button" size="icon" variant={objectiveSpeech.isListening ? 'destructive' : 'outline'} onClick={() => objectiveSpeech.isListening ? objectiveSpeech.stopListening() : objectiveSpeech.startListening()}><Mic /></Button>}
                   <Button type="button" onClick={handleAddObjective} size="icon">
                     <Plus />
                   </Button>
@@ -135,7 +145,15 @@ export default function LessonPlannerPage() {
 
         <Card className="lg:sticky lg:top-8">
           <CardHeader>
-            <CardTitle className="font-headline flex items-center gap-2"><BookText /> Generated Lesson Plan</CardTitle>
+            <div className="flex justify-between items-center">
+                <CardTitle className="font-headline flex items-center gap-2"><BookText /> Generated Lesson Plan</CardTitle>
+                {lessonPlan && (
+                    <Button variant="outline" size="sm" onClick={handleShare}>
+                        <Share2 className="mr-2 h-4 w-4" />
+                        Share
+                    </Button>
+                )}
+            </div>
             <CardDescription>{lessonPlan ? lessonPlan.title : "Your plan will appear here."}</CardDescription>
           </CardHeader>
           <CardContent>
