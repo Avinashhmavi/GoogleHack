@@ -35,7 +35,8 @@ import {
   recognizeStudents,
 } from "@/ai/flows/recognize-students";
 import type { RecognizeStudentsInput } from "@/ai/flows/recognize-students.types";
-
+import { studentRoster } from "./student-roster";
+import type { Student } from "./student-roster";
 
 export async function adaptContentAction(input: AdaptContentGradeLevelInput) {
   try {
@@ -134,6 +135,39 @@ export async function recognizeStudentsAction(input: RecognizeStudentsInput) {
   } catch (error) {
     console.error(error);
     const message = error instanceof Error ? error.message : "Failed to recognize students.";
+    return { success: false, error: message };
+  }
+}
+
+// Student Roster Actions
+export async function getStudentsAction() {
+  try {
+    const students = studentRoster.getStudents();
+    return { success: true, data: students };
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Failed to get students.";
+    return { success: false, error: message };
+  }
+}
+
+export async function addStudentAction(student: Omit<Student, 'id'>) {
+  try {
+    studentRoster.addStudent(student);
+    const students = studentRoster.getStudents();
+    return { success: true, data: students };
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Failed to add student.";
+    return { success: false, error: message };
+  }
+}
+
+export async function deleteStudentAction(id: string) {
+  try {
+    studentRoster.deleteStudent(id);
+    const students = studentRoster.getStudents();
+    return { success: true, data: students };
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Failed to delete student.";
     return { success: false, error: message };
   }
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, BarChart3, GraduationCap, Languages, QrCode, ScanLine, FileQuestion, ClipboardCheck, Edit, Users } from "lucide-react";
+import { ArrowRight, BarChart3, GraduationCap, Languages, QrCode, ScanLine, FileQuestion, ClipboardCheck, Edit, Users, UserCog } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/context/language-context";
@@ -60,6 +60,12 @@ const features = [
     descriptionKey: 'attendance',
     href: '/attendance',
     icon: <Users className="w-8 h-8 text-primary" />,
+  },
+  {
+    titleKey: 'studentRoster',
+    descriptionKey: 'studentRoster',
+    href: '/student-roster',
+    icon: <UserCog className="w-8 h-8 text-primary" />,
   }
 ];
 
@@ -76,6 +82,7 @@ export default function Home() {
     rubricCreator: 'Generate detailed grading rubrics for assignments.',
     writingAssistant: 'Get feedback on grammar, spelling, and style.',
     attendance: 'Use face recognition to take class attendance.',
+    studentRoster: 'Manage student photos and names for the attendance system.',
   };
 
   return (

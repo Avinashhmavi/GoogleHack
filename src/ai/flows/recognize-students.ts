@@ -13,13 +13,12 @@ import {
     type RecognizeStudentsInput,
     type RecognizeStudentsOutput
 } from './recognize-students.types';
+import { studentRoster } from '@/lib/student-roster';
 
 
 export async function recognizeStudents(input: RecognizeStudentsInput): Promise<RecognizeStudentsOutput> {
   return recognizeStudentsFlow(input);
 }
-
-const knownStudents = ["Alice Johnson", "Bob Williams", "Charlie Brown", "Diana Miller", "Ethan Davis"];
 
 const prompt = ai.definePrompt({
   name: 'recognizeStudentsPrompt',
@@ -28,15 +27,17 @@ const prompt = ai.definePrompt({
   prompt: `You are an AI-powered attendance system for a classroom.
 Your task is to identify which of the known students are present in the provided classroom photo.
 
-Here is the list of all students in the class:
-{{#each knownStudents}}
-- {{{this}}}
+Here is the list of all students in the class with their reference photos:
+{{#each studentRoster}}
+- Student Name: {{{this.name}}}
+  Reference Photo: {{media url=this.photoDataUri}}
 {{/each}}
 
-Analyze the photo and return a list of the names of the students you can identify.
+Analyze the classroom photo provided by the user and compare the faces with the reference photos.
+Return a list of the names of the students you can identify.
 If you do not see a student, do not include them in the list. Only list the students who are clearly visible.
 
-Photo:
+Classroom Photo:
 {{media url=photoDataUri}}
 `,
 });
@@ -48,10 +49,14 @@ const recognizeStudentsFlow = ai.defineFlow(
     outputSchema: RecognizeStudentsOutputSchema,
   },
   async (input) => {
+    // In a real application, you would fetch this from a database.
+    // For this prototype, we import it from our mock DB file.
+    const roster = studentRoster.getStudents();
+    
     const { output } = await prompt({
       ...input,
       // @ts-ignore - The prompt template can access this additional context
-      knownStudents,
+      studentRoster: roster,
     });
     return output!;
   }

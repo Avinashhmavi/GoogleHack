@@ -26,6 +26,7 @@ import {
   ClipboardCheck,
   Edit,
   Users,
+  UserCog,
 } from 'lucide-react';
 import { useLanguage } from '@/context/language-context';
 import { LanguageSelector } from './language-selector';
@@ -41,6 +42,7 @@ const menuItems = [
   { href: '/rubric-creator', labelKey: 'rubricCreator', icon: ClipboardCheck },
   { href: '/writing-assistant', labelKey: 'writingAssistant', icon: Edit },
   { href: '/attendance', labelKey: 'attendance', icon: Users },
+  { href: '/student-roster', labelKey: 'studentRoster', icon: UserCog },
 ];
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
