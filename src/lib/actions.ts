@@ -84,7 +84,6 @@ import { getAuthenticatedUser } from "./auth";
 // Wrapper function to handle Genkit flow execution and error handling
 export async function runAction<I, O>(action: (input: I) => Promise<O>, input: I, errorMsg: string): Promise<{ success: true, data: O } | { success: false, error: string }> {
     try {
-        await getAuthenticatedUser();
         const result = await action(input);
         return { success: true, data: result };
     } catch (error) {
@@ -96,36 +95,52 @@ export async function runAction<I, O>(action: (input: I) => Promise<O>, input: I
 
 
 export async function adaptContentAction(input: AdaptContentGradeLevelInput) {
+  const user = await getAuthenticatedUser();
+  if (!user) return { success: false, error: "User not authenticated." };
   return runAction(adaptContentGradeLevel, input, "Failed to adapt content.");
 }
 
 export async function generateQrCodeAction(input: GenerateAnswerKeyQrCodeInput) {
+  const user = await getAuthenticatedUser();
+  if (!user) return { success: false, error: "User not authenticated." };
   return runAction(generateAnswerKeyQrCode, input, "Failed to generate QR code.");
 }
 
 export async function generateLocalizedContentAction(
   input: GenerateLocalizedContentInput
 ) {
+  const user = await getAuthenticatedUser();
+  if (!user) return { success: false, error: "User not authenticated." };
   return runAction(generateLocalizedContent, input, "Failed to generate content.");
 }
 
 export async function photoToWorksheetAction(input: PhotoToWorksheetInput) {
+  const user = await getAuthenticatedUser();
+  if (!user) return { success: false, error: "User not authenticated." };
   return runAction(photoToWorksheet, input, "Failed to generate worksheet.");
 }
 
 export async function generateQuizAction(input: GenerateQuizInput) {
+  const user = await getAuthenticatedUser();
+  if (!user) return { success: false, error: "User not authenticated." };
   return runAction(generateQuiz, input, "Failed to generate quiz.");
 }
 
 export async function createRubricAction(input: CreateRubricInput) {
+    const user = await getAuthenticatedUser();
+    if (!user) return { success: false, error: "User not authenticated." };
     return runAction(createRubric, input, "Failed to create rubric.");
 }
 
 export async function textToSpeechAction(input: TextToSpeechInput) {
+    const user = await getAuthenticatedUser();
+    if (!user) return { success: false, error: "User not authenticated." };
     return runAction(textToSpeech, input, "Failed to convert text to speech.");
 }
 
 export async function enhanceWritingAction(input: EnhanceWritingInput) {
+  const user = await getAuthenticatedUser();
+  if (!user) return { success: false, error: "User not authenticated." };
   return runAction(enhanceWriting, input, "Failed to enhance writing.");
 }
 
@@ -140,18 +155,26 @@ export async function recognizeStudentsAction(input: RecognizeStudentsInput) {
 }
 
 export async function createLessonPlanAction(input: CreateLessonPlanInput) {
+  const user = await getAuthenticatedUser();
+  if (!user) return { success: false, error: "User not authenticated." };
   return runAction(createLessonPlan, input, "Failed to generate lesson plan.");
 }
 
 export async function generateDiscussionAction(input: GenerateDiscussionInput) {
+  const user = await getAuthenticatedUser();
+  if (!user) return { success: false, error: "User not authenticated." };
   return runAction(generateDiscussion, input, "Failed to generate discussion materials.");
 }
 
 export async function generateVisualAidAction(input: GenerateVisualAidInput) {
+    const user = await getAuthenticatedUser();
+    if (!user) return { success: false, error: "User not authenticated." };
     return runAction(generateVisualAid, input, "Failed to generate visual aid.");
 }
 
 export async function askSahayakAction(input: AskSahayakInput) {
+    const user = await getAuthenticatedUser();
+    if (!user) return { success: false, error: "User not authenticated." };
     return runAction(askSahayak, input, "Failed to get an answer from Sahayak.");
 }
 
@@ -168,15 +191,20 @@ export async function getTtsVoicesAction(languageCode: string) {
 }
 
 export async function createPresentationAction(input: CreatePresentationInput) {
+    const user = await getAuthenticatedUser();
+    if (!user) return { success: false, error: "User not authenticated." };
     return runAction(createPresentation, input, "Failed to generate presentation.");
 }
 
 export async function professionalDevelopmentAction(input: ProfessionalDevelopmentInput) {
+    const user = await getAuthenticatedUser();
+    if (!user) return { success: false, error: "User not authenticated." };
     return runAction(getProfessionalDevelopmentPlan, input, "Failed to generate professional development plan.");
 }
 
 export async function appChatbotAction(input: Omit<AppChatbotInput, 'studentRoster'>) {
     const user = await getAuthenticatedUser();
+    if (!user) return { success: false, error: "User not authenticated." };
     let studentRoster: Student[] = [];
     if (user) {
         studentRoster = await studentRosterDb.getStudents(user.uid);
@@ -186,14 +214,20 @@ export async function appChatbotAction(input: Omit<AppChatbotInput, 'studentRost
 }
 
 export async function createWorksheetAction(input: CreateWorksheetInput) {
+  const user = await getAuthenticatedUser();
+  if (!user) return { success: false, error: "User not authenticated." };
   return runAction(createWorksheet, input, "Failed to create worksheet.");
 }
 
 export async function searchYoutubeVideosAction(input: SearchYoutubeVideosInput) {
+  const user = await getAuthenticatedUser();
+  if (!user) return { success: false, error: "User not authenticated." };
   return runAction(searchYoutubeVideos, input, "Failed to search for YouTube videos.");
 }
 
 export async function createMentorshipPlanAction(input: CreateMentorshipPlanInput) {
+    const user = await getAuthenticatedUser();
+    if (!user) return { success: false, error: "User not authenticated." };
     return runAction(createMentorshipPlan, input, "Failed to create mentorship plan.");
 }
 
@@ -278,8 +312,8 @@ export async function deleteGradeAction(id: string) {
 }
 
 // Calendar Event Actions
-export async function getCalendarEventsAction() {
-    const user = await getAuthenticatedUser();
+export async function getCalendarEventsAction(token: string | null) {
+    const user = await getAuthenticatedUser(token);
     if (!user) return { success: false, error: "User not authenticated." };
     try {
         const events = await calendarDb.getEvents(user.uid);
@@ -290,8 +324,8 @@ export async function getCalendarEventsAction() {
     }
 }
 
-export async function addCalendarEventAction(event: Omit<CalendarEvent, 'id' | 'uid'>) {
-    const user = await getAuthenticatedUser();
+export async function addCalendarEventAction(token: string | null, event: Omit<CalendarEvent, 'id' | 'uid'>) {
+    const user = await getAuthenticatedUser(token);
     if (!user) return { success: false, error: "User not authenticated." };
     try {
         await calendarDb.addEvent(user.uid, event);
@@ -303,8 +337,8 @@ export async function addCalendarEventAction(event: Omit<CalendarEvent, 'id' | '
     }
 }
 
-export async function deleteCalendarEventAction(id: string) {
-    const user = await getAuthenticatedUser();
+export async function deleteCalendarEventAction(token: string | null, id: string) {
+    const user = await getAuthenticatedUser(token);
     if (!user) return { success: false, error: "User not authenticated." };
     try {
         await calendarDb.deleteEvent(user.uid, id);
@@ -315,6 +349,7 @@ export async function deleteCalendarEventAction(id: string) {
         return { success: false, error: message };
     }
 }
+
 
 // Class Recordings Actions
 export async function getRecordingsAction() {
