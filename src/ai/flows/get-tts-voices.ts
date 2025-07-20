@@ -4,17 +4,9 @@
  */
 
 import { ai } from "@/ai/genkit";
-import { listVoices, z } from "genkit";
+import { listVoices } from "genkit";
 import { googleAI } from '@genkit-ai/googleai';
-
-export const GetTtsVoicesOutputSchema = z.array(z.object({
-  name: z.string(),
-  service: z.string(),
-  naturalSampleRateHertz: z.number().optional(),
-  languageCodes: z.array(z.string()),
-  gender: z.enum(["GENDER_UNSPECIFIED", "MALE", "FEMALE", "NEUTRAL"]),
-}));
-export type GetTtsVoicesOutput = z.infer<typeof GetTtsVoicesOutputSchema>;
+import type { GetTtsVoicesOutput } from "./get-tts-voices.types";
 
 export async function getTtsVoices(languageCode: string): Promise<GetTtsVoicesOutput> {
   const result = await listVoices({
