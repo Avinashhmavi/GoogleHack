@@ -5,6 +5,8 @@
     "dashboard": "Tableau de Bord",
     "photoToWorksheet": "Photo en Fiche de Travail",
     "photoToWorksheet_desc": "Convertissez instantanément les pages de manuels en fiches de travail interactives.",
+    "worksheetCreator": "Créateur de Fiches de Travail",
+    "worksheetCreator_desc": "Concevez des fiches de travail personnalisées avec différents types de questions à partir de zéro.",
     "contentCreator": "Créateur de Contenu",
     "contentCreator_desc": "Générez des histoires, des poèmes et des quiz en plusieurs langues.",
     "contentCreator_gradeLevel_label": "Niveau Scolaire Cible",

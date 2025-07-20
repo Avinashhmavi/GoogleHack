@@ -2,7 +2,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, BarChart3, GraduationCap, Languages, QrCode, ScanLine, FileQuestion, ClipboardCheck, Edit, Users, UserCog, BookText, MessageSquare, Brush, HelpCircle, Presentation, CalendarDays, School, Library, Rocket } from "lucide-react";
+import { ArrowRight, BarChart3, GraduationCap, Languages, QrCode, ScanLine, FileQuestion, ClipboardCheck, Edit, Users, UserCog, BookText, MessageSquare, Brush, HelpCircle, Presentation, CalendarDays, School, Library, Rocket, FileText as WorksheetIcon } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/context/language-context";
@@ -37,6 +37,12 @@ const features = [
     descriptionKey: 'photoToWorksheet_desc',
     href: '/photo-to-worksheet',
     icon: <ScanLine className="w-8 h-8 text-primary" />,
+  },
+  {
+    titleKey: 'worksheetCreator',
+    descriptionKey: 'worksheetCreator_desc',
+    href: '/worksheet-creator',
+    icon: <WorksheetIcon className="w-8 h-8 text-primary" />,
   },
   {
     titleKey: 'contentCreator',
@@ -139,7 +145,7 @@ export default function Home() {
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {features.sort((a, b) => a.titleKey.localeCompare(b.titleKey)).map((feature) => (
+        {features.sort((a, b) => t(a.titleKey).localeCompare(t(b.titleKey))).map((feature) => (
           <Card key={feature.href} className="flex flex-col transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1">
             <CardHeader className="flex flex-row items-center gap-4">
                 {feature.icon}

@@ -5,6 +5,8 @@
     "dashboard": "Tablero",
     "photoToWorksheet": "Foto a Hoja de Trabajo",
     "photoToWorksheet_desc": "Convierte páginas de libros de texto en hojas de trabajo interactivas al instante.",
+    "worksheetCreator": "Creador de Hojas de Trabajo",
+    "worksheetCreator_desc": "Diseñe hojas de trabajo personalizadas con varios tipos de preguntas desde cero.",
     "contentCreator": "Creador de Contenido",
     "contentCreator_desc": "Genera historias, poemas y cuestionarios en múltiples idiomas.",
     "contentCreator_gradeLevel_label": "Nivel de Grado Objetivo",

@@ -5,6 +5,8 @@
     "dashboard": "Dashboard",
     "photoToWorksheet": "Photo to Worksheet",
     "photoToWorksheet_desc": "Convert textbook pages into interactive worksheets instantly.",
+    "worksheetCreator": "Worksheet Creator",
+    "worksheetCreator_desc": "Design custom worksheets with various question types from scratch.",
     "contentCreator": "Content Creator",
     "contentCreator_desc": "Generate stories, poems, and quizzes in multiple languages.",
     "contentCreator_gradeLevel_label": "Target Grade Level",

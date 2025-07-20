@@ -5,6 +5,8 @@
     "dashboard": "डैशबोर्ड",
     "photoToWorksheet": "फोटो से वर्कशीट",
     "photoToWorksheet_desc": "पाठ्यपुस्तक के पन्नों को तुरंत इंटरैक्टिव वर्कशीट में बदलें।",
+    "worksheetCreator": "वर्कशीट निर्माता",
+    "worksheetCreator_desc": "विभिन्न प्रश्न प्रकारों के साथ कस्टम वर्कशीट डिज़ाइन करें।",
     "contentCreator": "सामग्री निर्माता",
     "contentCreator_desc": "कई भाषाओं में कहानियाँ, कविताएँ और क्विज़ बनाएँ।",
     "contentCreator_gradeLevel_label": "लक्षित ग्रेड स्तर",

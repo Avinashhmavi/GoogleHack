@@ -5,6 +5,8 @@
     "dashboard": "ড্যাশবোর্ড",
     "photoToWorksheet": "ছবি থেকে ওয়ার্কশিট",
     "photoToWorksheet_desc": "পাঠ্যপুস্তকের পৃষ্ঠাগুলিকে তাত্ক্ষণিকভাবে ইন্টারেক্টিভ ওয়ার্কশিটে রূপান্তর করুন।",
+    "worksheetCreator": "ওয়ার্কশিট ক্রিয়েটর",
+    "worksheetCreator_desc": "প্রথম থেকে বিভিন্ন ধরনের প্রশ্ন দিয়ে কাস্টম ওয়ার্কশিট ডিজাইন করুন।",
     "contentCreator": "বিষয়বস্তু নির্মাতা",
     "contentCreator_desc": "একাধিক ভাষায় গল্প, কবিতা এবং কুইজ তৈরি করুন।",
     "contentCreator_gradeLevel_label": "লক্ষ্য গ্রেড স্তর",

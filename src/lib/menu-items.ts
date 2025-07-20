@@ -21,6 +21,7 @@ import {
   School,
   Library,
   Rocket,
+  FileText as WorksheetIcon,
 } from 'lucide-react';
 
 export const menuItems = [
@@ -30,6 +31,7 @@ export const menuItems = [
   { href: '/textbooks', labelKey: 'textbooks_title', descriptionKey: 'textbooks_description', icon: Library },
   { href: '/teacher-professional-development', labelKey: 'teacherPD_title', descriptionKey: 'teacherPD_dashboard_desc', icon: Rocket },
   { href: '/photo-to-worksheet', labelKey: 'photoToWorksheet', descriptionKey: 'photoToWorksheet_desc', icon: ScanLine },
+  { href: '/worksheet-creator', labelKey: 'worksheetCreator', descriptionKey: 'worksheetCreator_desc', icon: WorksheetIcon },
   { href: '/content-creator', labelKey: 'contentCreator', descriptionKey: 'contentCreator_desc', icon: Languages },
   { href: '/content-adaptation', labelKey: 'contentAdaptation', descriptionKey: 'contentAdaptation_desc', icon: GraduationCap },
   { href: '/visual-aids-generator', labelKey: 'visualAidsGenerator', descriptionKey: 'visualAidsGenerator_desc', icon: Brush },

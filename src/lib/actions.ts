@@ -68,6 +68,10 @@ import {
   appChatbot
 } from "@/ai/flows/app-chatbot";
 import type { AppChatbotInput } from "@/ai/flows/app-chatbot.types";
+import {
+  createWorksheet,
+} from "@/ai/flows/create-worksheet";
+import type { CreateWorksheetInput } from "@/ai/flows/create-worksheet.types";
 
 
 import { studentRoster } from "./student-roster";
@@ -161,6 +165,10 @@ export async function professionalDevelopmentAction(input: ProfessionalDevelopme
 
 export async function appChatbotAction(input: AppChatbotInput) {
     return runAction(appChatbot, input, "Failed to get a response from the chatbot.");
+}
+
+export async function createWorksheetAction(input: CreateWorksheetInput) {
+  return runAction(createWorksheet, input, "Failed to create worksheet.");
 }
 
 // Student Roster Actions

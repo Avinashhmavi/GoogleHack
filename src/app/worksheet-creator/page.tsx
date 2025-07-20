@@ -7,23 +7,20 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
-import { generateQuizAction, textToSpeechAction } from '@/lib/actions';
-import { Loader2, Volume2, FileText, Wand2, Mic, MicOff, Check, XIcon } from 'lucide-react';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import type { GenerateQuizOutput } from '@/ai/flows/generate-quiz';
+import { createWorksheetAction, textToSpeechAction } from '@/lib/actions';
+import { Loader2, Volume2, FileText as WorksheetIcon, Wand2, Mic, MicOff, Check, XIcon } from 'lucide-react';
+import type { CreateWorksheetOutput } from '@/ai/flows/create-worksheet.types';
 import { useLanguage } from '@/context/language-context';
 import { useSpeechRecognition } from '@/hooks/use-speech-recognition';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
 import { Textarea } from '@/components/ui/textarea';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
-type QuizType = 'multiple-choice' | 'short-answer' | 'true-false';
-
-export default function QuizGeneratorPage() {
+export default function WorksheetCreatorPage() {
   const [topic, setTopic] = useState('');
+  const [gradeLevel, setGradeLevel] = useState(5);
   const [numQuestions, setNumQuestions] = useState(5);
-  const [quizType, setQuizType] = useState<QuizType>('multiple-choice');
-  const [quiz, setQuiz] = useState<GenerateQuizOutput | null>(null);
+  const [worksheet, setWorksheet] = useState<CreateWorksheetOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isAudioLoading, setIsAudioLoading] = useState<number | null>(null);
   const [audioSrc, setAudioSrc] = useState<string | null>(null);
@@ -52,22 +49,22 @@ export default function QuizGeneratorPage() {
     if (!topic.trim()) {
       toast({
         title: 'Topic is empty',
-        description: 'Please enter a topic for the quiz.',
+        description: 'Please enter a topic for the worksheet.',
         variant: 'destructive',
       });
       return;
     }
 
     setIsLoading(true);
-    setQuiz(null);
+    setWorksheet(null);
 
-    const result = await generateQuizAction({ topic, numQuestions, quizType });
+    const result = await createWorksheetAction({ topic, gradeLevel, numQuestions });
 
     if (result.success && result.data) {
-      setQuiz(result.data as GenerateQuizOutput);
+      setWorksheet(result.data as CreateWorksheetOutput);
     } else {
       toast({
-        title: 'Error Generating Quiz',
+        title: 'Error Generating Worksheet',
         description: result.error || 'An unknown error occurred.',
         variant: 'destructive',
       });
@@ -103,7 +100,7 @@ export default function QuizGeneratorPage() {
   };
   
   const renderQuestion = (q: any, index: number) => {
-    switch (quiz?.quizType) {
+    switch (q.type) {
         case 'multiple-choice':
             return (
                 <RadioGroup>
@@ -129,6 +126,7 @@ export default function QuizGeneratorPage() {
                 </RadioGroup>
             );
         case 'short-answer':
+        case 'fill-in-the-blank':
             return <Textarea placeholder="Type your answer here..." />;
         default:
             return null;
@@ -139,17 +137,17 @@ export default function QuizGeneratorPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold font-headline">Automated Quiz Generation</h1>
-        <p className="text-muted-foreground">Create quizzes on any topic in seconds.</p>
+        <h1 className="text-3xl font-bold font-headline">AI Worksheet Creator</h1>
+        <p className="text-muted-foreground">Generate worksheets with varied question types for any topic.</p>
       </div>
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 items-start">
         <Card>
           <CardHeader>
             <CardTitle className="font-headline flex items-center gap-2">
-              <Wand2 /> Quiz Settings
+              <Wand2 /> Worksheet Settings
             </CardTitle>
-            <CardDescription>Define the topic and format of your quiz.</CardDescription>
+            <CardDescription>Provide a topic and settings to create your worksheet.</CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -160,7 +158,7 @@ export default function QuizGeneratorPage() {
                     id="topic"
                     value={topic}
                     onChange={(e) => setTopic(e.target.value)}
-                    placeholder="e.g., The Solar System"
+                    placeholder="e.g., The Water Cycle"
                     className="flex-grow"
                   />
                   {speechRecognition.hasPermission && (
@@ -173,33 +171,31 @@ export default function QuizGeneratorPage() {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
+                    <Label htmlFor="gradeLevel">Grade Level</Label>
+                    <Input
+                        id="gradeLevel"
+                        type="number"
+                        value={gradeLevel}
+                        onChange={(e) => setGradeLevel(Number(e.target.value))}
+                        min="1"
+                        max="12"
+                    />
+                </div>
+                <div className="space-y-2">
                     <Label htmlFor="numQuestions">Number of Questions</Label>
                     <Input
                     id="numQuestions"
                     type="number"
                     value={numQuestions}
                     onChange={(e) => setNumQuestions(Number(e.target.value))}
-                    min="1"
+                    min="3"
                     max="20"
                     />
-                </div>
-                 <div className="space-y-2">
-                    <Label htmlFor="quizType">Question Type</Label>
-                    <Select value={quizType} onValueChange={(value: QuizType) => setQuizType(value)}>
-                        <SelectTrigger id="quizType">
-                            <SelectValue placeholder="Select type" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="multiple-choice">Multiple Choice</SelectItem>
-                            <SelectItem value="short-answer">Short Answer</SelectItem>
-                            <SelectItem value="true-false">True/False</SelectItem>
-                        </SelectContent>
-                    </Select>
                 </div>
               </div>
               <Button type="submit" disabled={isLoading} className="w-full">
                 {isLoading && <Loader2 className="mr-2 animate-spin" />}
-                {isLoading ? 'Generating Quiz...' : 'Generate Quiz'}
+                {isLoading ? 'Generating Worksheet...' : 'Generate Worksheet'}
               </Button>
             </form>
           </CardContent>
@@ -209,11 +205,11 @@ export default function QuizGeneratorPage() {
           <CardHeader>
             <CardTitle className="font-headline flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                    <FileText /> Generated Quiz
+                    <WorksheetIcon /> Generated Worksheet
                 </div>
-                {quiz && <Badge>{quiz.title}</Badge>}
+                {worksheet && <Badge>{worksheet.title}</Badge>}
             </CardTitle>
-            <CardDescription>Your quiz questions will appear here.</CardDescription>
+            <CardDescription>Your worksheet questions will appear here.</CardDescription>
           </CardHeader>
           <CardContent className="flex-grow">
             {isLoading && (
@@ -221,33 +217,24 @@ export default function QuizGeneratorPage() {
                 <Loader2 className="w-8 h-8 animate-spin text-primary" />
               </div>
             )}
-            {quiz && (
-              <div className="space-y-6 max-h-[60vh] overflow-y-auto pr-2">
-                {quiz.questions.map((q, index) => (
+            {worksheet && (
+              <div className="space-y-4 max-h-[60vh] overflow-y-auto pr-2">
+                {worksheet.questions.map((q, index) => (
                   <div key={index} className="p-4 border rounded-lg space-y-3">
                     <div className="flex items-start justify-between">
                       <p className="font-semibold flex-grow pr-2">{index + 1}. {q.question}</p>
-                      <Button
-                        size="icon"
-                        variant="ghost"
-                        onClick={() => handlePlayAudio(q.question, index)}
-                        disabled={isAudioLoading !== null}
-                      >
-                        {isAudioLoading === index ? <Loader2 className="animate-spin" /> : <Volume2 />}
-                        <span className="sr-only">Read question</span>
-                      </Button>
+                      <Badge variant="outline" className="text-xs">{q.type.replace('-', ' ')}</Badge>
                     </div>
                     <div>
                         {renderQuestion(q, index)}
                     </div>
                   </div>
                 ))}
-                {audioSrc && <audio src={audioSrc} autoPlay onEnded={() => setAudioSrc(null)} />}
               </div>
             )}
-            {!isLoading && !quiz && (
+            {!isLoading && !worksheet && (
               <div className="flex items-center justify-center h-full text-center text-muted-foreground p-8 border-2 border-dashed rounded-lg">
-                <p>Your generated quiz will be displayed here.</p>
+                <p>Your generated worksheet will be displayed here.</p>
               </div>
             )}
           </CardContent>
