@@ -15,9 +15,9 @@ import {
 } from './app-chatbot.types';
 import { menuItems } from '@/lib/menu-items';
 import { textbookData } from '@/lib/textbook-data';
-import { studentRoster } from '@/lib/student-roster';
 import { z } from 'genkit';
 import { searchYouTubeTool } from './search-youtube-videos';
+import type { Student } from '@/lib/firestore';
 
 
 const listAppFeaturesTool = ai.defineTool(
@@ -72,16 +72,17 @@ const getStudentInfoTool = ai.defineTool(
         name: 'getStudentInfo',
         description: "Retrieves information about a specific student from the roster.",
         inputSchema: z.object({
-            studentName: z.string().describe("The full name of the student to search for.")
+            studentName: z.string().describe("The full name of the student to search for."),
+            studentRoster: z.custom<Student[]>()
         }),
         outputSchema: z.object({
             name: z.string(),
             id: z.string()
         }).or(z.null())
     },
-    async ({ studentName }) => {
+    async ({ studentName, studentRoster }) => {
         const lowerCaseName = studentName.toLowerCase();
-        const student = studentRoster.getStudents().find(s => s.name.toLowerCase() === lowerCaseName);
+        const student = studentRoster.find(s => s.name.toLowerCase() === lowerCaseName);
         return student ? { name: student.name, id: student.id } : null;
     }
 );
@@ -94,6 +95,17 @@ const appChatbotFlow = ai.defineFlow(
     outputSchema: AppChatbotOutputSchema,
   },
   async (input) => {
+    
+    // Create a version of the tool that has studentRoster pre-filled.
+    const getStudentInfoToolForUser = ai.defineTool(
+        { ...getStudentInfoTool.config },
+        // @ts-ignore
+        async ({ studentName }) => {
+            return getStudentInfoTool.fn({ studentName, studentRoster: input.studentRoster });
+        }
+    );
+
+
     const llmResponse = await ai.generate({
         prompt: `You are a friendly and helpful chatbot assistant for the "Sahayak AI" application.
 Your goal is to answer user questions about the app, fetch resources, and help them navigate.
@@ -107,7 +119,7 @@ You have access to a set of tools to get information about the app's features, v
 
 User question: "${input.query}"`,
         model: 'googleai/gemini-2.0-flash',
-        tools: [listAppFeaturesTool, searchYouTubeTool, getTextbooksTool, getStudentInfoTool],
+        tools: [listAppFeaturesTool, searchYouTubeTool, getTextbooksTool, getStudentInfoToolForUser],
         toolConfig: { autoToolInference: true }
     });
   

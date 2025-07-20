@@ -12,7 +12,7 @@ import { Loader2, X, Plus, Wand2, User, Target, Activity, CheckCircle, HeartHand
 import type { CreateMentorshipPlanOutput } from "@/ai/flows/create-mentorship-plan.types";
 import { Separator } from "@/components/ui/separator";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import type { Student } from "@/lib/student-roster";
+import type { Student } from "@/lib/firestore";
 import { Textarea } from "@/components/ui/textarea";
 
 export default function MentoringPage() {

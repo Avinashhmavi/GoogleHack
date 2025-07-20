@@ -11,12 +11,12 @@ import {
     RecognizeStudentsInputSchema,
     RecognizeStudentsOutputSchema,
     type RecognizeStudentsInput,
-    type RecognizeStudentsOutput
+    type RecognizeStudentsOutput,
+    type RecognizeStudentsInputWithRoster
 } from './recognize-students.types';
-import { studentRoster } from '@/lib/student-roster';
 
 
-export async function recognizeStudents(input: RecognizeStudentsInput): Promise<RecognizeStudentsOutput> {
+export async function recognizeStudents(input: RecognizeStudentsInputWithRoster): Promise<RecognizeStudentsOutput> {
   return recognizeStudentsFlow(input);
 }
 
@@ -49,15 +49,7 @@ const recognizeStudentsFlow = ai.defineFlow(
     outputSchema: RecognizeStudentsOutputSchema,
   },
   async (input) => {
-    // In a real application, you would fetch this from a database.
-    // For this prototype, we import it from our mock DB file.
-    const roster = studentRoster.getStudents();
-    
-    const { output } = await prompt({
-      ...input,
-      // @ts-ignore - The prompt template can access this additional context
-      studentRoster: roster,
-    });
+    const { output } = await prompt(input);
     return output!;
   }
 );

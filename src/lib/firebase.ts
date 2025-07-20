@@ -2,6 +2,7 @@
 import { initializeApp, getApps, getApp, type FirebaseOptions } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
+import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig: FirebaseOptions = {
@@ -24,6 +25,7 @@ if (!firebaseConfig.apiKey) {
 }
 
 const auth = app ? getAuth(app) : null;
+const db = app ? getFirestore(app) : null;
 const googleProvider = app ? new GoogleAuthProvider() : null;
 const analytics = app && typeof window !== "undefined" ? getAnalytics(app) : null;
 
@@ -31,5 +33,9 @@ const analytics = app && typeof window !== "undefined" ? getAnalytics(app) : nul
 if (!auth) {
     console.error("Firebase Auth could not be initialized. Please check your Firebase config.");
 }
+if (!db) {
+    console.error("Firebase Firestore could not be initialized. Please check your Firebase config.");
+}
 
-export { app, auth, googleProvider, analytics };
+
+export { app, auth, db, googleProvider, analytics };

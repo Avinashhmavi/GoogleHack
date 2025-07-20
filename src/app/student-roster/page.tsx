@@ -10,7 +10,7 @@ import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { addStudentAction, getStudentsAction, deleteStudentAction } from '@/lib/actions';
 import { Loader2, Trash2, UserPlus, Upload, Users } from 'lucide-react';
-import type { Student } from '@/lib/student-roster';
+import type { Student } from '@/lib/firestore';
 
 export default function StudentRosterPage() {
   const [students, setStudents] = useState<Student[]>([]);
@@ -30,7 +30,7 @@ export default function StudentRosterPage() {
       if (result.success && result.data) {
         setStudents(result.data);
       } else {
-        toast({ title: "Error", description: "Could not load students.", variant: "destructive" });
+        toast({ title: "Error", description: result.error || "Could not load students.", variant: "destructive" });
       }
       setIsLoading(false);
     }
@@ -72,12 +72,16 @@ export default function StudentRosterPage() {
   };
   
   const handleDeleteStudent = async (id: string) => {
+    const originalStudents = [...students];
+    setStudents(students.filter(s => s.id !== id)); // Optimistic UI update
+    
     const result = await deleteStudentAction(id);
     if(result.success && result.data) {
-      setStudents(result.data);
       toast({ title: "Success", description: "Student removed." });
+      setStudents(result.data);
     } else {
        toast({ title: "Error", description: result.error || "Failed to remove student.", variant: "destructive" });
+       setStudents(originalStudents); // Revert on failure
     }
   };
 
@@ -90,7 +94,7 @@ export default function StudentRosterPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-        <div className="md:col-span-1 space-y-8">
+        <div className="md:col-span-1 space-y-8 md:sticky md:top-8">
             <Card>
                 <CardHeader>
                     <CardTitle className="font-headline flex items-center gap-2"><UserPlus /> Add New Student</CardTitle>
@@ -147,17 +151,20 @@ export default function StudentRosterPage() {
                         students.length > 0 ? (
                             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
                                 {students.map((student) => (
-                                <Card key={student.id} className="overflow-hidden">
+                                <Card key={student.id} className="overflow-hidden group">
                                     <CardContent className="p-0">
                                         <div className="relative aspect-square w-full">
                                           <Image src={student.photoDataUri} alt={`Photo of ${student.name}`} layout="fill" objectFit="cover" data-ai-hint="student portrait" />
+                                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                            <Button size="icon" variant="destructive" onClick={() => handleDeleteStudent(student.id)}>
+                                                <Trash2 className="h-4 w-4" />
+                                                <span className="sr-only">Delete {student.name}</span>
+                                            </Button>
+                                          </div>
                                         </div>
                                     </CardContent>
                                     <CardFooter className="p-2 flex-col items-start">
-                                        <p className="font-semibold w-full truncate">{student.name}</p>
-                                        <Button size="sm" variant="destructive" className="w-full mt-2" onClick={() => handleDeleteStudent(student.id)}>
-                                            <Trash2 className="mr-2 h-4 w-4" /> Delete
-                                        </Button>
+                                        <p className="font-semibold w-full truncate text-sm">{student.name}</p>
                                     </CardFooter>
                                 </Card>
                                 ))}

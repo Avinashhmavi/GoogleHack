@@ -77,13 +77,14 @@ import type { SearchYoutubeVideosInput } from "@/ai/flows/search-youtube-videos.
 import { createMentorshipPlan } from "@/ai/flows/create-mentorship-plan";
 import type { CreateMentorshipPlanInput } from "@/ai/flows/create-mentorship-plan.types";
 
+import { studentRoster as studentRosterDb, type Student } from "@/lib/firestore";
+import { getAuthenticatedUser } from "./auth";
 
-import { studentRoster } from "./student-roster";
-import type { Student } from "./student-roster";
 
 // Wrapper function to handle Genkit flow execution and error handling
 async function runAction<I, O>(action: (input: I) => Promise<O>, input: I, errorMsg: string): Promise<{ success: true, data: O } | { success: false, error: string }> {
     try {
+        await getAuthenticatedUser();
         const result = await action(input);
         return { success: true, data: result };
     } catch (error) {
@@ -129,7 +130,13 @@ export async function enhanceWritingAction(input: EnhanceWritingInput) {
 }
 
 export async function recognizeStudentsAction(input: RecognizeStudentsInput) {
-  return runAction(recognizeStudents, input, "Failed to recognize students.");
+  const user = await getAuthenticatedUser();
+  if (!user) return { success: false, error: "User not authenticated." };
+  
+  const studentRoster = await studentRosterDb.getStudents(user.uid);
+  const flowInput = { ...input, studentRoster };
+
+  return runAction(recognizeStudents, flowInput, "Failed to recognize students.");
 }
 
 export async function createLessonPlanAction(input: CreateLessonPlanInput) {
@@ -150,6 +157,7 @@ export async function askSahayakAction(input: AskSahayakInput) {
 
 export async function getTtsVoicesAction(languageCode: string) {
     try {
+        await getAuthenticatedUser();
         const result = await getTtsVoices(languageCode);
         return { success: true, data: result };
     } catch (error) {
@@ -168,7 +176,13 @@ export async function professionalDevelopmentAction(input: ProfessionalDevelopme
 }
 
 export async function appChatbotAction(input: AppChatbotInput) {
-    return runAction(appChatbot, input, "Failed to get a response from the chatbot.");
+    const user = await getAuthenticatedUser();
+    let studentRoster: Student[] = [];
+    if (user) {
+        studentRoster = await studentRosterDb.getStudents(user.uid);
+    }
+    const enrichedInput = { ...input, studentRoster };
+    return runAction(appChatbot, enrichedInput, "Failed to get a response from the chatbot.");
 }
 
 export async function createWorksheetAction(input: CreateWorksheetInput) {
@@ -186,33 +200,39 @@ export async function createMentorshipPlanAction(input: CreateMentorshipPlanInpu
 
 // Student Roster Actions
 export async function getStudentsAction() {
-  try {
-    const students = studentRoster.getStudents();
-    return { success: true, data: students };
-  } catch (error) {
-    const message = error instanceof Error ? error.message : "Failed to get students.";
-    return { success: false, error: message };
-  }
+    const user = await getAuthenticatedUser();
+    if (!user) return { success: false, error: "User not authenticated." };
+    try {
+        const students = await studentRosterDb.getStudents(user.uid);
+        return { success: true, data: students };
+    } catch (error) {
+        const message = error instanceof Error ? error.message : "Failed to get students.";
+        return { success: false, error: message };
+    }
 }
 
-export async function addStudentAction(student: Omit<Student, 'id'>) {
-  try {
-    studentRoster.addStudent(student);
-    const students = studentRoster.getStudents();
-    return { success: true, data: students };
-  } catch (error) {
-    const message = error instanceof Error ? error.message : "Failed to add student.";
-    return { success: false, error: message };
-  }
+export async function addStudentAction(student: Omit<Student, 'id' | 'uid'>) {
+    const user = await getAuthenticatedUser();
+    if (!user) return { success: false, error: "User not authenticated." };
+    try {
+        await studentRosterDb.addStudent(user.uid, student);
+        const students = await studentRosterDb.getStudents(user.uid);
+        return { success: true, data: students };
+    } catch (error) {
+        const message = error instanceof Error ? error.message : "Failed to add student.";
+        return { success: false, error: message };
+    }
 }
 
 export async function deleteStudentAction(id: string) {
-  try {
-    studentRoster.deleteStudent(id);
-    const students = studentRoster.getStudents();
-    return { success: true, data: students };
-  } catch (error) {
-    const message = error instanceof Error ? error.message : "Failed to delete student.";
-    return { success: false, error: message };
-  }
+    const user = await getAuthenticatedUser();
+    if (!user) return { success: false, error: "User not authenticated." };
+    try {
+        await studentRosterDb.deleteStudent(user.uid, id);
+        const students = await studentRosterDb.getStudents(user.uid);
+        return { success: true, data: students };
+    } catch (error) {
+        const message = error instanceof Error ? error.message : "Failed to delete student.";
+        return { success: false, error: message };
+    }
 }
