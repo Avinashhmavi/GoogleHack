@@ -69,7 +69,7 @@ export async function generateMultiLanguageAction(
   }
 }
 
-export async function photoToWorksheetAction(input: PhotoToWsomrksheetInput) {
+export async function photoToWorksheetAction(input: PhotoToWorksheetInput) {
   try {
     const result = await photoToWorksheet(input);
     return { success: true, data: result };
