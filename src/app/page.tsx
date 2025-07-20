@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, BarChart3, GraduationCap, Languages, QrCode, ScanLine } from "lucide-react";
+import { ArrowRight, BarChart3, GraduationCap, Languages, QrCode, ScanLine, FileQuestion, ClipboardCheck } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
@@ -33,6 +33,18 @@ const features = [
     description: 'Monitor student progress and generate reports.',
     href: '/grade-tracking',
     icon: <BarChart3 className="w-8 h-8 text-primary" />,
+  },
+  {
+    title: 'Quiz Generator',
+    description: 'Create quizzes on any topic in seconds with AI.',
+    href: '/quiz-generator',
+    icon: <FileQuestion className="w-8 h-8 text-primary" />,
+  },
+  {
+    title: 'Rubric Creator',
+    description: 'Generate detailed grading rubrics for assignments.',
+    href: '/rubric-creator',
+    icon: <ClipboardCheck className="w-8 h-8 text-primary" />,
   },
 ];
 

@@ -16,6 +16,18 @@ import {
   photoToWorksheet,
   type PhotoToWorksheetInput,
 } from "@/ai/flows/photo-to-worksheet";
+import {
+  generateQuiz,
+  type GenerateQuizInput,
+} from "@/ai/flows/generate-quiz";
+import {
+  createRubric,
+  type CreateRubricInput,
+} from "@/ai/flows/create-rubric";
+import {
+  textToSpeech,
+  type TextToSpeechInput,
+} from "@/ai/flows/text-to-speech";
 
 export async function adaptContentAction(input: AdaptContentGradeLevelInput) {
   try {
@@ -23,7 +35,8 @@ export async function adaptContentAction(input: AdaptContentGradeLevelInput) {
     return { success: true, data: result };
   } catch (error) {
     console.error(error);
-    return { success: false, error: "Failed to adapt content." };
+    const message = error instanceof Error ? error.message : "Failed to adapt content.";
+    return { success: false, error: message };
   }
 }
 
@@ -33,7 +46,8 @@ export async function generateQrCodeAction(input: GenerateAnswerKeyQrCodeInput) 
     return { success: true, data: result };
   } catch (error) {
     console.error(error);
-    return { success: false, error: "Failed to generate QR code." };
+    const message = error instanceof Error ? error.message : "Failed to generate QR code.";
+    return { success: false, error: message };
   }
 }
 
@@ -45,7 +59,8 @@ export async function generateMultiLanguageAction(
     return { success: true, data: result };
   } catch (error) {
     console.error(error);
-    return { success: false, error: "Failed to generate content." };
+    const message = error instanceof Error ? error.message : "Failed to generate content.";
+    return { success: false, error: message };
   }
 }
 
@@ -55,6 +70,40 @@ export async function photoToWorksheetAction(input: PhotoToWorksheetInput) {
     return { success: true, data: result };
   } catch (error) {
     console.error(error);
-    return { success: false, error: "Failed to generate worksheet." };
+    const message = error instanceof Error ? error.message : "Failed to generate worksheet.";
+    return { success: false, error: message };
   }
+}
+
+export async function generateQuizAction(input: GenerateQuizInput) {
+  try {
+    const result = await generateQuiz(input);
+    return { success: true, data: result };
+  } catch (error) {
+    console.error(error);
+    const message = error instanceof Error ? error.message : "Failed to generate quiz.";
+    return { success: false, error: message };
+  }
+}
+
+export async function createRubricAction(input: CreateRubricInput) {
+    try {
+        const result = await createRubric(input);
+        return { success: true, data: result };
+    } catch (error) {
+        console.error(error);
+        const message = error instanceof Error ? error.message : "Failed to create rubric.";
+        return { success: false, error: message };
+    }
+}
+
+export async function textToSpeechAction(input: TextToSpeechInput) {
+    try {
+        const result = await textToSpeech(input);
+        return { success: true, data: result };
+    } catch (error) {
+        console.error(error);
+        const message = error instanceof Error ? error.message : "Failed to convert text to speech.";
+        return { success: false, error: message };
+    }
 }

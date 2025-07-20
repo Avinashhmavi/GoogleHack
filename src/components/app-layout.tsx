@@ -22,6 +22,8 @@ import {
   LayoutDashboard,
   BarChart3,
   BookOpen,
+  FileQuestion,
+  ClipboardCheck,
 } from 'lucide-react';
 
 const menuItems = [
@@ -31,6 +33,8 @@ const menuItems = [
   { href: '/content-adaptation', label: 'Content Adaptation', icon: GraduationCap },
   { href: '/qr-code-generator', label: 'QR Code Generator', icon: QrCode },
   { href: '/grade-tracking', label: 'Grade Tracking', icon: BarChart3 },
+  { href: '/quiz-generator', label: 'Quiz Generator', icon: FileQuestion },
+  { href: '/rubric-creator', label: 'Rubric Creator', icon: ClipboardCheck },
 ];
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
