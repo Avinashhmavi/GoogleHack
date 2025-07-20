@@ -107,7 +107,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <SidebarProvider>
-      <Sidebar>
+      <Sidebar variant="floating" collapsible="icon">
         <SidebarHeader className="p-4">
           <div className="flex items-center gap-2">
             <BookOpen className="w-8 h-8 text-primary" />
