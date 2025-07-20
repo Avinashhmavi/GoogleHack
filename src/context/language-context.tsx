@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
@@ -8,8 +9,9 @@ import hi from "@/locales/hi.json";
 import bn from "@/locales/bn.json";
 import ta from "@/locales/ta.json";
 import te from "@/locales/te.json";
+import kn from "@/locales/kn.json";
 
-type Language = "en" | "es" | "fr" | "hi" | "bn" | "ta" | "te";
+type Language = "en" | "es" | "fr" | "hi" | "bn" | "ta" | "te" | "kn";
 
 type Translations = {
   [key: string]: string;
@@ -22,7 +24,7 @@ type LanguageContextType = {
   t: (key: string) => string;
 };
 
-const translationsMap = { en, es, fr, hi, bn, ta, te };
+const translationsMap = { en, es, fr, hi, bn, ta, te, kn };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 

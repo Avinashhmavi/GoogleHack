@@ -4,7 +4,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
@@ -13,21 +12,39 @@ import { Loader2, Languages, BookOpen, GraduationCap, Wand2 } from "lucide-react
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
+import { MultiSelect, type MultiSelectOption } from "@/components/ui/multi-select";
 
 
 type ContentMap = { [key: string]: string };
+
+const languageOptions: MultiSelectOption[] = [
+    { value: "en", label: "English" },
+    { value: "es", label: "Spanish" },
+    { value: "fr", label: "French" },
+    { value: "hi", label: "Hindi" },
+    { value: "bn", label: "Bengali" },
+    { value: "ta", label: "Tamil" },
+    { value: "te", label: "Telugu" },
+    { value: "kn", label: "Kannada" },
+];
 
 export default function ContentCreatorPage() {
   const [contentType, setContentType] = useState("story");
   const [prompt, setPrompt] = useState("");
   const [gradeLevel, setGradeLevel] = useState(5);
-  const [languages, setLanguages] = useState("en,es,fr");
+  const [selectedLanguages, setSelectedLanguages] = useState<MultiSelectOption[]>([
+      { value: "en", label: "English" },
+      { value: "es", label: "Spanish" },
+  ]);
   const [generatedContent, setGeneratedContent] = useState<ContentMap | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+
+    const languages = selectedLanguages.map(lang => lang.value).join(',');
+
     if (!prompt.trim() || !languages.trim() || !contentType.trim()) {
       toast({
         title: "Missing Information",
@@ -114,13 +131,13 @@ export default function ContentCreatorPage() {
 
               <div className="space-y-2">
                 <Label htmlFor="languages">Languages</Label>
-                <Input
-                  id="languages"
-                  value={languages}
-                  onChange={(e) => setLanguages(e.target.value)}
-                  placeholder="e.g., en,es,fr,de"
+                <MultiSelect 
+                    options={languageOptions}
+                    selected={selectedLanguages}
+                    onChange={setSelectedLanguages}
+                    placeholder="Select languages..."
                 />
-                <p className="text-xs text-muted-foreground">Enter comma-separated ISO 639-1 language codes.</p>
+                <p className="text-xs text-muted-foreground">Select one or more languages for content generation.</p>
               </div>
               <Button type="submit" disabled={isLoading} className="w-full">
                 {isLoading && <Loader2 className="mr-2 animate-spin" />}

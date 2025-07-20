@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useLanguage } from "@/context/language-context";
@@ -19,6 +20,7 @@ export function LanguageSelector() {
     { value: "bn", label: "বাংলা" }, // Bengali
     { value: "ta", label: "தமிழ்" }, // Tamil
     { value: "te", label: "తెలుగు" }, // Telugu
+    { value: "kn", label: "ಕನ್ನಡ" }, // Kannada
   ];
 
   return (
