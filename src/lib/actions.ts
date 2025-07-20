@@ -60,6 +60,10 @@ import {
   createPresentation
 } from "@/ai/flows/create-presentation";
 import type { CreatePresentationInput } from "@/ai/flows/create-presentation.types";
+import {
+  getProfessionalDevelopmentPlan
+} from "@/ai/flows/teacher-pd";
+import type { ProfessionalDevelopmentInput } from "@/ai/flows/teacher-pd.types";
 
 import { studentRoster } from "./student-roster";
 import type { Student } from "./student-roster";
@@ -144,6 +148,10 @@ export async function getTtsVoicesAction(languageCode: string) {
 
 export async function createPresentationAction(input: CreatePresentationInput) {
     return runAction(createPresentation, input, "Failed to generate presentation.");
+}
+
+export async function professionalDevelopmentAction(input: ProfessionalDevelopmentInput) {
+    return runAction(getProfessionalDevelopmentPlan, input, "Failed to generate professional development plan.");
 }
 
 

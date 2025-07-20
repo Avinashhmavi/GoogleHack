@@ -81,5 +81,21 @@
     "textbooks_description": "Navegue y lea libros de texto digitales para diversas materias y grados.",
     "filterTextbooks_title": "Filtrar libros de texto",
     "filterTextbooks_description": "Seleccione un grado y una materia para encontrar libros de texto relevantes.",
-    "noTextbooksFound_text": "No se encontraron libros de texto para los filtros seleccionados."
+    "noTextbooksFound_text": "No se encontraron libros de texto para los filtros seleccionados.",
+    "teacherPD_title": "Desarrollo Profesional Docente",
+    "teacherPD_dashboard_desc": "Obtenga planes y recursos guiados por IA para aprender nuevas habilidades de enseñanza.",
+    "teacherPD_description": "Defina un objetivo de aprendizaje y obtenga un plan de desarrollo personalizado con recursos.",
+    "pd_cardTitle": "Plan de Desarrollo Profesional",
+    "pd_cardDescription": "¿Qué nueva habilidad o tema le gustaría dominar?",
+    "pd_goal_label": "Objetivo de Aprendizaje",
+    "pd_goal_placeholder": "p. ej., 'Técnicas de gestión del aula para clases grandes'",
+    "pd_submit_button": "Crear Mi Plan",
+    "pd_generating_plan": "Generando su plan de desarrollo...",
+    "pd_generating_desc": "Esto podría tomar un momento.",
+    "pd_concepts_title": "Conceptos Clave",
+    "pd_strategies_title": "Estrategias Accionables",
+    "pd_watch_on_youtube": "Ver en YouTube",
+    "pd_error_noGoal_title": "El Objetivo de Aprendizaje está vacío",
+    "pd_error_noGoal_desc": "Por favor, ingrese un objetivo para generar un plan.",
+    "pd_error_generic": "No se pudo generar un plan de desarrollo profesional."
 }

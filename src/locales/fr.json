@@ -81,5 +81,21 @@
     "textbooks_description": "Parcourez et lisez des manuels numériques pour diverses matières et niveaux.",
     "filterTextbooks_title": "Filtrer les manuels",
     "filterTextbooks_description": "Sélectionnez un niveau et une matière pour trouver des manuels pertinents.",
-    "noTextbooksFound_text": "Aucun manuel trouvé pour les filtres sélectionnés."
+    "noTextbooksFound_text": "Aucun manuel trouvé pour les filtres sélectionnés.",
+    "teacherPD_title": "Développement Professionnel des Enseignants",
+    "teacherPD_dashboard_desc": "Obtenez des plans et des ressources guidés par l'IA pour acquérir de nouvelles compétences pédagogiques.",
+    "teacherPD_description": "Définissez un objectif d'apprentissage et obtenez un plan de développement personnalisé avec des ressources.",
+    "pd_cardTitle": "Plan de Développement Professionnel",
+    "pd_cardDescription": "Quelle nouvelle compétence ou quel nouveau sujet souhaitez-vous maîtriser ?",
+    "pd_goal_label": "Objectif d'Apprentissage",
+    "pd_goal_placeholder": "p. ex., 'Techniques de gestion de classe pour les grandes classes'",
+    "pd_submit_button": "Créer Mon Plan",
+    "pd_generating_plan": "Génération de votre plan de développement...",
+    "pd_generating_desc": "Cela peut prendre un moment.",
+    "pd_concepts_title": "Concepts Clés",
+    "pd_strategies_title": "Stratégies Concrètes",
+    "pd_watch_on_youtube": "Regarder sur YouTube",
+    "pd_error_noGoal_title": "L'objectif d'apprentissage est vide",
+    "pd_error_noGoal_desc": "Veuillez saisir un objectif pour générer un plan.",
+    "pd_error_generic": "Échec de la génération d'un plan de développement professionnel."
 }

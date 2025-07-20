@@ -98,5 +98,21 @@
     "textbooks_description": "Browse and read digital textbooks for various subjects and grades.",
     "filterTextbooks_title": "Filter Textbooks",
     "filterTextbooks_description": "Select a grade and subject to find relevant textbooks.",
-    "noTextbooksFound_text": "No textbooks found for the selected filters."
+    "noTextbooksFound_text": "No textbooks found for the selected filters.",
+    "teacherPD_title": "Teacher Professional Development",
+    "teacherPD_dashboard_desc": "Get AI-guided plans and resources to learn new teaching skills.",
+    "teacherPD_description": "Define a learning goal and get a customized development plan with resources.",
+    "pd_cardTitle": "Professional Development Plan",
+    "pd_cardDescription": "What new skill or topic would you like to master?",
+    "pd_goal_label": "Learning Goal",
+    "pd_goal_placeholder": "e.g., 'Classroom management techniques for large classes'",
+    "pd_submit_button": "Create My Plan",
+    "pd_generating_plan": "Generating your development plan...",
+    "pd_generating_desc": "This might take a moment.",
+    "pd_concepts_title": "Key Concepts",
+    "pd_strategies_title": "Actionable Strategies",
+    "pd_watch_on_youtube": "Watch on YouTube",
+    "pd_error_noGoal_title": "Learning Goal is Empty",
+    "pd_error_noGoal_desc": "Please enter a goal to generate a plan.",
+    "pd_error_generic": "Failed to generate a professional development plan."
 }
