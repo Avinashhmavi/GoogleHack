@@ -72,6 +72,8 @@ import {
   createWorksheet,
 } from "@/ai/flows/create-worksheet";
 import type { CreateWorksheetInput } from "@/ai/flows/create-worksheet.types";
+import { searchYoutubeVideos } from "@/ai/flows/search-youtube-videos";
+import type { SearchYoutubeVideosInput } from "@/ai/flows/search-youtube-videos.types";
 
 
 import { studentRoster } from "./student-roster";
@@ -170,6 +172,11 @@ export async function appChatbotAction(input: AppChatbotInput) {
 export async function createWorksheetAction(input: CreateWorksheetInput) {
   return runAction(createWorksheet, input, "Failed to create worksheet.");
 }
+
+export async function searchYoutubeVideosAction(input: SearchYoutubeVideosInput) {
+  return runAction(searchYoutubeVideos, input, "Failed to search for YouTube videos.");
+}
+
 
 // Student Roster Actions
 export async function getStudentsAction() {

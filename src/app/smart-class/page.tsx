@@ -5,12 +5,15 @@ import { useState, useMemo } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { videoData, type Video } from "@/lib/smart-class-data";
-import { School, Filter, Book, BarChart2, UploadCloud, Video as VideoIcon } from "lucide-react";
+import { School, Filter, Book, BarChart2, UploadCloud, Video as VideoIcon, Wand2, Loader2 } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { useLanguage } from "@/context/language-context";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
+import { searchYoutubeVideosAction } from "@/lib/actions";
+import type { YouTubeVideo } from "@/ai/flows/search-youtube-videos.types";
 
 type UploadedVideo = {
   name: string;
@@ -178,6 +181,135 @@ function ClassRecordings() {
   );
 }
 
+function AIVideoSearch() {
+  const [grade, setGrade] = useState("");
+  const [subject, setSubject] = useState("");
+  const [topic, setTopic] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [results, setResults] = useState<YouTubeVideo[]>([]);
+  const { toast } = useToast();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!topic.trim() || !grade || !subject) {
+      toast({
+        title: "Missing Information",
+        description: "Please select a grade, subject, and enter a topic.",
+        variant: "destructive",
+      });
+      return;
+    }
+    setIsLoading(true);
+    setResults([]);
+    
+    const actionResult = await searchYoutubeVideosAction({ grade, subject, topic });
+    if(actionResult.success) {
+      setResults(actionResult.data.videos);
+    } else {
+      toast({
+        title: "AI Search Failed",
+        description: actionResult.error,
+        variant: "destructive"
+      });
+    }
+
+    setIsLoading(false);
+  };
+  
+  const subjects = ['Math', 'Science', 'English', 'History', 'Physics', 'Chemistry', 'Biology'];
+  const grades = Array.from({ length: 12 }, (_, i) => (i + 1).toString());
+
+
+  return (
+    <div className="space-y-8">
+      <Card>
+        <CardHeader>
+          <CardTitle className="font-headline flex items-center gap-2">
+            <Wand2 /> AI Video Search
+          </CardTitle>
+          <CardDescription>
+            Let AI find the best educational videos on YouTube for your specific needs.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="ai-grade">Grade</Label>
+                <Select value={grade} onValueChange={setGrade}>
+                  <SelectTrigger id="ai-grade">
+                    <SelectValue placeholder="Select Grade" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {grades.map(g => <SelectItem key={g} value={g}>Grade {g}</SelectItem>)}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="ai-subject">Subject</Label>
+                <Select value={subject} onValueChange={setSubject}>
+                  <SelectTrigger id="ai-subject">
+                    <SelectValue placeholder="Select Subject" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {subjects.map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="ai-topic">Topic</Label>
+                <Input id="ai-topic" value={topic} onChange={e => setTopic(e.target.value)} placeholder="e.g., Photosynthesis" />
+              </div>
+            </div>
+            <Button type="submit" className="w-full md:w-auto" disabled={isLoading}>
+              {isLoading ? <Loader2 className="mr-2 animate-spin" /> : <Wand2 className="mr-2" />}
+              Search with AI
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
+      
+      {isLoading && (
+        <div className="flex justify-center items-center py-16">
+          <Loader2 className="w-12 h-12 animate-spin text-primary" />
+        </div>
+      )}
+
+      {results.length > 0 && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {results.map(video => (
+            <Card key={video.id} className="overflow-hidden flex flex-col">
+              <div className="relative w-full aspect-video">
+                <iframe
+                  src={`https://www.youtube.com/embed/${video.id}`}
+                  title={video.title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="absolute top-0 left-0 w-full h-full"
+                ></iframe>
+              </div>
+              <CardHeader>
+                <CardTitle className="font-headline text-lg">{video.title}</CardTitle>
+                <CardDescription>
+                  Published by {video.channelTitle}
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          ))}
+        </div>
+      )}
+      
+       {!isLoading && results.length === 0 && (
+          <div className="text-center text-muted-foreground py-16">
+              <p>AI search results will appear here.</p>
+          </div>
+      )}
+
+    </div>
+  );
+}
+
 
 export default function SmartClassPage() {
   const { t } = useLanguage();
@@ -192,12 +324,16 @@ export default function SmartClassPage() {
       </div>
 
       <Tabs defaultValue="library" className="w-full">
-        <TabsList className="grid w-full grid-cols-2">
+        <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="library">YouTube Library</TabsTrigger>
+          <TabsTrigger value="ai_search">AI Video Search</TabsTrigger>
           <TabsTrigger value="recordings">My Class Recordings</TabsTrigger>
         </TabsList>
         <TabsContent value="library" className="mt-6">
           <YouTubeLibrary />
+        </TabsContent>
+        <TabsContent value="ai_search" className="mt-6">
+          <AIVideoSearch />
         </TabsContent>
         <TabsContent value="recordings" className="mt-6">
           <ClassRecordings />
