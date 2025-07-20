@@ -10,7 +10,7 @@
 import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
 
-export const EnhanceWritingInputSchema = z.object({
+const EnhanceWritingInputSchema = z.object({
   text: z.string().describe('The text to be analyzed and enhanced.'),
 });
 export type EnhanceWritingInput = z.infer<typeof EnhanceWritingInputSchema>;
@@ -21,7 +21,7 @@ const SuggestionSchema = z.object({
     explanation: z.string().describe('An explanation of why the suggestion is better (e.g., "Improves clarity", "Corrects grammar").'),
 });
 
-export const EnhanceWritingOutputSchema = z.object({
+const EnhanceWritingOutputSchema = z.object({
   correctedText: z.string().describe('The full text with all direct spelling and grammar errors corrected.'),
   suggestions: z.array(SuggestionSchema).describe('A list of suggestions for improving the style, clarity, or flow of the text.'),
 });
