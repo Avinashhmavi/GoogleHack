@@ -48,7 +48,7 @@ import type { GenerateDiscussionInput } from "@/ai/flows/generate-discussion.typ
 import {
   generateVisualAid
 } from "@/ai/flows/generate-visual-aid";
-import type { GenerateVisualAidInput } from "@/ai/flows/generate-visual-aid";
+import type { GenerateVisualAidInput } from "@/ai/flows/generate-visual-aid.types";
 import {
   askSahayak
 } from "@/ai/flows/ask-sahayak";

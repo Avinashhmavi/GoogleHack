@@ -17,4 +17,10 @@ import '@/ai/flows/generate-visual-aid.ts';
 import '@/ai/flows/ask-sahayak.ts';
 import '@/ai/flows/get-tts-voices.ts';
 import '@/ai/flows/create-presentation.ts';
-
+import '@/ai/flows/generate-visual-aid.types.ts';
+import '@/ai/flows/recognize-students.types.ts';
+import '@/ai/flows/generate-localized-content.types.ts';
+import '@/ai/flows/enhance-writing.types.ts';
+import '@/ai/flows/create-presentation.types.ts';
+import '@/ai/flows/create-lesson-plan.types.ts';
+import '@/ai/flows/generate-discussion.types.ts';
