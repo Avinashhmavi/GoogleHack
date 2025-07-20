@@ -8,6 +8,7 @@ import { recognizeStudentsAction } from "@/lib/actions";
 import { Loader2, Camera, Users, ListChecks } from "lucide-react";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
+import { useLanguage } from "@/context/language-context";
 
 export default function AttendancePage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -16,6 +17,7 @@ export default function AttendancePage() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { toast } = useToast();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const getCameraPermission = async () => {
@@ -30,13 +32,13 @@ export default function AttendancePage() {
         setHasCameraPermission(false);
         toast({
           variant: "destructive",
-          title: "Camera Access Denied",
-          description: "Please enable camera permissions in your browser settings to use this feature.",
+          title: t('cameraAccessDenied_title'),
+          description: t('cameraAccessDenied_description'),
         });
       }
     };
     getCameraPermission();
-  }, [toast]);
+  }, [toast, t]);
 
   const handleTakeAttendance = async () => {
     if (!videoRef.current || !canvasRef.current) return;
@@ -59,8 +61,8 @@ export default function AttendancePage() {
       setPresentStudents(result.data.presentStudents);
     } else {
       toast({
-        title: "Error Recognizing Students",
-        description: result.error || "Could not process the image.",
+        title: t('errorRecognizingStudents_title'),
+        description: result.error || t('errorRecognizingStudents_description'),
         variant: "destructive",
       });
     }
@@ -71,15 +73,15 @@ export default function AttendancePage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold font-headline">Face Recognition Attendance</h1>
-        <p className="text-muted-foreground">Automatically take class attendance using the camera.</p>
+        <h1 className="text-3xl font-bold font-headline">{t('pageHeader_attendance')}</h1>
+        <p className="text-muted-foreground">{t('pageDescription_attendance')}</p>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <Card>
           <CardHeader>
-            <CardTitle className="font-headline flex items-center gap-2"><Camera /> Camera View</CardTitle>
-            <CardDescription>Position the camera to see all students clearly.</CardDescription>
+            <CardTitle className="font-headline flex items-center gap-2"><Camera /> {t('cameraView_title')}</CardTitle>
+            <CardDescription>{t('cameraView_description')}</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="relative w-full aspect-video bg-secondary rounded-md overflow-hidden">
@@ -89,9 +91,9 @@ export default function AttendancePage() {
             
             {hasCameraPermission === false && (
                 <Alert variant="destructive">
-                  <AlertTitle>Camera Access Required</AlertTitle>
+                  <AlertTitle>{t('cameraAccessRequired_title')}</AlertTitle>
                   <AlertDescription>
-                    Please allow camera access in your browser to use this feature.
+                    {t('cameraAccessRequired_description')}
                   </AlertDescription>
                 </Alert>
             )}
@@ -103,9 +105,9 @@ export default function AttendancePage() {
               size="lg"
             >
               {isLoading ? (
-                <><Loader2 className="mr-2 animate-spin" /> Analyzing...</>
+                <><Loader2 className="mr-2 animate-spin" /> {t('analyzing_button')}</>
               ) : (
-                <><Users className="mr-2" /> Take Attendance</>
+                <><Users className="mr-2" /> {t('takeAttendance_button')}</>
               )}
             </Button>
           </CardContent>
@@ -113,8 +115,8 @@ export default function AttendancePage() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="font-headline flex items-center gap-2"><ListChecks /> Attendance List</CardTitle>
-            <CardDescription>The list of recognized students will appear here.</CardDescription>
+            <CardTitle className="font-headline flex items-center gap-2"><ListChecks /> {t('attendanceList_title')}</CardTitle>
+            <CardDescription>{t('attendanceList_description')}</CardDescription>
           </CardHeader>
           <CardContent>
             {isLoading && (
@@ -124,7 +126,7 @@ export default function AttendancePage() {
             )}
             {presentStudents !== null && (
                 <div>
-                    <h3 className="font-semibold">{presentStudents.length} students present</h3>
+                    <h3 className="font-semibold">{presentStudents.length} {t('studentsPresent_text')}</h3>
                     <Separator className="my-4" />
                     {presentStudents.length > 0 ? (
                         <ul className="space-y-2">
@@ -133,13 +135,13 @@ export default function AttendancePage() {
                             ))}
                         </ul>
                     ) : (
-                        <p className="text-muted-foreground">No known students were recognized in the photo.</p>
+                        <p className="text-muted-foreground">{t('noStudentsRecognized_text')}</p>
                     )}
                 </div>
             )}
              {!isLoading && presentStudents === null && (
               <div className="flex items-center justify-center h-full text-center text-muted-foreground p-8 border-2 border-dashed rounded-lg">
-                <p>Attendance results will be shown here.</p>
+                <p>{t('attendanceResultsPlaceholder')}</p>
               </div>
             )}
           </CardContent>

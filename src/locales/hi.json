@@ -25,5 +25,22 @@
     "generating_button": "बनाया जा रहा है...",
     "generatedWorksheet_title": "बनाई गई वर्कशीट",
     "generatedWorksheet_description": "बनाए गए प्रश्न यहाँ दिखाई देंगे।",
-    "worksheetPlaceholder": "आपकी वर्कशीट बनने के बाद यहाँ प्रदर्शित की जाएगी।"
+    "worksheetPlaceholder": "आपकी वर्कशीट बनने के बाद यहाँ प्रदर्शित की जाएगी।",
+    "pageHeader_attendance": "चेहरे की पहचान से उपस्थिति",
+    "pageDescription_attendance": "कैमरे का उपयोग करके स्वचालित रूप से कक्षा की उपस्थिति लें।",
+    "cameraView_title": "कैमरा व्यू",
+    "cameraView_description": "सभी छात्रों को स्पष्ट रूप से देखने के लिए कैमरे की स्थिति बनाएं।",
+    "cameraAccessDenied_title": "कैमरा एक्सेस अस्वीकृत",
+    "cameraAccessDenied_description": "इस सुविधा का उपयोग करने के लिए कृपया अपने ब्राउज़र सेटिंग्स में कैमरा अनुमतियों को सक्षम करें।",
+    "cameraAccessRequired_title": "कैमरा एक्सेस आवश्यक है",
+    "cameraAccessRequired_description": "इस सुविधा का उपयोग करने के लिए कृपया अपने ब्राउज़र में कैमरा एक्सेस की अनुमति दें।",
+    "analyzing_button": "विश्लेषण हो रहा है...",
+    "takeAttendance_button": "उपस्थिति लें",
+    "errorRecognizingStudents_title": "छात्रों को पहचानने में त्रुटि",
+    "errorRecognizingStudents_description": "छवि को संसाधित नहीं किया जा सका।",
+    "attendanceList_title": "उपस्थिति सूची",
+    "attendanceList_description": "पहचाने गए छात्रों की सूची यहां दिखाई देगी।",
+    "studentsPresent_text": "छात्र उपस्थित",
+    "noStudentsRecognized_text": "फोटो में कोई ज्ञात छात्र नहीं पहचाना गया।",
+    "attendanceResultsPlaceholder": "उपस्थिति परिणाम यहां दिखाए जाएंगे।"
 }

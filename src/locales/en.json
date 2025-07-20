@@ -24,5 +24,22 @@
     "generating_button": "Generating...",
     "generatedWorksheet_title": "Generated Worksheet",
     "generatedWorksheet_description": "The generated questions will appear here.",
-    "worksheetPlaceholder": "Your worksheet will be displayed here once generated."
+    "worksheetPlaceholder": "Your worksheet will be displayed here once generated.",
+    "pageHeader_attendance": "Face Recognition Attendance",
+    "pageDescription_attendance": "Automatically take class attendance using the camera.",
+    "cameraView_title": "Camera View",
+    "cameraView_description": "Position the camera to see all students clearly.",
+    "cameraAccessDenied_title": "Camera Access Denied",
+    "cameraAccessDenied_description": "Please enable camera permissions in your browser settings to use this feature.",
+    "cameraAccessRequired_title": "Camera Access Required",
+    "cameraAccessRequired_description": "Please allow camera access in your browser to use this feature.",
+    "analyzing_button": "Analyzing...",
+    "takeAttendance_button": "Take Attendance",
+    "errorRecognizingStudents_title": "Error Recognizing Students",
+    "errorRecognizingStudents_description": "Could not process the image.",
+    "attendanceList_title": "Attendance List",
+    "attendanceList_description": "The list of recognized students will appear here.",
+    "studentsPresent_text": "students present",
+    "noStudentsRecognized_text": "No known students were recognized in the photo.",
+    "attendanceResultsPlaceholder": "Attendance results will be shown here."
 }
