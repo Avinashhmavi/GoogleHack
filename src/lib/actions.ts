@@ -28,6 +28,7 @@ import type { CreateRubricInput } from "@/ai/flows/create-rubric";
 import {
   textToSpeech,
 } from "@/ai/flows/text-to-speech";
+import type { TextToSpeechInput } from "@/ai/flows/text-to-speech";
 import {
   enhanceWriting,
 } from "@/ai/flows/enhance-writing";
@@ -48,140 +49,91 @@ import {
   generateVisualAid
 } from "@/ai/flows/generate-visual-aid";
 import type { GenerateVisualAidInput } from "@/ai/flows/generate-visual-aid";
+import {
+  askSahayak
+} from "@/ai/flows/ask-sahayak";
+import type { AskSahayakInput } from "@/ai/flows/ask-sahayak";
+import {
+  getTtsVoices
+} from "@/ai/flows/get-tts-voices";
 
 import { studentRoster } from "./student-roster";
 import type { Student } from "./student-roster";
 
+// Wrapper function to handle Genkit flow execution and error handling
+async function runAction<I, O>(action: (input: I) => Promise<O>, input: I, errorMsg: string): Promise<{ success: true, data: O } | { success: false, error: string }> {
+    try {
+        const result = await action(input);
+        return { success: true, data: result };
+    } catch (error) {
+        console.error(error);
+        const message = error instanceof Error ? error.message : errorMsg;
+        return { success: false, error: message };
+    }
+}
+
+
 export async function adaptContentAction(input: AdaptContentGradeLevelInput) {
-  try {
-    const result = await adaptContentGradeLevel(input);
-    return { success: true, data: result };
-  } catch (error) {
-    console.error(error);
-    const message = error instanceof Error ? error.message : "Failed to adapt content.";
-    return { success: false, error: message };
-  }
+  return runAction(adaptContentGradeLevel, input, "Failed to adapt content.");
 }
 
 export async function generateQrCodeAction(input: GenerateAnswerKeyQrCodeInput) {
-  try {
-    const result = await generateAnswerKeyQrCode(input);
-    return { success: true, data: result };
-  } catch (error) {
-    console.error(error);
-    const message = error instanceof Error ? error.message : "Failed to generate QR code.";
-    return { success: false, error: message };
-  }
+  return runAction(generateAnswerKeyQrCode, input, "Failed to generate QR code.");
 }
 
 export async function generateLocalizedContentAction(
   input: GenerateLocalizedContentInput
 ) {
-  try {
-    const result = await generateLocalizedContent(input);
-    return { success: true, data: result };
-  } catch (error) {
-    console.error(error);
-    const message = error instanceof Error ? error.message : "Failed to generate content.";
-    return { success: false, error: message };
-  }
+  return runAction(generateLocalizedContent, input, "Failed to generate content.");
 }
 
 export async function photoToWorksheetAction(input: PhotoToWorksheetInput) {
-  try {
-    const result = await photoToWorksheet(input);
-    return { success: true, data: result };
-  } catch (error) {
-    console.error(error);
-    const message = error instanceof Error ? error.message : "Failed to generate worksheet.";
-    return { success: false, error: message };
-  }
+  return runAction(photoToWorksheet, input, "Failed to generate worksheet.");
 }
 
 export async function generateQuizAction(input: GenerateQuizInput) {
-  try {
-    const result = await generateQuiz(input);
-    return { success: true, data: result };
-  } catch (error) {
-    console.error(error);
-    const message = error instanceof Error ? error.message : "Failed to generate quiz.";
-    return { success: false, error: message };
-  }
+  return runAction(generateQuiz, input, "Failed to generate quiz.");
 }
 
 export async function createRubricAction(input: CreateRubricInput) {
-    try {
-        const result = await createRubric(input);
-        return { success: true, data: result };
-    } catch (error) {
-        console.error(error);
-        const message = error instanceof Error ? error.message : "Failed to create rubric.";
-        return { success: false, error: message };
-    }
+    return runAction(createRubric, input, "Failed to create rubric.");
 }
 
-export async function textToSpeechAction(input: { text: string }) {
-    try {
-        const result = await textToSpeech(input);
-        return { success: true, data: result };
-    } catch (error) {
-        console.error(error);
-        const message = error instanceof Error ? error.message : "Failed to convert text to speech.";
-        return { success: false, error: message };
-    }
+export async function textToSpeechAction(input: TextToSpeechInput) {
+    return runAction(textToSpeech, input, "Failed to convert text to speech.");
 }
 
 export async function enhanceWritingAction(input: EnhanceWritingInput) {
-  try {
-    const result = await enhanceWriting(input);
-    return { success: true, data: result };
-  } catch (error) {
-    console.error(error);
-    const message = error instanceof Error ? error.message : "Failed to enhance writing.";
-    return { success: false, error: message };
-  }
+  return runAction(enhanceWriting, input, "Failed to enhance writing.");
 }
 
 export async function recognizeStudentsAction(input: RecognizeStudentsInput) {
-  try {
-    const result = await recognizeStudents(input);
-    return { success: true, data: result };
-  } catch (error) {
-    console.error(error);
-    const message = error instanceof Error ? error.message : "Failed to recognize students.";
-    return { success: false, error: message };
-  }
+  return runAction(recognizeStudents, input, "Failed to recognize students.");
 }
 
 export async function createLessonPlanAction(input: CreateLessonPlanInput) {
-  try {
-    const result = await createLessonPlan(input);
-    return { success: true, data: result };
-  } catch (error) {
-    console.error(error);
-    const message = error instanceof Error ? error.message : "Failed to generate lesson plan.";
-    return { success: false, error: message };
-  }
+  return runAction(createLessonPlan, input, "Failed to generate lesson plan.");
 }
 
 export async function generateDiscussionAction(input: GenerateDiscussionInput) {
-  try {
-    const result = await generateDiscussion(input);
-    return { success: true, data: result };
-  } catch (error) {
-    console.error(error);
-    const message = error instanceof Error ? error.message : "Failed to generate discussion materials.";
-    return { success: false, error: message };
-  }
+  return runAction(generateDiscussion, input, "Failed to generate discussion materials.");
 }
 
 export async function generateVisualAidAction(input: GenerateVisualAidInput) {
+    return runAction(generateVisualAid, input, "Failed to generate visual aid.");
+}
+
+export async function askSahayakAction(input: AskSahayakInput) {
+    return runAction(askSahayak, input, "Failed to get an answer from Sahayak.");
+}
+
+export async function getTtsVoicesAction(languageCode: string) {
     try {
-        const result = await generateVisualAid(input);
+        const result = await getTtsVoices(languageCode);
         return { success: true, data: result };
     } catch (error) {
         console.error(error);
-        const message = error instanceof Error ? error.message : "Failed to generate visual aid.";
+        const message = error instanceof Error ? error.message : "Failed to get TTS voices.";
         return { success: false, error: message };
     }
 }

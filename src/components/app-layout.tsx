@@ -35,6 +35,7 @@ import {
   Settings,
   Loader2,
   Brush,
+  HelpCircle,
 } from 'lucide-react';
 import { useLanguage } from '@/context/language-context';
 import { LanguageSelector } from './language-selector';
@@ -47,6 +48,7 @@ import { Button } from './ui/button';
 
 const menuItems = [
   { href: '/', labelKey: 'dashboard', icon: LayoutDashboard },
+  { href: '/ask-sahayak', labelKey: 'askSahayak_title', icon: HelpCircle },
   { href: '/photo-to-worksheet', labelKey: 'photoToWorksheet', icon: ScanLine },
   { href: '/content-creator', labelKey: 'contentCreator', icon: Languages },
   { href: '/content-adaptation', labelKey: 'contentAdaptation', icon: GraduationCap },
