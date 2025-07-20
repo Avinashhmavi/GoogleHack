@@ -34,7 +34,7 @@ import type { EnhanceWritingInput } from "@/ai/flows/enhance-writing.types";
 import {
   recognizeStudents,
 } from "@/ai/flows/recognize-students";
-import type { RecognizeStudentsInput } from "@/ai/flows/recognize-students";
+import type { RecognizeStudentsInput } from "@/ai/flows/recognize-students.types";
 
 
 export async function adaptContentAction(input: AdaptContentGradeLevelInput) {

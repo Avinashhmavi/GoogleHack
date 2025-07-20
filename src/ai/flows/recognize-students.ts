@@ -4,26 +4,16 @@
  * @fileOverview An AI agent that recognizes students from a class photo.
  *
  * - recognizeStudents - A function that identifies students in an image.
- * - RecognizeStudentsInput - The input type for the recognizeStudents function.
- * - RecognizeStudentsOutput - The return type for the recognizeStudents function.
  */
 
 import { ai } from '@/ai/genkit';
-import { z } from 'genkit';
+import {
+    RecognizeStudentsInputSchema,
+    RecognizeStudentsOutputSchema,
+    type RecognizeStudentsInput,
+    type RecognizeStudentsOutput
+} from './recognize-students.types';
 
-const RecognizeStudentsInputSchema = z.object({
-  photoDataUri: z
-    .string()
-    .describe(
-      "A photo of the classroom, as a data URI that must include a MIME type and use Base64 encoding. Expected format: 'data:<mimetype>;base64,<encoded_data>'."
-    ),
-});
-export type RecognizeStudentsInput = z.infer<typeof RecognizeStudentsInputSchema>;
-
-const RecognizeStudentsOutputSchema = z.object({
-  presentStudents: z.array(z.string()).describe('A list of names of the students identified in the photo.'),
-});
-export type RecognizeStudentsOutput = z.infer<typeof RecognizeStudentsOutputSchema>;
 
 export async function recognizeStudents(input: RecognizeStudentsInput): Promise<RecognizeStudentsOutput> {
   return recognizeStudentsFlow(input);

@@ -10,3 +10,4 @@ import '@/ai/flows/create-rubric.ts';
 import '@/ai/flows/text-to-speech.ts';
 import '@/ai/flows/enhance-writing.ts';
 import '@/ai/flows/recognize-students.ts';
+import '@/ai/flows/recognize-students.types.ts';
