@@ -24,3 +24,4 @@ import '@/ai/flows/enhance-writing.types.ts';
 import '@/ai/flows/create-presentation.types.ts';
 import '@/ai/flows/create-lesson-plan.types.ts';
 import '@/ai/flows/generate-discussion.types.ts';
+import '@/ai/flows/ask-sahayak.types.ts';

@@ -4,24 +4,15 @@
  * @fileOverview An AI agent that provides kid-friendly explanations.
  * 
  * - askSahayak - A function that simplifies complex concepts for a specific grade level and language.
- * - AskSahayakInput - The input type for the askSahayak function.
- * - AskSahayakOutput - The return type for the askSahayak function.
  */
 
 import { ai } from '@/ai/genkit';
-import { z } from 'genkit';
-
-export const AskSahayakInputSchema = z.object({
-  question: z.string().describe('The question or concept to explain.'),
-  gradeLevel: z.number().describe('The target grade level for the explanation.'),
-  language: z.string().describe('The ISO 639-1 code for the language of the explanation.'),
-});
-export type AskSahayakInput = z.infer<typeof AskSahayakInputSchema>;
-
-export const AskSahayakOutputSchema = z.object({
-  answer: z.string().describe('The simplified, kid-friendly explanation.'),
-});
-export type AskSahayakOutput = z.infer<typeof AskSahayakOutputSchema>;
+import { 
+    AskSahayakInputSchema, 
+    AskSahayakOutputSchema,
+    type AskSahayakInput,
+    type AskSahayakOutput 
+} from './ask-sahayak.types';
 
 
 export async function askSahayak(input: AskSahayakInput): Promise<AskSahayakOutput> {

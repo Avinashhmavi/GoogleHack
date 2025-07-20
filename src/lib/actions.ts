@@ -52,7 +52,7 @@ import type { GenerateVisualAidInput } from "@/ai/flows/generate-visual-aid.type
 import {
   askSahayak
 } from "@/ai/flows/ask-sahayak";
-import type { AskSahayakInput } from "@/ai/flows/ask-sahayak";
+import type { AskSahayakInput } from "@/ai/flows/ask-sahayak.types";
 import {
   getTtsVoices
 } from "@/ai/flows/get-tts-voices";
