@@ -23,7 +23,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
-import { useClientActions } from "@/lib/client-actions";
+import { addCalendarEventAction, getCalendarEventsAction, deleteCalendarEventAction } from "@/lib/actions";
 import type { CalendarEvent } from "@/lib/firestore";
 
 const eventTypeConfig = {
@@ -38,8 +38,6 @@ export default function CalendarPage() {
   const [events, setEvents] = useState<CalendarEvent[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
-  const { addCalendarEventAction, getCalendarEventsAction, deleteCalendarEventAction } = useClientActions();
-
 
   useEffect(() => {
     async function fetchEvents() {
@@ -58,9 +56,9 @@ export default function CalendarPage() {
         setIsLoading(false);
     }
     fetchEvents();
-  }, [toast, getCalendarEventsAction]);
+  }, [toast]);
 
-  const addEvent = async (event: Omit<CalendarEvent, 'id'>) => {
+  const addEvent = async (event: Omit<CalendarEvent, 'id' | 'uid'>) => {
     const result = await addCalendarEventAction(event);
     if (result.success) {
         const formattedEvents = result.data.map(event => ({

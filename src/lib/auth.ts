@@ -4,11 +4,19 @@
 import { auth } from "firebase-admin";
 import { headers } from "next/headers";
 import { initializeFirebaseAdmin } from "./firebase-admin";
+import { DecodedIdToken } from "firebase-admin/auth";
 
-export async function getAuthenticatedUser(token?: string | null) {
+let cachedUser: DecodedIdToken | null = null;
+
+export async function getAuthenticatedUser() {
+    // In a server component, we can cache the user to avoid re-verifying the token on every call
+    if (cachedUser) {
+        return cachedUser;
+    }
+
     await initializeFirebaseAdmin();
     
-    const idToken = token ?? headers().get('Authorization')?.split('Bearer ')[1]
+    const idToken = headers().get('Authorization')?.split('Bearer ')[1]
 
     if (!idToken) {
         return null;
@@ -16,6 +24,7 @@ export async function getAuthenticatedUser(token?: string | null) {
 
     try {
         const decodedToken = await auth().verifyIdToken(idToken);
+        cachedUser = decodedToken;
         return decodedToken;
     } catch(error) {
         console.error("Error verifying auth token:", error);
