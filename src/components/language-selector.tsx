@@ -15,8 +15,10 @@ export function LanguageSelector() {
 
   const languages = [
     { value: "en", label: "English" },
-    { value: "es", label: "Español" },
-    { value: "fr", label: "Français" },
+    { value: "hi", label: "हिन्दी" }, // Hindi
+    { value: "bn", label: "বাংলা" }, // Bengali
+    { value: "ta", label: "தமிழ்" }, // Tamil
+    { value: "te", label: "తెలుగు" }, // Telugu
   ];
 
   return (
