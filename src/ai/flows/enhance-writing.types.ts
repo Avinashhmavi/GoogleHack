@@ -1,7 +1,7 @@
 /**
  * @fileOverview Type definitions for the enhance-writing flow.
  */
-import type { z } from 'genkit';
+import { z } from 'genkit';
 
 const SuggestionSchema = z.object({
     original: z.string().describe('The original phrase or sentence from the text.'),
