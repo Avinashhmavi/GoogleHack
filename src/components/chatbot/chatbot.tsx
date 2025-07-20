@@ -11,11 +11,25 @@ import { Bot, Send, Loader2, User } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback } from '../ui/avatar';
+import Link from 'next/link';
 
 type Message = {
   role: 'user' | 'assistant';
   content: string;
 };
+
+// Simple function to find URLs in text and convert them to anchor tags
+const renderContentWithLinks = (content: string) => {
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    const parts = content.split(urlRegex);
+    return parts.map((part, index) => {
+        if (part.match(urlRegex)) {
+            return <a key={index} href={part} target="_blank" rel="noopener noreferrer" className="underline text-blue-400 hover:text-blue-300">{part}</a>;
+        }
+        return part;
+    });
+};
+
 
 export function Chatbot() {
   const [messages, setMessages] = useState<Message[]>([
@@ -106,7 +120,7 @@ export function Chatbot() {
                       : 'bg-secondary'
                   )}
                 >
-                  {message.content}
+                  {renderContentWithLinks(message.content)}
                 </div>
                  {message.role === 'user' && (
                     <Avatar className="h-8 w-8 bg-muted">
