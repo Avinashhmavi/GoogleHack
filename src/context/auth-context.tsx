@@ -18,13 +18,16 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 const setupAuthInterceptor = (user: User | null) => {
     if (typeof window === 'undefined') return;
 
+    // Store the original fetch function
     const originalFetch = window.fetch;
 
+    // Create a new fetch function
     window.fetch = async (input: RequestInfo | URL, init?: RequestInit): Promise<Response> => {
-        let token = null;
+        let token: string | null = null;
         if (user) {
             try {
-                token = await user.getIdToken();
+                // Get the latest ID token. This will refresh it if necessary.
+                token = await user.getIdToken(true);
             } catch (e) {
                 console.error("Could not get ID token.", e);
             }
@@ -53,6 +56,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
+      // Setup the interceptor whenever the user state changes
       setupAuthInterceptor(user);
       setAuthStatus(user ? "authenticated" : "unauthenticated");
     });
