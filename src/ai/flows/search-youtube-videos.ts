@@ -18,7 +18,7 @@ import {
 } from './search-youtube-videos.types';
 
 
-const searchYouTubeTool = ai.defineTool(
+export const searchYouTubeTool = ai.defineTool(
     {
         name: 'searchYouTube',
         description: 'Searches YouTube for videos based on a query and returns the top results.',
@@ -30,27 +30,37 @@ const searchYouTubeTool = ai.defineTool(
     async ({ query }) => {
         const apiKey = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
         if (!apiKey) {
-            throw new Error('YouTube API key is not configured.');
+            // In a real app, you might want to have a fallback or handle this more gracefully
+            // For the prototype, we can return an empty array or a mock response
+            console.warn('YouTube API key is not configured. Returning empty results.');
+            return [];
+            // Or throw new Error('YouTube API key is not configured.');
         }
 
         const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${encodeURIComponent(query)}&maxResults=5&key=${apiKey}`;
         
-        const response = await fetch(url);
-        if (!response.ok) {
-            const errorData = await response.json();
-            console.error('YouTube API Error:', errorData);
-            throw new Error(`YouTube API request failed with status ${response.status}`);
-        }
-        
-        const data = await response.json();
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error('YouTube API Error:', errorData);
+                // Don't throw an error that breaks the whole app, just return empty results
+                return [];
+            }
+            
+            const data = await response.json();
 
-        return data.items.map((item: any) => ({
-            id: item.id.videoId,
-            title: item.snippet.title,
-            description: item.snippet.description,
-            channelTitle: item.snippet.channelTitle,
-            thumbnailUrl: item.snippet.thumbnails.default.url,
-        }));
+            return data.items.map((item: any) => ({
+                id: item.id.videoId,
+                title: item.snippet.title,
+                description: item.snippet.description,
+                channelTitle: item.snippet.channelTitle,
+                thumbnailUrl: item.snippet.thumbnails.default.url,
+            }));
+        } catch (fetchError) {
+             console.error('Failed to fetch from YouTube API:', fetchError);
+             return [];
+        }
     }
 );
 

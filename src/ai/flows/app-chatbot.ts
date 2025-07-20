@@ -14,10 +14,10 @@ import {
     type AppChatbotOutput
 } from './app-chatbot.types';
 import { menuItems } from '@/lib/menu-items';
-import { videoData } from '@/lib/smart-class-data';
 import { textbookData } from '@/lib/textbook-data';
 import { studentRoster } from '@/lib/student-roster';
 import { z } from 'genkit';
+import { searchYouTubeTool } from './search-youtube-videos';
 
 
 const listAppFeaturesTool = ai.defineTool(
@@ -37,34 +37,6 @@ const listAppFeaturesTool = ai.defineTool(
         path: item.href
     }));
   }
-);
-
-const getSmartClassVideosTool = ai.defineTool(
-    {
-        name: 'getSmartClassVideos',
-        description: 'Searches for and returns links to educational YouTube videos from the Smart Class library.',
-        inputSchema: z.object({
-            query: z.string().describe('A search query to find videos by title, subject, or grade.')
-        }),
-        outputSchema: z.array(z.object({
-            title: z.string(),
-            url: z.string().describe('The full YouTube watch URL.')
-        }))
-    },
-    async ({ query }) => {
-        const lowerCaseQuery = query.toLowerCase();
-        const results = videoData
-            .filter(video => 
-                video.title.toLowerCase().includes(lowerCaseQuery) ||
-                video.subject.toLowerCase().includes(lowerCaseQuery) ||
-                video.grade.toString().toLowerCase().includes(lowerCaseQuery)
-            )
-            .map(video => ({
-                title: video.title,
-                url: `https://www.youtube.com/watch?v=${video.youtubeId}`
-            }));
-        return results.slice(0, 5); // Return max 5 results
-    }
 );
 
 const getTextbooksTool = ai.defineTool(
@@ -127,19 +99,32 @@ const appChatbotFlow = ai.defineFlow(
 Your goal is to answer user questions about the app, fetch resources, and help them navigate.
 You have access to a set of tools to get information about the app's features, videos, textbooks, and students.
 - Use the 'listAppFeatures' tool to talk about what the app can do or to provide navigation links.
-- Use the 'getSmartClassVideos' tool when the user asks for a video on a topic.
+- Use the 'searchYouTube' tool when the user asks for a video on a topic. This tool can search all of YouTube for relevant educational videos.
 - Use the 'getTextbooks' tool when the user asks for a textbook.
 - Use the 'getStudentInfo' tool if the user asks for details about a specific student.
-- If you provide a link, make sure it is a complete, clickable URL.
+- If you provide a link, make sure it is a complete, clickable URL. When providing YouTube links, format them as https://www.youtube.com/watch?v={id}.
 - If the user asks a question that is not related to the Sahayak AI app or its content, politely decline to answer and state that you can only help with questions about the application.
 
 User question: "${input.query}"`,
         model: 'googleai/gemini-2.0-flash',
-        tools: [listAppFeaturesTool, getSmartClassVideosTool, getTextbooksTool, getStudentInfoTool],
+        tools: [listAppFeaturesTool, searchYouTubeTool, getTextbooksTool, getStudentInfoTool],
         toolConfig: { autoToolInference: true }
     });
   
-    const text = llmResponse.text;
+    let text = llmResponse.text;
+    
+    // Post-processing to ensure youtube links are correctly formatted
+    if (text) {
+        const toolOutputs = llmResponse.toolRequest?.tool.outputs;
+        if (toolOutputs) {
+             const youtubeResults = toolOutputs.filter((out: any) => out.toolName === 'searchYouTube');
+             if (youtubeResults.length > 0) {
+                const videoLinks = youtubeResults.flatMap((res: any) => res.output.map((video: any) => `* ${video.title}: https://www.youtube.com/watch?v=${video.id}`)).join('\n');
+                text = `I found a few videos that might help:\n${videoLinks}`;
+             }
+        }
+    }
+
 
     if (!text) {
         throw new Error('The model did not return a text response.');
