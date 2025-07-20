@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,73 +10,73 @@ import { useLanguage } from "@/context/language-context";
 const features = [
   {
     titleKey: 'photoToWorksheet',
-    descriptionKey: 'photoToWorksheet',
+    descriptionKey: 'photoToWorksheet_desc',
     href: '/photo-to-worksheet',
     icon: <ScanLine className="w-8 h-8 text-primary" />,
   },
   {
-    titleKey: 'multiLanguageContent',
-    descriptionKey: 'multiLanguageContent',
-    href: '/multi-language-content',
+    titleKey: 'contentCreator',
+    descriptionKey: 'contentCreator_desc',
+    href: '/content-creator',
     icon: <Languages className="w-8 h-8 text-primary" />,
   },
   {
     titleKey: 'contentAdaptation',
-    descriptionKey: 'contentAdaptation',
+    descriptionKey: 'contentAdaptation_desc',
     href: '/content-adaptation',
     icon: <GraduationCap className="w-8 h-8 text-primary" />,
   },
   {
     titleKey: 'qrCodeGenerator',
-    descriptionKey: 'qrCodeGenerator',
+    descriptionKey: 'qrCodeGenerator_desc',
     href: '/qr-code-generator',
     icon: <QrCode className="w-8 h-8 text-primary" />,
   },
   {
     titleKey: 'gradeTracking',
-    descriptionKey: 'gradeTracking',
+    descriptionKey: 'gradeTracking_desc',
     href: '/grade-tracking',
     icon: <BarChart3 className="w-8 h-8 text-primary" />,
   },
   {
     titleKey: 'quizGenerator',
-    descriptionKey: 'quizGenerator',
+    descriptionKey: 'quizGenerator_desc',
     href: '/quiz-generator',
     icon: <FileQuestion className="w-8 h-8 text-primary" />,
   },
   {
     titleKey: 'rubricCreator',
-    descriptionKey: 'rubricCreator',
+    descriptionKey: 'rubricCreator_desc',
     href: '/rubric-creator',
     icon: <ClipboardCheck className="w-8 h-8 text-primary" />,
   },
   {
     titleKey: 'writingAssistant',
-    descriptionKey: 'writingAssistant',
+    descriptionKey: 'writingAssistant_desc',
     href: '/writing-assistant',
     icon: <Edit className="w-8 h-8 text-primary" />,
   },
   {
     titleKey: 'attendance',
-    descriptionKey: 'attendance',
+    descriptionKey: 'attendance_desc',
     href: '/attendance',
     icon: <Users className="w-8 h-8 text-primary" />,
   },
   {
     titleKey: 'studentRoster',
-    descriptionKey: 'studentRoster',
+    descriptionKey: 'studentRoster_desc',
     href: '/student-roster',
     icon: <UserCog className="w-8 h-8 text-primary" />,
   },
   {
     titleKey: 'lessonPlanner',
-    descriptionKey: 'lessonPlanner',
+    descriptionKey: 'lessonPlanner_desc',
     href: '/lesson-planner',
     icon: <BookText className="w-8 h-8 text-primary" />,
   },
   {
     titleKey: 'discussionGenerator',
-    descriptionKey: 'discussionGenerator',
+    descriptionKey: 'discussionGenerator_desc',
     href: '/discussion-generator',
     icon: <MessageSquare className="w-8 h-8 text-primary" />,
   }
@@ -83,21 +84,6 @@ const features = [
 
 export default function Home() {
   const { t } = useLanguage();
-
-  const featureDescriptions: {[key: string]: string} = {
-    photoToWorksheet: 'Convert textbook pages into interactive worksheets instantly.',
-    multiLanguageContent: 'Generate educational materials in a variety of languages.',
-    contentAdaptation: 'Adjust text to be suitable for different grade levels.',
-    qrCodeGenerator: 'Create QR codes for answer keys and other resources.',
-    gradeTracking: 'Monitor student progress and generate reports.',
-    quizGenerator: 'Create quizzes on any topic in seconds with AI.',
-    rubricCreator: 'Generate detailed grading rubrics for assignments.',
-    writingAssistant: 'Get feedback on grammar, spelling, and style.',
-    attendance: 'Use face recognition to take class attendance.',
-    studentRoster: 'Manage student photos and names for the attendance system.',
-    lessonPlanner: 'Automatically generate detailed lesson plans for any subject.',
-    discussionGenerator: 'Create questions and materials for classroom discussions.',
-  };
 
   return (
     <div className="space-y-8">
@@ -118,9 +104,9 @@ export default function Home() {
                 <CardTitle className="font-headline">{t(feature.titleKey)}</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col flex-grow">
-              <p className="flex-grow text-muted-foreground">{featureDescriptions[feature.descriptionKey]}</p>
+              <p className="flex-grow text-muted-foreground">{t(feature.descriptionKey)}</p>
               <Link href={feature.href}>
-                <Button variant="outline" className="w-full">
+                <Button variant="outline" className="w-full mt-4">
                   {t('goToFeature')} <ArrowRight className="ml-2" />
                 </Button>
               </Link>

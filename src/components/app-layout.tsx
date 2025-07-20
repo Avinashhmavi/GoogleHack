@@ -46,7 +46,7 @@ import { Button } from './ui/button';
 const menuItems = [
   { href: '/', labelKey: 'dashboard', icon: LayoutDashboard },
   { href: '/photo-to-worksheet', labelKey: 'photoToWorksheet', icon: ScanLine },
-  { href: '/multi-language-content', labelKey: 'multiLanguageContent', icon: Languages },
+  { href: '/content-creator', labelKey: 'contentCreator', icon: Languages },
   { href: '/content-adaptation', labelKey: 'contentAdaptation', icon: GraduationCap },
   { href: '/qr-code-generator', labelKey: 'qrCodeGenerator', icon: QrCode },
   { href: '/grade-tracking', labelKey: 'gradeTracking', icon: BarChart3 },
@@ -91,20 +91,16 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
 
   const isAuthPage = publicRoutes.includes(pathname);
   
-  // While loading, or if on an auth page without a user, show children directly
-  // This handles showing the login/signup page correctly.
-  if (loading || (isAuthPage && !user) ) {
+  if (isAuthPage) {
     return <main>{children}</main>;
   }
 
-  // If user is logged in, but on auth page, redirect happens, so we can return null briefly
-  if (isAuthPage && user) {
-    return null;
-  }
-  
-  // If user is not logged in and not on auth page, redirect happens, can return null
-  if (!user && !isAuthPage) {
-    return null;
+  if (loading || (!user && !isAuthPage)) {
+     return (
+        <div className="flex items-center justify-center h-screen">
+            <Loader2 className="w-16 h-16 animate-spin text-primary" />
+        </div>
+     );
   }
 
   return (

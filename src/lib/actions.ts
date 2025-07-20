@@ -1,3 +1,4 @@
+
 "use server";
 
 import {
@@ -9,9 +10,9 @@ import {
 } from "@/ai/flows/generate-answer-key-qr-code";
 import type { GenerateAnswerKeyQrCodeInput } from "@/ai/flows/generate-answer-key-qr-code";
 import {
-  generateMultiLanguageContent,
-} from "@/ai/flows/generate-multi-language-content";
-import type { GenerateMultiLanguageContentInput } from "@/ai/flows/generate-multi-language-content";
+  generateLocalizedContent,
+} from "@/ai/flows/generate-localized-content";
+import type { GenerateLocalizedContentInput } from "@/ai/flows/generate-localized-content";
 import {
   photoToWorksheet,
 } from "@/ai/flows/photo-to-worksheet";
@@ -69,11 +70,11 @@ export async function generateQrCodeAction(input: GenerateAnswerKeyQrCodeInput) 
   }
 }
 
-export async function generateMultiLanguageAction(
-  input: GenerateMultiLanguageContentInput
+export async function generateLocalizedContentAction(
+  input: GenerateLocalizedContentInput
 ) {
   try {
-    const result = await generateMultiLanguageContent(input);
+    const result = await generateLocalizedContent(input);
     return { success: true, data: result };
   } catch (error) {
     console.error(error);
