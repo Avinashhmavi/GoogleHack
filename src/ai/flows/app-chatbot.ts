@@ -134,7 +134,7 @@ You have access to a set of tools to get information about the app's features, v
 - If the user asks a question that is not related to the Sahayak AI app or its content, politely decline to answer and state that you can only help with questions about the application.
 
 User question: "${input.query}"`,
-        model: 'googleai/gemini-pro',
+        model: 'googleai/gemini-2.0-flash',
         tools: [listAppFeaturesTool, getSmartClassVideosTool, getTextbooksTool, getStudentInfoTool],
         toolConfig: { autoToolInference: true }
     });
