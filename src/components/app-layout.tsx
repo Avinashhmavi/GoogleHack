@@ -14,7 +14,6 @@ import {
   SidebarMenuButton,
   SidebarInset,
   SidebarTrigger,
-  SidebarFooter,
 } from '@/components/ui/sidebar';
 import {
   GraduationCap,
@@ -70,75 +69,49 @@ const menuItems = [
 
 const publicRoutes = ['/login', '/signup'];
 
-export function AppLayout({ children }: { children: React.ReactNode }) {
+
+const MainSidebar = React.memo(function MainSidebar() {
   const pathname = usePathname();
-  const router = useRouter();
-  const { user, loading } = useAuth();
   const { t } = useLanguage();
-
-  React.useEffect(() => {
-    // Wait until loading is false before checking for user
-    if (loading) return;
-
-    const isAuthPage = publicRoutes.includes(pathname);
-
-    if (!user && !isAuthPage) {
-      router.push('/login');
-    } else if (user && isAuthPage) {
-      router.push('/');
-    }
-  }, [user, loading, pathname, router]);
-
-
-  const isAuthPage = publicRoutes.includes(pathname);
-
-  if (loading) {
-    return (
-       <div className="flex items-center justify-center h-screen">
-           <Loader2 className="w-16 h-16 animate-spin text-primary" />
-       </div>
-    );
-  }
   
-  if (isAuthPage) {
-    return <main>{children}</main>;
-  }
-
-
   return (
-    <SidebarProvider>
-      <Sidebar variant="floating" collapsible="icon">
-        <SidebarHeader className="p-4">
-          <div className="flex items-center gap-2">
-            <BookOpen className="w-8 h-8 text-primary" />
-            <div className="flex flex-col">
-              <h2 className="text-lg font-semibold font-headline">{t('appName')}</h2>
-              <p className="text-sm text-muted-foreground">{t('appDescription')}</p>
-            </div>
+    <Sidebar variant="floating" collapsible="icon">
+      <SidebarHeader className="p-4">
+        <div className="flex items-center gap-2">
+          <BookOpen className="w-8 h-8 text-primary" />
+          <div className="flex flex-col">
+            <h2 className="text-lg font-semibold font-headline">{t('appName')}</h2>
+            <p className="text-sm text-muted-foreground">{t('appDescription')}</p>
           </div>
-        </SidebarHeader>
-        <SidebarContent>
-          <SidebarMenu>
-            {menuItems.map((item) => (
-              <SidebarMenuItem key={item.href}>
-                <Link href={item.href}>
-                  <SidebarMenuButton
-                    asChild
-                    isActive={pathname === item.href}
-                    tooltip={t(item.labelKey)}
-                  >
-                    <div>
-                      <item.icon />
-                      <span>{t(item.labelKey)}</span>
-                    </div>
-                  </SidebarMenuButton>
-                </Link>
-              </SidebarMenuItem>
-            ))}
-          </SidebarMenu>
-        </SidebarContent>
-      </Sidebar>
-      <SidebarInset>
+        </div>
+      </SidebarHeader>
+      <SidebarContent>
+        <SidebarMenu>
+          {menuItems.map((item) => (
+            <SidebarMenuItem key={item.href}>
+              <Link href={item.href} prefetch={true}>
+                <SidebarMenuButton
+                  asChild
+                  isActive={pathname === item.href}
+                  tooltip={t(item.labelKey)}
+                >
+                  <div>
+                    <item.icon />
+                    <span>{t(item.labelKey)}</span>
+                  </div>
+                </SidebarMenuButton>
+              </Link>
+            </SidebarMenuItem>
+          ))}
+        </SidebarMenu>
+      </SidebarContent>
+    </Sidebar>
+  );
+});
+
+function Header() {
+    const { user } = useAuth();
+    return (
         <header className="flex items-center justify-between p-4 border-b no-print md:justify-end">
             <div className="md:hidden">
                 <SidebarTrigger />
@@ -176,10 +149,60 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
               )}
             </div>
         </header>
-        <main className="p-4 md:p-6 lg:p-8">
-            {children}
-        </main>
-      </SidebarInset>
-    </SidebarProvider>
+    )
+}
+
+function AuthenticatedLayout({ children }: { children: React.ReactNode }) {
+    return (
+        <SidebarProvider>
+            <MainSidebar />
+            <SidebarInset>
+                <Header />
+                <main className="p-4 md:p-6 lg:p-8">
+                    {children}
+                </main>
+            </SidebarInset>
+        </SidebarProvider>
+    )
+}
+
+export function AppLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const router = useRouter();
+  const { user, loading } = useAuth();
+
+  React.useEffect(() => {
+    if (loading) return;
+
+    const isAuthPage = publicRoutes.includes(pathname);
+
+    if (!user && !isAuthPage) {
+      router.push('/login');
+    } else if (user && isAuthPage) {
+      router.push('/');
+    }
+  }, [user, loading, pathname, router]);
+
+
+  if (loading) {
+    return (
+       <div className="flex items-center justify-center h-screen">
+           <Loader2 className="w-16 h-16 animate-spin text-primary" />
+       </div>
+    );
+  }
+  
+  if (publicRoutes.includes(pathname)) {
+    return <main>{children}</main>;
+  }
+  
+  if (!user) {
+    return null;
+  }
+
+  return (
+    <AuthenticatedLayout>
+        {children}
+    </AuthenticatedLayout>
   );
 }
