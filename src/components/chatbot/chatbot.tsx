@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { appChatbotAction } from '@/lib/actions';
-import { MessageSquare, Send, Loader2, Bot, User } from 'lucide-react';
+import { Bot, Send, Loader2, User } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback } from '../ui/avatar';
@@ -56,8 +56,10 @@ export function Chatbot() {
         description: result.error || 'Something went wrong.',
         variant: 'destructive',
       });
-       // Restore user message on error
-      setMessages(prev => prev.slice(0, -1));
+       const lastMessage = messages[messages.length - 1];
+       if(lastMessage.role === 'user') {
+         setMessages(prev => prev.slice(0, -1));
+       }
     }
     setIsLoading(false);
   };
@@ -69,7 +71,7 @@ export function Chatbot() {
           className="fixed bottom-6 right-6 h-16 w-16 rounded-full shadow-lg z-50"
           size="icon"
         >
-          <MessageSquare className="h-8 w-8" />
+          <Bot className="h-8 w-8" />
           <span className="sr-only">Open Chatbot</span>
         </Button>
       </PopoverTrigger>
