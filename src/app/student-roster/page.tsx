@@ -1,6 +1,7 @@
+
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
@@ -22,7 +23,7 @@ export default function StudentRosterPage() {
   const [newStudentFileName, setNewStudentFileName] = useState('');
 
   // Fetch students on component mount
-  useState(() => {
+  useEffect(() => {
     async function fetchStudents() {
       setIsLoading(true);
       const result = await getStudentsAction();
@@ -34,7 +35,7 @@ export default function StudentRosterPage() {
       setIsLoading(false);
     }
     fetchStudents();
-  });
+  }, [toast]);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
