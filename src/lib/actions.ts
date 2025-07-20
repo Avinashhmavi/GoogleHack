@@ -31,6 +31,10 @@ import {
   enhanceWriting,
 } from "@/ai/flows/enhance-writing";
 import type { EnhanceWritingInput } from "@/ai/flows/enhance-writing.types";
+import {
+  recognizeStudents,
+} from "@/ai/flows/recognize-students";
+import type { RecognizeStudentsInput } from "@/ai/flows/recognize-students";
 
 
 export async function adaptContentAction(input: AdaptContentGradeLevelInput) {
@@ -119,6 +123,17 @@ export async function enhanceWritingAction(input: EnhanceWritingInput) {
   } catch (error) {
     console.error(error);
     const message = error instanceof Error ? error.message : "Failed to enhance writing.";
+    return { success: false, error: message };
+  }
+}
+
+export async function recognizeStudentsAction(input: RecognizeStudentsInput) {
+  try {
+    const result = await recognizeStudents(input);
+    return { success: true, data: result };
+  } catch (error) {
+    console.error(error);
+    const message = error instanceof Error ? error.message : "Failed to recognize students.";
     return { success: false, error: message };
   }
 }

@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, BarChart3, GraduationCap, Languages, QrCode, ScanLine, FileQuestion, ClipboardCheck, Edit } from "lucide-react";
+import { ArrowRight, BarChart3, GraduationCap, Languages, QrCode, ScanLine, FileQuestion, ClipboardCheck, Edit, Users } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
@@ -51,6 +51,12 @@ const features = [
     description: 'Get feedback on grammar, spelling, and style.',
     href: '/writing-assistant',
     icon: <Edit className="w-8 h-8 text-primary" />,
+  },
+  {
+    title: 'Attendance System',
+    description: 'Use face recognition to take class attendance.',
+    href: '/attendance',
+    icon: <Users className="w-8 h-8 text-primary" />,
   }
 ];
 

@@ -25,6 +25,7 @@ import {
   FileQuestion,
   ClipboardCheck,
   Edit,
+  Users,
 } from 'lucide-react';
 
 const menuItems = [
@@ -37,6 +38,7 @@ const menuItems = [
   { href: '/quiz-generator', label: 'Quiz Generator', icon: FileQuestion },
   { href: '/rubric-creator', label: 'Rubric Creator', icon: ClipboardCheck },
   { href: '/writing-assistant', label: 'Writing Assistant', icon: Edit },
+  { href: '/attendance', label: 'Attendance', icon: Users },
 ];
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
