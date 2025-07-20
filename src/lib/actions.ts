@@ -39,6 +39,11 @@ import {
   createLessonPlan,
 } from "@/ai/flows/create-lesson-plan";
 import type { CreateLessonPlanInput } from "@/ai/flows/create-lesson-plan.types";
+import {
+  generateDiscussion
+} from "@/ai/flows/generate-discussion";
+import type { GenerateDiscussionInput } from "@/ai/flows/generate-discussion.types";
+
 import { studentRoster } from "./student-roster";
 import type { Student } from "./student-roster";
 
@@ -150,6 +155,17 @@ export async function createLessonPlanAction(input: CreateLessonPlanInput) {
   } catch (error) {
     console.error(error);
     const message = error instanceof Error ? error.message : "Failed to generate lesson plan.";
+    return { success: false, error: message };
+  }
+}
+
+export async function generateDiscussionAction(input: GenerateDiscussionInput) {
+  try {
+    const result = await generateDiscussion(input);
+    return { success: true, data: result };
+  } catch (error) {
+    console.error(error);
+    const message = error instanceof Error ? error.message : "Failed to generate discussion materials.";
     return { success: false, error: message };
   }
 }

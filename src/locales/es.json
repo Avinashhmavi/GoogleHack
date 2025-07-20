@@ -1,3 +1,4 @@
+
 {
     "appName": "Sahayak AI",
     "appDescription": "IA para la Educación",
@@ -13,6 +14,7 @@
     "attendance": "Asistencia",
     "studentRoster": "Lista de Estudiantes",
     "lessonPlanner": "Planificador de Lecciones",
+    "discussionGenerator": "Generador de Discusiones",
     "goToFeature": "Ir a la función",
     "welcomeMessage": "Bienvenido a Sahayak AI",
     "welcomeDescription": "Su asistente impulsado por IA para crear contenido educativo atractivo.",

@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, BarChart3, GraduationCap, Languages, QrCode, ScanLine, FileQuestion, ClipboardCheck, Edit, Users, UserCog, BookText } from "lucide-react";
+import { ArrowRight, BarChart3, GraduationCap, Languages, QrCode, ScanLine, FileQuestion, ClipboardCheck, Edit, Users, UserCog, BookText, MessageSquare } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/context/language-context";
@@ -72,6 +72,12 @@ const features = [
     descriptionKey: 'lessonPlanner',
     href: '/lesson-planner',
     icon: <BookText className="w-8 h-8 text-primary" />,
+  },
+  {
+    titleKey: 'discussionGenerator',
+    descriptionKey: 'discussionGenerator',
+    href: '/discussion-generator',
+    icon: <MessageSquare className="w-8 h-8 text-primary" />,
   }
 ];
 
@@ -90,6 +96,7 @@ export default function Home() {
     attendance: 'Use face recognition to take class attendance.',
     studentRoster: 'Manage student photos and names for the attendance system.',
     lessonPlanner: 'Automatically generate detailed lesson plans for any subject.',
+    discussionGenerator: 'Create questions and materials for classroom discussions.',
   };
 
   return (
