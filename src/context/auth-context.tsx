@@ -18,24 +18,31 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 const setupAuthInterceptor = (user: User | null) => {
     if (typeof window === 'undefined') return;
 
-    // We patch the global fetch to automatically add the Authorization header
     const originalFetch = window.fetch;
 
     window.fetch = async (input: RequestInfo | URL, init?: RequestInit): Promise<Response> => {
-        const token = user ? await user.getIdToken() : null;
-
+        let token = null;
+        if (user) {
+            try {
+                token = await user.getIdToken();
+            } catch (e) {
+                console.error("Could not get ID token.", e);
+            }
+        }
+        
         const headers = new Headers(init?.headers);
         if (token) {
             headers.set('Authorization', `Bearer ${token}`);
         }
-        init = { ...init, headers };
+
+        const newInit = { ...init, headers };
         
-        return originalFetch(input, init);
+        return originalFetch(input, newInit);
     };
-}
+};
 
 
-export const AuthProvider = ({ children }: { children: ReactNode }) => {
+export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [authStatus, setAuthStatus] = useState<AuthStatus>("loading");
 
@@ -44,7 +51,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         setAuthStatus("unauthenticated");
         return;
     }
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
       setupAuthInterceptor(user);
       setAuthStatus(user ? "authenticated" : "unauthenticated");
