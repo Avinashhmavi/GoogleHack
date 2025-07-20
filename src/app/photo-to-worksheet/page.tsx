@@ -10,6 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { photoToWorksheetAction } from "@/lib/actions";
 import { Loader2, Upload, FileText } from "lucide-react";
 import Image from "next/image";
+import { useLanguage } from "@/context/language-context";
 
 export default function PhotoToWorksheetPage() {
   const [photoDataUri, setPhotoDataUri] = useState<string | null>(null);
@@ -17,6 +18,7 @@ export default function PhotoToWorksheetPage() {
   const [worksheet, setWorksheet] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const { t } = useLanguage();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -62,26 +64,26 @@ export default function PhotoToWorksheetPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold font-headline">Photo-to-Worksheet Converter</h1>
-        <p className="text-muted-foreground">Upload a photo of a textbook page to generate a worksheet.</p>
+        <h1 className="text-3xl font-bold font-headline">{t('pageHeader_photoToWorksheet')}</h1>
+        <p className="text-muted-foreground">{t('pageDescription_photoToWorksheet')}</p>
       </div>
       
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle className="font-headline">Upload Photo</CardTitle>
-            <CardDescription>Select an image file (e.g., JPG, PNG) of a textbook page.</CardDescription>
+            <CardTitle className="font-headline">{t('uploadPhoto_title')}</CardTitle>
+            <CardDescription>{t('uploadPhoto_description')}</CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="photo-upload">Textbook Page Photo</Label>
+                <Label htmlFor="photo-upload">{t('textbookPagePhoto_label')}</Label>
                 <div className="flex items-center gap-2">
                   <Input id="photo-upload" type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
                   <Button asChild variant="outline">
                     <Label htmlFor="photo-upload" className="cursor-pointer">
                       <Upload className="mr-2" />
-                      Choose File
+                      {t('chooseFile_button')}
                     </Label>
                   </Button>
                   {fileName && <span className="text-sm text-muted-foreground">{fileName}</span>}
@@ -96,7 +98,7 @@ export default function PhotoToWorksheetPage() {
               
               <Button type="submit" disabled={isLoading || !photoDataUri} className="w-full">
                 {isLoading && <Loader2 className="mr-2 animate-spin" />}
-                {isLoading ? "Generating..." : "Generate Worksheet"}
+                {isLoading ? t('generating_button') : t('generateWorksheet_button')}
               </Button>
             </form>
           </CardContent>
@@ -104,8 +106,8 @@ export default function PhotoToWorksheetPage() {
 
         <Card className="flex flex-col">
           <CardHeader>
-            <CardTitle className="font-headline flex items-center gap-2"><FileText /> Generated Worksheet</CardTitle>
-            <CardDescription>The generated questions will appear here.</CardDescription>
+            <CardTitle className="font-headline flex items-center gap-2"><FileText /> {t('generatedWorksheet_title')}</CardTitle>
+            <CardDescription>{t('generatedWorksheet_description')}</CardDescription>
           </CardHeader>
           <CardContent className="flex-grow">
             {isLoading && (
@@ -123,7 +125,7 @@ export default function PhotoToWorksheetPage() {
             )}
             {!isLoading && !worksheet && (
               <div className="flex items-center justify-center h-full text-center text-muted-foreground p-8 border-2 border-dashed rounded-lg">
-                <p>Your worksheet will be displayed here once generated.</p>
+                <p>{t('worksheetPlaceholder')}</p>
               </div>
             )}
           </CardContent>
