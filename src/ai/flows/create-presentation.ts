@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -28,6 +29,11 @@ Your task is to generate a set of presentation slides based on the given topic f
 
 Topic: {{{topic}}}
 Number of Slides: {{{numSlides}}}
+
+{{#if additionalInstructions}}
+Follow these specific instructions: {{{additionalInstructions}}}
+{{/if}}
+
 
 For each slide, you must generate:
 1.  A concise title.

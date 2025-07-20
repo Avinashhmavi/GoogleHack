@@ -6,6 +6,7 @@ import { z } from 'genkit';
 export const CreatePresentationInputSchema = z.object({
     topic: z.string().describe('The main subject or topic of the presentation.'),
     numSlides: z.number().min(3).max(15).describe('The total number of slides to generate.'),
+    additionalInstructions: z.string().optional().describe('Optional specific instructions or context for the presentation content.'),
 });
 export type CreatePresentationInput = z.infer<typeof CreatePresentationInputSchema>;
 
