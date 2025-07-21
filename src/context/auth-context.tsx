@@ -30,18 +30,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     return () => unsubscribe();
   }, []);
-  
-   useEffect(() => {
-    if (authStatus === 'authenticated' && user) {
-        const originalFetch = window.fetch;
-        window.fetch = async (input, init) => {
-            const token = await user.getIdToken();
-            const headers = new Headers(init?.headers);
-            headers.set('Authorization', `Bearer ${token}`);
-            return originalFetch(input, { ...init, headers });
-        };
-    }
-  }, [authStatus, user]);
 
 
   return (
