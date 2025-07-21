@@ -3,7 +3,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import {
   SidebarProvider,
   Sidebar,
@@ -15,7 +15,7 @@ import {
   SidebarInset,
   SidebarTrigger,
 } from '@/components/ui/sidebar';
-import { LogOut, Settings, Loader2, BookOpen } from 'lucide-react';
+import { LogOut, Settings, BookOpen } from 'lucide-react';
 import { useLanguage } from '@/context/language-context';
 import { LanguageSelector } from './language-selector';
 import { useAuth } from '@/context/auth-context';
@@ -26,10 +26,6 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
 import { Button } from './ui/button';
 import { menuItems } from '@/lib/menu-items';
 import { Chatbot } from './chatbot/chatbot';
-
-
-const publicRoutes = ['/login', '/signup'];
-
 
 const MainSidebar = React.memo(function MainSidebar() {
   const pathname = usePathname();
@@ -113,7 +109,7 @@ function Header() {
     )
 }
 
-function AuthenticatedLayout({ children }: { children: React.ReactNode }) {
+export function AppLayout({ children }: { children: React.ReactNode }) {
     return (
         <SidebarProvider>
             <MainSidebar />
@@ -126,49 +122,4 @@ function AuthenticatedLayout({ children }: { children: React.ReactNode }) {
             </SidebarInset>
         </SidebarProvider>
     )
-}
-
-export function AppLayout({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
-  const router = useRouter();
-  const { authStatus } = useAuth();
-
-  React.useEffect(() => {
-    if (authStatus === 'loading') return;
-
-    const isAuthPage = publicRoutes.includes(pathname);
-
-    if (authStatus === 'unauthenticated' && !isAuthPage) {
-      router.push('/login');
-    } else if (authStatus === 'authenticated' && isAuthPage) {
-      router.push('/');
-    }
-  }, [authStatus, pathname, router]);
-
-
-  if (authStatus === 'loading') {
-    return (
-       <div className="flex items-center justify-center h-screen">
-           <Loader2 className="w-16 h-16 animate-spin text-primary" />
-       </div>
-    );
-  }
-  
-  if (publicRoutes.includes(pathname)) {
-    return <main>{children}</main>;
-  }
-  
-  if (authStatus !== 'authenticated') {
-    return (
-        <div className="flex items-center justify-center h-screen">
-           <Loader2 className="w-16 h-16 animate-spin text-primary" />
-       </div>
-    );
-  }
-
-  return (
-    <AuthenticatedLayout>
-        {children}
-    </AuthenticatedLayout>
-  );
 }
