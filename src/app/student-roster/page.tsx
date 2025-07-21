@@ -27,6 +27,10 @@ export default function StudentRosterPage() {
   // Fetch students on component mount
   useEffect(() => {
     async function fetchStudents() {
+      if (authStatus !== 'authenticated') {
+          setIsLoading(false);
+          return;
+      };
       setIsLoading(true);
       const result = await getStudentsAction();
       if (result.success && result.data) {
@@ -36,9 +40,7 @@ export default function StudentRosterPage() {
       }
       setIsLoading(false);
     }
-    if (authStatus === 'authenticated') {
-        fetchStudents();
-    }
+    fetchStudents();
   }, [authStatus, toast]);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {

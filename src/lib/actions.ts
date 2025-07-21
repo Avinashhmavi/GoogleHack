@@ -36,7 +36,7 @@ import type { EnhanceWritingInput } from "@/ai/flows/enhance-writing.types";
 import {
   recognizeStudents,
 } from "@/ai/flows/recognize-students";
-import type { RecognizeStudentsInput } from "@/ai/flows/recognize-students.types";
+import type { RecognizeStudentsInputWithRoster } from "@/ai/flows/recognize-students.types";
 import {
   createLessonPlan,
 } from "@/ai/flows/create-lesson-plan";
@@ -128,14 +128,14 @@ export async function enhanceWritingAction(input: EnhanceWritingInput) {
   return runAction(enhanceWriting, input);
 }
 
-export async function recognizeStudentsAction(input: RecognizeStudentsInput) {  
+export async function recognizeStudentsAction(input: {photoDataUri: string}) {  
   const user = await getAuthenticatedUser();
   if (!user) return { success: false, error: "User not authenticated." };
   
   const studentRoster = await studentRosterDb.getStudents(user.uid);
-  const flowInput = { ...input, studentRoster };
+  const flowInput: RecognizeStudentsInputWithRoster = { ...input, studentRoster };
 
-  return runAction(async (finalInput) => recognizeStudents(finalInput), flowInput);
+  return runAction(recognizeStudents, flowInput);
 }
 
 export async function createLessonPlanAction(input: CreateLessonPlanInput) {
@@ -181,7 +181,7 @@ export async function appChatbotAction(input: Omit<AppChatbotInput, 'studentRost
         studentRoster = await studentRosterDb.getStudents(user.uid);
     }
     const enrichedInput = { ...input, studentRoster };
-    return runAction(async (finalInput) => appChatbot(finalInput), enrichedInput);
+    return runAction(appChatbot, enrichedInput);
 }
 
 export async function createWorksheetAction(input: CreateWorksheetInput) {
