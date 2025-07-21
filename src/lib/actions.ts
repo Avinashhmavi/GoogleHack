@@ -84,10 +84,6 @@ import { getAuthenticatedUser } from "./auth";
 // Wrapper function to handle Genkit flow execution and error handling
 async function runAction<I, O>(action: (input: I) => Promise<O>, input: I): Promise<{ success: true, data: O } | { success: false, error: string }> {
     try {
-        const user = await getAuthenticatedUser();
-        if (!user) {
-            return { success: false, error: "User not authenticated." };
-        }
         const result = await action(input);
         return { success: true, data: result };
     } catch (error) {
@@ -132,7 +128,7 @@ export async function enhanceWritingAction(input: EnhanceWritingInput) {
   return runAction(enhanceWriting, input);
 }
 
-export async function recognizeStudentsAction(input: RecognizeStudentsInput) {
+export async function recognizeStudentsAction(input: RecognizeStudentsInput) {  
   const user = await getAuthenticatedUser();
   if (!user) return { success: false, error: "User not authenticated." };
   
@@ -160,7 +156,6 @@ export async function askSahayakAction(input: AskSahayakInput) {
 
 export async function getTtsVoicesAction(languageCode: string) {
     try {
-        await getAuthenticatedUser();
         const result = await getTtsVoices(languageCode);
         return { success: true, data: result };
     } catch (error) {

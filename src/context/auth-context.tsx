@@ -14,37 +14,6 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// This function will run on the client and attach the token to all fetch requests
-const setupAuthInterceptor = (user: User | null) => {
-    if (typeof window === 'undefined') return;
-
-    // Store the original fetch function
-    const originalFetch = window.fetch;
-
-    // Create a new fetch function
-    window.fetch = async (input: RequestInfo | URL, init?: RequestInit): Promise<Response> => {
-        let token: string | null = null;
-        if (user) {
-            try {
-                // Get the latest ID token. This will refresh it if necessary.
-                token = await user.getIdToken(true);
-            } catch (e) {
-                console.error("Could not get ID token.", e);
-            }
-        }
-        
-        const headers = new Headers(init?.headers);
-        if (token) {
-            headers.set('Authorization', `Bearer ${token}`);
-        }
-
-        const newInit = { ...init, headers };
-        
-        return originalFetch(input, newInit);
-    };
-};
-
-
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [authStatus, setAuthStatus] = useState<AuthStatus>("loading");
@@ -56,13 +25,24 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
-      // Setup the interceptor whenever the user state changes
-      setupAuthInterceptor(user);
       setAuthStatus(user ? "authenticated" : "unauthenticated");
     });
 
     return () => unsubscribe();
   }, []);
+  
+   useEffect(() => {
+    if (authStatus === 'authenticated' && user) {
+        const originalFetch = window.fetch;
+        window.fetch = async (input, init) => {
+            const token = await user.getIdToken();
+            const headers = new Headers(init?.headers);
+            headers.set('Authorization', `Bearer ${token}`);
+            return originalFetch(input, { ...init, headers });
+        };
+    }
+  }, [authStatus, user]);
+
 
   return (
     <AuthContext.Provider value={{ user, authStatus }}>
