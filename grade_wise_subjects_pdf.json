@@ -1,0 +1,1626 @@
+{
+  "grades": [
+    {
+      "grade": "1",
+      "subjects": [
+        {
+          "subject_name": "Mathematics",
+          "pdf_links": [
+            {
+              "title": "Chapter 1 - Mathematics",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0124-Joyful-Mathematics/aejm101/index.html"
+            },
+            {
+              "title": "Chapter 2 - Mathematics",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0124-Joyful-Mathematics/aejm102/index.html"
+            },
+            {
+              "title": "Chapter 3 - Mathematics",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0124-Joyful-Mathematics/aejm103/index.html"
+            },
+            {
+              "title": "Chapter 4 - Mathematics",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0124-Joyful-Mathematics/aejm104/index.html"
+            },
+            {
+              "title": "Chapter 5 - Mathematics",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0124-Joyful-Mathematics/aejm105/index.html"
+            },
+            {
+              "title": "Chapter 6 - Mathematics",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0124-Joyful-Mathematics/aejm106/index.html"
+            },
+            {
+              "title": "Chapter 7 - Mathematics",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0124-Joyful-Mathematics/aejm107/index.html"
+            },
+            {
+              "title": "Chapter 8 - Mathematics",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0124-Joyful-Mathematics/aejm108/index.html"
+            },
+            {
+              "title": "Chapter 9 - Mathematics",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0124-Joyful-Mathematics/aejm109/index.html"
+            },
+            {
+              "title": "Chapter 10 - Mathematics",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0124-Joyful-Mathematics/aejm110/index.html"
+            },
+            {
+              "title": "Chapter 11 - Mathematics",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0124-Joyful-Mathematics/aejm111/index.html"
+            },
+            {
+              "title": "Chapter 12 - Mathematics",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0124-Joyful-Mathematics/aejm112/index.html"
+            },
+            {
+              "title": "Chapter 13 - Mathematics",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0124-Joyful-Mathematics/aejm113/index.html"
+            }
+          ]
+        },
+        {
+          "subject_name": "English",
+          "pdf_links": [
+            {
+              "title": "Chapter 1 - English",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0123-Mridang/aemr101/index.html"
+            },
+            {
+              "title": "Chapter 2 - English",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0123-Mridang/aemr102/index.html"
+            },
+            {
+              "title": "Chapter 3 - English",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0123-Mridang/aemr104/index.html"
+            },
+            {
+              "title": "Chapter 4 - English",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0123-Mridang/aemr105/index.html"
+            },
+            {
+              "title": "Chapter 5 - English",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0123-Mridang/aemr106/index.html"
+            },
+            {
+              "title": "Chapter 6 - English",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0123-Mridang/aemr107/index.html"
+            },
+            {
+              "title": "Chapter 7 - English",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0123-Mridang/aemr108/index.html"
+            },
+            {
+              "title": "Chapter 8 - English",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0123-Mridang/aemr109/index.html"
+            } 
+          ]
+        },
+        {
+          "subject_name": "HINDI",
+          "pdf_links": [
+            {
+              "title": "Chapter 1 - HINDI",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0122-Sarangi/ahsr1ps/index.html"
+            },
+            {
+              "title": "Chapter 2 - HINDI",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0122-Sarangi/ahsr102/index.html"
+            },
+            {
+              "title": "Chapter 3 - HINDI",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0122-Sarangi/ahsr103/index.html"
+            },
+            {
+              "title": "Chapter 4 - HINDI",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0122-Sarangi/ahsr104/index.html"
+            },
+            {
+              "title": "Chapter 5 - HINDI",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0122-Sarangi/ahsr105/index.html"
+            },
+            {
+              "title": "Chapter 6 - HINDI",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0122-Sarangi/ahsr106/index.html"
+            },
+            {
+              "title": "Chapter 7 - HINDI",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0122-Sarangi/ahsr107/index.html"
+            },
+            {
+              "title": "Chapter 8 - HINDI",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0122-Sarangi/ahsr108/index.html"
+            },
+            {
+              "title": "Chapter 9 - HINDI",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0122-Sarangi/ahsr109/index.html"
+            },
+            {
+              "title": "Chapter 10 - HINDI",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0122-Sarangi/ahsr110/index.html"
+            },
+            {
+              "title": "Chapter 11 - HINDI",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0122-Sarangi/ahsr111/index.html"
+            },
+            {
+              "title": "Chapter 12 - HINDI",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0122-Sarangi/ahsr112/index.html"
+            },
+            {
+              "title": "Chapter 13 - HINDI",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0122-Sarangi/ahsr113/index.html"
+            },
+            {
+              "title": "Chapter 14 - HINDI",
+              "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20I/0122-Sarangi/ahsr114/index.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "2",
+      "subjects": [
+        {
+          "subject_name": "Mathematics",
+          "pdf_links": [
+            { "title": "Chapter 1 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0224-Joyful-Mathematics/bejm101/index.html" },
+            { "title": "Chapter 2 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0224-Joyful-Mathematics/bejm102/index.html" },
+            { "title": "Chapter 3 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0224-Joyful-Mathematics/bejm103/index.html" },
+            { "title": "Chapter 4 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0224-Joyful-Mathematics/bejm104/index.html" },
+            { "title": "Chapter 5 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0224-Joyful-Mathematics/bejm105/index.html" },
+            { "title": "Chapter 6 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0224-Joyful-Mathematics/bejm106/index.html" },
+            { "title": "Chapter 7 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0224-Joyful-Mathematics/bejm107/index.html" },
+            { "title": "Chapter 8 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0224-Joyful-Mathematics/bejm108/index.html" },
+            { "title": "Chapter 9 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0224-Joyful-Mathematics/bejm109/index.html" },
+            { "title": "Chapter 10 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0224-Joyful-Mathematics/bejm110/index.html" }
+          ]
+        },
+        {
+          "subject_name": "English",
+          "pdf_links": [
+            { "title": "Chapter 1 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0223-Mridang/bemr101/index.html" },
+            { "title": "Chapter 2 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0223-Mridang/bemr102/index.html" },
+            { "title": "Chapter 3 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0223-Mridang/bemr103/index.html" },
+            { "title": "Chapter 4 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0223-Mridang/bemr104/index.html" },
+            { "title": "Chapter 5 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0223-Mridang/bemr105/index.html" },
+            { "title": "Chapter 6 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0223-Mridang/bemr106/index.html" },
+            { "title": "Chapter 7 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0223-Mridang/bemr107/index.html" },
+            { "title": "Chapter 8 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0223-Mridang/bemr108/index.html" },
+            { "title": "Chapter 9 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0223-Mridang/bemr109/index.html" },
+            { "title": "Chapter 10 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0223-Mridang/bemr110/index.html" }
+          ]
+        },
+        {
+          "subject_name": "HINDI",
+          "pdf_links": [
+            { "title": "Chapter 1 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0222-Sarangi/bhsr101/index.html" },
+            { "title": "Chapter 2 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0222-Sarangi/bhsr102/index.html" },
+            { "title": "Chapter 3 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0222-Sarangi/bhsr103/index.html" },
+            { "title": "Chapter 4 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0222-Sarangi/bhsr104/index.html" },
+            { "title": "Chapter 5 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0222-Sarangi/bhsr105/index.html" },
+            { "title": "Chapter 6 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0222-Sarangi/bhsr106/index.html" },
+            { "title": "Chapter 7 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0222-Sarangi/bhsr107/index.html" },
+            { "title": "Chapter 8 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0222-Sarangi/bhsr108/index.html" },
+            { "title": "Chapter 9 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0222-Sarangi/bhsr109/index.html" },
+            { "title": "Chapter 10 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0222-Sarangi/bhsr110/index.html" },
+            { "title": "Chapter 11 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0222-Sarangi/bhsr111/index.html" },
+            { "title": "Chapter 12 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0222-Sarangi/bhsr112/index.html" },
+            { "title": "Chapter 13 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0222-Sarangi/bhsr113/index.html" },
+            { "title": "Chapter 14 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0222-Sarangi/bhsr114/index.html" },
+            { "title": "Chapter 15 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class2/0222-Sarangi/bhsr115/index.html" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "3",
+      "subjects": [
+        {
+          "subject_name": "Mathematics",
+          "pdf_links": [
+            { "title": "Chapter 1 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0333-MathsMela/cemm101/#page=1" },
+            { "title": "Chapter 2 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0333-MathsMela/cemm102/#page=1" },
+            { "title": "Chapter 3 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0333-MathsMela/cemm103/#page=1" },
+            { "title": "Chapter 4 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0333-MathsMela/cemm104/#page=1" },
+            { "title": "Chapter 5 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0333-MathsMela/cemm105/#page=1" },
+            { "title": "Chapter 6 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0333-MathsMela/cemm106/#page=1" },
+            { "title": "Chapter 7 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0333-MathsMela/cemm107/#page=1" },
+            { "title": "Chapter 8 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0333-MathsMela/cemm108/#page=1" },
+            { "title": "Chapter 9 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0333-MathsMela/cemm109/#page=1" },
+            { "title": "Chapter 10 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0333-MathsMela/cemm110/#page=1" },
+            { "title": "Chapter 11 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0333-MathsMela/cemm111/#page=1" },
+            { "title": "Chapter 12 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0333-MathsMela/cemm112/#page=1" },
+            { "title": "Chapter 13 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0333-MathsMela/cemm113/#page=1" },
+            { "title": "Chapter 14 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0333-MathsMela/cemm114/#page=1" }
+          ]
+        },
+        {
+          "subject_name": "English",
+          "pdf_links": [
+            { "title": "Chapter 1 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0332-Santoor/cesa101/" },
+            { "title": "Chapter 2 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0332-Santoor/cesa102/" },
+            { "title": "Chapter 3 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0332-Santoor/cesa103/" },
+            { "title": "Chapter 4 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0332-Santoor/cesa104/" },
+            { "title": "Chapter 5 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0332-Santoor/cesa105/" },
+            { "title": "Chapter 6 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0332-Santoor/cesa106/" },
+            { "title": "Chapter 7 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0332-Santoor/cesa107/" },
+            { "title": "Chapter 8 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0332-Santoor/cesa108/" },
+            { "title": "Chapter 9 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0332-Santoor/cesa109/" },
+            { "title": "Chapter 10 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0332-Santoor/cesa110/" },
+            { "title": "Chapter 11 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0332-Santoor/cesa111/" },
+            { "title": "Chapter 12 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0332-Santoor/cesa112/" }
+          ]
+        },
+        {
+          "subject_name": "HINDI",
+          "pdf_links": [
+            { "title": "Chapter 1 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0331-Veena/chve101/" },
+            { "title": "Chapter 2 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0331-Veena/chve102/" },
+            { "title": "Chapter 3 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0331-Veena/chve103/" },
+            { "title": "Chapter 4 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0331-Veena/chve104/" },
+            { "title": "Chapter 5 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0331-Veena/chve105/" },
+            { "title": "Chapter 6 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0331-Veena/chve106/" },
+            { "title": "Chapter 7 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0331-Veena/chve107/" },
+            { "title": "Chapter 8 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0331-Veena/chve108/" },
+            { "title": "Chapter 9 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0331-Veena/chve109/" },
+            { "title": "Chapter 10 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0331-Veena/chve110/" },
+            { "title": "Chapter 11 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0331-Veena/chve111/" },
+            { "title": "Chapter 12 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0331-Veena/chve112/" },
+            { "title": "Chapter 13 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0331-Veena/chve113/" },
+            { "title": "Chapter 14 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0331-Veena/chve114/" }
+          ]
+        },
+        {
+          "subject_name": "The World Around Us",
+          "pdf_links": [
+            { "title": "Chapter 1 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0335-Our_Wondrous_World/ceev101/" },
+            { "title": "Chapter 2 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0335-Our_Wondrous_World/ceev102/" },
+            { "title": "Chapter 3 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0335-Our_Wondrous_World/ceev103/" },
+            { "title": "Chapter 4 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0335-Our_Wondrous_World/ceev104/" },
+            { "title": "Chapter 5 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0335-Our_Wondrous_World/ceev105/" },
+            { "title": "Chapter 6 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0335-Our_Wondrous_World/ceev106/" },
+            { "title": "Chapter 7 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0335-Our_Wondrous_World/ceev107/" },
+            { "title": "Chapter 8 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0335-Our_Wondrous_World/ceev108/" },
+            { "title": "Chapter 9 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0335-Our_Wondrous_World/ceev109/" }
+          ]
+        },
+        {
+          "subject_name": "Physical Education and Well Being",
+          "pdf_links": [
+            { "title": "Chapter 1 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0339-Khel_yoga/ceky101/" },
+            { "title": "Chapter 2 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0339-Khel_yoga/ceky102/" },
+            { "title": "Chapter 3 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0339-Khel_yoga/ceky103/" },
+            { "title": "Chapter 4 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0339-Khel_yoga/ceky104/" },
+            { "title": "Chapter 5 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0339-Khel_yoga/ceky105/" },
+            { "title": "Chapter 6 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0339-Khel_yoga/ceky106/" },
+            { "title": "Chapter 7 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0339-Khel_yoga/ceky107/" }
+          ]
+        },
+        {
+          "subject_name": "Arts",
+          "pdf_links": [
+            { "title": "Chapter 1 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0337-Bansuri/cebu101/" },
+            { "title": "Chapter 2 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0337-Bansuri/cebu102/" },
+            { "title": "Chapter 2 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0337-Bansuri/cebu103/" },
+            { "title": "Chapter 2 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0337-Bansuri/cebu104/" },
+            { "title": "Chapter 2 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0337-Bansuri/cebu105/" },
+            { "title": "Chapter 2 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0337-Bansuri/cebu106/" },
+            { "title": "Chapter 2 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20III/0337-Bansuri/cebu107/" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "4",
+      "subjects": [
+        {
+          "subject_name": "Mathematics",
+          "pdf_links": [
+            { "title": "Chapter 1 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Math-Mela/demm101/" },
+            { "title": "Chapter 2 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Math-Mela/demm102/" },
+            { "title": "Chapter 3 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Math-Mela/demm103/" },
+            { "title": "Chapter 4 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Math-Mela/demm104/" },
+            { "title": "Chapter 5 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Math-Mela/demm105/" },
+            { "title": "Chapter 6 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Math-Mela/demm106/" },
+            { "title": "Chapter 7 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Math-Mela/demm107/" },
+            { "title": "Chapter 8 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Math-Mela/demm108/" },
+            { "title": "Chapter 9 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Math-Mela/demm109/" },
+            { "title": "Chapter 10 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Math-Mela/demm110/"},
+            { "title": "Chapter 11 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Math-Mela/demm111/"},
+            { "title": "Chapter 12 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Math-Mela/demm112/"},
+            { "title": "Chapter 13 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Math-Mela/demm113/"}
+          ]
+        },
+        {
+          "subject_name": "English",
+          "pdf_links": [
+            { "title": "Chapter 1 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Santoor/desa1ps/" },
+            { "title": "Chapter 2 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Santoor/desa102/" },
+            { "title": "Chapter 3 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Santoor/desa103/" },
+            { "title": "Chapter 4 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Santoor/desa104/" },
+            { "title": "Chapter 5 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Santoor/desa105/" },
+            { "title": "Chapter 6 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Santoor/desa106/" },
+            { "title": "Chapter 7 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Santoor/desa107/" },
+            { "title": "Chapter 8 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Santoor/desa108/" },
+            { "title": "Chapter 9 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Santoor/desa109/" },
+            { "title": "Chapter 10 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Santoor/desa110/" },
+            { "title": "Chapter 11 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Santoor/desa111/" },
+            { "title": "Chapter 12 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Santoor/desa112/" }
+          ]
+        },
+        {
+          "subject_name": "HINDI",
+          "pdf_links": [
+            { "title": "Chapter 1 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Veena/dhve101/" },
+            { "title": "Chapter 2 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Veena/dhve102/" },
+            { "title": "Chapter 3 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Veena/dhve103/" },
+            { "title": "Chapter 4 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Veena/dhve104/" },
+            { "title": "Chapter 5 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Veena/dhve105/" },
+            { "title": "Chapter 6 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Veena/dhve106/" },
+            { "title": "Chapter 7 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Veena/dhve107/" },
+            { "title": "Chapter 8 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Veena/dhve108/" },
+            { "title": "Chapter 9 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Veena/dhve109/" },
+            { "title": "Chapter 10 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Veena/dhve110/" },
+            { "title": "Chapter 11 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Veena/dhve111/" },
+            { "title": "Chapter 12 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Veena/dhve112/" }
+          ]
+        },
+        {
+          "subject_name": "The World Around Us",
+          "pdf_links": [
+            { "title": "Chapter 1 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Our_wondours_world/deev101/" },
+            { "title": "Chapter 2 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Our_wondours_world/deev102/" },
+            { "title": "Chapter 3 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Our_wondours_world/deev103/" },
+            { "title": "Chapter 4 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Our_wondours_world/deev104/" },
+            { "title": "Chapter 5 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Our_wondours_world/deev105/" },
+            { "title": "Chapter 6 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Our_wondours_world/deev106/" },
+            { "title": "Chapter 7 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Our_wondours_world/deev107/" },
+            { "title": "Chapter 8 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Our_wondours_world/deev108/" },
+            { "title": "Chapter 9 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Our_wondours_world/deev109/" }
+          ]
+        },
+        {
+          "subject_name": "Physical Education and Well Being",
+          "pdf_links": [
+            { "title": "Chapter 1 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Khel_yoga/deky101/" },
+            { "title": "Chapter 2 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Khel_yoga/deky102/" },
+            { "title": "Chapter 3 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Khel_yoga/deky103/" },
+            { "title": "Chapter 4 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Khel_yoga/deky104/" }
+          ]
+        },
+        {
+          "subject_name": "Arts",
+          "pdf_links": [
+            { "title": "Chapter 1 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu101/" },
+            { "title": "Chapter 2 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu102/" },
+            { "title": "Chapter 3 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu103/" },
+            { "title": "Chapter 4 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu104/" },
+            { "title": "Chapter 5 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu105/" },
+            { "title": "Chapter 6 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu106/" },
+            { "title": "Chapter 7 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu107/" },
+            { "title": "Chapter 8 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu108/" },
+            { "title": "Chapter 9 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu109/" },
+            { "title": "Chapter 10 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu110/" },
+            { "title": "Chapter 11 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu111/" },
+            { "title": "Chapter 12 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu112/" },
+            { "title": "Chapter 13 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu113/" },
+            { "title": "Chapter 14- Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu114/" },
+            { "title": "Chapter 15 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu115/" },
+            { "title": "Chapter 16 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu116/" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "5",
+      "subjects": [
+        {
+          "subject_name": "Mathematics",
+          "pdf_links": [
+            { "title": "Chapter 1 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Math-Mela/demm101/" },
+            { "title": "Chapter 2 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Math-Mela/demm102/" },
+            { "title": "Chapter 3 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Math-Mela/demm103/" },
+            { "title": "Chapter 4 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Math-Mela/demm104/" },
+            { "title": "Chapter 5 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Math-Mela/demm105/" },
+            { "title": "Chapter 6 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Math-Mela/demm106/" },
+            { "title": "Chapter 7 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Math-Mela/demm107/" },
+            { "title": "Chapter 8 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Math-Mela/demm108/" },
+            { "title": "Chapter 9 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Math-Mela/demm109/" },
+            { "title": "Chapter 10 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Math-Mela/demm110/" },
+            { "title": "Chapter 11 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Math-Mela/demm111/" },
+            { "title": "Chapter 12 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Math-Mela/demm112/" },
+            { "title": "Chapter 13 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Math-Mela/demm113/" }
+          ]
+        },
+        {
+          "subject_name": "English",
+          "pdf_links": [
+            { "title": "Chapter 1 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Santoor/desa1ps/" },
+            { "title": "Chapter 2 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Santoor/desa102/" },
+            { "title": "Chapter 3 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Santoor/desa103/" },
+            { "title": "Chapter 4 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Santoor/desa104/" },
+            { "title": "Chapter 5 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Santoor/desa105/" },
+            { "title": "Chapter 6 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Santoor/desa106/" },
+            { "title": "Chapter 7 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Santoor/desa107/" },
+            { "title": "Chapter 8 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Santoor/desa108/" },
+            { "title": "Chapter 9 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Santoor/desa109/" },
+            { "title": "Chapter 10 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Santoor/desa110/" },
+            { "title": "Chapter 11 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Santoor/desa111/" },
+            { "title": "Chapter 12 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Santoor/desa112/" }
+          ]
+        },
+        {
+          "subject_name": "HINDI",
+          "pdf_links": [
+            { "title": "Chapter 1 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Veena/dhve101/" },
+            { "title": "Chapter 2 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Veena/dhve102/" },
+            { "title": "Chapter 3 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Veena/dhve103/" },
+            { "title": "Chapter 4 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Veena/dhve104/" },
+            { "title": "Chapter 5 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Veena/dhve105/" },
+            { "title": "Chapter 6 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Veena/dhve106/" },
+            { "title": "Chapter 7 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Veena/dhve107/" },
+            { "title": "Chapter 8 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Veena/dhve108/" },
+            { "title": "Chapter 9 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Veena/dhve109/" },
+            { "title": "Chapter 10 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Veena/dhve110/" },
+            { "title": "Chapter 11 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Veena/dhve111/" },
+            { "title": "Chapter 12 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Veena/dhve112/" }
+          ]
+        },
+        {
+          "subject_name": "The World Around Us",
+          "pdf_links": [
+            { "title": "Chapter 1 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Our_wondours_world/deev101/" },
+            { "title": "Chapter 2 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Our_wondours_world/deev102/" },
+            { "title": "Chapter 3 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Our_wondours_world/deev103/" },
+            { "title": "Chapter 4 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Our_wondours_world/deev104/" },
+            { "title": "Chapter 5 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Our_wondours_world/deev105/" },
+            { "title": "Chapter 6 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Our_wondours_world/deev106/" },
+            { "title": "Chapter 7 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Our_wondours_world/deev107/" },
+            { "title": "Chapter 8 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Our_wondours_world/deev108/" },
+            { "title": "Chapter 9 - The World Around Us", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Our_wondours_world/deev109/" }
+          ]
+        },
+        {
+          "subject_name": "Physical Education and Well Being",
+          "pdf_links": [
+            { "title": "Chapter 1 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Khel_yoga/deky101/" },
+            { "title": "Chapter 2 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Khel_yoga/deky102/" },
+            { "title": "Chapter 3 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Khel_yoga/deky103/" },
+            { "title": "Chapter 4 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Khel_yoga/deky104/" }
+          ]
+        },
+        {
+          "subject_name": "Arts",
+          "pdf_links": [
+            { "title": "Chapter 1 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu101/" },
+            { "title": "Chapter 2 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu102/" },
+            { "title": "Chapter 3 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu103/" },
+            { "title": "Chapter 4 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu104/" },
+            { "title": "Chapter 5 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu105/" },
+            { "title": "Chapter 6 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu106/" },
+            { "title": "Chapter 7 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu107/" },
+            { "title": "Chapter 8 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu108/" },
+            { "title": "Chapter 9 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu109/" },
+            { "title": "Chapter 10 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu110/" },
+            { "title": "Chapter 11 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu111/" },
+            { "title": "Chapter 12 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu112/" },
+            { "title": "Chapter 13 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu113/" },
+            { "title": "Chapter 14- Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu114/" },
+            { "title": "Chapter 15 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu115/" },
+            { "title": "Chapter 16 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/classIV/Bansuri/debu116/" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "6",
+      "subjects": [
+        {
+          "subject_name": "HINDI",
+          "pdf_links": [
+            { "title": "Chapter 1 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0671-Malhar_Hindi/fhml101/" },
+            { "title": "Chapter 2 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0671-Malhar_Hindi/fhml102/" },
+            { "title": "Chapter 3 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0671-Malhar_Hindi/fhml103/" },
+            { "title": "Chapter 4 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0671-Malhar_Hindi/fhml104/" },
+            { "title": "Chapter 5 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0671-Malhar_Hindi/fhml105/" },
+            { "title": "Chapter 6 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0671-Malhar_Hindi/fhml106/" },
+            { "title": "Chapter 7 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0671-Malhar_Hindi/fhml107/" },
+            { "title": "Chapter 8 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0671-Malhar_Hindi/fhml108/" },
+            { "title": "Chapter 9 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0671-Malhar_Hindi/fhml109/" },
+            { "title": "Chapter 10 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0671-Malhar_Hindi/fhml110/" }
+          ]
+        },
+        {
+          "subject_name": "English",
+          "pdf_links": [
+            { "title": "Chapter 1 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0673-Poorvi_English/fepr101/" },
+            { "title": "Chapter 2 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0673-Poorvi_English/fepr102/" },
+            { "title": "Chapter 3 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0673-Poorvi_English/fepr103/" },
+            { "title": "Chapter 4 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0673-Poorvi_English/fepr104/" },
+            { "title": "Chapter 5 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0673-Poorvi_English/fepr105/" }
+          ]
+        },
+        {
+          "subject_name": "Mathematics",
+          "pdf_links": [
+            { "title": "Chapter 1 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0674%e2%80%93Ganita_Prakash/fegp101/" },
+            { "title": "Chapter 2 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0674%e2%80%93Ganita_Prakash/fegp102/" },
+            { "title": "Chapter 3 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0674%e2%80%93Ganita_Prakash/fegp103/" },
+            { "title": "Chapter 4 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0674%e2%80%93Ganita_Prakash/fegp104/" },
+            { "title": "Chapter 5 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0674%e2%80%93Ganita_Prakash/fegp105/" },
+            { "title": "Chapter 6 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0674%e2%80%93Ganita_Prakash/fegp106/" },
+            { "title": "Chapter 7 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0674%e2%80%93Ganita_Prakash/fegp107/" },
+            { "title": "Chapter 8 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0674%e2%80%93Ganita_Prakash/fegp108/" },
+            { "title": "Chapter 9 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0674%e2%80%93Ganita_Prakash/fegp109/" },
+            { "title": "Chapter 10 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0674%e2%80%93Ganita_Prakash/fegp110/" }
+          ]
+        },
+        {
+          "subject_name": "Social Studies",
+          "pdf_links": [
+            { "title": "Chapter 1 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0681-Exploring_Society_India_and_Beyond/fees101/" },
+            { "title": "Chapter 2 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0681-Exploring_Society_India_and_Beyond/fees102/" },
+            { "title": "Chapter 3 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0681-Exploring_Society_India_and_Beyond/fees103/" },
+            { "title": "Chapter 4 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0681-Exploring_Society_India_and_Beyond/fees104/" },
+            { "title": "Chapter 5 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0681-Exploring_Society_India_and_Beyond/fees105/" },
+            { "title": "Chapter 6 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0681-Exploring_Society_India_and_Beyond/fees106/" },
+            { "title": "Chapter 7 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0681-Exploring_Society_India_and_Beyond/fees107/" },
+            { "title": "Chapter 8 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0681-Exploring_Society_India_and_Beyond/fees108/" },
+            { "title": "Chapter 9 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0681-Exploring_Society_India_and_Beyond/fees109/" },
+            { "title": "Chapter 10 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0681-Exploring_Society_India_and_Beyond/fees110/" }
+          ]
+        },
+        {
+          "subject_name": "Sanskrit",
+          "pdf_links": [
+            { "title": "Chapter 1 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0672-Deepakam_Sanskrit/fsde101/" },
+            { "title": "Chapter 2 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0672-Deepakam_Sanskrit/fsde102/" },
+            { "title": "Chapter 3 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0672-Deepakam_Sanskrit/fsde103/" },
+            { "title": "Chapter 4 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0672-Deepakam_Sanskrit/fsde104/" },
+            { "title": "Chapter 5 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0672-Deepakam_Sanskrit/fsde105/" },
+            { "title": "Chapter 6 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0672-Deepakam_Sanskrit/fsde106/" },
+            { "title": "Chapter 7 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0672-Deepakam_Sanskrit/fsde107/" },
+            { "title": "Chapter 8 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0672-Deepakam_Sanskrit/fsde108/" },
+            { "title": "Chapter 9 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0672-Deepakam_Sanskrit/fsde109/" },
+            { "title": "Chapter 10 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0672-Deepakam_Sanskrit/fsde110/" }
+          ]
+        },
+        {
+          "subject_name": "Science",
+          "pdf_links": [
+            { "title": "Chapter 1 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0677-Curosity_Science/fecu101/" },
+            { "title": "Chapter 2 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0677-Curosity_Science/fecu102/" },
+            { "title": "Chapter 3 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0677-Curosity_Science/fecu103/" },
+            { "title": "Chapter 4 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0677-Curosity_Science/fecu104/" },
+            { "title": "Chapter 5 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0677-Curosity_Science/fecu105/" },
+            { "title": "Chapter 6 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0677-Curosity_Science/fecu106/" },
+            { "title": "Chapter 7 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0677-Curosity_Science/fecu107/" },
+            { "title": "Chapter 8 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0677-Curosity_Science/fecu108/" },
+            { "title": "Chapter 9 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0677-Curosity_Science/fecu109/" },
+            { "title": "Chapter 10 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0677-Curosity_Science/fecu110/"},
+            { "title": "Chapter 11 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0677-Curosity_Science/fecu111/"},
+            { "title": "Chapter 12 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0677-Curosity_Science/fecu112/"}
+          ]
+        },
+        {
+          "subject_name": "Arts",
+          "pdf_links": [
+            { "title": "Chapter 1 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0680-Kriti_1/fekr101/" },
+            { "title": "Chapter 2 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0680-Kriti_1/fekr102/" },
+            { "title": "Chapter 3 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0680-Kriti_1/fekr103/" },
+            { "title": "Chapter 4 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0680-Kriti_1/fekr104/" },
+            { "title": "Chapter 5 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0680-Kriti_1/fekr105/" },
+            { "title": "Chapter 6 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0680-Kriti_1/fekr106/" },
+            { "title": "Chapter 7 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0680-Kriti_1/fekr107/" },
+            { "title": "Chapter 8 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0680-Kriti_1/fekr108/" },
+            { "title": "Chapter 9 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0680-Kriti_1/fekr108/" },
+            { "title": "Chapter 10 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0680-Kriti_1/fekr110/" },
+            { "title": "Chapter 11 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0680-Kriti_1/fekr111/" },
+            { "title": "Chapter 12 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0680-Kriti_1/fekr112/" },
+            { "title": "Chapter 13 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0680-Kriti_1/fekr113/" },
+            { "title": "Chapter 14 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0680-Kriti_1/fekr114/" },
+            { "title": "Chapter 15 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0680-Kriti_1/fekr115/" },
+            { "title": "Chapter 16 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0680-Kriti_1/fekr116/" },
+            { "title": "Chapter 17 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0680-Kriti_1/fekr117/" },
+            { "title": "Chapter 18 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0680-Kriti_1/fekr118/" },
+            { "title": "Chapter 19 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0680-Kriti_1/fekr119/" },
+            { "title": "Chapter 20 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0680-Kriti_1/fekr120/" }
+          ]
+        },
+        {
+          "subject_name": "Physical Education and Well Being",
+          "pdf_links": [
+            { "title": "Chapter 1 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0687-Khel_Yatra/feky101/" },
+            { "title": "Chapter 2 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0687-Khel_Yatra/feky102/" },
+            { "title": "Chapter 3 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0687-Khel_Yatra/feky103/" },
+            { "title": "Chapter 4 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0687-Khel_Yatra/feky104/" },
+            { "title": "Chapter 5 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0687-Khel_Yatra/feky105/" }
+          ]
+        },
+        {
+          "subject_name": "Vocational Education",
+          "pdf_links": [
+            { "title": "Chapter 1 - Vocational Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0685-Kaushal_Bodh/fekb101/" },
+            { "title": "Chapter 2 - Vocational Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0685-Kaushal_Bodh/fekb102/" },
+            { "title": "Chapter 3 - Vocational Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0685-Kaushal_Bodh/fekb103/" },
+            { "title": "Chapter 4 - Vocational Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0685-Kaushal_Bodh/fekb104/" },
+            { "title": "Chapter 5 - Vocational Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0685-Kaushal_Bodh/fekb105/" },
+            { "title": "Chapter 6 - Vocational Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VI/0685-Kaushal_Bodh/fekb106/" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "7",
+      "subjects": [
+        {
+          "subject_name": "HINDI",
+          "pdf_links": [
+            { "title": "Chapter 1 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Malhar/ghml101/" },
+            { "title": "Chapter 2 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Malhar/ghml102/" },
+            { "title": "Chapter 3 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Malhar/ghml103/" },
+            { "title": "Chapter 4 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Malhar/ghml104/" },
+            { "title": "Chapter 5 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Malhar/ghml105/" },
+            { "title": "Chapter 6 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Malhar/ghml106/" },
+            { "title": "Chapter 7 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Malhar/ghml107/" },
+            { "title": "Chapter 8 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Malhar/ghml108/" },
+            { "title": "Chapter 9 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Malhar/ghml109/" },
+            { "title": "Chapter 10 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Malhar/ghml110/" }
+          ]
+        },
+        {
+          "subject_name": "English",
+          "pdf_links": [
+            { "title": "Chapter 1 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Poorvi/gepr101/" },
+            { "title": "Chapter 2 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Poorvi/gepr102/" },
+            { "title": "Chapter 3 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Poorvi/gepr103/" },
+            { "title": "Chapter 4 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Poorvi/gepr104/" },
+            { "title": "Chapter 5 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Poorvi/gepr105/" }
+          ]
+        },
+        {
+          "subject_name": "Mathematics",
+          "pdf_links": [
+            { "title": "Chapter 1 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Ganita_Prakash/gegp101/" },
+            { "title": "Chapter 2 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Ganita_Prakash/gegp102/" },
+            { "title": "Chapter 3 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Ganita_Prakash/gegp103/" },
+            { "title": "Chapter 4 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Ganita_Prakash/gegp104/" },
+            { "title": "Chapter 5 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Ganita_Prakash/gegp105/" },
+            { "title": "Chapter 6 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Ganita_Prakash/gegp106/" },
+            { "title": "Chapter 7 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Ganita_Prakash/gegp107/" },
+            { "title": "Chapter 8 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Ganita_Prakash/gegp108/" }
+          ]
+        },
+        {
+          "subject_name": "Social Studies",
+          "pdf_links": [
+            { "title": "Chapter 1 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Exploring_Society_India_and_Beyond/gees101/" },
+            { "title": "Chapter 2 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Exploring_Society_India_and_Beyond/gees102/" },
+            { "title": "Chapter 3 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Exploring_Society_India_and_Beyond/gees103/" },
+            { "title": "Chapter 4 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Exploring_Society_India_and_Beyond/gees104/" },
+            { "title": "Chapter 5 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Exploring_Society_India_and_Beyond/gees105/" },
+            { "title": "Chapter 6 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Exploring_Society_India_and_Beyond/gees106/" },
+            { "title": "Chapter 7 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Exploring_Society_India_and_Beyond/gees107/" },
+            { "title": "Chapter 8 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Exploring_Society_India_and_Beyond/gees108/" },
+            { "title": "Chapter 9 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Exploring_Society_India_and_Beyond/gees109/" },
+            { "title": "Chapter 10 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Exploring_Society_India_and_Beyond/gees110/" },
+            { "title": "Chapter 11 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Exploring_Society_India_and_Beyond/gees111/" },
+            { "title": "Chapter 12 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Exploring_Society_India_and_Beyond/gees112/" }
+          ]
+        },
+        {
+          "subject_name": "Sanskrit",
+          "pdf_links": [
+            { "title": "Chapter 1 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Deepakam/gsde101/" },
+            { "title": "Chapter 2 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Deepakam/gsde102/" },
+            { "title": "Chapter 3 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Deepakam/gsde103/" },
+            { "title": "Chapter 4 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Deepakam/gsde104/" },
+            { "title": "Chapter 5 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Deepakam/gsde105/" },
+            { "title": "Chapter 6 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Deepakam/gsde106/" },
+            { "title": "Chapter 7 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Deepakam/gsde107/" },
+            { "title": "Chapter 8 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Deepakam/gsde108/" },
+            { "title": "Chapter 9 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Deepakam/gsde109/" },
+            { "title": "Chapter 10 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Deepakam/gsde110/" }
+          ]
+        },
+        {
+          "subject_name": "Science",
+          "pdf_links": [
+            { "title": "Chapter 1 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Curosity/gecu101/" },
+            { "title": "Chapter 2 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Curosity/gecu102/" },
+            { "title": "Chapter 3 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Curosity/gecu103/" },
+            { "title": "Chapter 4 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Curosity/gecu104/" },
+            { "title": "Chapter 5 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Curosity/gecu105/" },
+            { "title": "Chapter 6 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Curosity/gecu106/" },
+            { "title": "Chapter 7 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Curosity/gecu107/" },
+            { "title": "Chapter 8 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Curosity/gecu108/" },
+            { "title": "Chapter 9 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Curosity/gecu109/" },
+            { "title": "Chapter 10 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Curosity/gecu110/" },
+            { "title": "Chapter 11 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Curosity/gecu111/" },
+            { "title": "Chapter 12 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Curosity/gecu112/" }
+          ]
+        },
+        {
+          "subject_name": "Arts",
+          "pdf_links": [
+            { "title": "Chapter 1 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kriti/gekr101/" },
+            { "title": "Chapter 2 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kriti/gekr102/" },
+            { "title": "Chapter 3 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kriti/gekr103/" },
+            { "title": "Chapter 4 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kriti/gekr104/" },
+            { "title": "Chapter 5 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kriti/gekr105/" },
+            { "title": "Chapter 6 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kriti/gekr106/" },
+            { "title": "Chapter 7 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kriti/gekr107/" },
+            { "title": "Chapter 8 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kriti/gekr108/" },
+            { "title": "Chapter 9 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kriti/gekr109/" },
+            { "title": "Chapter 10 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kriti/gekr110/" },
+            { "title": "Chapter 11 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kriti/gekr111/" },
+            { "title": "Chapter 12 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kriti/gekr112/" },
+            { "title": "Chapter 13 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kriti/gekr113/" },
+            { "title": "Chapter 14 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kriti/gekr114/" },
+            { "title": "Chapter 15 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kriti/gekr115/" },
+            { "title": "Chapter 16 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kriti/gekr116/" },
+            { "title": "Chapter 17 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kriti/gekr117/" },
+            { "title": "Chapter 18 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kriti/gekr118/" },
+            { "title": "Chapter 19 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kriti/gekr119/" },
+            { "title": "Chapter 20 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kriti/gekr120/" }
+          ]
+        },
+        {
+          "subject_name": "Physical Education and Well Being",
+          "pdf_links": [
+            { "title": "Chapter 1 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Khel_Yatra/geky101/" },
+            { "title": "Chapter 2 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Khel_Yatra/geky102/" },
+            { "title": "Chapter 3 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Khel_Yatra/geky103/" },
+            { "title": "Chapter 4 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Khel_Yatra/geky104/" },
+            { "title": "Chapter 5 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Khel_Yatra/geky105/" },
+            { "title": "Chapter 6 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Khel_Yatra/geky106/" }
+          ]
+        },
+        {
+          "subject_name": "Vocational Education",
+          "pdf_links": [
+            { "title": "Chapter 1 - Vocational Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kaushal_Bodh/gekb101/" },
+            { "title": "Chapter 2 - Vocational Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kaushal_Bodh/gekb102/" },
+            { "title": "Chapter 3 - Vocational Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kaushal_Bodh/gekb103/" },
+            { "title": "Chapter 4 - Vocational Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kaushal_Bodh/gekb104/" },
+            { "title": "Chapter 5 - Vocational Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kaushal_Bodh/gekb105/" },
+            { "title": "Chapter 6 - Vocational Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kaushal_Bodh/gekb106/" },
+            { "title": "Chapter 7 - Vocational Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VII/Kaushal_Bodh/gekb107/" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "8",
+      "subjects": [
+        {
+          "subject_name": "HINDI",
+          "pdf_links": [
+            { "title": "Chapter 1 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0751-Malhar_Hindi/fhml101/" },
+            { "title": "Chapter 2 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0751-Malhar_Hindi/fhml102/" },
+            { "title": "Chapter 3 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0751-Malhar_Hindi/fhml103/" },
+            { "title": "Chapter 4 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0751-Malhar_Hindi/fhml104/" },
+            { "title": "Chapter 5 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0751-Malhar_Hindi/fhml105/" },
+            { "title": "Chapter 6 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0751-Malhar_Hindi/fhml106/" },
+            { "title": "Chapter 7 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0751-Malhar_Hindi/fhml107/" },
+            { "title": "Chapter 8 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0751-Malhar_Hindi/fhml108/" },
+            { "title": "Chapter 9 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0751-Malhar_Hindi/fhml109/" },
+            { "title": "Chapter 10 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0751-Malhar_Hindi/fhml110/" }
+          ]
+        },
+        {
+          "subject_name": "English",
+          "pdf_links": [
+            { "title": "Chapter 1 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0753-Poorvi_English/fepr101/" },
+            { "title": "Chapter 2 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0753-Poorvi_English/fepr102/" },
+            { "title": "Chapter 3 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0753-Poorvi_English/fepr103/" },
+            { "title": "Chapter 4 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0753-Poorvi_English/fepr104/" },
+            { "title": "Chapter 5 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0753-Poorvi_English/fepr105/" }
+          ]
+        },
+        {
+          "subject_name": "Mathematics",
+          "pdf_links": [
+            { "title": "Chapter 1 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0754%e2%80%93Ganita_Prakash/fegp101/" },
+            { "title": "Chapter 2 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0754%e2%80%93Ganita_Prakash/fegp102/" },
+            { "title": "Chapter 3 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0754%e2%80%93Ganita_Prakash/fegp103/" },
+            { "title": "Chapter 4 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0754%e2%80%93Ganita_Prakash/fegp104/" },
+            { "title": "Chapter 5 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0754%e2%80%93Ganita_Prakash/fegp105/" },
+            { "title": "Chapter 6 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0754%e2%80%93Ganita_Prakash/fegp106/" },
+            { "title": "Chapter 7 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0754%e2%80%93Ganita_Prakash/fegp107/" },
+            { "title": "Chapter 8 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0754%e2%80%93Ganita_Prakash/fegp108/" },
+            { "title": "Chapter 9 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0754%e2%80%93Ganita_Prakash/fegp109/" },
+            { "title": "Chapter 10 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0754%e2%80%93Ganita_Prakash/fegp110/" }
+          ]
+        },
+        {
+          "subject_name": "Social Studies",
+          "pdf_links": [
+            { "title": "Chapter 1 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0761-Exploring_Society_India_and_Beyond/fees101/" },
+            { "title": "Chapter 2 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0761-Exploring_Society_India_and_Beyond/fees102/" },
+            { "title": "Chapter 3 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0761-Exploring_Society_India_and_Beyond/fees103/" },
+            { "title": "Chapter 4 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0761-Exploring_Society_India_and_Beyond/fees104/" },
+            { "title": "Chapter 5 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0761-Exploring_Society_India_and_Beyond/fees105/" },
+            { "title": "Chapter 6 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0761-Exploring_Society_India_and_Beyond/fees106/" },
+            { "title": "Chapter 7 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0761-Exploring_Society_India_and_Beyond/fees107/" },
+            { "title": "Chapter 8 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0761-Exploring_Society_India_and_Beyond/fees108/" },
+            { "title": "Chapter 9 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0761-Exploring_Society_India_and_Beyond/fees109/" },
+            { "title": "Chapter 10 - Social Studies", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0761-Exploring_Society_India_and_Beyond/fees110/" }
+          ]
+        },
+        {
+          "subject_name": "Sanskrit",
+          "pdf_links": [
+            { "title": "Chapter 1 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0752-Deepakam_Sanskrit/fsde101/" },
+            { "title": "Chapter 2 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0752-Deepakam_Sanskrit/fsde102/" },
+            { "title": "Chapter 3 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0752-Deepakam_Sanskrit/fsde103/" },
+            { "title": "Chapter 4 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0752-Deepakam_Sanskrit/fsde104/" },
+            { "title": "Chapter 5 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0752-Deepakam_Sanskrit/fsde105/" },
+            { "title": "Chapter 6 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0752-Deepakam_Sanskrit/fsde106/" },
+            { "title": "Chapter 7 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0752-Deepakam_Sanskrit/fsde107/" },
+            { "title": "Chapter 8 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0752-Deepakam_Sanskrit/fsde108/" },
+            { "title": "Chapter 9 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0752-Deepakam_Sanskrit/fsde109/" },
+            { "title": "Chapter 10 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0752-Deepakam_Sanskrit/fsde110/" }
+          ]
+        },
+        {
+          "subject_name": "Science",
+          "pdf_links": [
+            { "title": "Chapter 1 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0757-Curosity_Science/fecu101/" },
+            { "title": "Chapter 2 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0757-Curosity_Science/fecu102/" },
+            { "title": "Chapter 3 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0757-Curosity_Science/fecu103/" },
+            { "title": "Chapter 4 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0757-Curosity_Science/fecu104/" },
+            { "title": "Chapter 5 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0757-Curosity_Science/fecu105/" },
+            { "title": "Chapter 6 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0757-Curosity_Science/fecu106/" },
+            { "title": "Chapter 7 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0757-Curosity_Science/fecu107/" },
+            { "title": "Chapter 8 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0757-Curosity_Science/fecu108/" },
+            { "title": "Chapter 9 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0757-Curosity_Science/fecu109/" },
+            { "title": "Chapter 10 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0757-Curosity_Science/fecu110/"},
+            { "title": "Chapter 11 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0757-Curosity_Science/fecu111/"},
+            { "title": "Chapter 12 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0757-Curosity_Science/fecu112/"}
+          ]
+        },
+        {
+          "subject_name": "Arts",
+          "pdf_links": [
+            { "title": "Chapter 1 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0760-Kriti_1/fekr101/" },
+            { "title": "Chapter 2 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0760-Kriti_1/fekr102/" },
+            { "title": "Chapter 3 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0760-Kriti_1/fekr103/" },
+            { "title": "Chapter 4 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0760-Kriti_1/fekr104/" },
+            { "title": "Chapter 5 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0760-Kriti_1/fekr105/" },
+            { "title": "Chapter 6 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0760-Kriti_1/fekr106/" },
+            { "title": "Chapter 7 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0760-Kriti_1/fekr107/" },
+            { "title": "Chapter 8 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0760-Kriti_1/fekr108/" },
+            { "title": "Chapter 9 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0760-Kriti_1/fekr108/" },
+            { "title": "Chapter 10 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0760-Kriti_1/fekr110/" },
+            { "title": "Chapter 11 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0760-Kriti_1/fekr111/" },
+            { "title": "Chapter 12 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0760-Kriti_1/fekr112/" },
+            { "title": "Chapter 13 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0760-Kriti_1/fekr113/" },
+            { "title": "Chapter 14 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0760-Kriti_1/fekr114/" },
+            { "title": "Chapter 15 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0760-Kriti_1/fekr115/" },
+            { "title": "Chapter 16 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0760-Kriti_1/fekr116/" },
+            { "title": "Chapter 17 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0760-Kriti_1/fekr117/" },
+            { "title": "Chapter 18 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0760-Kriti_1/fekr118/" },
+            { "title": "Chapter 19 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0760-Kriti_1/fekr119/" },
+            { "title": "Chapter 20 - Arts", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0760-Kriti_1/fekr120/" }
+          ]
+        },
+        {
+          "subject_name": "Physical Education and Well Being",
+          "pdf_links": [
+            { "title": "Chapter 1 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0687-Khel_Yatra/feky101/" },
+            { "title": "Chapter 2 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0687-Khel_Yatra/feky102/" },
+            { "title": "Chapter 3 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0687-Khel_Yatra/feky103/" },
+            { "title": "Chapter 4 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0687-Khel_Yatra/feky104/" },
+            { "title": "Chapter 5 - Physical Education and Well Being", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0687-Khel_Yatra/feky105/" }
+          ]
+        },
+        {
+          "subject_name": "Vocational Education",
+          "pdf_links": [
+            { "title": "Chapter 1 - Vocational Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0685-Kaushal_Bodh/fekb101/" },
+            { "title": "Chapter 2 - Vocational Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0685-Kaushal_Bodh/fekb102/" },
+            { "title": "Chapter 3 - Vocational Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0685-Kaushal_Bodh/fekb103/" },
+            { "title": "Chapter 4 - Vocational Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0685-Kaushal_Bodh/fekb104/" },
+            { "title": "Chapter 5 - Vocational Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0685-Kaushal_Bodh/fekb105/" },
+            { "title": "Chapter 6 - Vocational Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20VIII/0685-Kaushal_Bodh/fekb106/" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "9",
+      "subjects": [
+        {
+          "subject_name": "English",
+          "pdf_links": [
+            { "title": "Chapter 1 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0959-Beehive%20English%20Textbook/iebe101/index.html" },
+            { "title": "Chapter 2 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0959-Beehive%20English%20Textbook/iebe102/index.html" },
+            { "title": "Chapter 3 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0959-Beehive%20English%20Textbook/iebe103/index.html" },
+            { "title": "Chapter 4 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0959-Beehive%20English%20Textbook/iebe104/index.html" },
+            { "title": "Chapter 5 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0959-Beehive%20English%20Textbook/iebe105/index.html" },
+            { "title": "Chapter 6 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0959-Beehive%20English%20Textbook/iebe106/index.html" },
+            { "title": "Chapter 7 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0959-Beehive%20English%20Textbook/iebe107/index.html" },
+            { "title": "Chapter 8 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0959-Beehive%20English%20Textbook/iebe108/index.html" },
+            { "title": "Chapter 9 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0959-Beehive%20English%20Textbook/iebe109/index.html" }
+          ]
+        },
+        {
+          "subject_name": "HINDI",
+          "pdf_links": [
+            { "title": "Chapter 1 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0955-Kshitiz%20Bhag-1/ihks101/index.html" },
+            { "title": "Chapter 2 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0955-Kshitiz%20Bhag-1/ihks102/index.html" },
+            { "title": "Chapter 3 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0955-Kshitiz%20Bhag-1/ihks103/index.html" },
+            { "title": "Chapter 4 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0955-Kshitiz%20Bhag-1/ihks104/index.html" },
+            { "title": "Chapter 5 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0955-Kshitiz%20Bhag-1/ihks105/index.html" },
+            { "title": "Chapter 6 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0955-Kshitiz%20Bhag-1/ihks106/index.html" },
+            { "title": "Chapter 7 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0955-Kshitiz%20Bhag-1/ihks107/index.html" },
+            { "title": "Chapter 8 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0955-Kshitiz%20Bhag-1/ihks108/index.html" },
+            { "title": "Chapter 9 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0955-Kshitiz%20Bhag-1/ihks109/index.html" },
+            { "title": "Chapter 10 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0955-Kshitiz%20Bhag-1/ihks110/index.html" }
+          ]
+        },
+        {
+          "subject_name": "Sanskrit",
+          "pdf_links": [
+            { "title": "Chapter 1 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0961-Shemusi%20-%20Sanskrit/ihsh101/index.html" },
+            { "title": "Chapter 2 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0961-Shemusi%20-%20Sanskrit/ihsh102/index.html" },
+            { "title": "Chapter 3 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0961-Shemusi%20-%20Sanskrit/ihsh103/index.html" },
+            { "title": "Chapter 4 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0961-Shemusi%20-%20Sanskrit/ihsh104/index.html" },
+            { "title": "Chapter 5 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0961-Shemusi%20-%20Sanskrit/ihsh105/index.html" },
+            { "title": "Chapter 6 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0961-Shemusi%20-%20Sanskrit/ihsh106/index.html" },
+            { "title": "Chapter 7 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0961-Shemusi%20-%20Sanskrit/ihsh107/index.html" },
+            { "title": "Chapter 8 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0961-Shemusi%20-%20Sanskrit/ihsh108/index.html" },
+            { "title": "Chapter 9 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0961-Shemusi%20-%20Sanskrit/ihsh109/index.html" },
+            { "title": "Chapter 10 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0961-Shemusi%20-%20Sanskrit/ihsh110/index.html" }
+          ]
+        },
+        {
+          "subject_name": "Mathematics",
+          "pdf_links": [
+            { "title": "Chapter 1 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0962-Mathematics/iemh101/index.html" },
+            { "title": "Chapter 2 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0962-Mathematics/iemh102/index.html" },
+            { "title": "Chapter 3 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0962-Mathematics/iemh103/index.html" },
+            { "title": "Chapter 4 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0962-Mathematics/iemh104/index.html" },
+            { "title": "Chapter 5 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0962-Mathematics/iemh105/index.html" },
+            { "title": "Chapter 6 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0962-Mathematics/iemh106/index.html" },
+            { "title": "Chapter 7 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0962-Mathematics/iemh107/index.html" },
+            { "title": "Chapter 8 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0962-Mathematics/iemh108/index.html" },
+            { "title": "Chapter 9 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0962-Mathematics/iemh109/index.html" },
+            { "title": "Chapter 10 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0962-Mathematics/iemh110/index.html" },
+            { "title": "Chapter 11 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0962-Mathematics/iemh111/index.html" },
+            { "title": "Chapter 12 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0962-Mathematics/iemh112/index.html" },
+            { "title": "Chapter 13 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0962-Mathematics/iemh113/index.html" },
+            { "title": "Chapter 14 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0962-Mathematics/iemh114/index.html" }
+          ]
+        },
+        {
+          "subject_name": "Science",
+          "pdf_links": [
+            { "title": "Chapter 1 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0964-Science/iesc101/index.html" },
+            { "title": "Chapter 2 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0964-Science/iesc102/index.html" },
+            { "title": "Chapter 3 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0964-Science/iesc103/index.html" },
+            { "title": "Chapter 4 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0964-Science/iesc104/index.html" },
+            { "title": "Chapter 5 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0964-Science/iesc105/index.html" },
+            { "title": "Chapter 6 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0964-Science/iesc106/index.html" },
+            { "title": "Chapter 7 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0964-Science/iesc107/index.html" },
+            { "title": "Chapter 8 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0964-Science/iesc108/index.html" },
+            { "title": "Chapter 9 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0964-Science/iesc109/index.html" },
+            { "title": "Chapter 10 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0964-Science/iesc110/index.html" },
+            { "title": "Chapter 11 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0964-Science/iesc111/index.html" },
+            { "title": "Chapter 12 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0964-Science/iesc112/index.html" },
+            { "title": "Chapter 13 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0964-Science/iesc113/index.html" }
+          ]
+        },
+        {
+          "subject_name": "Social Science",
+          "pdf_links": [
+            { "title": "Chapter 1 - Social Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0972-Democratic%20Poltics/iess401/index.html" },
+            { "title": "Chapter 2 - Social Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0972-Democratic%20Poltics/iess402/index.html" },
+            { "title": "Chapter 3 - Social Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0972-Democratic%20Poltics/iess403/index.html" },
+            { "title": "Chapter 4 - Social Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0972-Democratic%20Poltics/iess404/index.html" },
+            { "title": "Chapter 5 - Social Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/0972-Democratic%20Poltics/iess405/index.html" }
+          ]
+        },
+        {
+          "subject_name": "Yoga",
+          "pdf_links": [
+            { "title": "Chapter 1 - Yoga", "url": "https://epathshala.nic.in/wp-content/doc/book/l/sample/basic/index.php?tra=tiyhwlss101" },
+            { "title": "Chapter 2 - Yoga", "url": "https://epathshala.nic.in/wp-content/doc/book/l/sample/basic/index.php?tra=tiyhwlss102" },
+            { "title": "Chapter 3 - Yoga", "url": "https://epathshala.nic.in/wp-content/doc/book/l/sample/basic/index.php?tra=tiyhwlss103" }
+          ]
+        },
+        {
+          "subject_name": "Vocational",
+          "pdf_links": [
+            { "title": "Chapter 1 - Vocational", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/17914Hand%20Embroidery%20(Addawala)/Unit1/index.html#page=1" },
+            { "title": "Chapter 2 - Vocational", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/17914Hand%20Embroidery%20(Addawala)/Unit2/index.html#page=1" },
+            { "title": "Chapter 3 - Vocational", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/17914Hand%20Embroidery%20(Addawala)/Unit3/index.html#page=1" },
+            { "title": "Chapter 4 - Vocational", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/17914Hand%20Embroidery%20(Addawala)/Unit4/index.html#page=1" },
+            { "title": "Chapter 5 - Vocational", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/17914Hand%20Embroidery%20(Addawala)/Unit5/index.html#page=1" }
+          ]
+        },
+        {
+          "subject_name": "ICT",
+          "pdf_links": [
+            { "title": "Chapter 1 - ICT", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/ict/iict101/index.html#page=1" },
+            { "title": "Chapter 2 - ICT", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/ict/iict102/index.html#page=1" },
+            { "title": "Chapter 3 - ICT", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/ict/iict103/index.html#page=1" },
+            { "title": "Chapter 4 - ICT", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/ict/iict104/index.html#page=1" },
+            { "title": "Chapter 5 - ICT", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/ict/iict105/index.html#page=1" },
+            { "title": "Chapter 6 - ICT", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/ict/iict106/index.html#page=1" },
+            { "title": "Chapter 7 - ICT", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/ict/iict107/index.html#page=1" },
+            { "title": "Chapter 8 - ICT", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/ict/iict108/index.html#page=1" }
+          ]
+        },
+        {
+          "subject_name": "Health and Physical Education",
+          "pdf_links": [
+            { "title": "Chapter 1 - Health and Physical Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/Health%20and%20Physical%20Education_iehp/iehp1ps/index.html#page=1" },
+            { "title": "Chapter 2 - Health and Physical Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/Health%20and%20Physical%20Education_iehp/iehp102/index.html#page=1" },
+            { "title": "Chapter 3 - Health and Physical Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/Health%20and%20Physical%20Education_iehp/iehp103/index.html#page=1" },
+            { "title": "Chapter 4 - Health and Physical Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/Health%20and%20Physical%20Education_iehp/iehp104/index.html#page=1" },
+            { "title": "Chapter 5 - Health and Physical Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/Health%20and%20Physical%20Education_iehp/iehp105/index.html#page=1" },
+            { "title": "Chapter 6 - Health and Physical Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/Health%20and%20Physical%20Education_iehp/iehp106/index.html#page=1" },
+            { "title": "Chapter 7 - Health and Physical Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/Health%20and%20Physical%20Education_iehp/iehp107/index.html#page=1" },
+            { "title": "Chapter 8 - Health and Physical Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/Health%20and%20Physical%20Education_iehp/iehp108/index.html#page=1" },
+            { "title": "Chapter 9 - Health and Physical Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/Health%20and%20Physical%20Education_iehp/iehp109/index.html#page=1" },
+            { "title": "Chapter 10 - Health and Physical Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/Health%20and%20Physical%20Education_iehp/iehp110/index.html#page=1" },
+            { "title": "Chapter 11 - Health and Physical Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/Health%20and%20Physical%20Education_iehp/iehp111/index.html#page=1" },
+            { "title": "Chapter 12 - Health and Physical Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/Health%20and%20Physical%20Education_iehp/iehp112/index.html#page=1" },
+            { "title": "Chapter 13 - Health and Physical Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/Health%20and%20Physical%20Education_iehp/iehp113/index.html#page=1" },
+            { "title": "Chapter 14 - Health and Physical Education", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20IX/Health%20and%20Physical%20Education_iehp/iehp114/index.html#page=1" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "10",
+      "subjects": [
+        {
+          "subject_name": "English",
+          "pdf_links": [
+            { "title": "Chapter 1 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1059First%20Flight%20-%20English%20Textbook%20Course%20-%20B/jeff101/index.html" },
+            { "title": "Chapter 2 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1059First%20Flight%20-%20English%20Textbook%20Course%20-%20B/jeff102/index.html" },
+            { "title": "Chapter 3 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1059First%20Flight%20-%20English%20Textbook%20Course%20-%20B/jeff103/index.html" },
+            { "title": "Chapter 4 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1059First%20Flight%20-%20English%20Textbook%20Course%20-%20B/jeff104/index.html" },
+            { "title": "Chapter 5 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1059First%20Flight%20-%20English%20Textbook%20Course%20-%20B/jeff105/index.html" },
+            { "title": "Chapter 6 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1059First%20Flight%20-%20English%20Textbook%20Course%20-%20B/jeff106/index.html" },
+            { "title": "Chapter 7 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1059First%20Flight%20-%20English%20Textbook%20Course%20-%20B/jeff107/index.html" },
+            { "title": "Chapter 8 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1059First%20Flight%20-%20English%20Textbook%20Course%20-%20B/jeff108/index.html" },
+            { "title": "Chapter 9 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1059First%20Flight%20-%20English%20Textbook%20Course%20-%20B/jeff109/index.html" }
+          ]
+        },
+        {
+          "subject_name": "HINDI",
+          "pdf_links": [
+            { "title": "Chapter 1 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1055Kshitij%20Bhag%20IIHindi%20CourseA/jhks101/index.html" },
+            { "title": "Chapter 2 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1055Kshitij%20Bhag%20IIHindi%20CourseA/jhks102/index.html" },
+            { "title": "Chapter 3 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1055Kshitij%20Bhag%20IIHindi%20CourseA/jhks103/index.html" },
+            { "title": "Chapter 4 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1055Kshitij%20Bhag%20IIHindi%20CourseA/jhks104/index.html" },
+            { "title": "Chapter 5 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1055Kshitij%20Bhag%20IIHindi%20CourseA/jhks105/index.html" },
+            { "title": "Chapter 6 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1055Kshitij%20Bhag%20IIHindi%20CourseA/jhks106/index.html" },
+            { "title": "Chapter 7 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1055Kshitij%20Bhag%20IIHindi%20CourseA/jhks107/index.html" },
+            { "title": "Chapter 8 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1055Kshitij%20Bhag%20IIHindi%20CourseA/jhks108/index.html" },
+            { "title": "Chapter 9 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1055Kshitij%20Bhag%20IIHindi%20CourseA/jhks109/index.html" },
+            { "title": "Chapter 10 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1055Kshitij%20Bhag%20IIHindi%20CourseA/jhks110/index.html" },
+            { "title": "Chapter 11 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1055Kshitij%20Bhag%20IIHindi%20CourseA/jhks111/index.html" },
+            { "title": "Chapter 12 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1055Kshitij%20Bhag%20IIHindi%20CourseA/jhks112/index.html" }
+          ]
+        },
+        {
+          "subject_name": "Sanskrit",
+          "pdf_links": [
+            { "title": "Chapter 1 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1061Shemusi%20Dwitiya%20BhagSanskrit/jhsk101/index.html" },
+            { "title": "Chapter 2 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1061Shemusi%20Dwitiya%20BhagSanskrit/jhsk102/index.html" },
+            { "title": "Chapter 3 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1061Shemusi%20Dwitiya%20BhagSanskrit/jhsk103/index.html" },
+            { "title": "Chapter 4 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1061Shemusi%20Dwitiya%20BhagSanskrit/jhsk104/index.html" },
+            { "title": "Chapter 5 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1061Shemusi%20Dwitiya%20BhagSanskrit/jhsk105/index.html" },
+            { "title": "Chapter 6 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1061Shemusi%20Dwitiya%20BhagSanskrit/jhsk106/index.html" },
+            { "title": "Chapter 7 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1061Shemusi%20Dwitiya%20BhagSanskrit/jhsk107/index.html" },
+            { "title": "Chapter 8 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1061Shemusi%20Dwitiya%20BhagSanskrit/jhsk108/index.html" },
+            { "title": "Chapter 9 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1061Shemusi%20Dwitiya%20BhagSanskrit/jhsk109/index.html" },
+            { "title": "Chapter 10 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1061Shemusi%20Dwitiya%20BhagSanskrit/jhsk110/index.html" }
+          ]
+        },
+        {
+          "subject_name": "Mathematics",
+          "pdf_links": [
+            { "title": "Chapter 1 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1062Mathematics/jemh101/index.html" },
+            { "title": "Chapter 2 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1062Mathematics/jemh102/index.html" },
+            { "title": "Chapter 3 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1062Mathematics/jemh103/index.html" },
+            { "title": "Chapter 4 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1062Mathematics/jemh104/index.html" },
+            { "title": "Chapter 5 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1062Mathematics/jemh105/index.html" },
+            { "title": "Chapter 6 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1062Mathematics/jemh106/index.html" },
+            { "title": "Chapter 7 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1062Mathematics/jemh107/index.html" },
+            { "title": "Chapter 8 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1062Mathematics/jemh108/index.html" },
+            { "title": "Chapter 9 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1062Mathematics/jemh109/index.html" },
+            { "title": "Chapter 10 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1062Mathematics/jemh110/index.html" },
+            { "title": "Chapter 11 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1062Mathematics/jemh111/index.html" },
+            { "title": "Chapter 12 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1062Mathematics/jemh112/index.html" },
+            { "title": "Chapter 13 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1062Mathematics/jemh113/index.html" },
+            { "title": "Chapter 14 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1062Mathematics/jemh114/index.html" }
+          ]
+        },
+        {
+          "subject_name": "Science",
+          "pdf_links": [
+            { "title": "Chapter 1 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1064Science/jesc101/index.html" },
+            { "title": "Chapter 2 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1064Science/jesc102/index.html" },
+            { "title": "Chapter 3 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1064Science/jesc103/index.html" },
+            { "title": "Chapter 4 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1064Science/jesc104/index.html" },
+            { "title": "Chapter 5 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1064Science/jesc105/index.html" },
+            { "title": "Chapter 6 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1064Science/jesc106/index.html" },
+            { "title": "Chapter 7 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1064Science/jesc107/index.html" },
+            { "title": "Chapter 8 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1064Science/jesc108/index.html" },
+            { "title": "Chapter 9 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1064Science/jesc109/index.html" },
+            { "title": "Chapter 10 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1064Science/jesc110/index.html" },
+            { "title": "Chapter 11 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1064Science/jesc111/index.html" },
+            { "title": "Chapter 12 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1064Science/jesc112/index.html" },
+            { "title": "Chapter 13 - Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1064Science/jesc113/index.html" }
+          ]
+        },
+        {
+          "subject_name": "Social Science",
+          "pdf_links": [
+            { "title": "Chapter 1 - Social Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1068Contemporary%20IndiaIIGeography/jess1ps/index.html" },
+            { "title": "Chapter 2 - Social Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1068Contemporary%20IndiaIIGeography/jess102/index.html" },
+            { "title": "Chapter 3 - Social Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1068Contemporary%20IndiaIIGeography/jess103/index.html" },
+            { "title": "Chapter 4 - Social Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1068Contemporary%20IndiaIIGeography/jess104/index.html" },
+            { "title": "Chapter 5 - Social Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1068Contemporary%20IndiaIIGeography/jess105/index.html" },
+            { "title": "Chapter 6 - Social Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1068Contemporary%20IndiaIIGeography/jess106/index.html" },
+            { "title": "Chapter 7 - Social Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20X/1068Contemporary%20IndiaIIGeography/jess107/index.html" }
+          ]
+        },
+        {
+          "subject_name": "Yoga",
+          "pdf_links": [
+            { "title": "Chapter 1 - Yoga", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/tiyhwlss101.html" },
+            { "title": "Chapter 2 - Yoga", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/tiyhwlss101.html" },
+            { "title": "Chapter 3 - Yoga", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/tiyhwlss101.html" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "11",
+      "subjects": [
+        {
+          "subject_name": "Sanskrit",
+          "pdf_links": [
+            { "title": "Chapter 1 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11075BhaswatiPrathmoBhag/khsk101/index.html#page=1" },
+            { "title": "Chapter 2 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11075BhaswatiPrathmoBhag/khsk102/index.html#page=1" },
+            { "title": "Chapter 3 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11075BhaswatiPrathmoBhag/khsk103/index.html#page=1" },
+            { "title": "Chapter 4 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11075BhaswatiPrathmoBhag/khsk104/index.html#page=1" },
+            { "title": "Chapter 5 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11075BhaswatiPrathmoBhag/khsk105/index.html#page=1" },
+            { "title": "Chapter 6 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11075BhaswatiPrathmoBhag/khsk106/index.html#page=1" },
+            { "title": "Chapter 7 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11075BhaswatiPrathmoBhag/khsk107/index.html#page=1" },
+            { "title": "Chapter 8 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11075BhaswatiPrathmoBhag/khsk108/index.html#page=1" },
+            { "title": "Chapter 9 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11075BhaswatiPrathmoBhag/khsk109/index.html#page=1" },
+            { "title": "Chapter 10 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11075BhaswatiPrathmoBhag/khsk110/index.html#page=1" }
+          ]
+        },
+        {
+          "subject_name": "Accountancy",
+          "pdf_links": [
+            { "title": "Chapter 1 - Accountancy", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11110AccountancyFinancial%20Accounting%20Part%20I/keac101/index.html#page=1" },
+            { "title": "Chapter 2 - Accountancy", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11110AccountancyFinancial%20Accounting%20Part%20I/keac102/index.html#page=1" },
+            { "title": "Chapter 3 - Accountancy", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11110AccountancyFinancial%20Accounting%20Part%20I/keac103/index.html#page=1" },
+            { "title": "Chapter 4 - Accountancy", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11110AccountancyFinancial%20Accounting%20Part%20I/keac104/index.html#page=1" },
+            { "title": "Chapter 5 - Accountancy", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11110AccountancyFinancial%20Accounting%20Part%20I/keac105/index.html#page=1" },
+            { "title": "Chapter 6 - Accountancy", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11110AccountancyFinancial%20Accounting%20Part%20I/keac106/index.html#page=1" },
+            { "title": "Chapter 7 - Accountancy", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11110AccountancyFinancial%20Accounting%20Part%20I/keac107/index.html#page=1" }
+          ]
+        },
+        {
+          "subject_name": "Chemistry",
+          "pdf_links": [
+            { "title": "Chapter 1 - Chemistry", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11082ChemistryPartI/kech101/index.html#page=1" },
+            { "title": "Chapter 2 - Chemistry", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11082ChemistryPartI/kech102/index.html#page=1" },
+            { "title": "Chapter 3 - Chemistry", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11082ChemistryPartI/kech103/index.html#page=1" },
+            { "title": "Chapter 4 - Chemistry", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11082ChemistryPartI/kech104/index.html#page=1" },
+            { "title": "Chapter 5 - Chemistry", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11082ChemistryPartI/kech105/index.html#page=1" },
+            { "title": "Chapter 6 - Chemistry", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11082ChemistryPartI/kech106/index.html#page=1" }
+          ]
+        },
+        {
+          "subject_name": "Mathematics",
+          "pdf_links": [
+            { "title": "Chapter 1 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11076Mathematics/kemh101/index.html" },
+            { "title": "Chapter 2 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11076Mathematics/kemh102/index.html" },
+            { "title": "Chapter 3 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11076Mathematics/kemh103/index.html" },
+            { "title": "Chapter 4 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11076Mathematics/kemh104/index.html" },
+            { "title": "Chapter 5 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11076Mathematics/kemh105/index.html" },
+            { "title": "Chapter 6 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11076Mathematics/kemh106/index.html" },
+            { "title": "Chapter 7 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11076Mathematics/kemh107/index.html" },
+            { "title": "Chapter 8 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11076Mathematics/kemh108/index.html" },
+            { "title": "Chapter 9 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11076Mathematics/kemh109/index.html" },
+            { "title": "Chapter 10 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11076Mathematics/kemh110/index.html" },
+            { "title": "Chapter 11 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11076Mathematics/kemh111/index.html" },
+            { "title": "Chapter 12 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11076Mathematics/kemh112/index.html" },
+            { "title": "Chapter 13 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11076Mathematics/kemh113/index.html" },
+            { "title": "Chapter 14 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11076Mathematics/kemh114/index.html" }
+          ]
+        },
+        {
+          "subject_name": "Biology",
+          "pdf_links": [
+            { "title": "Chapter 1 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11080Biology/kebo101/index.html" },
+            { "title": "Chapter 2 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11080Biology/kebo102/index.html" },
+            { "title": "Chapter 3 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11080Biology/kebo103/index.html" },
+            { "title": "Chapter 4 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11080Biology/kebo104/index.html" },
+            { "title": "Chapter 5 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11080Biology/kebo105/index.html" },
+            { "title": "Chapter 6 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11080Biology/kebo106/index.html" },
+            { "title": "Chapter 7 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11080Biology/kebo107/index.html" },
+            { "title": "Chapter 8 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11080Biology/kebo108/index.html" },
+            { "title": "Chapter 9 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11080Biology/kebo109/index.html" },
+            { "title": "Chapter 10 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11080Biology/kebo110/index.html" },
+            { "title": "Chapter 11 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11080Biology/kebo111/index.html" },
+            { "title": "Chapter 12 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11080Biology/kebo112/index.html" },
+            { "title": "Chapter 13 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11080Biology/kebo113/index.html" },
+            { "title": "Chapter 14 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11080Biology/kebo114/index.html" },
+            { "title": "Chapter 15 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11080Biology/kebo115/index.html" },
+            { "title": "Chapter 16 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11080Biology/kebo116/index.html" },
+            { "title": "Chapter 17 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11080Biology/kebo117/index.html" },
+            { "title": "Chapter 18 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11080Biology/kebo118/index.html" },
+            { "title": "Chapter 19 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11080Biology/kebo119/index.html" }
+          ]
+        },
+        {
+          "subject_name": "Psychology",
+          "pdf_links": [
+            { "title": "Chapter 1 - Psychology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11114Psychology/kepy101/index.html#page=1" },
+            { "title": "Chapter 2 - Psychology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11114Psychology/kepy102/index.html#page=1" },
+            { "title": "Chapter 3 - Psychology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11114Psychology/kepy103/index.html#page=1" },
+            { "title": "Chapter 4 - Psychology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11114Psychology/kepy104/index.html#page=1" },
+            { "title": "Chapter 5 - Psychology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11114Psychology/kepy105/index.html#page=1" },
+            { "title": "Chapter 6 - Psychology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11114Psychology/kepy106/index.html#page=1" },
+            { "title": "Chapter 7 - Psychology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11114Psychology/kepy107/index.html#page=1" },
+            { "title": "Chapter 8 - Psychology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11114Psychology/kepy108/index.html#page=1" }
+          ]
+        },
+        {
+          "subject_name": "Geography",
+          "pdf_links": [
+            { "title": "Chapter 1 - Geography", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11092Fundamental%20of%20Physical%20Geography/kegy201/index.html" },
+            { "title": "Chapter 2 - Geography", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11092Fundamental%20of%20Physical%20Geography/kegy202/index.html" },
+            { "title": "Chapter 3 - Geography", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11092Fundamental%20of%20Physical%20Geography/kegy203/index.html" },
+            { "title": "Chapter 4 - Geography", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11092Fundamental%20of%20Physical%20Geography/kegy204/index.html" },
+            { "title": "Chapter 5 - Geography", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11092Fundamental%20of%20Physical%20Geography/kegy205/index.html" },
+            { "title": "Chapter 6 - Geography", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11092Fundamental%20of%20Physical%20Geography/kegy206/index.html" },
+            { "title": "Chapter 7 - Geography", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11092Fundamental%20of%20Physical%20Geography/kegy207/index.html" },
+            { "title": "Chapter 8 - Geography", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11092Fundamental%20of%20Physical%20Geography/kegy208/index.html" },
+            { "title": "Chapter 9 - Geography", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11092Fundamental%20of%20Physical%20Geography/kegy209/index.html" },
+            { "title": "Chapter 10 - Geography", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11092Fundamental%20of%20Physical%20Geography/kegy210/index.html" },
+            { "title": "Chapter 11 - Geography", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11092Fundamental%20of%20Physical%20Geography/kegy211/index.html" },
+            { "title": "Chapter 12 - Geography", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11092Fundamental%20of%20Physical%20Geography/kegy212/index.html" },
+            { "title": "Chapter 13 - Geography", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11092Fundamental%20of%20Physical%20Geography/kegy213/index.html" },
+            { "title": "Chapter 14 - Geography", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11092Fundamental%20of%20Physical%20Geography/kegy214/index.html" }
+          ]
+        },
+        {
+          "subject_name": "Physics",
+          "pdf_links": [
+            { "title": "Chapter 1 - Physics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11086Physics%20Part%20I/keph101/index.html" },
+            { "title": "Chapter 2 - Physics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11086Physics%20Part%20I/keph102/index.html" },
+            { "title": "Chapter 3 - Physics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11086Physics%20Part%20I/keph103/index.html" },
+            { "title": "Chapter 4 - Physics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11086Physics%20Part%20I/keph104/index.html" },
+            { "title": "Chapter 5 - Physics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11086Physics%20Part%20I/keph105/index.html" },
+            { "title": "Chapter 6 - Physics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11086Physics%20Part%20I/keph106/index.html" },
+            { "title": "Chapter 7 - Physics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11086Physics%20Part%20I/keph107/index.html" },
+            { "title": "Chapter 8 - Physics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11087Physics%20Part%20II/keph201/index.html" },
+            { "title": "Chapter 9 - Physics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11087Physics%20Part%20II/keph202/index.html" },
+            { "title": "Chapter 10 - Physics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11087Physics%20Part%20II/keph203/index.html" }
+          ]
+        },
+        {
+          "subject_name": "HINDI",
+          "pdf_links": [
+            { "title": "Chapter 1 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11069Antra%20Bhag%20I%20-%20Hindi%20Elective/khat101/index.html" },
+            { "title": "Chapter 2 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11069Antra%20Bhag%20I%20-%20Hindi%20Elective/khat102/index.html" },
+            { "title": "Chapter 3 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11069Antra%20Bhag%20I%20-%20Hindi%20Elective/khat103/index.html" },
+            { "title": "Chapter 4 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11069Antra%20Bhag%20I%20-%20Hindi%20Elective/khat104/index.html" },
+            { "title": "Chapter 5 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11069Antra%20Bhag%20I%20-%20Hindi%20Elective/khat105/index.html" },
+            { "title": "Chapter 6 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11069Antra%20Bhag%20I%20-%20Hindi%20Elective/khat106/index.html" },
+            { "title": "Chapter 7 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11069Antra%20Bhag%20I%20-%20Hindi%20Elective/khat107/index.html" },
+            { "title": "Chapter 8 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11069Antra%20Bhag%20I%20-%20Hindi%20Elective/khat108/index.html" },
+            { "title": "Chapter 9 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11069Antra%20Bhag%20I%20-%20Hindi%20Elective/khat109/index.html" },
+            { "title": "Chapter 10 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11069Antra%20Bhag%20I%20-%20Hindi%20Elective/khat110/index.html" },
+            { "title": "Chapter 11 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11069Antra%20Bhag%20I%20-%20Hindi%20Elective/khat111/index.html" },
+            { "title": "Chapter 12 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11069Antra%20Bhag%20I%20-%20Hindi%20Elective/khat112/index.html" },
+            { "title": "Chapter 13 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11069Antra%20Bhag%20I%20-%20Hindi%20Elective/khat113/index.html" },
+            { "title": "Chapter 14 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11069Antra%20Bhag%20I%20-%20Hindi%20Elective/khat114/index.html" },
+            { "title": "Chapter 15 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11069Antra%20Bhag%20I%20-%20Hindi%20Elective/khat115/index.html" },
+            { "title": "Chapter 16 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11069Antra%20Bhag%20I%20-%20Hindi%20Elective/khat116/index.html" }
+          ]
+        },
+        {
+          "subject_name": "English",
+          "pdf_links": [
+            { "title": "Chapter 1 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11074Woven%20Words%20-%20English%20Elective/keww101/index.html" },
+            { "title": "Chapter 2 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11074Woven%20Words%20-%20English%20Elective/keww102/index.html" },
+            { "title": "Chapter 3 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11074Woven%20Words%20-%20English%20Elective/keww103/index.html" },
+            { "title": "Chapter 4 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11074Woven%20Words%20-%20English%20Elective/keww104/index.html" },
+            { "title": "Chapter 5 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11074Woven%20Words%20-%20English%20Elective/keww105/index.html" },
+            { "title": "Chapter 6 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11074Woven%20Words%20-%20English%20Elective/keww106/index.html" },
+            { "title": "Chapter 7 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11074Woven%20Words%20-%20English%20Elective/keww107/index.html" },
+            { "title": "Chapter 8 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11074Woven%20Words%20-%20English%20Elective/keww108/index.html" }
+          ]
+        },
+        {
+          "subject_name": "Political Science",
+          "pdf_links": [
+            { "title": "Chapter 1 - Political Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11117Political%20Theory/keps101/index.html" },
+            { "title": "Chapter 2 - Political Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11117Political%20Theory/keps102/index.html" },
+            { "title": "Chapter 3 - Political Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11117Political%20Theory/keps103/index.html" },
+            { "title": "Chapter 4 - Political Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11117Political%20Theory/keps104/index.html" },
+            { "title": "Chapter 5 - Political Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11117Political%20Theory/keps105/index.html" },
+            { "title": "Chapter 6 - Political Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11117Political%20Theory/keps106/index.html" },
+            { "title": "Chapter 7 - Political Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11117Political%20Theory/keps107/index.html" },
+            { "title": "Chapter 8 - Political Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11117Political%20Theory/keps108/index.html" }
+          ]
+        },
+        {
+          "subject_name": "History",
+          "pdf_links": [
+            { "title": "Chapter 1 - History", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11090Themes%20in%20World%20History/kehs101/index.html" },
+            { "title": "Chapter 2 - History", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11090Themes%20in%20World%20History/kehs102/index.html" },
+            { "title": "Chapter 3 - History", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11090Themes%20in%20World%20History/kehs103/index.html" },
+            { "title": "Chapter 4 - History", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11090Themes%20in%20World%20History/kehs104/index.html" },
+            { "title": "Chapter 5 - History", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11090Themes%20in%20World%20History/kehs105/index.html" },
+            { "title": "Chapter 6 - History", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11090Themes%20in%20World%20History/kehs106/index.html" },
+            { "title": "Chapter 7 - History", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11090Themes%20in%20World%20History/kehs107/index.html" }
+          ]
+        },
+        {
+          "subject_name": "Economics",
+          "pdf_links": [
+            { "title": "Chapter 1 - Economics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11100Indian%20Economic%20Development/keec101/index.html" },
+            { "title": "Chapter 2 - Economics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11100Indian%20Economic%20Development/keec102/index.html" },
+            { "title": "Chapter 3 - Economics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11100Indian%20Economic%20Development/keec103/index.html" },
+            { "title": "Chapter 4 - Economics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11100Indian%20Economic%20Development/keec104/index.html" },
+            { "title": "Chapter 5 - Economics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11100Indian%20Economic%20Development/keec105/index.html" },
+            { "title": "Chapter 6 - Economics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11100Indian%20Economic%20Development/keec106/index.html" },
+            { "title": "Chapter 7 - Economics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11100Indian%20Economic%20Development/keec107/index.html" },
+            { "title": "Chapter 8 - Economics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11100Indian%20Economic%20Development/keec108/index.html" }
+          ]
+        },
+        {
+          "subject_name": "Computer Science",
+          "pdf_links": [
+            { "title": "Chapter 1 - Computer Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11120-Computer%20Science/kecs101/index.html" },
+            { "title": "Chapter 2 - Computer Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11120-Computer%20Science/kecs102/index.html" },
+            { "title": "Chapter 3 - Computer Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11120-Computer%20Science/kecs103/index.html" },
+            { "title": "Chapter 4 - Computer Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11120-Computer%20Science/kecs104/index.html" },
+            { "title": "Chapter 5 - Computer Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11120-Computer%20Science/kecs105/index.html" },
+            { "title": "Chapter 6 - Computer Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11120-Computer%20Science/kecs106/index.html" },
+            { "title": "Chapter 7 - Computer Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11120-Computer%20Science/kecs107/index.html" },
+            { "title": "Chapter 8 - Computer Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11120-Computer%20Science/kecs108/index.html" },
+            { "title": "Chapter 9 - Computer Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11120-Computer%20Science/kecs109/index.html" },
+            { "title": "Chapter 10 - Computer Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XI/11120-Computer%20Science/kecs110/index.html" }
+          ]
+        }
+      ]
+    },
+        {
+      "grade": "12",
+      "subjects": [
+        {
+          "subject_name": "Sanskrit",
+          "pdf_links": [
+            { "title": "Chapter 1 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12078-Sanskrit-Shaswati%20Dwityo%20Bhag/lhsk201/index.html" },
+            { "title": "Chapter 2 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12078-Sanskrit-Shaswati%20Dwityo%20Bhag/lhsk202/index.html" },
+            { "title": "Chapter 3 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12078-Sanskrit-Shaswati%20Dwityo%20Bhag/lhsk203/index.html" },
+            { "title": "Chapter 4 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12078-Sanskrit-Shaswati%20Dwityo%20Bhag/lhsk204/index.html" },
+            { "title": "Chapter 5 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12078-Sanskrit-Shaswati%20Dwityo%20Bhag/lhsk205/index.html" },
+            { "title": "Chapter 6 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12078-Sanskrit-Shaswati%20Dwityo%20Bhag/lhsk206/index.html" },
+            { "title": "Chapter 7 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12078-Sanskrit-Shaswati%20Dwityo%20Bhag/lhsk207/index.html" },
+            { "title": "Chapter 8 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12078-Sanskrit-Shaswati%20Dwityo%20Bhag/lhsk208/index.html" },
+            { "title": "Chapter 9 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12078-Sanskrit-Shaswati%20Dwityo%20Bhag/lhsk209/index.html" },
+            { "title": "Chapter 10 - Sanskrit", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12078-Sanskrit-Shaswati%20Dwityo%20Bhag/lhsk210/index.html" }
+          ]
+        },
+        {
+          "subject_name": "Accountancy",
+          "pdf_links": [
+            { "title": "Chapter 1 - Accountancy", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12117-Accountancy%20I-%20Not%20for%20profit%20organisation/leac101/index.html" },
+            { "title": "Chapter 2 - Accountancy", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12117-Accountancy%20I-%20Not%20for%20profit%20organisation/leac102/index.html" },
+            { "title": "Chapter 3 - Accountancy", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12117-Accountancy%20I-%20Not%20for%20profit%20organisation/leac103/index.html" },
+            { "title": "Chapter 4 - Accountancy", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12117-Accountancy%20I-%20Not%20for%20profit%20organisation/leac104/index.html" },
+            { "title": "Chapter 5 - Accountancy", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12128-Accountancy%20II%20-Company%20Accounts/leac201/index.html#page=1" },
+            { "title": "Chapter 6 - Accountancy", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12128-Accountancy%20II%20-Company%20Accounts/leac202/index.html#page=1" },
+            { "title": "Chapter 7 - Accountancy", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12128-Accountancy%20II%20-Company%20Accounts/leac203/index.html#page=1" },
+            { "title": "Chapter 8 - Accountancy", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12128-Accountancy%20II%20-Company%20Accounts/leac204/index.html#page=1" },
+            { "title": "Chapter 9 - Accountancy", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12128-Accountancy%20II%20-Company%20Accounts/leac205/index.html#page=1" },
+            { "title": "Chapter 10 - Accountancy", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12128-Accountancy%20II%20-Company%20Accounts/leac206/index.html#page=1" }
+          ]
+        },
+        {
+          "subject_name": "Chemistry",
+          "pdf_links": [
+            { "title": "Chapter 1 - Chemistry", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12085-Chemistry%20Part_I/lech101/index.html" },
+            { "title": "Chapter 2 - Chemistry", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12085-Chemistry%20Part_I/lech102/index.html" },
+            { "title": "Chapter 3 - Chemistry", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12085-Chemistry%20Part_I/lech103/index.html" },
+            { "title": "Chapter 4 - Chemistry", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12085-Chemistry%20Part_I/lech104/index.html" },
+            { "title": "Chapter 5 - Chemistry", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12085-Chemistry%20Part_I/lech105/index.html" },
+            { "title": "Chapter 6 - Chemistry", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12086-Chemistry%20Part_II/lech201/index.html" },
+            { "title": "Chapter 7 - Chemistry", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12086-Chemistry%20Part_II/lech202/index.html" },
+            { "title": "Chapter 8 - Chemistry", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12086-Chemistry%20Part_II/lech203/index.html" },
+            { "title": "Chapter 9 - Chemistry", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12086-Chemistry%20Part_II/lech204/index.html" },
+            { "title": "Chapter 10 - Chemistry", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12086-Chemistry%20Part_II/lech205/index.html" }
+          ]
+        },
+        {
+          "subject_name": "Mathematics",
+          "pdf_links": [
+            { "title": "Chapter 1 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12079-Mathematics%20Part-I/lemh101/index.html" },
+            { "title": "Chapter 2 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12079-Mathematics%20Part-I/lemh102/index.html" },
+            { "title": "Chapter 3 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12079-Mathematics%20Part-I/lemh103/index.html" },
+            { "title": "Chapter 4 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12079-Mathematics%20Part-I/lemh104/index.html" },
+            { "title": "Chapter 5 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12079-Mathematics%20Part-I/lemh105/index.html" },
+            { "title": "Chapter 6 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12079-Mathematics%20Part-I/lemh106/index.html" },
+            { "title": "Chapter 7 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12080-Mathematics%20Part-II/lemh201/index.html" },
+            { "title": "Chapter 8 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12080-Mathematics%20Part-II/lemh202/index.html" },
+            { "title": "Chapter 9 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12080-Mathematics%20Part-II/lemh203/index.html" },
+            { "title": "Chapter 10 - Mathematics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12080-Mathematics%20Part-II/lemh204/index.html" }
+          ]
+        },
+        {
+          "subject_name": "Biology",
+          "pdf_links": [
+            { "title": "Chapter 1 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12083-Biology/lebo101/index.html" },
+            { "title": "Chapter 2 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12083-Biology/lebo102/index.html" },
+            { "title": "Chapter 3 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12083-Biology/lebo103/index.html" },
+            { "title": "Chapter 4 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12083-Biology/lebo104/index.html" },
+            { "title": "Chapter 5 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12083-Biology/lebo105/index.html" },
+            { "title": "Chapter 6 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12083-Biology/lebo106/index.html" },
+            { "title": "Chapter 7 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12083-Biology/lebo107/index.html" },
+            { "title": "Chapter 8 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12083-Biology/lebo108/index.html" },
+            { "title": "Chapter 9 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12083-Biology/lebo109/index.html" },
+            { "title": "Chapter 10 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12083-Biology/lebo110/index.html" },
+            { "title": "Chapter 11 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12083-Biology/lebo111/index.html" },
+            { "title": "Chapter 12 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12083-Biology/lebo112/index.html" },
+            { "title": "Chapter 13 - Biology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12083-Biology/lebo113/index.html" }
+          ]
+        },
+        {
+          "subject_name": "Psychology",
+          "pdf_links": [
+            { "title": "Chapter 1 - Psychology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12123-Psychology/lepy101/index.html#page=1" },
+            { "title": "Chapter 2 - Psychology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12123-Psychology/lepy102/index.html#page=1" },
+            { "title": "Chapter 3 - Psychology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12123-Psychology/lepy103/index.html#page=1" },
+            { "title": "Chapter 4 - Psychology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12123-Psychology/lepy104/index.html#page=1" },
+            { "title": "Chapter 5 - Psychology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12123-Psychology/lepy105/index.html#page=1" },
+            { "title": "Chapter 6 - Psychology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12123-Psychology/lepy106/index.html#page=1" },
+            { "title": "Chapter 7 - Psychology", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12123-Psychology/lepy107/index.html#page=1" }
+          ]
+        },
+        {
+          "subject_name": "Geography",
+          "pdf_links": [
+            { "title": "Chapter 1 - Geography", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12097-Fundamental%20of%20Human%20Geography/legy101/index.html#page=1" },
+            { "title": "Chapter 2 - Geography", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12097-Fundamental%20of%20Human%20Geography/legy102/index.html#page=1" },
+            { "title": "Chapter 3 - Geography", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12097-Fundamental%20of%20Human%20Geography/legy103/index.html#page=1" },
+            { "title": "Chapter 4 - Geography", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12097-Fundamental%20of%20Human%20Geography/legy104/index.html#page=1" },
+            { "title": "Chapter 5 - Geography", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12097-Fundamental%20of%20Human%20Geography/legy105/index.html#page=1" },
+            { "title": "Chapter 6 - Geography", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12097-Fundamental%20of%20Human%20Geography/legy106/index.html#page=1" },
+            { "title": "Chapter 7 - Geography", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12097-Fundamental%20of%20Human%20Geography/legy107/index.html#page=1" },
+            { "title": "Chapter 8 - Geography", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12097-Fundamental%20of%20Human%20Geography/legy108/index.html#page=1" }
+          ]
+        },
+        {
+          "subject_name": "Physics",
+          "pdf_links": [
+            { "title": "Chapter 1 - Physics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12089-Physics%20Part-1/leph101/index.html" },
+            { "title": "Chapter 2 - Physics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12089-Physics%20Part-1/leph102/index.html" },
+            { "title": "Chapter 3 - Physics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12089-Physics%20Part-1/leph103/index.html" },
+            { "title": "Chapter 4 - Physics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12089-Physics%20Part-1/leph104/index.html" },
+            { "title": "Chapter 5 - Physics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12089-Physics%20Part-1/leph105/index.html" },
+            { "title": "Chapter 6 - Physics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12089-Physics%20Part-1/leph106/index.html" },
+            { "title": "Chapter 7 - Physics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12089-Physics%20Part-1/leph107/index.html" },
+            { "title": "Chapter 8 - Physics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12089-Physics%20Part-1/leph108/index.html" },
+            { "title": "Chapter 9 - Physics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12090-Physics%20Part-II/leph201/index.html" },
+            { "title": "Chapter 10 - Physics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12090-Physics%20Part-II/leph202/index.html" },
+            { "title": "Chapter 11 - Physics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12090-Physics%20Part-II/leph203/index.html" },
+            { "title": "Chapter 12 - Physics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12090-Physics%20Part-II/leph204/index.html" }
+          ]
+        },
+        {
+          "subject_name": "HINDI",
+          "pdf_links": [
+            { "title": "Chapter 1 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12072-Antra%20Bhag%202/lhat101/index.html" },
+            { "title": "Chapter 2 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12072-Antra%20Bhag%202/lhat102/index.html" },
+            { "title": "Chapter 3 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12072-Antra%20Bhag%202/lhat103/index.html" },
+            { "title": "Chapter 4 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12072-Antra%20Bhag%202/lhat104/index.html" },
+            { "title": "Chapter 5 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12072-Antra%20Bhag%202/lhat105/index.html" },
+            { "title": "Chapter 6 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12072-Antra%20Bhag%202/lhat106/index.html" },
+            { "title": "Chapter 7 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12072-Antra%20Bhag%202/lhat107/index.html" },
+            { "title": "Chapter 8 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12072-Antra%20Bhag%202/lhat108/index.html" },
+            { "title": "Chapter 9 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12072-Antra%20Bhag%202/lhat109/index.html" },
+            { "title": "Chapter 10 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12072-Antra%20Bhag%202/lhat110/index.html" },
+            { "title": "Chapter 11 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12072-Antra%20Bhag%202/lhat111/index.html" },
+            { "title": "Chapter 12 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12072-Antra%20Bhag%202/lhat112/index.html" },
+            { "title": "Chapter 13 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12072-Antra%20Bhag%202/lhat113/index.html" },
+            { "title": "Chapter 14 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12072-Antra%20Bhag%202/lhat114/index.html" },
+            { "title": "Chapter 15 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12072-Antra%20Bhag%202/lhat115/index.html" },
+            { "title": "Chapter 16 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12072-Antra%20Bhag%202/lhat116/index.html" },
+            { "title": "Chapter 17 - HINDI", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12072-Antra%20Bhag%202/lhat117/index.html" }
+          ]
+        },
+        {
+          "subject_name": "English",
+          "pdf_links": [
+            { "title": "Chapter 1 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12074-Flamingo-English%20Core/lefl101/index.html#page=1" },
+            { "title": "Chapter 2 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12074-Flamingo-English%20Core/lefl102/index.html#page=1" },
+            { "title": "Chapter 3 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12074-Flamingo-English%20Core/lefl103/index.html#page=1" },
+            { "title": "Chapter 4 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12074-Flamingo-English%20Core/lefl104/index.html#page=1" },
+            { "title": "Chapter 5 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12074-Flamingo-English%20Core/lefl105/index.html#page=1" },
+            { "title": "Chapter 6 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12074-Flamingo-English%20Core/lefl106/index.html#page=1" },
+            { "title": "Chapter 7 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12074-Flamingo-English%20Core/lefl107/index.html#page=1" },
+            { "title": "Chapter 8 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12074-Flamingo-English%20Core/lefl108/index.html#page=1" },
+            { "title": "Chapter 9 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12074-Flamingo-English%20Core/lefl109/index.html#page=1" },
+            { "title": "Chapter 10 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12074-Flamingo-English%20Core/lefl110/index.html#page=1" },
+            { "title": "Chapter 11 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12074-Flamingo-English%20Core/lefl111/index.html#page=1" },
+            { "title": "Chapter 12 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12074-Flamingo-English%20Core/lefl112/index.html#page=1" },
+            { "title": "Chapter 13 - English", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12074-Flamingo-English%20Core/lefl113/index.html#page=1" }
+          ]
+        },
+        {
+          "subject_name": "Political Science",
+          "pdf_links": [
+            { "title": "Chapter 1 - Political Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12107-Contemporary%20World%20Politics%20(Part-I)/leps101/index.html#page=1" },
+            { "title": "Chapter 2 - Political Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12107-Contemporary%20World%20Politics%20(Part-I)/leps102/index.html#page=1" },
+            { "title": "Chapter 3 - Political Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12107-Contemporary%20World%20Politics%20(Part-I)/leps103/index.html#page=1" },
+            { "title": "Chapter 4 - Political Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12107-Contemporary%20World%20Politics%20(Part-I)/leps104/index.html#page=1" },
+            { "title": "Chapter 5 - Political Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12107-Contemporary%20World%20Politics%20(Part-I)/leps105/index.html#page=1" },
+            { "title": "Chapter 6 - Political Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12107-Contemporary%20World%20Politics%20(Part-I)/leps106/index.html#page=1" },
+            { "title": "Chapter 7 - Political Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12107-Contemporary%20World%20Politics%20(Part-I)/leps107/index.html#page=1" }
+          ]
+        },
+        {
+          "subject_name": "History",
+          "pdf_links": [
+            { "title": "Chapter 1 - History", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12093-Themes%20in%20India%20History%20Part-I/lehs101/index.html#page=1" },
+            { "title": "Chapter 2 - History", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12093-Themes%20in%20India%20History%20Part-I/lehs102/index.html#page=1" },
+            { "title": "Chapter 3 - History", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12093-Themes%20in%20India%20History%20Part-I/lehs103/index.html#page=1" },
+            { "title": "Chapter 4 - History", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12093-Themes%20in%20India%20History%20Part-I/lehs104/index.html#page=1" },
+            { "title": "Chapter 5 - History", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12094-Themes%20in%20Indian%20History%20Part-II/lehs201/index.html#page=1" },
+            { "title": "Chapter 6 - History", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12094-Themes%20in%20Indian%20History%20Part-II/lehs202/index.html#page=1" },
+            { "title": "Chapter 7 - History", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12094-Themes%20in%20Indian%20History%20Part-II/lehs203/index.html#page=1" },
+            { "title": "Chapter 8 - History", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12094-Themes%20in%20Indian%20History%20Part-II/lehs204/index.html#page=1" },
+            { "title": "Chapter 9 - History", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12125-Themes%20in%20Indian%20History%20Part-III/lehs301/index.html#page=1" },
+            { "title": "Chapter 10 - History", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12125-Themes%20in%20Indian%20History%20Part-III/lehs302/index.html#page=1" }
+          ]
+        },
+        {
+          "subject_name": "Economics",
+          "pdf_links": [
+            { "title": "Chapter 1 - Economics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12103-Introductory%20Microeconomics/leec201/index.html#page=1" },
+            { "title": "Chapter 2 - Economics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12103-Introductory%20Microeconomics/leec202/index.html#page=1" },
+            { "title": "Chapter 3 - Economics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12103-Introductory%20Microeconomics/leec203/index.html#page=1" },
+            { "title": "Chapter 4 - Economics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12103-Introductory%20Microeconomics/leec204/index.html#page=1" },
+            { "title": "Chapter 5 - Economics", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12103-Introductory%20Microeconomics/leec205/index.html#page=1" }
+          ]
+        },
+        {
+          "subject_name": "Computer Science",
+          "pdf_links": [
+            { "title": "Chapter 1 - Computer Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/Computer%20Science/lecs101/index.html#page=1" },
+            { "title": "Chapter 2 - Computer Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/Computer%20Science/lecs102/index.html#page=1" },
+            { "title": "Chapter 3 - Computer Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/Computer%20Science/lecs103/index.html#page=1" },
+            { "title": "Chapter 4 - Computer Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/Computer%20Science/lecs104/index.html#page=1" },
+            { "title": "Chapter 5 - Computer Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/Computer%20Science/lecs105/index.html#page=1" },
+            { "title": "Chapter 6 - Computer Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/Computer%20Science/lecs106/index.html#page=1" },
+            { "title": "Chapter 7 - Computer Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/Computer%20Science/lecs107/index.html#page=1" },
+            { "title": "Chapter 8 - Computer Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/Computer%20Science/lecs108/index.html#page=1" },
+            { "title": "Chapter 9 - Computer Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/Computer%20Science/lecs109/index.html#page=1" },
+            { "title": "Chapter 10 - Computer Science", "url": "https://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/Computer%20Science/lecs110/index.html#page=1" }
+          ]
+        }
+      ]
+    }
+  ]
+}

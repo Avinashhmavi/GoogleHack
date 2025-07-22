@@ -21,6 +21,7 @@ function YouTubeLibrary() {
   const [allVideos] = useState<Video[]>(videoData);
   const [selectedGrade, setSelectedGrade] = useState<string>("all");
   const [selectedSubject, setSelectedSubject] = useState<string>("all");
+  const [playingId, setPlayingId] = useState<number | null>(null);
   const { t } = useLanguage();
 
   const grades = useMemo(() => {
@@ -88,15 +89,34 @@ function YouTubeLibrary() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredVideos.map(video => (
                 <Card key={video.id} className="overflow-hidden flex flex-col">
-                    <div className="relative w-full aspect-video">
+                    <div className="relative w-full aspect-video bg-black">
+                      {playingId === video.id ? (
                         <iframe 
-                            src={`https://www.youtube.com/embed/${video.youtubeId}`}
+                            src={`https://www.youtube.com/embed/${video.youtubeId}?autoplay=1`}
                             title={video.title}
                             frameBorder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowFullScreen
                             className="absolute top-0 left-0 w-full h-full"
                         ></iframe>
+                      ) : (
+                        <button
+                          className="absolute top-0 left-0 w-full h-full flex items-center justify-center group"
+                          onClick={() => setPlayingId(video.id)}
+                          aria-label={`Play ${video.title}`}
+                        >
+                          <img
+                            src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
+                            alt={video.title}
+                            className="w-full h-full object-cover group-hover:opacity-80 transition"
+                          />
+                          <span className="absolute text-white bg-black/70 rounded-full p-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.25v13.5l13.5-6.75-13.5-6.75z" />
+                            </svg>
+                          </span>
+                        </button>
+                      )}
                     </div>
                     <CardHeader>
                         <CardTitle className="font-headline text-lg">{video.title}</CardTitle>

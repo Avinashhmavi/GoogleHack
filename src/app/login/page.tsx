@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { signInWithEmailAndPassword, signInWithPopup, RecaptchaVerifier, signInWithPhoneNumber, ConfirmationResult } from 'firebase/auth';
@@ -29,6 +29,10 @@ export default function LoginPage() {
   const router = useRouter();
   const { toast } = useToast();
   const { t } = useLanguage();
+  const [logoBounce, setLogoBounce] = useState(false);
+  useEffect(() => {
+    setLogoBounce(true);
+  }, []);
 
   const handleEmailLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -117,16 +121,14 @@ export default function LoginPage() {
 
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-secondary">
-      <Card className="w-full max-w-sm">
-        <CardHeader className="text-center">
-            <div className="flex justify-center mb-4">
-              <BookOpen className="w-12 h-12 text-primary" />
-            </div>
-          <CardTitle className="font-headline text-2xl">{t('appName')}</CardTitle>
-          <CardDescription>Welcome back! Please login to your account.</CardDescription>
+    <div className="flex items-center justify-center min-h-screen">
+      <Card className="w-full max-w-lg shadow-2xl rounded-2xl border-0 bg-white/90 backdrop-blur-md transition-transform duration-300 ease-in-out hover:scale-105 animate-fade-in">
+        <CardHeader className="flex flex-col items-center gap-2 pb-0">
+          <img src="/1753127637.jpeg" alt="Sahayak AI Logo" className={`w-24 h-24 mb-2 rounded-full shadow-lg border-4 border-blue-100 transition-transform duration-700 ${logoBounce ? 'animate-bounce' : ''}`} />
+          <CardTitle className="text-3xl font-headline font-bold text-gray-800">Sahayak AI</CardTitle>
+          <CardDescription className="text-base text-gray-500 mb-2">AI for Education</CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="space-y-6 pt-0">
           <Tabs defaultValue="email" className="w-full">
             <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="email"><KeyRound className="mr-2" /> Email</TabsTrigger>

@@ -11,7 +11,7 @@ export async function initializeFirebaseAdmin() {
     let serviceAccount;
     try {
         if (process.env.FIREBASE_SERVICE_ACCOUNT) {
-             serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT as string);
+            serviceAccount = JSON.parse((process.env.FIREBASE_SERVICE_ACCOUNT as string).replace(/\\n/g, '\n'));
         } else {
             console.warn("FIREBASE_SERVICE_ACCOUNT env var is not set.");
             return;

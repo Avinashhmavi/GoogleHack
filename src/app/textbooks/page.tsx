@@ -33,10 +33,17 @@ function TextbookLibrary() {
     return ["all", ...Array.from(subjectSet).sort()];
   }, [allTextbooks, selectedGrade]);
   
-  const filteredTextbooks = useMemo(() => {
-    return allTextbooks
-      .filter(book => selectedGrade === 'all' || book.grade === selectedGrade)
-      .filter(book => selectedSubject === 'all' || book.subject === selectedSubject);
+  // Group by subject within grade, then show all chapters for that subject
+  const grouped = useMemo(() => {
+    const map = new Map();
+    for (const book of allTextbooks) {
+      if ((selectedGrade === 'all' || book.grade === selectedGrade) && (selectedSubject === 'all' || book.subject === selectedSubject)) {
+        const key = `${book.grade}||${book.subject}`;
+        if (!map.has(key)) map.set(key, { grade: book.grade, subject: book.subject, chapters: [] });
+        map.get(key).chapters.push(book);
+      }
+    }
+    return Array.from(map.values());
   }, [allTextbooks, selectedGrade, selectedSubject]);
 
   const handleGradeChange = (grade: string) => {
@@ -81,30 +88,29 @@ function TextbookLibrary() {
         </CardContent>
       </Card>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
-        {filteredTextbooks.map(book => (
-          <Link key={book.id} href={book.pdfUrl} target="_blank" rel="noopener noreferrer">
-            <Card className="overflow-hidden transition-all hover:shadow-lg hover:-translate-y-1">
-                <div className="relative w-full aspect-[3/4]">
-                    <Image 
-                        src={book.coverImageUrl}
-                        alt={`Cover of ${book.title}`}
-                        layout="fill"
-                        objectFit="cover"
-                        data-ai-hint="textbook cover"
-                    />
-                </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+        {grouped.map(({ grade, subject, chapters }) => (
+          <Card key={grade + subject} className="overflow-hidden transition-all hover:shadow-lg hover:-translate-y-1">
                 <CardHeader className="p-3">
-                    <CardTitle className="font-headline text-base truncate">{book.title}</CardTitle>
+              <CardTitle className="font-headline text-base truncate">{subject}</CardTitle>
                     <CardDescription className="text-xs">
-                        <span>{t('grade_prefix')}: {book.grade}</span> | <span>{book.subject}</span>
+                <span>{t('grade_prefix')}: {grade}</span> | <span>{subject}</span>
                     </CardDescription>
                 </CardHeader>
+            <CardContent>
+              <ul className="space-y-2">
+                {chapters.map((chapter: Textbook) => (
+                  <li key={chapter.id}>
+                    <Link href={chapter.pdfUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline flex items-center gap-2">
+                      <span>{chapter.title}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
             </Card>
-          </Link>
         ))}
-
-        {filteredTextbooks.length === 0 && (
+        {grouped.length === 0 && (
           <div className="col-span-full text-center text-muted-foreground py-16">
             <p>{t('noTextbooksFound_text')}</p>
           </div>

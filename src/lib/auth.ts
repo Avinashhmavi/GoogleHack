@@ -16,7 +16,8 @@ export async function getAuthenticatedUser(): Promise<DecodedIdToken | null> {
 
     await initializeFirebaseAdmin();
     
-    const idToken = headers().get('Authorization')?.split('Bearer ')[1];
+    const headersList = await headers();
+    const idToken = headersList.get('Authorization')?.split('Bearer ')[1];
 
     if (!idToken) {
         return null;

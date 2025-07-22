@@ -37,7 +37,11 @@ const generateLocalizedContentFlow = ai.defineFlow(
     outputSchema: GenerateLocalizedContentOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
+    const {output} = await prompt(input, {
+      config: {
+        response_mime_type: 'application/json',
+      }
+    });
 
     if (!output) {
       const languages = input.languages.split(',');

@@ -26,6 +26,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
 import { Button } from './ui/button';
 import { menuItems } from '@/lib/menu-items';
 import { Chatbot } from './chatbot/chatbot';
+import Image from 'next/image';
 
 const MainSidebar = React.memo(function MainSidebar() {
   const pathname = usePathname();
@@ -35,10 +36,10 @@ const MainSidebar = React.memo(function MainSidebar() {
     <Sidebar variant="floating" collapsible="icon">
       <SidebarHeader className="p-4">
         <div className="flex items-center gap-2">
-          <BookOpen className="w-8 h-8 text-primary" />
+          <Image src="/1753127637.jpeg" alt="Sahayak AI Logo" width={40} height={40} className="w-10 h-10" />
           <div className="flex flex-col">
-            <h2 className="text-lg font-semibold font-headline">{t('appName')}</h2>
-            <p className="text-sm text-muted-foreground">{t('appDescription')}</p>
+            <h2 className="text-lg font-semibold font-headline">Sahayak AI</h2>
+            <p className="text-sm text-muted-foreground">AI for Education</p>
           </div>
         </div>
       </SidebarHeader>
