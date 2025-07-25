@@ -1,2 +1,0 @@
-import type { RuntimeManager } from '../manager/manager';
-export declare function startServer(manager: RuntimeManager, port: number): Promise<void>;
