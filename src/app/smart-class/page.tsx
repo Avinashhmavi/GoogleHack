@@ -13,9 +13,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { searchYoutubeVideosAction, addRecordingAction, getRecordingsAction, deleteRecordingAction } from "@/lib/actions";
-import type { YouTubeVideo } from "@/ai/flows/search-youtube-videos.types";
 import type { ClassRecording } from "@/lib/firestore";
 import { useAuth } from "@/context/auth-context";
+import { Chatbot } from "@/components/chatbot/chatbot";
 
 function YouTubeLibrary() {
   const [allVideos] = useState<Video[]>(videoData);
@@ -150,7 +150,7 @@ function ClassRecordings() {
       setIsLoading(true);
       const result = await getRecordingsAction();
       if (result.success) {
-        setRecordings(result.data);
+        setRecordings(result.data || []);
       } else {
         toast({ title: "Error", description: "Could not fetch recordings.", variant: "destructive" });
       }
@@ -180,7 +180,7 @@ function ClassRecordings() {
             dataUrl: dataUrl,
         });
         if (result.success) {
-            setRecordings(result.data);
+            setRecordings(result.data || []);
             setSelectedFile(null);
             toast({ title: "Success", description: "Recording uploaded." });
         } else {
@@ -196,7 +196,7 @@ function ClassRecordings() {
 
     const result = await deleteRecordingAction(id);
     if (result.success) {
-      setRecordings(result.data);
+      setRecordings(result.data || []);
       toast({ title: "Success", description: "Recording deleted." });
     } else {
       setRecordings(originalRecordings);
@@ -258,7 +258,6 @@ function AIVideoSearch() {
   const [topic, setTopic] = useState("");
   const [language, setLanguage] = useState("English");
   const [isLoading, setIsLoading] = useState(false);
-  const [results, setResults] = useState<YouTubeVideo[]>([]);
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -272,11 +271,10 @@ function AIVideoSearch() {
       return;
     }
     setIsLoading(true);
-    setResults([]);
     
     const actionResult = await searchYoutubeVideosAction({ grade, subject, topic, language });
     if(actionResult.success) {
-      setResults(actionResult.data.videos);
+      window.open(actionResult.data.searchUrl, '_blank');
     } else {
       toast({
         title: "AI Search Failed",
@@ -357,35 +355,10 @@ function AIVideoSearch() {
           <Loader2 className="w-12 h-12 animate-spin text-primary" />
         </div>
       )}
-
-      {results.length > 0 && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {results.map(video => (
-            <Card key={video.id} className="overflow-hidden flex flex-col">
-              <div className="relative w-full aspect-video">
-                <iframe
-                  src={`https://www.youtube.com/embed/${video.id}`}
-                  title={video.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="absolute top-0 left-0 w-full h-full"
-                ></iframe>
-              </div>
-              <CardHeader>
-                <CardTitle className="font-headline text-lg">{video.title}</CardTitle>
-                <CardDescription>
-                  Published by {video.channelTitle}
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          ))}
-        </div>
-      )}
       
-       {!isLoading && results.length === 0 && (
+       {!isLoading && (
           <div className="text-center text-muted-foreground py-16">
-              <p>AI search results will appear here.</p>
+              <p>Enter your criteria above and the AI will open a new tab with YouTube search results.</p>
           </div>
       )}
 
@@ -422,6 +395,7 @@ export default function SmartClassPage() {
           <ClassRecordings />
         </TabsContent>
       </Tabs>
+      <Chatbot />
     </div>
   );
 }

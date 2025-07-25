@@ -23,7 +23,7 @@ type Message = {
 // Function to find URLs and internal paths and convert them to appropriate links
 const renderContentWithLinks = (content: string) => {
     const urlRegex = /(https?:\/\/[^\s]+)/g; // Matches http/https URLs
-    const pathRegex = /(\s\/[a-z0-9-]+)/g; // Matches internal paths like /quiz-generator
+    const pathRegex = /(\/[a-z0-9-]+)/g; // Matches internal paths like /quiz-generator
 
     // Combine regexes for splitting
     const combinedRegex = new RegExp(`(${urlRegex.source}|${pathRegex.source})`, 'g');
@@ -73,10 +73,13 @@ export function Chatbot() {
   useEffect(() => {
     // Scroll to the bottom when messages change
     if (scrollAreaRef.current) {
-        scrollAreaRef.current.scrollTo({
-            top: scrollAreaRef.current.scrollHeight,
-            behavior: 'smooth'
-        });
+        const viewport = scrollAreaRef.current.querySelector('div[style*="overflow: scroll"]');
+        if (viewport) {
+            viewport.scrollTo({
+                top: viewport.scrollHeight,
+                behavior: 'smooth'
+            });
+        }
     }
   }, [messages]);
 
@@ -86,13 +89,23 @@ export function Chatbot() {
     if (!input.trim() || isLoading) return;
 
     const userMessage: Message = { role: 'user', content: input };
-    setMessages((prev) => [...prev, userMessage]);
+    const newMessages = [...messages, userMessage];
+    setMessages(newMessages);
     setInput('');
     setIsLoading(true);
 
-    const result = await appChatbotAction({ query: input });
+    let history = newMessages.slice(0, -1).map(msg => ({
+      role: (msg.role === 'assistant' ? 'model' : 'user') as 'user' | 'model',
+      content: [{text: msg.content}]
+    }));
 
-    if (result.success && result.data) {
+    if (history.length > 0 && history[0].role === 'model') {
+      history = history.slice(1);
+    }
+
+    const result = await appChatbotAction({ query: input, history, studentRoster: [] });
+
+    if (result.success) {
       const assistantMessage: Message = { role: 'assistant', content: result.data.response };
       setMessages((prev) => [...prev, assistantMessage]);
     } else {

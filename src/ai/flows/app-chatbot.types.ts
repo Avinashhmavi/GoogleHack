@@ -4,10 +4,12 @@
  */
 import type { Student } from '@/lib/firestore';
 import { z } from 'genkit';
+import { MessageData } from '@genkit-ai/ai/model';
 
 export const AppChatbotInputSchema = z.object({
   query: z.string().describe('The user\'s question about the app.'),
-  studentRoster: z.custom<Student[]>()
+  studentRoster: z.custom<Student[]>(),
+  history: z.array(z.custom<MessageData>()).optional().describe('The conversation history.'),
 });
 export type AppChatbotInput = z.infer<typeof AppChatbotInputSchema>;
 
