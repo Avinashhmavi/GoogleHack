@@ -7,23 +7,20 @@ export async function initializeFirebaseAdmin() {
     if (getApps().length > 0) {
         return;
     }
-    
-    let serviceAccount;
-    try {
-        if (process.env.FIREBASE_SERVICE_ACCOUNT) {
-            serviceAccount = JSON.parse((process.env.FIREBASE_SERVICE_ACCOUNT as string).replace(/\\n/g, '\n'));
-        } else {
-            console.warn("FIREBASE_SERVICE_ACCOUNT env var is not set.");
-            return;
-        }
-    } catch (e) {
-        console.error("Failed to parse FIREBASE_SERVICE_ACCOUNT:", e);
-        return;
-    }
-    
-    if (!serviceAccount) return;
 
     try {
+        let serviceAccount;
+        try {
+            serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT as string);
+        } catch (err) {
+            // Fallback to manual construction from GENKIT_* and GOOGLE_PROJECT_ID
+            serviceAccount = {
+                client_email: process.env.GENKIT_CLIENT_EMAIL,
+                private_key: process.env.GENKIT_PRIVATE_KEY,
+                project_id: process.env.GOOGLE_PROJECT_ID,
+            };
+            console.warn("FIREBASE_SERVICE_ACCOUNT parsing failed, using GENKIT_CLIENT_EMAIL, GENKIT_PRIVATE_KEY, and GOOGLE_PROJECT_ID as fallback.");
+        }
         app = initializeApp({
             credential: cert(serviceAccount),
         });

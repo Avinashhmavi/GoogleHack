@@ -173,14 +173,8 @@ export async function professionalDevelopmentAction(input: ProfessionalDevelopme
     return runAction(getProfessionalDevelopmentPlan, input);
 }
 
-export async function appChatbotAction(input: Omit<AppChatbotInput, 'studentRoster'>) {
-    const user = await getAuthenticatedUser();
-    if (!user) return { success: false, error: "User not authenticated." };
-    let studentRoster: Student[] = [];
-    if (user) {
-        studentRoster = await studentRosterDb.getStudents(user.uid);
-    }
-    const enrichedInput = { ...input, studentRoster };
+export async function appChatbotAction(input: AppChatbotInput) {
+    const enrichedInput = { ...input, studentRoster: [] };
     return runAction(appChatbot, enrichedInput);
 }
 

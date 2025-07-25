@@ -15,10 +15,12 @@ import {
     type AppChatbotOutput
 } from './app-chatbot.types';
 import { menuItems } from '@/lib/menu-items';
-import { textbookData } from '@/lib/textbook-data';
+import * as textbookDataFromFile from '../../../grade_wise_subjects_pdf.json';
+import { searchYoutubeVideos } from './search-youtube-videos';
 import { z } from 'genkit';
-import { searchYouTubeTool } from './search-youtube-videos';
+import { Document } from '@genkit-ai/ai';
 import type { Student } from '@/lib/firestore';
+import { retrieveWithCodebase } from './codebase-retriever';
 
 
 const listAppFeaturesTool = ai.defineTool(
@@ -54,40 +56,79 @@ const getTextbooksTool = ai.defineTool(
     },
     async ({ query }) => {
         const lowerCaseQuery = query.toLowerCase();
-        const results = textbookData
-            .filter(book => 
-                book.title.toLowerCase().includes(lowerCaseQuery) ||
-                book.subject.toLowerCase().includes(lowerCaseQuery) ||
-                book.grade.toString().toLowerCase().includes(lowerCaseQuery)
-            )
-            .map(book => ({
-                title: book.title,
-                url: book.pdfUrl
-            }));
-        return results.slice(0, 3); // Return max 3 results
+        
+        const gradeMatch = lowerCaseQuery.match(/(?:grade|class)\s*(\d+)/);
+        const grade = gradeMatch ? gradeMatch[1] : null;
+
+        let subject: string | undefined;
+        if (grade) {
+            const gradeData = textbookDataFromFile.grades.find(g => g.grade === grade);
+            if (gradeData) {
+                const subjectInGrade = gradeData.subjects.find(s => lowerCaseQuery.includes(s.subject_name.toLowerCase()));
+                if (subjectInGrade) {
+                    subject = subjectInGrade.subject_name.toLowerCase();
+                }
+            }
+        }
+        
+        if (!subject) {
+            const allSubjects = textbookDataFromFile.grades.flatMap(g => g.subjects.map(s => s.subject_name.toLowerCase()));
+            subject = allSubjects.find(s => lowerCaseQuery.includes(s));
+        }
+
+        const chapterMatch = lowerCaseQuery.match(/chapter\s*(\d+)/);
+        const chapter = chapterMatch ? parseInt(chapterMatch[1]) : null;
+
+        if (grade) {
+            const gradeData = textbookDataFromFile.grades.find(g => g.grade === grade);
+            if (gradeData) {
+                if (subject) {
+                    const subjectData = gradeData.subjects.find(s => s.subject_name.toLowerCase() === subject);
+                    if (subjectData) {
+                        if (chapter) {
+                            const chapterLink = subjectData.pdf_links.find(link => {
+                                const titleChapterMatch = link.title.match(/chapter\s*(\d+)/);
+                                if (titleChapterMatch) {
+                                    return parseInt(titleChapterMatch[1]) === chapter;
+                                }
+                                return false;
+                            });
+                            if (chapterLink) {
+                                return [{ title: chapterLink.title, url: chapterLink.url }];
+                            }
+                        } else {
+                            return subjectData.pdf_links.map(link => ({ title: link.title, url: link.url })).slice(0, 5);
+                        }
+                    }
+                } else {
+                    // If only grade is provided, return all subjects for that grade
+                    return gradeData.subjects.flatMap(s => s.pdf_links.map(link => ({ title: `${s.subject_name} - ${link.title}`, url: link.url }))).slice(0, 10);
+                }
+            }
+        }
+        
+        return [];
     }
 );
 
-const getStudentInfoTool = ai.defineTool(
-    {
-        name: 'getStudentInfo',
-        description: "Retrieves information about a specific student from the roster.",
-        inputSchema: z.object({
-            studentName: z.string().describe("The full name of the student to search for."),
-            studentRoster: z.custom<Student[]>()
-        }),
-        outputSchema: z.object({
-            name: z.string(),
-            id: z.string()
-        }).or(z.null())
-    },
-    async ({ studentName, studentRoster }) => {
-        const lowerCaseName = studentName.toLowerCase();
-        const student = studentRoster.find(s => s.name.toLowerCase() === lowerCaseName);
-        return student ? { name: student.name, id: student.id } : null;
-    }
+const searchYoutubeVideosTool = ai.defineTool(
+  {
+    name: 'searchYoutubeVideos',
+    description: 'Searches for educational videos on YouTube and returns a search URL.',
+    inputSchema: z.object({
+      topic: z.string().describe('The topic of the video to search for.'),
+      grade: z.string().optional().describe('The grade level for the video.'),
+      subject: z.string().optional().describe('The subject of the video.'),
+      language: z.string().optional().describe('The language of the video.'),
+    }),
+    outputSchema: z.object({
+      searchUrl: z.string(),
+    }),
+  },
+  async (input) => {
+    return await searchYoutubeVideos(input);
+  }
 );
-
 
 const appChatbotFlow = ai.defineFlow(
   {
@@ -96,49 +137,26 @@ const appChatbotFlow = ai.defineFlow(
     outputSchema: AppChatbotOutputSchema,
   },
   async (input) => {
-    
-    // Create a version of the tool that has studentRoster pre-filled.
-    const getStudentInfoToolForUser = ai.defineTool(
-        { ...getStudentInfoTool.config },
-        // @ts-ignore
-        async ({ studentName }) => {
-            return getStudentInfoTool.fn({ studentName, studentRoster: input.studentRoster });
-        }
-    );
-
-
+    const context = await retrieveWithCodebase({ query: { content: [{ text: input.query }] } });
+    const systemPrompt = `You are a helpful AI assistant for the Sahayak AI app. Your purpose is to help users understand and use the app's features.
+You have access to the app's codebase, so you can answer detailed questions about how features work.
+If you can answer the user's question, do so in a clear and concise way.
+If you are asked for a feature or navigation path (e.g., "content creator", "presentation creator", "quiz generator", "grade tracking", "smart class", "calendar"), use the listAppFeatures tool to provide the navigation path.
+If you are asked for a textbook, use the getTextbooks tool.
+If you are asked for a video, use the searchYoutubeVideos tool.
+Always provide clickable links if you mention a feature. The UI will handle it.`;
     const llmResponse = await ai.generate({
-        prompt: `You are a friendly and helpful chatbot assistant for the "Sahayak AI" application.
-Your goal is to answer user questions about the app, fetch resources, and help them navigate.
-You have access to a set of tools to get information about the app's features, videos, textbooks, and students.
-- Use the 'listAppFeatures' tool to talk about what the app can do or to provide navigation links.
-- Use the 'searchYouTube' tool when the user asks for a video on a topic. This tool can search all of YouTube for relevant educational videos.
-- Use the 'getTextbooks' tool when the user asks for a textbook.
-- Use the 'getStudentInfo' tool if the user asks for details about a specific student.
-- If you provide a link, make sure it is a complete, clickable URL. When providing YouTube links, format them as https://www.youtube.com/watch?v={id}.
-- If the user asks a question that is not related to the Sahayak AI app or its content, politely decline to answer and state that you can only help with questions about the application.
-
-User question: "${input.query}"`,
-        model: 'googleai/gemini-2.0-flash',
-        tools: [listAppFeaturesTool, searchYouTubeTool, getTextbooksTool, getStudentInfoToolForUser],
-        toolConfig: { autoToolInference: true }
+        messages: [
+            { role: 'system', content: [{ text: systemPrompt }] },
+            ...(input.history || []),
+            { role: 'user', content: [{ text: input.query }] }
+        ],
+        model: 'googleai/gemini-1.5-flash',
+        tools: [listAppFeaturesTool, getTextbooksTool, searchYoutubeVideosTool],
+        context,
     });
   
     let text = llmResponse.text;
-    
-    // Post-processing to ensure youtube links are correctly formatted
-    if (llmResponse.hasToolRequest()) {
-        const toolRequests = llmResponse.toolRequests();
-        const youtubeRequest = toolRequests.find(req => req.name === 'searchYouTube');
-        
-        if (youtubeRequest && youtubeRequest.outputs) {
-             const youtubeResults = youtubeRequest.outputs as any[];
-             if (youtubeResults.length > 0) {
-                const videoLinks = youtubeResults.map((video: any) => `* ${video.title}: https://www.youtube.com/watch?v=${video.id}`).join('\n');
-                text = `I found a few videos that might help:\n${videoLinks}`;
-             }
-        }
-    }
 
 
     if (!text) {
