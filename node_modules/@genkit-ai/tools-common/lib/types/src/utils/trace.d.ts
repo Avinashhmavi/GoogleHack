@@ -1,2 +1,0 @@
-import type { NestedSpanData, TraceData } from '../types';
-export declare function stackTraceSpans(trace: TraceData): NestedSpanData | undefined;
