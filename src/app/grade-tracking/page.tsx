@@ -27,11 +27,11 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { addGradeAction, getGradesAction, deleteGradeAction } from "@/lib/actions";
-import type { GradeEntry } from "@/lib/firestore";
+import type { LocalGradeEntry } from "@/lib/local-data";
 import { useAuth } from "@/context/auth-context";
 
 export default function GradeTrackingPage() {
-  const [grades, setGrades] = useState<GradeEntry[]>([]);
+  const [grades, setGrades] = useState<LocalGradeEntry[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { toast } = useToast();
@@ -63,7 +63,7 @@ export default function GradeTrackingPage() {
     window.print();
   };
   
-  const addGrade = async (entry: Omit<GradeEntry, 'id' | 'uid'>) => {
+  const addGrade = async (entry: Omit<LocalGradeEntry, 'id'>) => {
     const result = await addGradeAction(entry);
     if(result.success) {
         setGrades(result.data);
@@ -166,7 +166,7 @@ export default function GradeTrackingPage() {
 }
 
 
-function AddGradeDialog({ onAddGrade, open, onOpenChange }: { onAddGrade: (entry: Omit<GradeEntry, 'id' | 'uid'>) => void; open: boolean; onOpenChange: (open: boolean) => void; }) {
+function AddGradeDialog({ onAddGrade, open, onOpenChange }: { onAddGrade: (entry: Omit<LocalGradeEntry, 'id'>) => void; open: boolean; onOpenChange: (open: boolean) => void; }) {
     const [studentName, setStudentName] = useState("");
     const [subject, setSubject] = useState("");
     const [grade, setGrade] = useState("");

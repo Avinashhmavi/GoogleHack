@@ -24,8 +24,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { addCalendarEventAction, getCalendarEventsAction, deleteCalendarEventAction } from "@/lib/actions";
-import type { CalendarEvent } from "@/lib/firestore";
-import { useAuth } from "@/context/auth-context";
+import type { LocalCalendarEvent as CalendarEvent } from "@/lib/local-data";
 
 const eventTypeConfig = {
     Lesson: { icon: BookOpen, color: "bg-blue-500" },
@@ -39,37 +38,25 @@ export default function CalendarPage() {
   const [events, setEvents] = useState<CalendarEvent[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
-  const { authStatus } = useAuth();
 
   useEffect(() => {
     async function fetchEvents() {
         setIsLoading(true);
         const result = await getCalendarEventsAction();
         if(result.success) {
-            // Firestore timestamps need to be converted to Date objects
-            const formattedEvents = result.data.map(event => ({
-                ...event,
-                date: new Date((event.date as any)._seconds * 1000),
-            }));
-            setEvents(formattedEvents);
+            setEvents(result.data || []);
         } else {
             toast({ title: "Error", description: result.error || "Could not fetch calendar events.", variant: "destructive" });
         }
         setIsLoading(false);
     }
-    if (authStatus === 'authenticated') {
-        fetchEvents();
-    }
-  }, [authStatus, toast]);
+    fetchEvents();
+  }, [toast]);
 
   const addEvent = async (event: Omit<CalendarEvent, 'id' | 'uid'>) => {
     const result = await addCalendarEventAction(event);
     if (result.success) {
-        const formattedEvents = result.data.map(event => ({
-            ...event,
-            date: new Date((event.date as any)._seconds * 1000),
-        }));
-        setEvents(formattedEvents);
+        setEvents(result.data || []);
         toast({ title: "Event Added", description: "The event has been added to your calendar." });
     } else {
         toast({ title: "Error", description: result.error, variant: "destructive" });
@@ -79,11 +66,7 @@ export default function CalendarPage() {
   const deleteEvent = async (id: string) => {
     const result = await deleteCalendarEventAction(id);
     if (result.success) {
-        const formattedEvents = result.data.map(event => ({
-            ...event,
-            date: new Date((event.date as any)._seconds * 1000),
-        }));
-        setEvents(formattedEvents);
+        setEvents(result.data || []);
         toast({ title: "Event Deleted" });
     } else {
         toast({ title: "Error", description: result.error, variant: "destructive" });

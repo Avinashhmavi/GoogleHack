@@ -27,6 +27,13 @@ const prompt = ai.definePrompt({
   prompt: `You are an AI-powered attendance system for a classroom.
 Your task is to identify which of the known students are present in the provided classroom photo.
 
+IMPORTANT INSTRUCTIONS:
+1. Only identify students with HIGH CONFIDENCE. If you're unsure, do not include them.
+2. Look for clear, frontal face views with good lighting.
+3. Pay attention to distinctive facial features, not just general appearance.
+4. If multiple students look similar, be extra careful to match correctly.
+5. Do not guess - only include students you are confident about.
+
 Here is the list of all students in the class with their reference photos:
 {{#each studentRoster}}
 - Student Name: {{{this.name}}}
@@ -34,8 +41,8 @@ Here is the list of all students in the class with their reference photos:
 {{/each}}
 
 Analyze the classroom photo provided by the user and compare the faces with the reference photos.
-Return a list of the names of the students you can identify.
-If you do not see a student, do not include them in the list. Only list the students who are clearly visible.
+Return a list of the names of the students you can identify with high confidence.
+If you do not see a student clearly, do not include them in the list.
 
 Classroom Photo:
 {{media url=photoDataUri}}

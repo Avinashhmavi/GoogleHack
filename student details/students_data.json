@@ -1,0 +1,310 @@
+{
+  "students": [
+    {
+      "rollno": "001",
+      "name": "Raman Kumar",
+      "grade": "Class 10",
+      "profile_photo": "images/students/001.png"
+    },
+    {
+      "rollno": "002",
+      "name": "Kiara Kapoor",
+      "grade": "Class 9",
+      "profile_photo": "images/students/002.png"
+    },
+    {
+      "rollno": "003",
+      "name": "Rohan Gupta",
+      "grade": "Class 7",
+      "profile_photo": "images/students/003.png"
+    },
+    {
+      "rollno": "004",
+      "name": "Advait Chopra",
+      "grade": "Class 8",
+      "profile_photo": "images/students/004.png"
+    },
+    {
+      "rollno": "005",
+      "name": "Neil Kumar",
+      "grade": "Class 10",
+      "profile_photo": "images/students/005.png"
+    },
+    {
+      "rollno": "006",
+      "name": "Saanvi Kapoor",
+      "grade": "Class 6",
+      "profile_photo": "images/students/006.png"
+    },
+    {
+      "rollno": "007",
+      "name": "Anaya Chopra",
+      "grade": "Class 9",
+      "profile_photo": "images/students/007.png"
+    },
+    {
+      "rollno": "008",
+      "name": "Riya Bansal",
+      "grade": "Class 8",
+      "profile_photo": "images/students/008.png"
+    },
+    {
+      "rollno": "009",
+      "name": "Mehak Sharma",
+      "grade": "Class 8",
+      "profile_photo": "images/students/009.png"
+    },
+    {
+      "rollno": "010",
+      "name": "Kiara Sharma",
+      "grade": "Class 12",
+      "profile_photo": "images/students/010.png"
+    },
+    {
+      "rollno": "011",
+      "name": "Reyansh Kumar",
+      "grade": "Class 9",
+      "profile_photo": "images/students/011.png"
+    },
+    {
+      "rollno": "012",
+      "name": "Vivaan Mehta",
+      "grade": "Class 12",
+      "profile_photo": "images/students/012.png"
+    },
+    {
+      "rollno": "013",
+      "name": "Kiara Chopra",
+      "grade": "Class 7",
+      "profile_photo": "images/students/013.png"
+    },
+    {
+      "rollno": "014",
+      "name": "Arjun Mehta",
+      "grade": "Class 7",
+      "profile_photo": "images/students/014.png"
+    },
+    {
+      "rollno": "015",
+      "name": "Pari Gupta",
+      "grade": "Class 9",
+      "profile_photo": "images/students/015.png"
+    },
+    {
+      "rollno": "016",
+      "name": "Ishita Bansal",
+      "grade": "Class 11",
+      "profile_photo": "images/students/016.png"
+    },
+    {
+      "rollno": "017",
+      "name": "Aarav Mehta",
+      "grade": "Class 7",
+      "profile_photo": "images/students/017.png"
+    },
+    {
+      "rollno": "018",
+      "name": "Arjun Rastogi",
+      "grade": "Class 10",
+      "profile_photo": "images/students/018.png"
+    },
+    {
+      "rollno": "019",
+      "name": "Myra Mehta",
+      "grade": "Class 12",
+      "profile_photo": "images/students/019.png"
+    },
+    {
+      "rollno": "020",
+      "name": "Myra Verma",
+      "grade": "Class 12",
+      "profile_photo": "images/students/020.png"
+    },
+    {
+      "rollno": "021",
+      "name": "Vivaan Verma",
+      "grade": "Class 10",
+      "profile_photo": "images/students/021.png"
+    },
+    {
+      "rollno": "022",
+      "name": "Avinash HM",
+      "grade": "Class 9",
+      "profile_photo": "images/students/022.png"
+    },
+    {
+      "rollno": "023",
+      "name": "Rahul Purohit",
+      "grade": "Class 12",
+      "profile_photo": "images/students/023.png"
+    },
+    {
+      "rollno": "024",
+      "name": "Diya Singh",
+      "grade": "Class 6",
+      "profile_photo": "images/students/024.png"
+    },
+    {
+      "rollno": "025",
+      "name": "Neil Singh",
+      "grade": "Class 6",
+      "profile_photo": "images/students/025.png"
+    },
+    {
+      "rollno": "026",
+      "name": "Kabir Bansal",
+      "grade": "Class 12",
+      "profile_photo": "images/students/026.png"
+    },
+    {
+      "rollno": "027",
+      "name": "Rastogi",
+      "grade": "Class 8",
+      "profile_photo": "images/students/027.png"
+    },
+    {
+      "rollno": "028",
+      "name": "Ayaan Chopra",
+      "grade": "Class 11",
+      "profile_photo": "images/students/028.png"
+    },
+    {
+      "rollno": "029",
+      "name": "Tanya Kumar",
+      "grade": "Class 10",
+      "profile_photo": "images/students/029.png"
+    },
+    {
+      "rollno": "030",
+      "name": "Aarav Gupta",
+      "grade": "Class 9",
+      "profile_photo": "images/students/030.png"
+    },
+    {
+      "rollno": "031",
+      "name": "Kiara Gupta",
+      "grade": "Class 9",
+      "profile_photo": "images/students/031.png"
+    },
+    {
+      "rollno": "032",
+      "name": "Mehak Verma",
+      "grade": "Class 9",
+      "profile_photo": "images/students/032.png"
+    },
+    {
+      "rollno": "033",
+      "name": "Kiara Singh",
+      "grade": "Class 6",
+      "profile_photo": "images/students/033.png"
+    },
+    {
+      "rollno": "034",
+      "name": "Anaya Sharma",
+      "grade": "Class 11",
+      "profile_photo": "images/students/034.png"
+    },
+    {
+      "rollno": "035",
+      "name": "Reyansh Gupta",
+      "grade": "Class 7",
+      "profile_photo": "images/students/035.png"
+    },
+    {
+      "rollno": "036",
+      "name": "Reyansh Verma",
+      "grade": "Class 10",
+      "profile_photo": "images/students/036.png"
+    },
+    {
+      "rollno": "037",
+      "name": "Mehak Singh",
+      "grade": "Class 12",
+      "profile_photo": "images/students/037.png"
+    },
+    {
+      "rollno": "038",
+      "name": "Advait Bansal",
+      "grade": "Class 8",
+      "profile_photo": "images/students/038.png"
+    },
+    {
+      "rollno": "039",
+      "name": "Pari Bansal",
+      "grade": "Class 9",
+      "profile_photo": "images/students/039.png"
+    },
+    {
+      "rollno": "040",
+      "name": "Kabir Kapoor",
+      "grade": "Class 10",
+      "profile_photo": "images/students/040.png"
+    },
+    {
+      "rollno": "041",
+      "name": "Aarav Kapoor",
+      "grade": "Class 6",
+      "profile_photo": "images/students/041.png"
+    },
+    {
+      "rollno": "042",
+      "name": "Laksh Verma",
+      "grade": "Class 8",
+      "profile_photo": "images/students/042.png"
+    },
+    {
+      "rollno": "043",
+      "name": "Diya Singh",
+      "grade": "Class 11",
+      "profile_photo": "images/students/043.png"
+    },
+    {
+      "rollno": "044",
+      "name": "Rohan Kumar",
+      "grade": "Class 9",
+      "profile_photo": "images/students/044.png"
+    },
+    {
+      "rollno": "045",
+      "name": "Laksh Kapoor",
+      "grade": "Class 11",
+      "profile_photo": "images/students/045.png"
+    },
+    {
+      "rollno": "046",
+      "name": "Ayaan Kapoor",
+      "grade": "Class 7",
+      "profile_photo": "images/students/046.png"
+    },
+    {
+      "rollno": "047",
+      "name": "Ayaan Kapoor",
+      "grade": "Class 8",
+      "profile_photo": "images/students/047.png"
+    },
+    {
+      "rollno": "048",
+      "name": "Mehak Verma",
+      "grade": "Class 10",
+      "profile_photo": "images/students/048.png"
+    },
+    {
+      "rollno": "049",
+      "name": "Pari Verma",
+      "grade": "Class 7",
+      "profile_photo": "images/students/049.png"
+    },
+    {
+      "rollno": "050",
+      "name": "Neil Kapoor",
+      "grade": "Class 10",
+      "profile_photo": "images/students/050.png"
+    },
+    {
+      "rollno": "051",
+      "name": "Venkatesh Babu v",
+      "grade": "Class 10",
+      "profile_photo": "images/students/051.png"
+    }
+  ]
+}

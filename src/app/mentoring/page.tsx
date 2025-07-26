@@ -17,7 +17,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useAuth } from "@/context/auth-context";
 
 export default function MentoringPage() {
-  const [students, setStudents] = useState<Student[]>([]);
+  const [students, setStudents] = useState<any[]>([]);
   const [selectedStudentId, setSelectedStudentId] = useState("");
   const [problems, setProblems] = useState<string[]>([]);
   const [newProblem, setNewProblem] = useState("");
@@ -72,24 +72,37 @@ export default function MentoringPage() {
     setIsLoading(true);
     setMentorshipPlan(null);
 
-    const result = await createMentorshipPlanAction({
-        studentName: selectedStudent.name,
-        // This is a mock, in a real app we'd have grade associated with student
-        gradeLevel: 5,
-        problems,
-        progress
-    });
+    try {
+      // Add a small delay to allow UI to update before starting the action
+      // This helps with perceived performance
+      await new Promise(resolve => setTimeout(resolve, 0));
+      
+      const result = await createMentorshipPlanAction({
+          studentName: selectedStudent.name,
+          // This is a mock, in a real app we'd have grade associated with student
+          gradeLevel: 5,
+          problems,
+          progress
+      });
 
-    if (result.success && result.data) {
-      setMentorshipPlan(result.data);
-    } else {
+      if (result.success) {
+        setMentorshipPlan(result.data);
+      } else {
+        toast({
+          title: "Error Generating Plan",
+          description: result.error || "An unknown error occurred.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
       toast({
         title: "Error Generating Plan",
-        description: result.error || "An unknown error occurred.",
+        description: "An unexpected error occurred while generating the mentorship plan.",
         variant: "destructive",
       });
+    } finally {
+      setIsLoading(false);
     }
-    setIsLoading(false);
   };
   
   const selectedStudent = students.find(s => s.id === selectedStudentId);

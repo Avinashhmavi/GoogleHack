@@ -77,13 +77,42 @@ import type { SearchYoutubeVideosInput } from "@/ai/flows/search-youtube-videos.
 import { createMentorshipPlan } from "@/ai/flows/create-mentorship-plan";
 import type { CreateMentorshipPlanInput } from "@/ai/flows/create-mentorship-plan.types";
 
-import { studentRosterDb, type Student, gradesDb, type GradeEntry, calendarDb, type CalendarEvent, recordingsDb, type ClassRecording } from "@/lib/firestore";
+import { studentRosterDb, type Student, gradesDb, type GradeEntry, recordingsDb, type ClassRecording } from "@/lib/firestore";
+import { getLocalCalendarEvents, addLocalCalendarEvent, deleteLocalCalendarEvent } from "@/lib/calendar-data";
+import type { LocalCalendarEvent } from "@/lib/local-data";
+type CalendarEvent = LocalCalendarEvent;
 import { getAuthenticatedUser } from "./auth";
+import { 
+  getLocalStudents, 
+  addLocalGrade, 
+  deleteLocalGrade, 
+  getLocalGrades,
+  type LocalStudent
+} from "@/lib/local-data";
+
+// Cache for student photo data URIs
+const studentPhotoCache = new Map<string, string>();
+
+// Cache for student data
+let studentDataCache: any[] | null = null;
+let studentDataCacheTimestamp: number | null = null;
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+
+// Function to clear all caches
+export async function clearAllCaches() {
+  studentPhotoCache.clear();
+  studentDataCache = null;
+  studentDataCacheTimestamp = null;
+}
 
 
 // Wrapper function to handle Genkit flow execution and error handling
 async function runAction<I, O>(action: (input: I) => Promise<O>, input: I): Promise<{ success: true, data: O } | { success: false, error: string }> {
     try {
+        // Add a small delay to allow UI to update before starting the action
+        // This helps with perceived performance
+        await new Promise(resolve => setTimeout(resolve, 0));
+        
         const result = await action(input);
         return { success: true, data: result };
     } catch (error) {
@@ -128,14 +157,97 @@ export async function enhanceWritingAction(input: EnhanceWritingInput) {
   return runAction(enhanceWriting, input);
 }
 
-export async function recognizeStudentsAction(input: {photoDataUri: string}) {  
-  const user = await getAuthenticatedUser();
-  if (!user) return { success: false, error: "User not authenticated." };
-  
-  const studentRoster = await studentRosterDb.getStudents(user.uid);
-  const flowInput: RecognizeStudentsInputWithRoster = { ...input, studentRoster };
+// Process students in batches to improve performance
+const BATCH_SIZE = 20;
 
-  return runAction(recognizeStudents, flowInput);
+async function processStudentsInBatches(
+  localStudents: LocalStudent[], 
+  photoDataUri: string
+): Promise<{ success: true; data: { presentStudents: string[] } } | { success: false; error: string }> {
+  let allPresentStudents: string[] = [];
+  
+  // Process students in batches
+  for (let i = 0; i < localStudents.length; i += BATCH_SIZE) {
+    const batch = localStudents.slice(i, i + BATCH_SIZE);
+    
+    // Convert LocalStudent to Student format for compatibility
+    // and convert file paths to proper data URIs with content type
+    const studentRoster = await Promise.all(batch.map(async student => {
+        // Check if we have a cached version of the photo data URI
+        const cachedPhotoDataUri = studentPhotoCache.get(student.rollno);
+        if (cachedPhotoDataUri) {
+            return {
+                id: student.rollno,
+                uid: "local",
+                name: student.name,
+                photoDataUri: cachedPhotoDataUri
+            };
+        }
+        
+        // Extract file extension to determine content type
+        const fileExtension = student.profile_photo.split('.').pop()?.toLowerCase();
+        let contentType = 'image/jpeg';
+        if (fileExtension === 'png') {
+            contentType = 'image/png';
+        } else if (fileExtension === 'jpg' || fileExtension === 'jpeg') {
+            contentType = 'image/jpeg';
+        }
+        
+        // Convert file to data URI with Base64 encoding
+        const fs = require('fs');
+        const path = require('path');
+        let filePath = path.join(process.cwd(), 'student details', student.profile_photo);
+        
+        // Check if file exists, if not use placeholder
+        if (!fs.existsSync(filePath)) {
+            filePath = path.join(process.cwd(), 'student details', 'images', 'students', 'placeholder.png');
+            // Update content type for placeholder
+            contentType = 'image/png';
+        }
+        
+        const fileBuffer = fs.readFileSync(filePath);
+        const base64Data = fileBuffer.toString('base64');
+        const photoDataUri = `data:${contentType};base64,${base64Data}`;
+        
+        // Cache the photo data URI for future use
+        studentPhotoCache.set(student.rollno, photoDataUri);
+        
+        return {
+            id: student.rollno,
+            uid: "local",
+            name: student.name,
+            photoDataUri
+        };
+    }));
+    
+    const flowInput: RecognizeStudentsInputWithRoster = { photoDataUri, studentRoster };
+    const batchResult = await runAction(recognizeStudents, flowInput);
+    
+    if (batchResult.success) {
+      allPresentStudents = [...allPresentStudents, ...batchResult.data.presentStudents];
+    } else {
+      // If any batch fails, return the error
+      return { success: false, error: batchResult.error };
+    }
+  }
+  
+  // Remove duplicates (in case a student appears in multiple batches)
+  const uniquePresentStudents = [...new Set(allPresentStudents)];
+  
+  return { success: true, data: { presentStudents: uniquePresentStudents } };
+}
+
+export async function recognizeStudentsAction(input: {photoDataUri: string}) {  
+  try {
+    // Use local student data instead of Firestore
+    const localStudents = await getLocalStudents();
+    
+    // Process students in batches for better performance
+    return await processStudentsInBatches(localStudents, input.photoDataUri);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Failed to recognize students.";
+    return { success: false, error: message };
+  }
 }
 
 export async function createLessonPlanAction(input: CreateLessonPlanInput) {
@@ -193,11 +305,70 @@ export async function createMentorshipPlanAction(input: CreateMentorshipPlanInpu
 
 // Student Roster Actions
 export async function getStudentsAction() {
-    const user = await getAuthenticatedUser();
-    if (!user) return { success: false, error: "User not authenticated." };
     try {
-        const students = await studentRosterDb.getStudents(user.uid);
-        return { success: true, data: students };
+        // Check if we have valid cached data
+        const now = Date.now();
+        if (studentDataCache && studentDataCacheTimestamp && (now - studentDataCacheTimestamp) < CACHE_DURATION) {
+            return { success: true, data: studentDataCache };
+        }
+
+        // Use local student data instead of Firestore
+        const students = await getLocalStudents();
+        // Convert LocalStudent to Student format for compatibility
+        // and convert file paths to proper data URIs with content type
+        const formattedStudents = await Promise.all(students.map(async student => {
+            // Check if we have a cached version of the photo data URI
+            const cachedPhotoDataUri = studentPhotoCache.get(student.rollno);
+            if (cachedPhotoDataUri) {
+                return {
+                    id: student.rollno,
+                    uid: "local",
+                    name: student.name,
+                    photoDataUri: cachedPhotoDataUri
+                };
+            }
+
+            // Extract file extension to determine content type
+            const fileExtension = student.profile_photo.split('.').pop()?.toLowerCase();
+            let contentType = 'image/jpeg';
+            if (fileExtension === 'png') {
+                contentType = 'image/png';
+            } else if (fileExtension === 'jpg' || fileExtension === 'jpeg') {
+                contentType = 'image/jpeg';
+            }
+            
+            // Convert file to data URI with Base64 encoding
+            const fs = require('fs');
+            const path = require('path');
+            let filePath = path.join(process.cwd(), 'student details', student.profile_photo);
+            
+            // Check if file exists, if not use placeholder
+            if (!fs.existsSync(filePath)) {
+                filePath = path.join(process.cwd(), 'student details', 'images', 'students', 'placeholder.png');
+                // Update content type for placeholder
+                contentType = 'image/png';
+            }
+            
+            const fileBuffer = fs.readFileSync(filePath);
+            const base64Data = fileBuffer.toString('base64');
+            const photoDataUri = `data:${contentType};base64,${base64Data}`;
+            
+            // Cache the photo data URI for future use
+            studentPhotoCache.set(student.rollno, photoDataUri);
+            
+            return {
+                id: student.rollno,
+                uid: "local",
+                name: student.name,
+                photoDataUri
+            };
+        }));
+
+        // Cache the formatted students data
+        studentDataCache = formattedStudents;
+        studentDataCacheTimestamp = now;
+
+        return { success: true, data: formattedStudents };
     } catch (error) {
         const message = error instanceof Error ? error.message : "Failed to get students.";
         return { success: false, error: message };
@@ -233,10 +404,9 @@ export async function deleteStudentAction(id: string) {
 
 // Grade Tracking Actions
 export async function getGradesAction() {
-    const user = await getAuthenticatedUser();
-    if (!user) return { success: false, error: "User not authenticated." };
     try {
-        const grades = await gradesDb.getGrades(user.uid);
+        // Use local grade data instead of Firestore
+        const grades = await getLocalGrades();
         return { success: true, data: grades };
     } catch (error) {
         const message = error instanceof Error ? error.message : "Failed to get grades.";
@@ -245,12 +415,10 @@ export async function getGradesAction() {
 }
 
 export async function addGradeAction(grade: Omit<GradeEntry, 'id' | 'uid'>) {
-    const user = await getAuthenticatedUser();
-    if (!user) return { success: false, error: "User not authenticated." };
     try {
-        await gradesDb.addGrade(user.uid, grade);
-        const grades = await gradesDb.getGrades(user.uid);
-        return { success: true, data: grades };
+        // Use local grade data instead of Firestore
+        const newGrades = await addLocalGrade(grade);
+        return { success: true, data: newGrades };
     } catch (error) {
         const message = error instanceof Error ? error.message : "Failed to add grade.";
         return { success: false, error: message };
@@ -258,12 +426,10 @@ export async function addGradeAction(grade: Omit<GradeEntry, 'id' | 'uid'>) {
 }
 
 export async function deleteGradeAction(id: string) {
-    const user = await getAuthenticatedUser();
-    if (!user) return { success: false, error: "User not authenticated." };
     try {
-        await gradesDb.deleteGrade(user.uid, id);
-        const grades = await gradesDb.getGrades(user.uid);
-        return { success: true, data: grades };
+        // Use local grade data instead of Firestore
+        const newGrades = await deleteLocalGrade(id);
+        return { success: true, data: newGrades };
     } catch (error) {
         const message = error instanceof Error ? error.message : "Failed to delete grade.";
         return { success: false, error: message };
@@ -272,10 +438,9 @@ export async function deleteGradeAction(id: string) {
 
 // Calendar Event Actions
 export async function getCalendarEventsAction() {
-    const user = await getAuthenticatedUser();
-    if (!user) return { success: false, error: "User not authenticated." };
     try {
-        const events = await calendarDb.getEvents(user.uid);
+        // Use local calendar data instead of Firestore
+        const events = await getLocalCalendarEvents();
         return { success: true, data: events };
     } catch (error) {
         const message = error instanceof Error ? error.message : "Failed to get events.";
@@ -283,13 +448,11 @@ export async function getCalendarEventsAction() {
     }
 }
 
-export async function addCalendarEventAction(event: Omit<CalendarEvent, 'id' | 'uid'>) {
-    const user = await getAuthenticatedUser();
-    if (!user) return { success: false, error: "User not authenticated." };
+export async function addCalendarEventAction(event: Omit<CalendarEvent, 'id'>) {
     try {
-        await calendarDb.addEvent(user.uid, event);
-        const events = await calendarDb.getEvents(user.uid);
-        return { success: true, data: events };
+        // Use local calendar data instead of Firestore
+        const newEvents = await addLocalCalendarEvent(event);
+        return { success: true, data: newEvents };
     } catch (error) {
         const message = error instanceof Error ? error.message : "Failed to add event.";
         return { success: false, error: message };
@@ -297,12 +460,10 @@ export async function addCalendarEventAction(event: Omit<CalendarEvent, 'id' | '
 }
 
 export async function deleteCalendarEventAction(id: string) {
-    const user = await getAuthenticatedUser();
-    if (!user) return { success: false, error: "User not authenticated." };
     try {
-        await calendarDb.deleteEvent(user.uid, id);
-        const events = await calendarDb.getEvents(user.uid);
-        return { success: true, data: events };
+        // Use local calendar data instead of Firestore
+        const newEvents = await deleteLocalCalendarEvent(id);
+        return { success: true, data: newEvents };
     } catch (error) {
         const message = error instanceof Error ? error.message : "Failed to delete event.";
         return { success: false, error: message };

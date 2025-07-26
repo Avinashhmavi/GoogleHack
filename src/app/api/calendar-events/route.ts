@@ -1,34 +1,35 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getAuthenticatedUser } from "@/lib/auth";
-import { calendarDb } from "@/lib/firestore";
+import { getLocalCalendarEvents, addLocalCalendarEvent, deleteLocalCalendarEvent } from "@/lib/calendar-data";
 
 export async function GET(req: NextRequest) {
-  const user = await getAuthenticatedUser();
-  if (!user) {
-    return NextResponse.json({ error: "User not authenticated." }, { status: 401 });
+  try {
+    const events = await getLocalCalendarEvents();
+    return NextResponse.json({ events });
+  } catch (error) {
+    return NextResponse.json({ error: "Failed to fetch events." }, { status: 500 });
   }
-  const events = await calendarDb.getEvents(user.uid);
-  return NextResponse.json({ events });
 }
 
 export async function POST(req: NextRequest) {
-  const user = await getAuthenticatedUser();
-  if (!user) {
-    return NextResponse.json({ error: "User not authenticated." }, { status: 401 });
+  try {
+    const event = await req.json();
+    // Remove uid if present since we're not using authentication
+    const { uid, ...eventWithoutUid } = event;
+    await addLocalCalendarEvent(eventWithoutUid);
+    const events = await getLocalCalendarEvents();
+    return NextResponse.json({ events });
+  } catch (error) {
+    return NextResponse.json({ error: "Failed to add event." }, { status: 500 });
   }
-  const event = await req.json();
-  await calendarDb.addEvent(user.uid, event);
-  const events = await calendarDb.getEvents(user.uid);
-  return NextResponse.json({ events });
 }
 
 export async function DELETE(req: NextRequest) {
-  const user = await getAuthenticatedUser();
-  if (!user) {
-    return NextResponse.json({ error: "User not authenticated." }, { status: 401 });
+  try {
+    const { id } = await req.json();
+    await deleteLocalCalendarEvent(id);
+    const events = await getLocalCalendarEvents();
+    return NextResponse.json({ events });
+  } catch (error) {
+    return NextResponse.json({ error: "Failed to delete event." }, { status: 500 });
   }
-  const { id } = await req.json();
-  await calendarDb.deleteEvent(user.uid, id);
-  const events = await calendarDb.getEvents(user.uid);
-  return NextResponse.json({ events });
-} 
+}
