@@ -40,6 +40,19 @@ const generateLocalizedContentFlow = ai.defineFlow(
     const {output} = await prompt(input, {
       config: {
         response_mime_type: 'application/json',
+        response_schema: {
+          type: 'object',
+          properties: {
+            en: { type: 'string', description: 'Content in English' },
+            es: { type: 'string', description: 'Content in Spanish' },
+            fr: { type: 'string', description: 'Content in French' },
+            hi: { type: 'string', description: 'Content in Hindi' },
+            bn: { type: 'string', description: 'Content in Bengali' },
+            ta: { type: 'string', description: 'Content in Tamil' },
+            te: { type: 'string', description: 'Content in Telugu' },
+            kn: { type: 'string', description: 'Content in Kannada' },
+          }
+        }
       }
     });
 

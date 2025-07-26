@@ -37,6 +37,7 @@ __pycache__/
 # Misc
 .idx/
 firebase-service-account.json
+
 # Ignore lock files if you prefer (optional, but usually keep these for reproducible builds)
 # package-lock.json
 yarn.lock
@@ -44,3 +45,57 @@ pnpm-lock.yaml
 
 # Ignore public assets if not needed (optional)
 # public/
+
+# Additional Next.js patterns
+.vercel
+.turbo
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Storybook build outputs
+.out
+.storybook-out
+
+# Temporary folders
+tmp/
+temp/

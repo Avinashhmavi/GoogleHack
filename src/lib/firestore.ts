@@ -16,6 +16,8 @@ export type GradeEntry = {
   subject: string;
   grade: number;
   className: string;
+  date: Date;
+  createdAt?: Date;
 };
 
 export type CalendarEvent = {
@@ -47,7 +49,16 @@ export const studentRosterDb = {
     if (snapshot.empty) {
         return [];
     }
-    return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Student));
+    return snapshot.docs.map(doc => {
+      const data = doc.data();
+      return {
+        id: doc.id,
+        uid: data.uid,
+        name: data.name,
+        photoDataUri: data.photoDataUri,
+        createdAt: data.createdAt instanceof Timestamp ? data.createdAt.toDate() : data.createdAt,
+      };
+    });
   },
 
   addStudent: async (uid: string, student: Omit<Student, 'id' | 'uid'>): Promise<void> => {
@@ -83,12 +94,44 @@ export const gradesDb = {
         const gradesRef = db.collection('users').doc(uid).collection('grades');
         const snapshot = await gradesRef.orderBy('className').orderBy('studentName').get();
         if(snapshot.empty) return [];
-        return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as GradeEntry));
+        return snapshot.docs.map(doc => {
+            const data = doc.data();
+            return {
+                id: doc.id,
+                uid: data.uid,
+                studentName: data.studentName,
+                subject: data.subject,
+                grade: data.grade,
+                className: data.className,
+                date: data.date instanceof Timestamp ? data.date.toDate() : data.date,
+                createdAt: data.createdAt instanceof Timestamp ? data.createdAt.toDate() : data.createdAt,
+            };
+        });
     },
     addGrade: async (uid: string, grade: Omit<GradeEntry, 'id' | 'uid'>): Promise<void> => {
         const db = await getDb();
-        const newGradeRef = db.collection('users').doc(uid).collection('grades').doc();
-        await newGradeRef.set({ uid, ...grade, createdAt: FieldValue.serverTimestamp() });
+        
+        // Check if a grade already exists for this student, subject, and date
+        const existingGradesRef = db.collection('users').doc(uid).collection('grades');
+        const existingSnapshot = await existingGradesRef
+            .where('studentName', '==', grade.studentName)
+            .where('subject', '==', grade.subject)
+            .where('date', '==', grade.date)
+            .get();
+        
+        if (!existingSnapshot.empty) {
+            // Update existing grade
+            const existingDoc = existingSnapshot.docs[0];
+            await existingDoc.ref.update({
+                grade: grade.grade,
+                className: grade.className,
+                createdAt: FieldValue.serverTimestamp()
+            });
+        } else {
+            // Add new grade
+            const newGradeRef = existingGradesRef.doc();
+            await newGradeRef.set({ uid, ...grade, createdAt: FieldValue.serverTimestamp() });
+        }
     },
     deleteGrade: async (uid: string, id: string): Promise<void> => {
         const db = await getDb();

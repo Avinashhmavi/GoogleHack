@@ -10,6 +10,7 @@ import { Loader2, Camera, Users, ListChecks } from "lucide-react";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
 import { useLanguage } from "@/context/language-context";
+import { useAuth } from '@/context/auth-context';
 
 export default function AttendancePage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -19,6 +20,7 @@ export default function AttendancePage() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { toast } = useToast();
   const { t } = useLanguage();
+  const { authStatus, user } = useAuth();
 
   useEffect(() => {
     const getCameraPermission = async () => {
@@ -42,7 +44,7 @@ export default function AttendancePage() {
   }, [toast, t]);
 
   const handleTakeAttendance = async () => {
-    if (!videoRef.current || !canvasRef.current) return;
+    if (!videoRef.current || !canvasRef.current || !user) return;
 
     setIsLoading(true);
     setPresentStudents(null);
@@ -55,8 +57,8 @@ export default function AttendancePage() {
     context?.drawImage(video, 0, 0, canvas.width, canvas.height);
 
     const photoDataUri = canvas.toDataURL('image/jpeg');
-
-    const result = await recognizeStudentsAction({ photoDataUri });
+    const token = await user.getIdToken();
+    const result = await recognizeStudentsAction({ photoDataUri }, token);
 
     if (result.success && result.data) {
       setPresentStudents(result.data.presentStudents);

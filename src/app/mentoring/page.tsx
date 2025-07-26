@@ -27,12 +27,18 @@ export default function MentoringPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [isStudentListLoading, setIsStudentListLoading] = useState(true);
   const { toast } = useToast();
-  const { authStatus } = useAuth();
+  const { authStatus, user } = useAuth();
 
   useEffect(() => {
     async function fetchStudents() {
       setIsStudentListLoading(true);
-      const result = await getStudentsAction();
+      if (!user) {
+        toast({ title: "Error", description: "Could not load students.", variant: "destructive" });
+        setIsStudentListLoading(false);
+        return;
+      }
+      const token = await user.getIdToken();
+      const result = await getStudentsAction(token);
       if (result.success && result.data) {
         setStudents(result.data);
       } else {
@@ -43,7 +49,7 @@ export default function MentoringPage() {
     if (authStatus === 'authenticated') {
         fetchStudents();
     }
-  }, [authStatus, toast]);
+  }, [authStatus, toast, user]);
 
   const handleAddProblem = () => {
     if (newProblem.trim()) {

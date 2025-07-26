@@ -34,14 +34,20 @@ export default function GradeTrackingPage() {
   const [grades, setGrades] = useState<GradeEntry[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [selectedClass, setSelectedClass] = useState<string>("");
   const { toast } = useToast();
-  const { authStatus } = useAuth();
+  const { authStatus, user } = useAuth();
 
   useEffect(() => {
     async function fetchGrades() {
+        if (authStatus !== 'authenticated' || !user) {
+            setIsLoading(false);
+            return;
+        }
         setIsLoading(true);
-        const result = await getGradesAction();
-        if(result.success) {
+        const token = await user.getIdToken();
+        const result = await getGradesAction(token);
+        if(result.success && result.data) {
             setGrades(result.data);
         } else {
             toast({ title: "Error", description: "Could not fetch grades.", variant: "destructive" });
@@ -51,7 +57,7 @@ export default function GradeTrackingPage() {
     if (authStatus === 'authenticated') {
         fetchGrades();
     }
-  }, [authStatus, toast]);
+  }, [authStatus, toast, user]);
 
 
   const classes = useMemo(() => {
@@ -59,13 +65,24 @@ export default function GradeTrackingPage() {
     return Array.from(classSet).sort();
   }, [grades]);
 
+  // Filter grades by selected class
+  const filteredGrades = useMemo(() => {
+    if (!selectedClass) return grades;
+    return grades.filter(grade => grade.className === selectedClass);
+  }, [grades, selectedClass]);
+
   const handlePrint = () => {
     window.print();
   };
   
   const addGrade = async (entry: Omit<GradeEntry, 'id' | 'uid'>) => {
-    const result = await addGradeAction(entry);
-    if(result.success) {
+    if (!user) {
+        toast({title: "Error", description: "User not authenticated.", variant: "destructive" });
+        return;
+    }
+    const token = await user.getIdToken();
+    const result = await addGradeAction(entry, token);
+    if(result.success && result.data) {
         setGrades(result.data);
         setIsDialogOpen(false);
         toast({title: "Success", description: "Grade has been added."})
@@ -75,11 +92,16 @@ export default function GradeTrackingPage() {
   };
 
   const deleteGrade = async (id: string) => {
+    if (!user) {
+        toast({ title: "Error", description: "User not authenticated.", variant: "destructive" });
+        return;
+    }
     const originalGrades = [...grades];
     setGrades(prev => prev.filter(grade => grade.id !== id));
     
-    const result = await deleteGradeAction(id);
-    if(result.success) {
+    const token = await user.getIdToken();
+    const result = await deleteGradeAction(id, token);
+    if(result.success && result.data) {
         setGrades(result.data);
         toast({ title: "Success", description: "Grade has been removed." });
     } else {
@@ -114,45 +136,51 @@ export default function GradeTrackingPage() {
              {isLoading ? (
                 <div className="flex justify-center items-center h-48"><Loader2 className="animate-spin text-primary" /></div>
              ) : classes.length > 0 ? (
-              <Tabs defaultValue={classes[0]} className="w-full">
-                <TabsList className="no-print">
-                  {classes.map(className => (
-                    <TabsTrigger key={className} value={className}>{className}</TabsTrigger>
-                  ))}
-                </TabsList>
-                {classes.map(className => (
-                    <TabsContent key={className} value={className}>
-                       <div className="print-class-header hidden pt-4 pb-2">
-                          <h2 className="text-xl font-semibold">{className}</h2>
-                       </div>
-                        <Table>
-                            <TableHeader>
-                            <TableRow>
-                                <TableHead>Student Name</TableHead>
-                                <TableHead>Subject</TableHead>
-                                <TableHead className="text-right">Grade (%)</TableHead>
-                                <TableHead className="w-[50px] no-print"></TableHead>
-                            </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                            {grades.filter(g => g.className === className).map((entry) => (
-                                <TableRow key={entry.id}>
-                                    <TableCell className="font-medium">{entry.studentName}</TableCell>
-                                    <TableCell>{entry.subject}</TableCell>
-                                    <TableCell className="text-right">{entry.grade}</TableCell>
-                                    <TableCell className="no-print">
-                                        <Button variant="ghost" size="icon" onClick={() => deleteGrade(entry.id)}>
-                                            <Trash2 className="w-4 h-4 text-destructive" />
-                                            <span className="sr-only">Delete</span>
-                                        </Button>
-                                    </TableCell>
-                                </TableRow>
-                            ))}
-                            </TableBody>
-                        </Table>
-                    </TabsContent>
-                ))}
-              </Tabs>
+              <div className="space-y-4">
+                {classes.length > 0 && (
+                  <div className="flex items-center gap-2">
+                    <Label htmlFor="class-select">Filter by Class:</Label>
+                    <select
+                      id="class-select"
+                      value={selectedClass}
+                      onChange={(e) => setSelectedClass(e.target.value)}
+                      className="border rounded-md px-3 py-1"
+                    >
+                      <option value="">All Classes</option>
+                      {classes.map(className => (
+                        <option key={className} value={className}>{className}</option>
+                      ))}
+                    </select>
+                  </div>
+                )}
+                <Table>
+                    <TableHeader>
+                    <TableRow>
+                        <TableHead>Student Name</TableHead>
+                        <TableHead>Subject</TableHead>
+                        <TableHead>Date</TableHead>
+                        <TableHead className="text-right">Grade (%)</TableHead>
+                        <TableHead className="w-[50px] no-print"></TableHead>
+                    </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                    {filteredGrades.map((entry) => (
+                        <TableRow key={entry.id}>
+                            <TableCell className="font-medium">{entry.studentName}</TableCell>
+                            <TableCell>{entry.subject}</TableCell>
+                            <TableCell>{entry.date ? new Date(entry.date).toLocaleDateString() : 'N/A'}</TableCell>
+                            <TableCell className="text-right">{entry.grade}</TableCell>
+                            <TableCell className="no-print">
+                                <Button variant="ghost" size="icon" onClick={() => deleteGrade(entry.id)}>
+                                    <Trash2 className="w-4 h-4 text-destructive" />
+                                    <span className="sr-only">Delete</span>
+                                </Button>
+                            </TableCell>
+                        </TableRow>
+                    ))}
+                    </TableBody>
+                </Table>
+              </div>
               ) : (
                  <div className="flex items-center justify-center h-48 text-center text-muted-foreground p-8 border-2 border-dashed rounded-lg">
                     <p>No grades recorded yet. Add a grade to get started.</p>
@@ -171,17 +199,25 @@ function AddGradeDialog({ onAddGrade, open, onOpenChange }: { onAddGrade: (entry
     const [subject, setSubject] = useState("");
     const [grade, setGrade] = useState("");
     const [className, setClassName] = useState("");
+    const [date, setDate] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if(studentName && subject && grade && className) {
+        if(studentName && subject && grade && className && date) {
             setIsSubmitting(true);
-            await onAddGrade({ studentName, subject, grade: Number(grade), className });
+            await onAddGrade({ 
+                studentName, 
+                subject, 
+                grade: Number(grade), 
+                className, 
+                date: new Date(date) 
+            });
             setStudentName("");
             setSubject("");
             setGrade("");
             setClassName("");
+            setDate("");
             setIsSubmitting(false);
         }
     }
@@ -202,7 +238,18 @@ function AddGradeDialog({ onAddGrade, open, onOpenChange }: { onAddGrade: (entry
                     <div className="grid gap-4 py-4">
                         <div className="grid grid-cols-4 items-center gap-4">
                             <Label htmlFor="studentName" className="text-right">Name</Label>
-                            <Input id="studentName" value={studentName} onChange={(e) => setStudentName(e.target.value)} className="col-span-3" required />
+                            <Input 
+                                id="studentName" 
+                                value={studentName} 
+                                onChange={(e) => {
+                                    // Remove special characters except spaces and hyphens
+                                    const cleanName = e.target.value.replace(/[^a-zA-Z\s-]/g, '');
+                                    setStudentName(cleanName);
+                                }} 
+                                className="col-span-3" 
+                                required 
+                                placeholder="Enter student name (letters only)"
+                            />
                         </div>
                         <div className="grid grid-cols-4 items-center gap-4">
                             <Label htmlFor="className" className="text-right">Class</Label>
@@ -211,6 +258,10 @@ function AddGradeDialog({ onAddGrade, open, onOpenChange }: { onAddGrade: (entry
                         <div className="grid grid-cols-4 items-center gap-4">
                             <Label htmlFor="subject" className="text-right">Subject</Label>
                             <Input id="subject" value={subject} onChange={(e) => setSubject(e.target.value)} className="col-span-3" required />
+                        </div>
+                        <div className="grid grid-cols-4 items-center gap-4">
+                            <Label htmlFor="date" className="text-right">Date</Label>
+                            <Input id="date" type="date" value={date} onChange={(e) => setDate(e.target.value)} className="col-span-3" required />
                         </div>
                         <div className="grid grid-cols-4 items-center gap-4">
                             <Label htmlFor="grade" className="text-right">Grade (%)</Label>

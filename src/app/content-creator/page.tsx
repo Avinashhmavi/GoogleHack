@@ -67,7 +67,17 @@ export default function ContentCreatorPage() {
 
     const languages = selectedLanguages.map(lang => lang.value).join(',');
 
-    if (!prompt.trim() || !languages.trim() || !contentType.trim()) {
+    // Debug logging
+    console.log('Validation check:', {
+      prompt: prompt.trim(),
+      promptLength: prompt.trim().length,
+      selectedLanguages: selectedLanguages,
+      selectedLanguagesLength: selectedLanguages.length,
+      contentType: contentType.trim(),
+      contentTypeLength: contentType.trim().length
+    });
+
+    if (!prompt.trim() || selectedLanguages.length === 0 || !contentType.trim()) {
       toast({
         title: "Missing Information",
         description: "Please provide a content type, prompt, grade level, and at least one language.",
@@ -86,7 +96,7 @@ export default function ContentCreatorPage() {
     } else {
       toast({
         title: "Error",
-        description: result.error || "Failed to generate content.",
+        description: 'error' in result ? result.error : "Failed to generate content.",
         variant: "destructive",
       });
     }

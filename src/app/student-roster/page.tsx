@@ -17,31 +17,47 @@ export default function StudentRosterPage() {
   const [students, setStudents] = useState<Student[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [lastFetchTime, setLastFetchTime] = useState<number>(0);
   const { toast } = useToast();
-  const { authStatus } = useAuth();
+  const { authStatus, user } = useAuth();
+
+  // Cache duration in milliseconds (5 minutes)
+  const CACHE_DURATION = 5 * 60 * 1000;
 
   const [newStudentName, setNewStudentName] = useState('');
   const [newStudentPhoto, setNewStudentPhoto] = useState<string | null>(null);
   const [newStudentFileName, setNewStudentFileName] = useState('');
 
-  // Fetch students on component mount
+  // Fetch students on component mount with caching
   useEffect(() => {
     async function fetchStudents() {
-      if (authStatus !== 'authenticated') {
+      if (authStatus !== 'authenticated' || !user) {
           setIsLoading(false);
           return;
-      };
+      }
+
+      const now = Date.now();
+      const timeSinceLastFetch = now - lastFetchTime;
+      
+      // If we have cached data and it's still fresh, use it
+      if (students.length > 0 && timeSinceLastFetch < CACHE_DURATION) {
+        setIsLoading(false);
+        return;
+      }
+
       setIsLoading(true);
-      const result = await getStudentsAction();
+      const token = await user.getIdToken();
+      const result = await getStudentsAction(token);
       if (result.success && result.data) {
         setStudents(result.data);
+        setLastFetchTime(now);
       } else {
         toast({ title: "Error", description: result.error || "Could not load students.", variant: "destructive" });
       }
       setIsLoading(false);
     }
     fetchStudents();
-  }, [authStatus, toast]);
+  }, [authStatus, toast, user, lastFetchTime, students.length, CACHE_DURATION]);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -55,38 +71,48 @@ export default function StudentRosterPage() {
     }
   };
 
+  // Function to refresh cache
+  const refreshCache = () => {
+    setLastFetchTime(0); // Reset cache time to force refresh
+  };
+
   const handleAddStudent = async (event: React.FormEvent) => {
     event.preventDefault();
-    if (!newStudentName.trim() || !newStudentPhoto) {
-      toast({ title: "Missing Information", description: "Please provide a name and a photo.", variant: "destructive" });
+    if (!newStudentName.trim() || !newStudentPhoto || !user) {
+      toast({ title: "Missing Information", description: "Please provide a name, a photo, and be logged in.", variant: "destructive" });
       return;
     }
 
     setIsSubmitting(true);
-    const result = await addStudentAction({ name: newStudentName, photoDataUri: newStudentPhoto });
+    const token = await user.getIdToken();
+    const addResult = await addStudentAction({ name: newStudentName, photoDataUri: newStudentPhoto }, token);
     
-    if (result.success && result.data) {
-      setStudents(result.data);
+    if (addResult.success && addResult.data) {
+      setStudents(addResult.data);
+      setLastFetchTime(Date.now()); // Update cache time
       setNewStudentName('');
       setNewStudentPhoto(null);
       setNewStudentFileName('');
       toast({ title: "Success", description: "Student added to the roster." });
     } else {
-      toast({ title: "Error", description: result.error || "Failed to add student.", variant: "destructive" });
+      toast({ title: "Error", description: addResult.error || "Failed to add student.", variant: "destructive" });
     }
     setIsSubmitting(false);
   };
   
   const handleDeleteStudent = async (id: string) => {
+    if (!user) return;
     const originalStudents = [...students];
     setStudents(students.filter(s => s.id !== id)); // Optimistic UI update
     
-    const result = await deleteStudentAction(id);
-    if(result.success && result.data) {
+    const token = await user.getIdToken();
+    const deleteResult = await deleteStudentAction(id, token);
+    if(deleteResult.success && deleteResult.data) {
       toast({ title: "Success", description: "Student removed." });
-      setStudents(result.data);
+      setStudents(deleteResult.data);
+      setLastFetchTime(Date.now()); // Update cache time
     } else {
-       toast({ title: "Error", description: result.error || "Failed to remove student.", variant: "destructive" });
+       toast({ title: "Error", description: deleteResult.error || "Failed to remove student.", variant: "destructive" });
        setStudents(originalStudents); // Revert on failure
     }
   };
@@ -94,9 +120,20 @@ export default function StudentRosterPage() {
 
   return (
     <div className="space-y-8">
-      <div>
-        <h1 className="text-3xl font-bold font-headline">Student Roster Management</h1>
-        <p className="text-muted-foreground">Add, view, and manage students for face recognition attendance.</p>
+      <div className="flex justify-between items-start">
+        <div>
+          <h1 className="text-3xl font-bold font-headline">Student Roster Management</h1>
+          <p className="text-muted-foreground">Add, view, and manage students for face recognition attendance.</p>
+        </div>
+        <Button 
+          onClick={refreshCache} 
+          variant="outline" 
+          size="sm"
+          disabled={isLoading}
+        >
+          {isLoading ? <Loader2 className="mr-2 animate-spin h-4 w-4" /> : <Users className="mr-2 h-4 w-4" />}
+          Refresh
+        </Button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
@@ -146,7 +183,14 @@ export default function StudentRosterPage() {
              <Card>
                 <CardHeader>
                     <CardTitle className="font-headline flex items-center gap-2"><Users /> Class Roster</CardTitle>
-                    <CardDescription>There are {students.length} students in the roster.</CardDescription>
+                    <CardDescription>
+                        There are {students.length} students in the roster.
+                        {lastFetchTime > 0 && (
+                            <span className="ml-2 text-xs text-muted-foreground">
+                                (Last updated: {new Date(lastFetchTime).toLocaleTimeString()})
+                            </span>
+                        )}
+                    </CardDescription>
                 </CardHeader>
                 <CardContent>
                     {isLoading ? (

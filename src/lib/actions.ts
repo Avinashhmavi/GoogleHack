@@ -128,8 +128,13 @@ export async function enhanceWritingAction(input: EnhanceWritingInput) {
   return runAction(enhanceWriting, input);
 }
 
-export async function recognizeStudentsAction(input: {photoDataUri: string}) {  
-  const user = await getAuthenticatedUser();
+export async function recognizeStudentsAction(input: {photoDataUri: string}, idToken?: string) {  
+  let user;
+  if (idToken) {
+    user = await getAuthenticatedUserWithToken(idToken);
+  } else {
+    user = await getAuthenticatedUser();
+  }
   if (!user) return { success: false, error: "User not authenticated." };
   
   const studentRoster = await studentRosterDb.getStudents(user.uid);
@@ -192,8 +197,13 @@ export async function createMentorshipPlanAction(input: CreateMentorshipPlanInpu
 
 
 // Student Roster Actions
-export async function getStudentsAction() {
-    const user = await getAuthenticatedUser();
+export async function getStudentsAction(idToken?: string) {
+    let user;
+    if (idToken) {
+        user = await getAuthenticatedUserWithToken(idToken);
+    } else {
+        user = await getAuthenticatedUser();
+    }
     if (!user) return { success: false, error: "User not authenticated." };
     try {
         const students = await studentRosterDb.getStudents(user.uid);
@@ -204,8 +214,13 @@ export async function getStudentsAction() {
     }
 }
 
-export async function addStudentAction(student: Omit<Student, 'id' | 'uid'>) {
-    const user = await getAuthenticatedUser();
+export async function addStudentAction(student: Omit<Student, 'id' | 'uid'>, idToken?: string) {
+    let user;
+    if (idToken) {
+        user = await getAuthenticatedUserWithToken(idToken);
+    } else {
+        user = await getAuthenticatedUser();
+    }
     if (!user) return { success: false, error: "User not authenticated." };
     try {
         await studentRosterDb.addStudent(user.uid, student);
@@ -217,8 +232,13 @@ export async function addStudentAction(student: Omit<Student, 'id' | 'uid'>) {
     }
 }
 
-export async function deleteStudentAction(id: string) {
-    const user = await getAuthenticatedUser();
+export async function deleteStudentAction(id: string, idToken?: string) {
+    let user;
+    if (idToken) {
+        user = await getAuthenticatedUserWithToken(idToken);
+    } else {
+        user = await getAuthenticatedUser();
+    }
     if (!user) return { success: false, error: "User not authenticated." };
     try {
         await studentRosterDb.deleteStudent(user.uid, id);
@@ -232,8 +252,13 @@ export async function deleteStudentAction(id: string) {
 
 
 // Grade Tracking Actions
-export async function getGradesAction() {
-    const user = await getAuthenticatedUser();
+export async function getGradesAction(idToken?: string) {
+    let user;
+    if (idToken) {
+        user = await getAuthenticatedUserWithToken(idToken);
+    } else {
+        user = await getAuthenticatedUser();
+    }
     if (!user) return { success: false, error: "User not authenticated." };
     try {
         const grades = await gradesDb.getGrades(user.uid);
@@ -244,8 +269,13 @@ export async function getGradesAction() {
     }
 }
 
-export async function addGradeAction(grade: Omit<GradeEntry, 'id' | 'uid'>) {
-    const user = await getAuthenticatedUser();
+export async function addGradeAction(grade: Omit<GradeEntry, 'id' | 'uid'>, idToken?: string) {
+    let user;
+    if (idToken) {
+        user = await getAuthenticatedUserWithToken(idToken);
+    } else {
+        user = await getAuthenticatedUser();
+    }
     if (!user) return { success: false, error: "User not authenticated." };
     try {
         await gradesDb.addGrade(user.uid, grade);
@@ -257,8 +287,13 @@ export async function addGradeAction(grade: Omit<GradeEntry, 'id' | 'uid'>) {
     }
 }
 
-export async function deleteGradeAction(id: string) {
-    const user = await getAuthenticatedUser();
+export async function deleteGradeAction(id: string, idToken?: string) {
+    let user;
+    if (idToken) {
+        user = await getAuthenticatedUserWithToken(idToken);
+    } else {
+        user = await getAuthenticatedUser();
+    }
     if (!user) return { success: false, error: "User not authenticated." };
     try {
         await gradesDb.deleteGrade(user.uid, id);
