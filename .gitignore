@@ -1,3 +1,46 @@
+# Node modules
 node_modules/
-.env
+
+# Build output
 .next/
+out/
+dist/
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Env files
+.env*
+.firebase/
+
+# Firebase service account keys
+firebase-service-account.json
+
+# Local IDE/project files
+.vscode/
+.idea/
+*.swp
+
+# Python cache
+__pycache__/
+
+# Misc
+.idx/
+
+# Ignore lock files if you prefer (optional, but usually keep these for reproducible builds)
+# package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Ignore public assets if not needed (optional)
+# public/

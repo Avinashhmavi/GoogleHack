@@ -102,7 +102,17 @@ export const calendarDb = {
         const eventsRef = db.collection('users').doc(uid).collection('calendarEvents');
         const snapshot = await eventsRef.orderBy('date').get();
         if (snapshot.empty) return [];
-        return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as CalendarEvent));
+        return snapshot.docs.map(doc => {
+            const data = doc.data();
+            return {
+                id: doc.id,
+                uid: data.uid,
+                date: data.date instanceof Timestamp ? data.date.toDate() : data.date,
+                title: data.title,
+                type: data.type,
+                createdAt: data.createdAt instanceof Timestamp ? data.createdAt.toDate() : data.createdAt,
+            };
+        });
     },
     addEvent: async (uid: string, event: Omit<CalendarEvent, 'id' | 'uid'>): Promise<void> => {
         const db = await getDb();

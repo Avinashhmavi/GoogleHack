@@ -78,7 +78,7 @@ import { createMentorshipPlan } from "@/ai/flows/create-mentorship-plan";
 import type { CreateMentorshipPlanInput } from "@/ai/flows/create-mentorship-plan.types";
 
 import { studentRosterDb, type Student, gradesDb, type GradeEntry, calendarDb, type CalendarEvent, recordingsDb, type ClassRecording } from "@/lib/firestore";
-import { getAuthenticatedUser } from "./auth";
+import { getAuthenticatedUser, getAuthenticatedUserWithToken } from "./auth";
 
 
 // Wrapper function to handle Genkit flow execution and error handling
@@ -271,8 +271,14 @@ export async function deleteGradeAction(id: string) {
 }
 
 // Calendar Event Actions
-export async function getCalendarEventsAction() {
-    const user = await getAuthenticatedUser();
+export async function getCalendarEventsAction(idToken?: string) {
+    let user;
+    if (idToken) {
+        user = await getAuthenticatedUserWithToken(idToken);
+    } else {
+        user = await getAuthenticatedUser();
+    }
+    
     if (!user) return { success: false, error: "User not authenticated." };
     try {
         const events = await calendarDb.getEvents(user.uid);
@@ -283,8 +289,14 @@ export async function getCalendarEventsAction() {
     }
 }
 
-export async function addCalendarEventAction(event: Omit<CalendarEvent, 'id' | 'uid'>) {
-    const user = await getAuthenticatedUser();
+export async function addCalendarEventAction(event: Omit<CalendarEvent, 'id' | 'uid'>, idToken?: string) {
+    let user;
+    if (idToken) {
+        user = await getAuthenticatedUserWithToken(idToken);
+    } else {
+        user = await getAuthenticatedUser();
+    }
+    
     if (!user) return { success: false, error: "User not authenticated." };
     try {
         await calendarDb.addEvent(user.uid, event);
@@ -296,8 +308,14 @@ export async function addCalendarEventAction(event: Omit<CalendarEvent, 'id' | '
     }
 }
 
-export async function deleteCalendarEventAction(id: string) {
-    const user = await getAuthenticatedUser();
+export async function deleteCalendarEventAction(id: string, idToken?: string) {
+    let user;
+    if (idToken) {
+        user = await getAuthenticatedUserWithToken(idToken);
+    } else {
+        user = await getAuthenticatedUser();
+    }
+    
     if (!user) return { success: false, error: "User not authenticated." };
     try {
         await calendarDb.deleteEvent(user.uid, id);

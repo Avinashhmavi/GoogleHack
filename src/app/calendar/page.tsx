@@ -26,6 +26,7 @@ import { Badge } from "@/components/ui/badge";
 import { addCalendarEventAction, getCalendarEventsAction, deleteCalendarEventAction } from "@/lib/actions";
 import type { CalendarEvent } from "@/lib/firestore";
 import { useAuth } from "@/context/auth-context";
+import { auth } from "@/lib/firebase";
 
 const eventTypeConfig = {
     Lesson: { icon: BookOpen, color: "bg-blue-500" },
@@ -39,19 +40,26 @@ export default function CalendarPage() {
   const [events, setEvents] = useState<CalendarEvent[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
-  const { authStatus } = useAuth();
+  const { authStatus, user } = useAuth();
+
+  // Helper function to get ID token
+  const getIdToken = async (): Promise<string | null> => {
+    if (!user) return null;
+    try {
+      return await user.getIdToken();
+    } catch (error) {
+      console.error("Error getting ID token:", error);
+      return null;
+    }
+  };
 
   useEffect(() => {
     async function fetchEvents() {
         setIsLoading(true);
-        const result = await getCalendarEventsAction();
-        if(result.success) {
-            // Firestore timestamps need to be converted to Date objects
-            const formattedEvents = result.data.map(event => ({
-                ...event,
-                date: new Date((event.date as any)._seconds * 1000),
-            }));
-            setEvents(formattedEvents);
+        const token = await getIdToken();
+        const result = await getCalendarEventsAction(token || undefined);
+        if(result.success && result.data) {
+            setEvents(result.data);
         } else {
             toast({ title: "Error", description: result.error || "Could not fetch calendar events.", variant: "destructive" });
         }
@@ -63,13 +71,10 @@ export default function CalendarPage() {
   }, [authStatus, toast]);
 
   const addEvent = async (event: Omit<CalendarEvent, 'id' | 'uid'>) => {
-    const result = await addCalendarEventAction(event);
-    if (result.success) {
-        const formattedEvents = result.data.map(event => ({
-            ...event,
-            date: new Date((event.date as any)._seconds * 1000),
-        }));
-        setEvents(formattedEvents);
+    const token = await getIdToken();
+    const result = await addCalendarEventAction(event, token || undefined);
+    if (result.success && result.data) {
+        setEvents(result.data);
         toast({ title: "Event Added", description: "The event has been added to your calendar." });
     } else {
         toast({ title: "Error", description: result.error, variant: "destructive" });
@@ -77,20 +82,30 @@ export default function CalendarPage() {
   };
   
   const deleteEvent = async (id: string) => {
-    const result = await deleteCalendarEventAction(id);
-    if (result.success) {
-        const formattedEvents = result.data.map(event => ({
-            ...event,
-            date: new Date((event.date as any)._seconds * 1000),
-        }));
-        setEvents(formattedEvents);
+    const token = await getIdToken();
+    const result = await deleteCalendarEventAction(id, token || undefined);
+    if (result.success && result.data) {
+        setEvents(result.data);
         toast({ title: "Event Deleted" });
     } else {
         toast({ title: "Error", description: result.error, variant: "destructive" });
     }
   };
   
-  const eventsForSelectedDate = date ? events.filter(e => format(e.date, 'yyyy-MM-dd') === format(date, 'yyyy-MM-dd')) : [];
+  const eventsForSelectedDate = date ? events.filter(e => {
+    let eventDate: Date | null = null;
+    if (e.date instanceof Date) {
+        eventDate = e.date;
+    } else if (e.date && typeof e.date === 'object' && typeof (e.date as any).toDate === 'function') {
+        eventDate = (e.date as any).toDate();
+    } else if (e.date && typeof e.date === 'object' && '_seconds' in e.date && typeof e.date._seconds === 'number') {
+        eventDate = new Date(e.date._seconds * 1000);
+    } else {
+        return false;
+    }
+    if (!eventDate || isNaN(eventDate.getTime())) return false;
+    return format(eventDate, 'yyyy-MM-dd') === format(date, 'yyyy-MM-dd');
+}) : [];
 
   return (
     <div className="space-y-8">
@@ -116,7 +131,10 @@ export default function CalendarPage() {
                     }}
                     components={{
                         DayContent: ({ date, ...props }) => {
-                           const dailyEvents = events.filter(e => format(e.date, 'yyyy-MM-dd') === format(date, 'yyyy-MM-dd'));
+                           const dailyEvents = events.filter(e => {
+                             const eventDate = e.date instanceof Date ? e.date : new Date((e.date as any)._seconds * 1000);
+                             return format(eventDate, 'yyyy-MM-dd') === format(date, 'yyyy-MM-dd');
+                           });
                            return (
                              <div className="relative h-full w-full flex items-center justify-center">
                                <span>{date.getDate()}</span>
