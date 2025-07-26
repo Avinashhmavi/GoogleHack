@@ -33,10 +33,10 @@ firebase-service-account.json
 
 # Python cache
 __pycache__/
-
+.env.backup
 # Misc
 .idx/
-
+firebase-service-account.json
 # Ignore lock files if you prefer (optional, but usually keep these for reproducible builds)
 # package-lock.json
 yarn.lock
