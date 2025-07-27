@@ -63,7 +63,7 @@ export default function DiscussionGeneratorPage() {
     } else {
       toast({
         title: "Error Generating Discussion",
-        description: result.error || "An unknown error occurred.",
+        description: 'error' in result ? result.error : "An unknown error occurred.",
         variant: "destructive",
       });
     }
@@ -74,7 +74,7 @@ export default function DiscussionGeneratorPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold font-headline">Discussion & Activity Generator</h1>
+        <h1 className="text-3xl font-bold font-headline">Talk Topics</h1>
         <p className="text-muted-foreground">Create engaging dialogic activities for your classroom.</p>
       </div>
 

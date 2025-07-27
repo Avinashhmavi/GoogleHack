@@ -99,22 +99,25 @@ const MainSidebar = React.memo(function MainSidebar() {
             isActive={isActive}
             tooltip={isCollapsed ? t(item.labelKey) : undefined}
             className={cn(
-              "transition-all duration-300 w-full hover:shadow-sm hover:scale-[1.01]",
+              "transition-all duration-200 w-full hover:shadow-md hover:scale-[1.02] active:scale-[0.98] cursor-pointer",
+              "hover:bg-accent/80 active:bg-accent/90",
+              "focus:outline-none focus:ring-2 focus:ring-primary/20 focus:ring-offset-2",
               isSubItem && "ml-4 pl-4 border-l-2 border-muted",
               isActive && isSubItem && "border-l-primary",
-              isNavigating && !isActive && "opacity-75"
+              isNavigating && !isActive && "opacity-75",
+              "touch-manipulation" // Improves touch responsiveness
             )}
           >
             <div className={cn(
-              "flex items-center gap-3 w-full",
+              "flex items-center gap-3 w-full py-2 px-3 rounded-md",
               isSubItem && "text-sm"
             )}>
               <item.icon className={cn(
-                "flex-shrink-0 transition-transform duration-200 group-hover:scale-110",
+                "flex-shrink-0 transition-all duration-200 group-hover:scale-110 group-active:scale-95",
                 isSubItem ? "w-4 h-4" : "w-5 h-5"
               )} />
               {!isCollapsed && (
-                <span>
+                <span className="font-medium">
                   {t(item.labelKey)}
                 </span>
               )}
@@ -152,23 +155,35 @@ const MainSidebar = React.memo(function MainSidebar() {
         {/* Category Header */}
         <div
           className={cn(
-            "flex items-center justify-between px-3 py-2 rounded-md cursor-pointer transition-all duration-300 hover:bg-accent hover:shadow-md hover:scale-[1.02]",
+            "flex items-center justify-between px-3 py-3 rounded-md cursor-pointer transition-all duration-200",
+            "hover:bg-accent/80 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]",
+            "focus:outline-none focus:ring-2 focus:ring-primary/20 focus:ring-offset-2",
+            "touch-manipulation", // Improves touch responsiveness
             isCurrentCategory && "bg-accent/50 shadow-sm",
             isCollapsed && "justify-center"
           )}
           onClick={() => toggleCategory(category.id)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              toggleCategory(category.id);
+            }
+          }}
+          tabIndex={0}
+          role="button"
+          aria-expanded={!isCollapsedCategory}
         >
-                      <div className="flex items-center gap-3">
-              <category.icon className="w-5 h-5 flex-shrink-0 transition-transform duration-200 group-hover:scale-110" />
-              {!isCollapsed && (
-                <span className="font-medium text-sm uppercase tracking-wide">
-                  {t(category.labelKey)}
-                </span>
-              )}
-            </div>
+          <div className="flex items-center gap-3">
+            <category.icon className="w-5 h-5 flex-shrink-0 transition-all duration-200 group-hover:scale-110 group-active:scale-95" />
+            {!isCollapsed && (
+              <span className="font-semibold text-sm uppercase tracking-wide">
+                {t(category.labelKey)}
+              </span>
+            )}
+          </div>
           {!isCollapsed && (
             <div className={cn(
-              "transition-all duration-300",
+              "transition-all duration-200",
               isCollapsedCategory ? "rotate-0 opacity-50" : "rotate-180 opacity-100"
             )}>
               <ChevronDown className="w-4 h-4" />
@@ -178,7 +193,7 @@ const MainSidebar = React.memo(function MainSidebar() {
 
         {/* Category Items */}
         <div className={cn(
-          "space-y-1 transition-all duration-500 ease-in-out overflow-hidden",
+          "space-y-1 transition-all duration-300 ease-out overflow-hidden",
           isCollapsed && "ml-2",
           isCollapsedCategory && !isCollapsed ? "max-h-0 opacity-0" : "max-h-96 opacity-100"
         )}>
@@ -193,28 +208,28 @@ const MainSidebar = React.memo(function MainSidebar() {
       variant="floating" 
       collapsible="icon"
     >
-      <SidebarHeader className="p-4 border-b">
+      <SidebarHeader className="p-3 sm:p-4 border-b">
         <div className="flex items-center justify-center">
           <Image 
             src="/image.png" 
             alt="Sahayak AI" 
             width={300} 
             height={80} 
-            className="h-17 w-auto object-contain rounded-lg"
+            className="h-12 sm:h-16 w-auto object-contain rounded-lg transition-all duration-200 hover:scale-105"
           />
         </div>
       </SidebarHeader>
 
-      <SidebarContent className="flex-1 overflow-y-auto">
-        <SidebarMenu className="space-y-2 p-2">
+      <SidebarContent className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-accent scrollbar-track-transparent">
+        <SidebarMenu className="space-y-2 p-2 sm:p-3">
           {menuCategories.map(renderCategory)}
         </SidebarMenu>
       </SidebarContent>
 
       {/* Profile Section */}
-      <div className="p-4 border-t">
+      <div className="p-3 sm:p-4 border-t">
         <div className="flex items-center gap-3">
-          <Avatar className="w-8 h-8">
+          <Avatar className="w-8 h-8 sm:w-9 sm:h-9 transition-all duration-200 hover:scale-110">
             <AvatarImage src={user?.photoURL || ''} alt={user?.displayName || 'Teacher'} />
             <AvatarFallback className="bg-primary text-primary-foreground text-sm">
               {user?.displayName?.charAt(0)?.toUpperCase() || 'T'}
@@ -229,8 +244,12 @@ const MainSidebar = React.memo(function MainSidebar() {
           {!isCollapsed && (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
-                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="h-6 w-6 sm:h-7 sm:w-7 p-0 transition-all duration-200 hover:scale-110 active:scale-95 hover:bg-accent/80"
+                >
+                  <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </Button>
@@ -244,13 +263,16 @@ const MainSidebar = React.memo(function MainSidebar() {
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
-                  <Link href="/account">
+                  <Link href="/account" className="transition-all duration-200 hover:bg-accent/80">
                     <Settings className="mr-2 h-4 w-4" />
                     Account
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => auth && signOut(auth)}>
+                <DropdownMenuItem 
+                  onClick={() => auth && signOut(auth)}
+                  className="transition-all duration-200 hover:bg-destructive/10 hover:text-destructive"
+                >
                   <LogOut className="mr-2 h-4 w-4" />
                   Log out
                 </DropdownMenuItem>
@@ -269,31 +291,34 @@ function Header() {
     const isGetStartedPage = pathname === '/';
     
     return (
-        <header className="flex items-center justify-between p-4 border-b no-print relative">
+        <header className="flex items-center justify-between p-3 sm:p-4 border-b no-print relative bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             {/* Mobile sidebar trigger - positioned absolutely on left */}
-            <div className="md:hidden absolute left-4">
-                <SidebarTrigger />
+            <div className="md:hidden absolute left-3 sm:left-4 z-10">
+                <SidebarTrigger className="transition-all duration-200 hover:scale-110 active:scale-95" />
             </div>
             
             {/* Center Sahayak AI title */}
             {!isGetStartedPage && (
-                <div className="flex-1 flex justify-center">
-                    <h1 className="text-2xl md:text-4xl font-black tracking-tight text-primary font-sans uppercase select-none drop-shadow-sm">
+                <div className="flex-1 flex justify-center md:justify-start md:ml-16">
+                    <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black tracking-tight text-primary font-sans uppercase select-none drop-shadow-sm transition-all duration-200 hover:scale-105">
                         SAHAYAK AI
                     </h1>
                 </div>
             )}
             
             {/* Right side controls */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 sm:gap-4">
               <LanguageSelector />
                {user && (
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-                        <Avatar className="h-8 w-8">
+                      <Button 
+                        variant="ghost" 
+                        className="relative h-8 w-8 sm:h-9 sm:w-9 rounded-full transition-all duration-200 hover:scale-110 active:scale-95 hover:shadow-md"
+                      >
+                        <Avatar className="h-8 w-8 sm:h-9 sm:w-9">
                           <AvatarImage src={user?.photoURL || ''} alt={user?.displayName || 'User'} />
-                          <AvatarFallback>{user?.email?.charAt(0).toUpperCase()}</AvatarFallback>
+                          <AvatarFallback className="text-sm">{user?.email?.charAt(0).toUpperCase()}</AvatarFallback>
                         </Avatar>
                       </Button>
                     </DropdownMenuTrigger>
@@ -306,11 +331,17 @@ function Header() {
                         </DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem asChild>
-                          <Link href="/account"><Settings className="mr-2" />Account</Link>
+                          <Link href="/account" className="transition-all duration-200 hover:bg-accent/80">
+                            <Settings className="mr-2 h-4 w-4" />
+                            Account
+                          </Link>
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem onClick={() => auth && signOut(auth)}>
-                            <LogOut className="mr-2" />
+                        <DropdownMenuItem 
+                          onClick={() => auth && signOut(auth)}
+                          className="transition-all duration-200 hover:bg-destructive/10 hover:text-destructive"
+                        >
+                            <LogOut className="mr-2 h-4 w-4" />
                             Log out
                         </DropdownMenuItem>
                     </DropdownMenuContent>
@@ -327,8 +358,10 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
             <MainSidebar />
             <SidebarInset>
                 <Header />
-                <main className="p-4 md:p-6 lg:p-8">
-                    {children}
+                <main className="p-3 sm:p-4 md:p-6 lg:p-8 min-h-screen transition-all duration-200">
+                    <div className="max-w-7xl mx-auto">
+                        {children}
+                    </div>
                 </main>
                 <Chatbot />
             </SidebarInset>

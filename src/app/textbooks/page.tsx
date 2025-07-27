@@ -228,7 +228,7 @@ export default function TextbooksPage() {
     <div className="space-y-8">
       <div>
         <h1 className="text-3xl font-bold font-headline flex items-center gap-2">
-          <Library /> {t('textbooks_title')}
+          <Library /> Books
         </h1>
         <p className="text-muted-foreground">{t('textbooks_page_description')}</p>
       </div>

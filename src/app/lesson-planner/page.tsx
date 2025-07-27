@@ -65,7 +65,7 @@ export default function LessonPlannerPage() {
     } else {
       toast({
         title: "Error Generating Lesson Plan",
-        description: result.error || "An unknown error occurred.",
+        description: 'error' in result ? result.error : "An unknown error occurred.",
         variant: "destructive",
       });
     }
@@ -85,7 +85,7 @@ export default function LessonPlannerPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold font-headline">Automated Lesson Planner</h1>
+        <h1 className="text-3xl font-bold font-headline">Lesson Maker</h1>
         <p className="text-muted-foreground">Generate a detailed lesson plan for any topic and grade level.</p>
       </div>
 

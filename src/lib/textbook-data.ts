@@ -18,9 +18,14 @@ export const textbookData: Textbook[] = (() => {
         for (const subjectObj of gradeObj.subjects) {
             const subject = subjectObj.subject_name;
             for (const pdf of subjectObj.pdf_links) {
+                // Extract chapter number from title and format as "Chapter X"
+                const chapterMatch = pdf.title.match(/Chapter (\d+)/);
+                const chapterNumber = chapterMatch ? chapterMatch[1] : '1';
+                const formattedTitle = `Chapter ${chapterNumber}`;
+                
                 books.push({
                     id: id++,
-                    title: pdf.title,
+                    title: formattedTitle,
                     grade,
                     subject,
                     coverImageUrl: 'https://placehold.co/300x400.png', // Placeholder, can be improved

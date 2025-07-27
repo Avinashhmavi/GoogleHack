@@ -122,7 +122,7 @@ export default function StudentRosterPage() {
     <div className="space-y-8">
       <div className="flex justify-between items-start">
         <div>
-          <h1 className="text-3xl font-bold font-headline">Student Roster Management</h1>
+          <h1 className="text-3xl font-bold font-headline">Student List</h1>
           <p className="text-muted-foreground">Add, view, and manage students for face recognition attendance.</p>
         </div>
         <Button 

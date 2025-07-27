@@ -65,7 +65,7 @@ export default function WorksheetCreatorPage() {
     } else {
       toast({
         title: 'Error Generating Worksheet',
-        description: result.error || 'An unknown error occurred.',
+        description: 'error' in result ? result.error : 'An unknown error occurred.',
         variant: 'destructive',
       });
     }
@@ -83,7 +83,7 @@ export default function WorksheetCreatorPage() {
       } else {
         toast({
           title: 'Error Generating Audio',
-          description: result.error || 'Could not generate audio.',
+          description: 'error' in result ? result.error : 'Could not generate audio.',
           variant: 'destructive',
         });
       }
@@ -137,7 +137,7 @@ export default function WorksheetCreatorPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold font-headline">AI Worksheet Creator</h1>
+        <h1 className="text-3xl font-bold font-headline">Worksheet Maker</h1>
         <p className="text-muted-foreground">Generate worksheets with varied question types for any topic.</p>
       </div>
 

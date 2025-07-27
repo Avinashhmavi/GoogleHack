@@ -29,6 +29,20 @@ A teacher needs a structured mentorship plan for a student.
 Student Name: {{studentName}}
 Grade Level: {{gradeLevel}}
 
+**GRADE PERFORMANCE ANALYSIS:**
+Overall Average Grade: {{gradeAnalysis.averageGrade}}%
+Total Grades Recorded: {{gradeAnalysis.totalGrades}}
+Grade Trend: {{gradeAnalysis.gradeTrend}}
+
+Subject Strengths: {{#each gradeAnalysis.subjectStrengths}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
+Subject Weaknesses: {{#each gradeAnalysis.subjectWeaknesses}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
+
+**DETAILED GRADE HISTORY:**
+{{#each gradeData}}
+- {{subject}}: {{grade}}% ({{date}}) - Class: {{className}}
+{{/each}}
+
+**TEACHER OBSERVATIONS:**
 Identified Problems/Challenges:
 {{#each problems}}
 - {{{this}}}
@@ -37,13 +51,20 @@ Identified Problems/Challenges:
 Recent Progress / Strengths:
 "{{progress}}"
 
-Your task is to generate a mentorship plan that includes:
-1.  A concise title for the plan.
-2.  A list of 2-3 clear, achievable goals for the student.
-3.  A list of suggested activities or interventions the teacher can implement to help the student. For each activity, provide a name and a brief description.
-4.  A section on how to check for progress, including specific things to look for.
+Your task is to generate a comprehensive mentorship plan that includes:
+1. A concise title for the plan that reflects both academic and personal development needs.
+2. A list of 3-4 clear, achievable goals for the student, considering their grade performance and identified challenges.
+3. A list of suggested activities or interventions the teacher can implement, specifically targeting areas of weakness while building on strengths. For each activity, provide a name and a detailed description.
+4. A section on how to check for progress, including specific academic and behavioral indicators to monitor.
 
-The tone should be supportive, actionable, and tailored to the student's grade level.
+**IMPORTANT GUIDELINES:**
+- Use the grade data to identify specific academic areas that need attention
+- Consider the grade trend (improving/declining/stable) when setting goals
+- Balance academic support with the personal challenges mentioned
+- Provide specific, actionable recommendations based on the student's performance patterns
+- The tone should be supportive, actionable, and tailored to the student's grade level and performance level
+
+The plan should be data-driven, personalized, and address both academic and personal development needs.
 `,
 });
 

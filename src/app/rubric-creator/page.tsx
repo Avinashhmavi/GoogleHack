@@ -63,7 +63,7 @@ export default function RubricCreatorPage() {
     } else {
       toast({
         title: "Error Generating Rubric",
-        description: result.error || "An unknown error occurred.",
+        description: 'error' in result ? result.error : "An unknown error occurred.",
         variant: "destructive",
       });
     }
@@ -74,7 +74,7 @@ export default function RubricCreatorPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold font-headline">Rubric Creator</h1>
+        <h1 className="text-3xl font-bold font-headline">Marks Guide</h1>
         <p className="text-muted-foreground">Generate detailed grading rubrics for any assignment.</p>
       </div>
 

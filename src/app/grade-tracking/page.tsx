@@ -12,7 +12,22 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Printer, UserPlus, Trash2, Loader2 } from "lucide-react";
+import { Printer, UserPlus, Trash2, Loader2, TrendingUp, Users } from "lucide-react";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  PieChart,
+  Pie,
+  Cell,
+} from "recharts";
 import {
   Dialog,
   DialogContent,
@@ -71,6 +86,100 @@ export default function GradeTrackingPage() {
     return grades.filter(grade => grade.className === selectedClass);
   }, [grades, selectedClass]);
 
+  // Prepare data for performance tracking charts
+  const performanceData = useMemo(() => {
+    if (!grades.length) return [];
+
+    // Filter grades by selected class if any
+    const filteredGradesForChart = selectedClass 
+      ? grades.filter(grade => grade.className === selectedClass)
+      : grades;
+
+    // Group grades by student and calculate performance over time
+    const studentPerformance = filteredGradesForChart.reduce((acc, grade) => {
+      if (!acc[grade.studentName]) {
+        acc[grade.studentName] = [];
+      }
+      acc[grade.studentName].push({
+        date: new Date(grade.date).toLocaleDateString(),
+        grade: grade.grade,
+        subject: grade.subject,
+        className: grade.className,
+        timestamp: new Date(grade.date).getTime()
+      });
+      return acc;
+    }, {} as Record<string, any[]>);
+
+    // Convert to chart data format
+    return Object.entries(studentPerformance).map(([studentName, data]) => ({
+      studentName,
+      data: data.sort((a, b) => a.timestamp - b.timestamp)
+    }));
+  }, [grades, selectedClass]);
+
+  // Prepare data for class performance comparison
+  const classPerformanceData = useMemo(() => {
+    if (!grades.length) return [];
+
+    // Filter grades by selected class if any
+    const filteredGradesForChart = selectedClass 
+      ? grades.filter(grade => grade.className === selectedClass)
+      : grades;
+
+    const classStats = filteredGradesForChart.reduce((acc, grade) => {
+      if (!acc[grade.className]) {
+        acc[grade.className] = { total: 0, count: 0, subjects: {} };
+      }
+      acc[grade.className].total += grade.grade;
+      acc[grade.className].count += 1;
+      
+      if (!acc[grade.className].subjects[grade.subject]) {
+        acc[grade.className].subjects[grade.subject] = { total: 0, count: 0 };
+      }
+      acc[grade.className].subjects[grade.subject].total += grade.grade;
+      acc[grade.className].subjects[grade.subject].count += 1;
+      
+      return acc;
+    }, {} as Record<string, any>);
+
+    return Object.entries(classStats).map(([className, stats]) => ({
+      className,
+      averageGrade: Math.round(stats.total / stats.count),
+      totalStudents: stats.count,
+      subjects: Object.entries(stats.subjects).map(([subject, subjectStats]: [string, any]) => ({
+        subject,
+        averageGrade: Math.round(subjectStats.total / subjectStats.count)
+      }))
+    }));
+  }, [grades, selectedClass]);
+
+  // Get top performing students
+  const topStudents = useMemo(() => {
+    if (!grades.length) return [];
+
+    // Filter grades by selected class if any
+    const filteredGradesForChart = selectedClass 
+      ? grades.filter(grade => grade.className === selectedClass)
+      : grades;
+
+    const studentAverages = filteredGradesForChart.reduce((acc, grade) => {
+      if (!acc[grade.studentName]) {
+        acc[grade.studentName] = { total: 0, count: 0 };
+      }
+      acc[grade.studentName].total += grade.grade;
+      acc[grade.studentName].count += 1;
+      return acc;
+    }, {} as Record<string, { total: number; count: number }>);
+
+    return Object.entries(studentAverages)
+      .map(([studentName, stats]) => ({
+        studentName,
+        averageGrade: Math.round(stats.total / stats.count)
+      }))
+      .sort((a, b) => b.averageGrade - a.averageGrade)
+      .slice(0, 5);
+  }, [grades, selectedClass]);
+
   const handlePrint = () => {
     window.print();
   };
@@ -114,7 +223,7 @@ export default function GradeTrackingPage() {
     <div className="space-y-8">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold font-headline">Grade Tracking</h1>
+          <h1 className="text-3xl font-bold font-headline">Marks Record</h1>
           <p className="text-muted-foreground">Monitor student performance and generate reports class-wise.</p>
         </div>
         <div className="flex gap-2 no-print">
@@ -125,6 +234,112 @@ export default function GradeTrackingPage() {
             </Button>
         </div>
       </div>
+      
+      {/* Performance Tracking Section */}
+      {!isLoading && grades.length > 0 && (
+        <div className="space-y-6">
+          {/* Student Performance Line Chart */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <TrendingUp className="h-5 w-5" />
+                Student Performance Tracking
+              </CardTitle>
+              <CardDescription>Track individual student performance over time across all subjects.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="h-80">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart data={performanceData.flatMap(student => student.data)}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis 
+                      dataKey="date" 
+                      angle={-45}
+                      textAnchor="end"
+                      height={80}
+                      fontSize={12}
+                    />
+                    <YAxis domain={[0, 100]} />
+                    <Tooltip 
+                      formatter={(value: any, name: any) => [`${value}%`, name]}
+                      labelFormatter={(label) => `Date: ${label}`}
+                    />
+                    <Legend />
+                    {performanceData.map((student, index) => (
+                      <Line
+                        key={student.studentName}
+                        type="monotone"
+                        dataKey="grade"
+                        data={student.data}
+                        name={student.studentName}
+                        stroke={`hsl(${index * 60}, 70%, 50%)`}
+                        strokeWidth={2}
+                        dot={{ r: 4 }}
+                        activeDot={{ r: 6 }}
+                      />
+                    ))}
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Class Performance Comparison */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Users className="h-5 w-5" />
+                  Class Performance Comparison
+                </CardTitle>
+                <CardDescription>Average grades by class and subject.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="h-64">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={classPerformanceData}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="className" />
+                      <YAxis domain={[0, 100]} />
+                      <Tooltip formatter={(value: any) => [`${value}%`, 'Average Grade']} />
+                      <Legend />
+                      <Bar dataKey="averageGrade" fill="#8884d8" name="Average Grade" />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Top Performing Students */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Top Performing Students</CardTitle>
+                <CardDescription>Students with the highest average grades.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  {topStudents.map((student, index) => (
+                    <div key={student.studentName} className="flex items-center justify-between p-3 bg-muted rounded-lg">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold">
+                          {index + 1}
+                        </div>
+                        <div>
+                          <p className="font-medium">{student.studentName}</p>
+                          <p className="text-sm text-muted-foreground">Average Grade</p>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-2xl font-bold text-primary">{student.averageGrade}%</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      )}
       
       <div className="printable-area">
         <Card>

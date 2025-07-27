@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { createMentorshipPlanAction, getStudentsAction } from "@/lib/actions";
+import { createMentorshipPlanAction, getStudentsAction, getGradesAction } from "@/lib/actions";
 import { Loader2, X, Plus, Wand2, User, Target, Activity, CheckCircle, HeartHandshake, FileText } from "lucide-react";
 import type { CreateMentorshipPlanOutput } from "@/ai/flows/create-mentorship-plan.types";
 import { Separator } from "@/components/ui/separator";
@@ -26,6 +26,8 @@ export default function MentoringPage() {
   const [mentorshipPlan, setMentorshipPlan] = useState<CreateMentorshipPlanOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isStudentListLoading, setIsStudentListLoading] = useState(true);
+  const [gradeAnalysis, setGradeAnalysis] = useState<any>(null);
+  const [isAnalyzingGrades, setIsAnalyzingGrades] = useState(false);
   const { toast } = useToast();
   const { authStatus, user } = useAuth();
 
@@ -62,6 +64,82 @@ export default function MentoringPage() {
     setProblems(problems.filter((_, i) => i !== index));
   };
 
+  const analyzeStudentGrades = async (studentName: string) => {
+    setIsAnalyzingGrades(true);
+    setGradeAnalysis(null);
+    
+    try {
+      const token = await user?.getIdToken();
+      const gradesResult = await getGradesAction(token);
+      
+      if (gradesResult.success && gradesResult.data) {
+        const studentGrades = gradesResult.data.filter(grade => 
+          grade.studentName.toLowerCase() === studentName.toLowerCase()
+        );
+
+        if (studentGrades.length > 0) {
+          const totalGrade = studentGrades.reduce((sum, grade) => sum + grade.grade, 0);
+          const averageGrade = Math.round(totalGrade / studentGrades.length);
+          
+          const subjectGrades = studentGrades.reduce((acc, grade) => {
+            if (!acc[grade.subject]) {
+              acc[grade.subject] = [];
+            }
+            acc[grade.subject].push(grade.grade);
+            return acc;
+          }, {} as Record<string, number[]>);
+
+          const subjectAverages = Object.entries(subjectGrades).map(([subject, grades]) => ({
+            subject,
+            average: Math.round(grades.reduce((sum, grade) => sum + grade, 0) / grades.length)
+          }));
+
+          const strengths = subjectAverages.filter(s => s.average >= 80).map(s => s.subject);
+          const weaknesses = subjectAverages.filter(s => s.average < 70).map(s => s.subject);
+
+          const sortedGrades = studentGrades.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+          const midPoint = Math.floor(sortedGrades.length / 2);
+          const firstHalf = sortedGrades.slice(0, midPoint);
+          const secondHalf = sortedGrades.slice(midPoint);
+          
+          let gradeTrend = "Stable";
+          if (firstHalf.length > 0 && secondHalf.length > 0) {
+            const firstHalfAvg = firstHalf.reduce((sum, grade) => sum + grade.grade, 0) / firstHalf.length;
+            const secondHalfAvg = secondHalf.reduce((sum, grade) => sum + grade.grade, 0) / secondHalf.length;
+            if (secondHalfAvg > firstHalfAvg + 5) gradeTrend = "Improving";
+            else if (secondHalfAvg < firstHalfAvg - 5) gradeTrend = "Declining";
+          }
+
+          setGradeAnalysis({
+            averageGrade,
+            subjectStrengths: strengths,
+            subjectWeaknesses: weaknesses,
+            gradeTrend,
+            totalGrades: studentGrades.length,
+            subjectAverages
+          });
+        } else {
+          setGradeAnalysis({
+            averageGrade: 0,
+            subjectStrengths: [],
+            subjectWeaknesses: [],
+            gradeTrend: "No data available",
+            totalGrades: 0,
+            subjectAverages: []
+          });
+        }
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to analyze student grades.",
+        variant: "destructive",
+      });
+    }
+    
+    setIsAnalyzingGrades(false);
+  };
+
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     const selectedStudent = students.find(s => s.id === selectedStudentId);
@@ -78,23 +156,107 @@ export default function MentoringPage() {
     setIsLoading(true);
     setMentorshipPlan(null);
 
-    const result = await createMentorshipPlanAction({
-        studentName: selectedStudent.name,
-        // This is a mock, in a real app we'd have grade associated with student
-        gradeLevel: 5,
-        problems,
-        progress
-    });
+    try {
+      // Fetch grade data for the selected student
+      const token = await user?.getIdToken();
+      const gradesResult = await getGradesAction(token);
+      
+      let gradeData: any[] = [];
+      let gradeAnalysis = {
+        averageGrade: 0,
+        subjectStrengths: [] as string[],
+        subjectWeaknesses: [] as string[],
+        gradeTrend: "No data available",
+        totalGrades: 0
+      };
 
-    if (result.success && result.data) {
-      setMentorshipPlan(result.data);
-    } else {
+      if (gradesResult.success && gradesResult.data) {
+        // Filter grades for the selected student
+        const studentGrades = gradesResult.data.filter(grade => 
+          grade.studentName.toLowerCase() === selectedStudent.name.toLowerCase()
+        );
+
+        if (studentGrades.length > 0) {
+          // Prepare grade data
+          gradeData = studentGrades.map(grade => ({
+            subject: grade.subject,
+            grade: grade.grade,
+            date: new Date(grade.date).toLocaleDateString(),
+            className: grade.className
+          }));
+
+          // Calculate grade analysis
+          const totalGrade = studentGrades.reduce((sum, grade) => sum + grade.grade, 0);
+          const averageGrade = Math.round(totalGrade / studentGrades.length);
+          
+          // Group by subject to find strengths and weaknesses
+          const subjectGrades = studentGrades.reduce((acc, grade) => {
+            if (!acc[grade.subject]) {
+              acc[grade.subject] = [];
+            }
+            acc[grade.subject].push(grade.grade);
+            return acc;
+          }, {} as Record<string, number[]>);
+
+          const subjectAverages = Object.entries(subjectGrades).map(([subject, grades]) => ({
+            subject,
+            average: Math.round(grades.reduce((sum, grade) => sum + grade, 0) / grades.length)
+          }));
+
+          // Determine strengths (subjects with average >= 80) and weaknesses (subjects with average < 70)
+          const strengths = subjectAverages.filter(s => s.average >= 80).map(s => s.subject);
+          const weaknesses = subjectAverages.filter(s => s.average < 70).map(s => s.subject);
+
+          // Determine grade trend (simplified - compare first half vs second half of grades)
+          const sortedGrades = studentGrades.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+          const midPoint = Math.floor(sortedGrades.length / 2);
+          const firstHalf = sortedGrades.slice(0, midPoint);
+          const secondHalf = sortedGrades.slice(midPoint);
+          
+          let gradeTrend = "Stable";
+          if (firstHalf.length > 0 && secondHalf.length > 0) {
+            const firstHalfAvg = firstHalf.reduce((sum, grade) => sum + grade.grade, 0) / firstHalf.length;
+            const secondHalfAvg = secondHalf.reduce((sum, grade) => sum + grade.grade, 0) / secondHalf.length;
+            if (secondHalfAvg > firstHalfAvg + 5) gradeTrend = "Improving";
+            else if (secondHalfAvg < firstHalfAvg - 5) gradeTrend = "Declining";
+          }
+
+          gradeAnalysis = {
+            averageGrade,
+            subjectStrengths: strengths,
+            subjectWeaknesses: weaknesses,
+            gradeTrend,
+            totalGrades: studentGrades.length
+          };
+        }
+      }
+
+      const result = await createMentorshipPlanAction({
+        studentName: selectedStudent.name,
+        gradeLevel: 5, // This could be made dynamic based on student data
+        problems,
+        progress,
+        gradeData,
+        gradeAnalysis
+      });
+
+      if (result.success && result.data) {
+        setMentorshipPlan(result.data);
+      } else {
+        toast({
+          title: "Error Generating Plan",
+          description: 'error' in result ? result.error : "An unknown error occurred.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
       toast({
-        title: "Error Generating Plan",
-        description: result.error || "An unknown error occurred.",
+        title: "Error",
+        description: "Failed to fetch student data or generate plan.",
         variant: "destructive",
       });
     }
+    
     setIsLoading(false);
   };
   
@@ -103,7 +265,7 @@ export default function MentoringPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold font-headline">Student Mentorship Planner</h1>
+        <h1 className="text-3xl font-bold font-headline">Mentor Plan</h1>
         <p className="text-muted-foreground">Generate AI-powered mentorship plans for individual students.</p>
       </div>
 
@@ -117,7 +279,17 @@ export default function MentoringPage() {
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
                     <Label htmlFor="student-select">Student</Label>
-                    <Select value={selectedStudentId} onValueChange={setSelectedStudentId} disabled={isStudentListLoading}>
+                    <Select 
+                        value={selectedStudentId} 
+                        onValueChange={(value) => {
+                            setSelectedStudentId(value);
+                            const selectedStudent = students.find(s => s.id === value);
+                            if (selectedStudent) {
+                                analyzeStudentGrades(selectedStudent.name);
+                            }
+                        }} 
+                        disabled={isStudentListLoading}
+                    >
                         <SelectTrigger id="student-select">
                             <SelectValue placeholder={isStudentListLoading ? "Loading students..." : "Select a student"} />
                         </SelectTrigger>
@@ -153,6 +325,68 @@ export default function MentoringPage() {
                     <Label htmlFor="progress">Recent Progress / Strengths</Label>
                     <Textarea id="progress" value={progress} onChange={(e) => setProgress(e.target.value)} placeholder="Describe what the student is doing well or where they have shown improvement." />
                 </div>
+
+                {/* Grade Analysis Section */}
+                {selectedStudentId && (
+                  <div className="space-y-3">
+                    <Label>Grade Performance Analysis</Label>
+                    {isAnalyzingGrades ? (
+                      <div className="flex items-center justify-center p-4 border rounded-lg">
+                        <Loader2 className="w-4 h-4 animate-spin mr-2" />
+                        Analyzing grades...
+                      </div>
+                    ) : gradeAnalysis ? (
+                      <div className="p-4 border rounded-lg bg-muted/30 space-y-3">
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm font-medium">Overall Average:</span>
+                          <span className="text-lg font-bold text-primary">{gradeAnalysis.averageGrade}%</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm font-medium">Total Grades:</span>
+                          <span className="text-sm">{gradeAnalysis.totalGrades}</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm font-medium">Trend:</span>
+                          <span className={`text-sm px-2 py-1 rounded ${
+                            gradeAnalysis.gradeTrend === 'Improving' ? 'bg-green-100 text-green-800' :
+                            gradeAnalysis.gradeTrend === 'Declining' ? 'bg-red-100 text-red-800' :
+                            'bg-yellow-100 text-yellow-800'
+                          }`}>
+                            {gradeAnalysis.gradeTrend}
+                          </span>
+                        </div>
+                        {gradeAnalysis.subjectStrengths.length > 0 && (
+                          <div>
+                            <span className="text-sm font-medium text-green-700">Strengths:</span>
+                            <div className="flex flex-wrap gap-1 mt-1">
+                              {gradeAnalysis.subjectStrengths.map((subject: string) => (
+                                <span key={subject} className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">
+                                  {subject}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                        {gradeAnalysis.subjectWeaknesses.length > 0 && (
+                          <div>
+                            <span className="text-sm font-medium text-red-700">Areas for Improvement:</span>
+                            <div className="flex flex-wrap gap-1 mt-1">
+                              {gradeAnalysis.subjectWeaknesses.map((subject: string) => (
+                                <span key={subject} className="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">
+                                  {subject}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <div className="p-4 border rounded-lg bg-muted/30 text-center text-muted-foreground">
+                        No grade data available for this student
+                      </div>
+                    )}
+                  </div>
+                )}
 
               <Button type="submit" disabled={isLoading} className="w-full">
                 {isLoading && <Loader2 className="mr-2 animate-spin" />}

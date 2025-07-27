@@ -99,3 +99,383 @@ dist
 # Temporary folders
 tmp/
 temp/
+
+# ===========================================
+# ADDITIONAL COMPREHENSIVE ENTRIES
+# ===========================================
+
+# ===========================================
+# ENVIRONMENT & CONFIGURATION FILES
+# ===========================================
+
+# Environment variables (all variations)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.backup
+.env.example
+.env.template
+
+# Firebase configuration files
+firebase-service-account.json
+firebase-debug.log
+firebase-debug.*.log
+.firebaserc
+firebase.json
+firestore.rules
+firestore.indexes.json
+firebase-functions/
+firebase-hosting/
+
+# Google Cloud Platform
+# Exclude all JSON files except important config files
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!next.config.js
+!tailwind.config.js
+!postcss.config.js
+!components.json
+!grade_wise_subjects_pdf.json
+!All grades.json
+
+# ===========================================
+# DEVELOPMENT & BUILD TOOLS
+# ===========================================
+
+# Build tools
+.turbo
+.vercel
+.netlify
+.surge.sh
+
+# Testing
+coverage/
+*.lcov
+.nyc_output
+.jest/
+test-results/
+playwright-report/
+test-results.xml
+
+# Linting and formatting
+.eslintcache
+.prettierignore
+.stylelintcache
+
+# ===========================================
+# IDE & EDITOR FILES
+# ===========================================
+
+# VSCode
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ===========================================
+# OPERATING SYSTEM FILES
+# ===========================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.tmp
+*.temp
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ===========================================
+# PACKAGE MANAGERS
+# ===========================================
+
+# npm
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.npm
+.eslintcache
+.node_repl_history
+*.tgz
+.yarn-integrity
+
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+
+# pnpm
+.pnpm-store/
+.pnpm-debug.log*
+
+# ===========================================
+# NEXT.JS SPECIFIC
+# ===========================================
+
+# Next.js build output
+.next/
+out/
+dist/
+
+# Next.js cache
+.next/cache/
+
+# Next.js telemetry
+.next/telemetry/
+
+# ===========================================
+# DATABASE & STORAGE
+# ===========================================
+
+# SQLite
+*.db
+*.sqlite
+*.sqlite3
+
+# Local storage
+local-storage/
+session-storage/
+
+# ===========================================
+# MEDIA & ASSETS
+# ===========================================
+
+# Generated images
+public/generated/
+public/uploads/
+public/temp/
+
+# Video files (if not needed in repo)
+*.mp4
+*.avi
+*.mov
+*.wmv
+*.flv
+*.webm
+
+# Audio files (if not needed in repo)
+*.mp3
+*.wav
+*.flac
+*.aac
+*.ogg
+
+# ===========================================
+# SECURITY & SENSITIVE FILES
+# ===========================================
+
+# API keys and secrets
+secrets/
+secrets.json
+api-keys.json
+credentials.json
+service-account-*.json
+
+# SSL certificates
+*.pem
+*.key
+*.crt
+*.csr
+*.p12
+*.pfx
+
+# ===========================================
+# LOGS & DEBUGGING
+# ===========================================
+
+# Log files
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Debug files
+.debug/
+debug.log
+
+# ===========================================
+# CACHE & TEMPORARY FILES
+# ===========================================
+
+# Cache directories
+.cache/
+.parcel-cache/
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+
+# ===========================================
+# DEPLOYMENT & CI/CD
+# ===========================================
+
+# Deployment platforms
+.vercel/
+.netlify/
+.surge.sh/
+
+# CI/CD
+.github/workflows/.env
+.circleci/
+.travis.yml
+.gitlab-ci.yml
+
+# ===========================================
+# MONOREPO & WORKSPACE
+# ===========================================
+
+# Lerna
+lerna-debug.log*
+
+# Nx
+.nx/
+
+# Rush
+common/deploy/
+common/temp/
+common/autoinstallers/*/.npmrc
+
+# ===========================================
+# MISC
+# ===========================================
+
+# Backup files
+*.backup
+*.bak
+*.old
+
+# Archive files
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Compiled files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Package files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# ===========================================
+# PROJECT SPECIFIC
+# ===========================================
+
+# Sahayak AI specific
+# Add any project-specific files here
+uploads/
+temp-uploads/
+generated-content/
+user-uploads/
+
+# Generated AI content
+ai-generated/
+generated-worksheets/
+generated-quizzes/
+generated-presentations/
+generated-videos/
+
+# User uploads and temporary files
+user-uploads/
+temp-files/
+cache-files/
+
+# Firebase local files
+.firebase/
+firebase-debug.log
+firebase-debug.*.log
+
+# Local development files
+local-config/
+dev-config/

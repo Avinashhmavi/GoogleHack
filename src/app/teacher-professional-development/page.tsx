@@ -53,7 +53,7 @@ export default function TeacherProfessionalDevelopmentPage() {
     } else {
       toast({
         title: t('error'),
-        description: result.error || t('pd_error_generic'),
+        description: 'error' in result ? result.error : t('pd_error_generic'),
         variant: "destructive",
       });
     }
@@ -64,7 +64,7 @@ export default function TeacherProfessionalDevelopmentPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold font-headline">{t('teacherPD_title')}</h1>
+        <h1 className="text-3xl font-bold font-headline">Teacher Growth</h1>
         <p className="text-muted-foreground">{t('teacherPD_description')}</p>
       </div>
 

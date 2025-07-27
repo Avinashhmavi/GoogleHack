@@ -38,7 +38,7 @@ export default function ContentAdaptationPage() {
     } else {
       toast({
         title: "Error",
-        description: result.error || "Failed to adapt content.",
+        description: 'error' in result ? result.error : "Failed to adapt content.",
         variant: "destructive",
       });
     }
@@ -49,7 +49,7 @@ export default function ContentAdaptationPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold font-headline">Grade-Level Content Adaptation</h1>
+        <h1 className="text-3xl font-bold font-headline">Easy Content</h1>
         <p className="text-muted-foreground">Adapt any text to be appropriate for a specific grade level.</p>
       </div>
 

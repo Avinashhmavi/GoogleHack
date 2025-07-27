@@ -227,7 +227,7 @@ export default function VideoGeneratorPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold font-headline">Video Generator</h1>
+        <h1 className="text-3xl font-bold font-headline">Video Maker</h1>
         <p className="text-muted-foreground">Create educational videos using AI-powered Veo 3 technology.</p>
       </div>
 

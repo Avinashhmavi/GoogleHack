@@ -80,7 +80,7 @@ export default function PresentationCreatorPage() {
     } else {
       toast({
         title: "Error Generating Presentation",
-        description: result.error || "An unknown error occurred.",
+        description: 'error' in result ? result.error : "An unknown error occurred.",
         variant: "destructive",
       });
     }
@@ -112,7 +112,7 @@ export default function PresentationCreatorPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold font-headline">Presentation Slides Creator</h1>
+        <h1 className="text-3xl font-bold font-headline">Slide Maker</h1>
         <p className="text-muted-foreground">Automatically generate and edit presentation slides for any topic.</p>
       </div>
 

@@ -59,7 +59,7 @@ export default function WritingAssistantPage() {
     } else {
       toast({
         title: "Error",
-        description: actionResult.error || "Failed to analyze text.",
+        description: 'error' in actionResult ? actionResult.error : "Failed to analyze text.",
         variant: "destructive",
       });
     }
@@ -70,7 +70,7 @@ export default function WritingAssistantPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold font-headline">Writing Assistant</h1>
+        <h1 className="text-3xl font-bold font-headline">Writing Help</h1>
         <p className="text-muted-foreground">Improve your writing with AI-powered grammar, spelling, and style suggestions.</p>
       </div>
 

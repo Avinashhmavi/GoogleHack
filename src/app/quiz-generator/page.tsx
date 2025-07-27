@@ -68,7 +68,7 @@ export default function QuizGeneratorPage() {
     } else {
       toast({
         title: 'Error Generating Quiz',
-        description: result.error || 'An unknown error occurred.',
+        description: 'error' in result ? result.error : 'An unknown error occurred.',
         variant: 'destructive',
       });
     }
@@ -86,7 +86,7 @@ export default function QuizGeneratorPage() {
       } else {
         toast({
           title: 'Error Generating Audio',
-          description: result.error || 'Could not generate audio.',
+          description: 'error' in result ? result.error : 'Could not generate audio.',
           variant: 'destructive',
         });
       }
@@ -139,7 +139,7 @@ export default function QuizGeneratorPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold font-headline">Automated Quiz Generation</h1>
+        <h1 className="text-3xl font-bold font-headline">Quiz Maker</h1>
         <p className="text-muted-foreground">Create quizzes on any topic in seconds.</p>
       </div>
 

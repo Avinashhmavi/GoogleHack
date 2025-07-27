@@ -25,13 +25,17 @@ export function LanguageSelector() {
 
   return (
     <Select value={language} onValueChange={setLanguage}>
-      <SelectTrigger className="w-auto gap-2">
+      <SelectTrigger className="w-auto gap-2 transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-md">
         <Languages className="w-4 h-4" />
         <SelectValue placeholder="Language" />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent className="transition-all duration-200">
         {languages.map((lang) => (
-          <SelectItem key={lang.value} value={lang.value}>
+          <SelectItem 
+            key={lang.value} 
+            value={lang.value}
+            className="transition-all duration-200 hover:bg-accent/80 cursor-pointer"
+          >
             {lang.label}
           </SelectItem>
         ))}

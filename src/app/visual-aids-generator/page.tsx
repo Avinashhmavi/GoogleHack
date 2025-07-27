@@ -58,7 +58,7 @@ export default function VisualAidsGeneratorPage() {
     } else {
       toast({
         title: "Error Generating Image",
-        description: result.error || "An unknown error occurred.",
+        description: 'error' in result ? result.error : "An unknown error occurred.",
         variant: "destructive",
       });
     }
@@ -82,7 +82,7 @@ export default function VisualAidsGeneratorPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold font-headline">Visual Aids Generator</h1>
+        <h1 className="text-3xl font-bold font-headline">Picture Tools</h1>
         <p className="text-muted-foreground">Create blackboard-style illustrations for your lessons.</p>
       </div>
 
