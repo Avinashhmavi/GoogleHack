@@ -78,6 +78,7 @@ import { createMentorshipPlan } from "@/ai/flows/create-mentorship-plan";
 import type { CreateMentorshipPlanInput } from "@/ai/flows/create-mentorship-plan.types";
 
 import { studentRosterDb, type Student, gradesDb, type GradeEntry, calendarDb, type CalendarEvent, recordingsDb, type ClassRecording } from "@/lib/firestore";
+import { generateVideoFlowAction } from "@/ai/flows/generate-video";
 import { getAuthenticatedUser, getAuthenticatedUserWithToken } from "./auth";
 
 
@@ -305,6 +306,32 @@ export async function deleteGradeAction(id: string, idToken?: string) {
     }
 }
 
+// Video Generation Actions
+export async function generateVideoAction(input: {
+  prompt: string;
+  duration: number;
+  aspectRatio: "16:9" | "9:16" | "1:1";
+  style: "realistic" | "cinematic" | "animated" | "artistic";
+  quality: "standard" | "high" | "ultra";
+}, idToken?: string) {
+  let user;
+  if (idToken) {
+    user = await getAuthenticatedUserWithToken(idToken);
+  } else {
+    user = await getAuthenticatedUser();
+  }
+  
+  if (!user) return { success: false, error: "User not authenticated." };
+  
+  try {
+    const result = await generateVideoFlowAction(input);
+    return result;
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Failed to generate video.";
+    return { success: false, error: message };
+  }
+}
+
 // Calendar Event Actions
 export async function getCalendarEventsAction(idToken?: string) {
     let user;
@@ -398,6 +425,71 @@ export async function deleteRecordingAction(id: string) {
         return { success: true, data: recordings };
     } catch (error) {
         const message = error instanceof Error ? error.message : "Failed to delete recording.";
+        return { success: false, error: message };
+    }
+}
+
+// Dashboard Stats Action
+export async function getDashboardStatsAction(idToken?: string) {
+    let user;
+    if (idToken) {
+        user = await getAuthenticatedUserWithToken(idToken);
+    } else {
+        user = await getAuthenticatedUser();
+    }
+    
+    if (!user) return { success: false, error: "User not authenticated." };
+    
+    try {
+        // Fetch all data in parallel
+        const [students, grades, events, recordings] = await Promise.all([
+            studentRosterDb.getStudents(user.uid),
+            gradesDb.getGrades(user.uid),
+            calendarDb.getEvents(user.uid),
+            recordingsDb.getRecordings(user.uid)
+        ]);
+
+        // Calculate statistics
+        const totalStudents = students.length;
+        const totalGrades = grades.length;
+        const averageGrade = grades.length > 0 
+            ? Math.round(grades.reduce((sum, grade) => sum + grade.grade, 0) / grades.length)
+            : 0;
+        
+        const now = new Date();
+        const upcomingEvents = events.filter(event => {
+            const eventDate = event.date instanceof Date ? event.date : event.date.toDate();
+            return eventDate >= now;
+        }).length;
+
+        const totalRecordings = recordings.length;
+        
+        const lessonsThisMonth = events.filter(event => {
+            const eventDate = event.date instanceof Date ? event.date : event.date.toDate();
+            return event.type === 'Lesson' && eventDate.getMonth() === now.getMonth() && eventDate.getFullYear() === now.getFullYear();
+        }).length;
+
+        // Calculate attendance rate (mock data for now)
+        const attendanceRate = totalStudents > 0 ? Math.round(85 + Math.random() * 15) : 0;
+
+        return {
+            success: true,
+            data: {
+                totalStudents,
+                totalGrades,
+                averageGrade,
+                upcomingEvents,
+                totalRecordings,
+                lessonsThisMonth,
+                attendanceRate,
+                students,
+                grades,
+                events,
+                recordings
+            }
+        };
+    } catch (error) {
+        const message = error instanceof Error ? error.message : "Failed to get dashboard stats.";
         return { success: false, error: message };
     }
 }

@@ -3,6 +3,7 @@
     "appName": "सहायक एआई",
     "appDescription": "शिक्षा के लिए एआई",
     "dashboard": "डैशबोर्ड",
+    "getStarted": "शुरू करें",
     "photoToWorksheet": "फोटो से वर्कशीट",
     "photoToWorksheet_desc": "पाठ्यपुस्तक के पन्नों को तुरंत इंटरैक्टिव वर्कशीट में बदलें।",
     "worksheetCreator": "वर्कशीट निर्माता",
@@ -124,5 +125,11 @@
     "pd_watch_on_youtube": "YouTube पर देखें",
     "pd_error_noGoal_title": "सीखने का लक्ष्य खाली है",
     "pd_error_noGoal_desc": "एक योजना बनाने के लिए कृपया एक लक्ष्य दर्ज करें।",
-    "pd_error_generic": "एक व्यावसायिक विकास योजना बनाने में विफल।"
+    "pd_error_generic": "एक व्यावसायिक विकास योजना बनाने में विफल।",
+    "contentHelper": "सामग्री सहायक",
+    "assessment": "मूल्यांकन और परीक्षण",
+    "studentManagement": "छात्र प्रबंधन",
+    "planning": "योजना और संगठन",
+    "facultyProgram": "संकाय कार्यक्रम",
+    "tools": "उपकरण और उपयोगिताएँ"
 }

@@ -23,9 +23,11 @@ export default function AttendancePage() {
   const { authStatus, user } = useAuth();
 
   useEffect(() => {
+    let stream: MediaStream | null = null;
+    
     const getCameraPermission = async () => {
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        stream = await navigator.mediaDevices.getUserMedia({ video: true });
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
         }
@@ -40,7 +42,15 @@ export default function AttendancePage() {
         });
       }
     };
+    
     getCameraPermission();
+    
+    // Cleanup function to stop camera when component unmounts or page changes
+    return () => {
+      if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+      }
+    };
   }, [toast, t]);
 
   const handleTakeAttendance = async () => {
@@ -60,12 +70,12 @@ export default function AttendancePage() {
     const token = await user.getIdToken();
     const result = await recognizeStudentsAction({ photoDataUri }, token);
 
-    if (result.success && result.data) {
+    if (result.success && 'data' in result) {
       setPresentStudents(result.data.presentStudents);
     } else {
       toast({
         title: t('errorRecognizingStudents_title'),
-        description: result.error || t('errorRecognizingStudents_description'),
+        description: 'error' in result ? result.error : t('errorRecognizingStudents_description'),
         variant: "destructive",
       });
     }
