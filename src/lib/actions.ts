@@ -50,10 +50,6 @@ import {
 } from "@/ai/flows/generate-visual-aid";
 import type { GenerateVisualAidInput } from "@/ai/flows/generate-visual-aid.types";
 import {
-  askSahayak
-} from "@/ai/flows/ask-sahayak";
-import type { AskSahayakInput } from "@/ai/flows/ask-sahayak.types";
-import {
   getTtsVoices
 } from "@/ai/flows/get-tts-voices";
 import {
@@ -156,9 +152,6 @@ export async function generateVisualAidAction(input: GenerateVisualAidInput) {
     return runAction(generateVisualAid, input);
 }
 
-export async function askSahayakAction(input: AskSahayakInput) {
-    return runAction(askSahayak, input);
-}
 
 export async function getTtsVoicesAction(languageCode: string) {
     try {

@@ -53,7 +53,6 @@ export const menuCategories: MenuCategory[] = [
     icon: LayoutDashboard,
     items: [
       { href: '/', labelKey: 'getStarted', descriptionKey: 'dashboard_desc', icon: LayoutDashboard },
-      { href: '/ask-sahayak', labelKey: 'askSahayak_title', descriptionKey: 'askSahayak_dashboard_desc', icon: HelpCircle },
     ]
   },
   {

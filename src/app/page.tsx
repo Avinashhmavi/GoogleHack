@@ -9,12 +9,6 @@ import { useLanguage } from "@/context/language-context";
 
 const features = [
   {
-    titleKey: 'askSahayak_title',
-    descriptionKey: 'askSahayak_dashboard_desc',
-    href: '/ask-sahayak',
-    icon: <HelpCircle className="w-8 h-8 text-primary" />,
-  },
-  {
     titleKey: 'smartClass_title',
     descriptionKey: 'smartClass_dashboard_desc',
     href: '/smart-class',
