@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    # Uncomment the following lines if you want to mount local .env or service account for development
+    # volumes:
+    #   - .env:/app/.env
+    #   - ./firebase-service-account.json:/app/firebase-service-account.json
